@@ -1,0 +1,212 @@
+{% extends 'FrontBundle::Vendor/Dashboard/layout.html.twig' %}
+
+{% block body %}
+<section id="add-listing" class="add-listing-main-block">
+	<div class="container">
+		{% include 'FrontBundle::Vendor/Dashboard/menu.html.twig' %}
+		<h4 class="new-add-listing-heading">Add Your New Listing</h4>
+		<div class="add-listing-block">
+			<div class="row mrgn-bottom-30">
+				<div class="col-md-4">
+					<div class="add-listing-sidebar">
+						<div class="form-group">
+							<form id="add-listing-form" action="add-listing.html#">
+								<div class="form-group">
+									<label>Select Category <span>*</span></label>
+									<div class="select-jewellery-dropdown dropdown">
+										<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											<span class="drp-name" data-bind="label">Jewellery</span>
+											<span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+											<li><a href="add-listing.html#">Cake</a></li>
+											<li><a href="add-listing.html#">Florist</a></li>
+											<li><a href="add-listing.html#">Dresses</a></li>
+											<li><a href="add-listing.html#">Jewellery</a></li>
+											<li><a href="add-listing.html#">Venue</a></li>
+											<li><a href="add-listing.html#">Photography</a></li>
+											<li><a href="add-listing.html#">Music</a></li>
+										</ul>
+									</div>
+								</div> 
+								<div class="form-group">  
+									<label>Select City <span>*</span></label>
+									<div class="select-city-dropdown dropdown">
+										<button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											<span class="drp-name" data-bind="label">Gandhinagar</span>
+											<span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+											<li><a href="add-listing.html#">New York</a></li>
+											<li><a href="add-listing.html#">California</a></li>
+											<li><a href="add-listing.html#">London</a></li>
+											<li><a href="add-listing.html#">Australia</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Select Capacity <span>*</span></label>
+									<div id="select-capacity" class="select-state-dropdown dropdown">
+										<button class="btn dropdown-toggle" type="button" id="dropdownMenu7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											<span class="drp-name" data-bind="label">Select Capacity</span>
+											<span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenu7">
+											<li><a href="add-listing.html#">Capacity 1</a></li>
+											<li><a href="add-listing.html#">Capacity 2</a></li>
+											<li><a href="add-listing.html#">Capacity 3</a></li>
+											<li><a href="add-listing.html#">Capacity 4</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Select Minimum Price <span>*</span></label>
+									<div id="select-minimum-price" class="select-state-dropdown dropdown">
+										<button class="btn dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											<span class="drp-name" data-bind="label">Select Price</span>
+											<span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+											<li><a href="add-listing.html#">100</a></li>
+											<li><a href="add-listing.html#">200</a></li>
+											<li><a href="add-listing.html#">300</a></li>
+											<li><a href="add-listing.html#">400</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Select Maximum Price <span>*</span></label>
+									<div id="select-maximum-price" class="select-state-dropdown dropdown">
+										<button class="btn dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											<span class="drp-name" data-bind="label">Select Price</span>
+											<span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
+											<li><a href="add-listing.html#">200</a></li>
+											<li><a href="add-listing.html#">300</a></li>
+											<li><a href="add-listing.html#">1000</a></li>
+											<li><a href="add-listing.html#">5000</a></li>
+										</ul>
+									</div>
+								</div> 
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="new-add-listing">
+						<div class="form-group">
+							<form id="add-listing-form-2">
+								<div class="add-listing-form-2">
+									<div class="form-group">
+										<label>Title <span>*</span></label>
+										<input type="text" id="title" class="form-control">
+									</div>
+									<div class="form-group">
+										<label>description<span>*</span></label>
+										<textarea id="description" class="form-control"></textarea>
+									</div>
+									<div class="form-group">
+										<label>Address<span>*</span></label>
+										<textarea id="address" class="form-control"></textarea>
+									</div>  
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="venue-location">
+				<h4 class="venue-location-heading">Venue Location</h4>
+				<div class="form-group">
+					<div class="google-map-location">
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Latitude (For google maps) <span>*</span></label>
+								<input type="text" id="latitude" class="form-control">
+							</div>
+							<div class="col-sm-6">
+								<label>Longitude (For google maps) <span>*</span></label>
+								<input type="text" id="longitude" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="add-listing-map">                        
+						<div id="location" class="map-banner"></div>
+					</div>
+				</div>
+			</div>
+			<div class="add-listing-video">
+				<div class="form-group">
+					<label>Video Url</label>
+					<input type="text" id="video-url" class="form-control">
+				</div>  
+			</div>
+			<div class="add-listing-gallery-block">
+				<div class="add-listing-gallery">
+					<div class="row">
+					<div class="col-sm-3">
+							<div class="add-listing-image">
+								<img src="{{ asset('bundles/front/images/add-listing-1.jpg') }}" class="img-responsive" alt="add-listing-img">
+								<a href="add-listing.html#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="add-listing-image">
+								<img src="{{ asset('bundles/front/images/add-listing-2.jpg') }}" class="img-responsive" alt="add-listing-img">
+								<a href="add-listing.html#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="add-listing-image">
+								<img src="{{ asset('bundles/front/images/add-listing-3.jpg') }}" class="img-responsive" alt="add-listing-img">
+								<a href="add-listing.html#" class="star"><i class="fa fa-star" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-btn-section">
+					<a href="add-listing.html#" class="btn btn-pink">Select Media</a>
+					<ul class="add-listing-note">
+						<li>* At least 1 image is required for a valid submission</li>
+						<li>** After upload image must click on any image to select features</li>
+					</ul>
+					<button type="submit" class="btn btn-pink">Save Listing</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+	$(function($) {
+      // Asynchronously Load the map API 
+      var script = document.createElement('script');
+      script.src = "https://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+      document.body.appendChild(script);
+  });
+	function initialize(){
+      var myLatLng = {lat: 25.3500, lng: 74.6333}; // Insert Your Latitude and Longitude For Footer Wiget Map
+      var mapOptions = {
+      	center: myLatLng, 
+      	zoom: 15,
+      	disableDefaultUI: true,
+      	scrollwheel: false,
+      	mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      // For Footer Widget Map
+      var map = new google.maps.Map(document.getElementById("location"), mapOptions);
+      var image = '{{ asset('images/icons/map-marker-1-1.png') }}';
+      var beachMarker = new google.maps.Marker({
+      	position: myLatLng, 
+      	map: map,   
+      	icon: image
+      });    
+  }
+</script>
+{% endblock %}

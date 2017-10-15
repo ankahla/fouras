@@ -1,0 +1,16 @@
+services:
+    app.locale_listener:
+        class: AppBundle\Listener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.user_listener:
+        class: AppBundle\Listener\UserListener
+        arguments: ['@security.context', '@Doctrine']
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller }
+
+    app.gravatar_service:
+        class: AppBundle\Services\GravatarService
+        arguments: ['%gravatar.default_options%', '@templating.helper.assets']

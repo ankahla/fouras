@@ -1,0 +1,59 @@
+<div class="upload-profile-block mrgn-bottom-30">
+	<h5 class="description-heading">{% trans %}Upload Profile Photo{% endtrans %}</h5>
+	<div class="row">
+		<div class="col-md-5 col-sm-4">
+			<div class="upload-img">
+				<img src="{% if 'http' in user.profilePicture.path %}{{ user.profilePicture }}{% else %}{{ asset(profile_pic_dir ~ user.profilePicture) }}{% endif %}" class="img-responsive img-rounded" alt="upload img">
+			</div>
+		</div>
+		<div class="col-md-7 col-sm-8">
+			<div class="upload-img-btn">
+				<a href="#" class="btn btn-pink" data-toggle="modal" data-target="#upload-model">{% trans %}Upload Profile Image{% endtrans %}</a>
+				<a href="couple_profile.html#" data-toggle="modal" data-target="#password-form" class="btn btn-pink">{% trans %}Change password{% endtrans %}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- picture modal -->
+<div class="modal fade" id="upload-model" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h5 class="modal-title text-center">{% trans %}Upload Profile Photo{% endtrans %}</h5>
+			</div>
+			<div class="modal-body upload-model-body text-center">
+				<form id="main-dropzone" method="post" paramName="ffff" action="{{ path('user_upload_picture') }}" class="dropzone" enctype="multipart/form-data">
+					<div class="fallback">
+						{{ form_widget(profilePictureForm.profilePicture) }}
+					</div>
+					<div class="drop-zone dz-default dz-message">
+						<div class="drag-here">
+							<i class="fa fa-cloud-upload fa-5x"></i>
+							<div class="drop-zone-caption">{% trans %}Drag file to upload{% endtrans %}</div>
+						</div>
+					</div>
+					<div class="hidden">
+						{{ form_rest(profilePictureForm) }}
+					</div>
+				</form>
+			</div>            
+		</div>
+	</div>
+</div>
+
+<!-- modal -->
+<div id="password-form" class="modal fade" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-center">{% trans %}Change Password{% endtrans %}</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}"><span aria-hidden="true">×</span></button>
+			</div>
+			<div class="modal-body">
+				{% include 'UserBundle::Profile/password.form.html.twig' %}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+{% set current_route = app.request.attributes.get('_route') %}
+<!--  navigation -->
+<header id="nav-bar" class="nav-bar navbar-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-sm-3">
+        <div class="wedding-logo">
+          <a href="{{ path('homepage') }}"><img src="{{ asset('bundles/front/images/' ~ logo) }}" class="img-responsive" alt="logo"></a>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9">
+        <div class="navigation">
+          <div id="cssmenu" class="cssmenu">
+            <ul>
+              {% for route, item in mainmenuitems %}
+              <li {% if current_route == route %}class="active{% endif %}"><a href="{{ path(route) }}">{{ item.label|trans }} {% if item.sub is defined %}<i class="fa fa-angle-down" aria-hidden="true"></i>{% endif %}</a>
+                {% if item.sub is defined %}
+                <ul class="sub-menu">
+                  {% for route_lv2, item_lv2 in item.sub %}
+                  <li {% if current_route == route_lv2 %}class="active{% endif %}"><a href="{{ path(route_lv2) }}">{{ item_lv2.label|trans }}</a>
+                    {% if item_lv2.sub is defined %}
+                    <ul class="has-sub">
+                      {% for route_lv3, item_lv3 in item_lv2.sub %}
+                      <li {% if current_route == route_lv3 %}class="active{% endif %}"><a href="{{ path(route_lv3) }}">{{ item_lv3.label|trans }}</a></li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>        
+    </div>
+  </div>
+</header>
+</div>
+<!--  end navigation -->

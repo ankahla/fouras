@@ -1,0 +1,135 @@
+{% extends 'front/layout.html.twig' %}
+
+{% form_theme profileForm 'UserBundle::Profile/fields.html.twig' %}
+
+{% block banner %}
+{% if title is not defined %}
+{% set title = 'Vendor dashboard' %}
+{% endif %}
+{% include 'front/banner.html.twig' with {'title' : title} %}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link href="{{ asset('bundles/front/css/dropzone.css') }}" rel="stylesheet" type="text/css"> <!-- menu css -->
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/front/js/dropzone.js') }}"></script>  <!-- jquery library js -->
+
+<script>
+  Dropzone.autoDiscover = false;
+
+  $(function() {
+
+    var myDropzone = new Dropzone("#main-dropzone", {
+      paramName: jQuery('#main-dropzone input[type=file]').attr('name'),
+      acceptedFiles: 'image/*',
+      resizeWidth: 260
+    });
+
+    myDropzone.on("complete", function(file) {
+      setTimeout(function(){
+
+        jQuery('.modal').modal('hide')
+        myDropzone.removeFile(file);
+      }, 1000);
+
+    });
+    myDropzone.on("success", function(file) {
+      jQuery('.upload-img img').attr('src', file.dataURL)
+    });
+  })
+
+  //''
+
+  jQuery(document).ready(function(){
+  $('#new-url-form').on("hidden.bs.modal", function () {
+    jQuery(this).find('.form-group .create-url-block').html('');
+  });
+
+  $('#new-url-form').on("show.bs.modal", function () {
+
+    var prototype = $('div[data-url-prototype]').data('url-prototype');
+    prototype = prototype.replace(/__name__/g, {{ profileForm.urls|length }});
+    jQuery(this).find('.form-group .create-url-block').html(prototype);
+    });
+
+  });
+
+</script>
+{% endblock %}
+
+{% block body %}
+<section id="couple_profile" class="couple-profile-main-page">
+    <div class="container">
+      {{ render(controller('UserBundle:Menu:index')) }}
+      <div class="row">
+        <div class="col-md-6">
+          {% include 'UserBundle::Profile/picture.html.twig' %}
+        </div>
+      </div>
+      {{ form_start(profileForm, {'action': path('user_profile_edit')}) }}
+      <div class="row">
+        <div class="col-md-6">
+          <div class="couple_profile-block mrgn-bottom-30">
+            <h5 class="description-heading">{% trans %}Profile{% endtrans %}</h5>
+             {{ form_row(profileForm.firstName) }}
+             {{ form_row(profileForm.lastName) }}
+             {{ form_row(profileForm.email) }}
+             {{ form_row(profileForm.mobile) }}
+             {{ form_row(profileForm.phone) }}
+             {{ form_row(profileForm.city) }}
+             {{ form_row(profileForm.address) }}
+         </div>
+
+       </div>
+       <div class="col-md-6">
+        <div class="social-media-block mrgn-bottom-30">
+          <h5 class="description-heading">{% trans %}Social Media Profile{% endtrans %}</h5>
+          <div data-url-prototype="{{ form_row(profileForm.urls.vars.prototype)|e }}"></div>
+          {{ form_widget(profileForm.urls) }}
+          <p></p>
+          <div class="row">
+            <div class="col-md-4">
+            <a href="" class="btn btn-default" data-toggle="modal" data-target="#new-url-form">{% trans %}Add new{% endtrans %} &nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-offset-4 col-sm-8"><input type="submit" class="btn btn-lg btn-pink" value="{% trans %}Update Profile{% endtrans %}"></div> 
+    </div>
+    {{ form_widget(profileForm._token) }}
+    </form>
+  </div>
+
+  <!-- modal -->
+  <div id="new-url-form" class="modal fade" role="dialog">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="create-task-heading">{% trans %}Add New Url{% endtrans %}</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body">
+              {{ form_start(newUrlForm, {'action': path('user_url_create')}) }}
+                  <div class="form-group">
+                            <div class="create-url-block"></div>
+                            <p></p>
+                          <p class="text-center">
+                              <button type="submit" class="btn btn-pink">{% trans %}Add Url{% endtrans %}</button>
+                          </p>
+                    </div>
+                    {{ form_widget(newUrlForm._token) }}
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+</section>
+
+{% endblock %}

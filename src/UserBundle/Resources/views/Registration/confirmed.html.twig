@@ -1,0 +1,22 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block body %}
+<section id="couple-register" class="couple-dashboard-main-block">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="register-block">
+					<p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+					<p>
+					<a href="{{ path('fos_user_profile_show') }}">{% trans %}View my profile{% endtrans %}</a><br>
+					{% if app.session is not empty %}
+					{% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+					{% if targetUrl is not empty %}<a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a>{% endif %}
+					{% endif %}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block meta %}
+        <meta name="description" content="{% if metaDescription is defined %}{{ metaDescription }}{% endif %}">
+        <meta name="keywords" content="{% if metaKeywords is defined %}{{ metaKeywords|join(',') }}{% endif %}">
+        <meta name="author" content="akahla">
+        {% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% set current_route = app.request.attributes.get('_route') %}
+        {% if current_route == null %}
+            {% set current_route = 'notfound' %}
+        {% endif %}
+        {% set current_locale = app.request.attributes.get('_locale') %}
+        {% if current_locale == null %}
+            {% set current_locale = 'fr' %}
+        {% endif %}
+
+        {% block header %}{% endblock %}
+        {% block banner %}{% endblock %}
+        {% block preloader %}{% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<div class="to-do-list">
+	<div class="panel-group faq-panel" id="accordion" role="tablist" aria-multiselectable="true">
+
+{% for month, tasks in list %}
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingOne">
+				<h4 class="panel-title to-do-list-heading" data-toggle="collapse" data-parent="#accordion" href="{{ path('couple_todo') }}#{{ month }}" aria-expanded="true" aria-controls="collapse{{ month }}" role="button">
+					<a>
+						{{ month|localizeddate('full', 'none', current_locale, null, 'MMMM Y')|capitalize }}
+						<span class="faq-btn faq-btn-plus hidden-xs"><i class="fa fa-angle-double-down" aria-hidden="true"></i></span>
+						<span class="faq-btn faq-btn-minus hidden-xs"><i class="fa fa-angle-double-up" aria-hidden="true"></i></span>
+					</a>
+				</h4>
+			</div>
+			<div id="{{ month }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+				<div class="panel-body to-do-list-dtl">
+					{% for task in tasks %}
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="to-do-list-dtl-heading">{{ task.title }}</h4>
+							<div class="date">{{ task.date|localizeddate('full', 'none', current_locale, null, 'EEEE d MMMM Y')|capitalize }}</div>
+							<p>
+							{{ task.description }}
+							</p>
+						</div>
+						<div class="col-sm-4">
+							<div class="to-do-list-action-tabs">
+								<input type="hidden" name="id" value="{{ task.id }}"/>
+								<input type="hidden" name="title" value="{{ task.title|escape }}"/>
+								<input type="hidden" name="date" value="{{ task.date|date('Y-m-d') }}"/>
+								<input type="hidden" name="description" value="{{ task.description|escape }}"/>
+								{{ form_start(task.deleteForm) }}
+								<a class="edit" href="" data-toggle="modal" data-target="#task-form"><i class="fa fa-edit" aria-hidden="true"></i></a>
+								<a class="delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+								{{ form_end(task.deleteForm) }}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+{% endfor %}
+
+	</div>
+</div>

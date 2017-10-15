@@ -1,0 +1,15 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block body %}
+<section id="couple-register" class="couple-dashboard-main-block">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="register-block">
+					<p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

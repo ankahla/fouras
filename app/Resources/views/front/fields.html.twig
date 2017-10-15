@@ -1,0 +1,94 @@
+{% block text_widget %}
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% endif %}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{% block password_widget %}
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% endif %}
+    {% set type = type|default('password') %}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{% block textarea_widget %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    <textarea {{ block('widget_attributes') }}>{{ value|e }}</textarea>
+{% endblock %}
+
+{% block email_widget %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{% block money_row %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {{ block('form_label') }}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{% block date_widget %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% set type = type|default('date') %}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{% block url_widget %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% set type = type|default('url') %}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{% block choice_row %}
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% endif %}
+    {{ block('form_label') }}
+    {{ block('choice_widget_collapsed') }}
+{% endblock %}
+
+{% block choice_widget %}
+
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% endif %}
+    {{ block('choice_widget_collapsed') }}
+{% endblock %}
+
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <ul class="alert alert-danger">
+        {% for error in errors %}
+                <li>{{ error.message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block password_row %}
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% endif %}
+    {% set type = type|default('password') %}
+
+    <div class="form-group row {% if errors|length %}has-error{% endif %}">
+    <div class="col-sm-4">{{ block('form_label') }}</div> 
+        <div class="col-sm-8">
+            {{ block('form_widget_simple') }}
+            <span class="help-block">{{ block('form_errors') }}</span>
+        </div> 
+    </div>
+    
+{% endblock %}

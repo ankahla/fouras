@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="41a7f93915f95cbcf39daac94bad9602" resname="Cake">
+        <source>Cake</source>
+        <target>Gâteau</target>
+      </trans-unit>
+      <trans-unit id="6b17f1d44d78cb366d3cc6bf29954dfd" resname="Florist">
+        <source>Florist</source>
+        <target>Fleuriste</target>
+      </trans-unit>
+      <trans-unit id="88efa77981d469599f2f0e8bba925794" resname="Dresses">
+        <source>Dresses</source>
+        <target>Robes</target>
+      </trans-unit>
+      <trans-unit id="4a52f2480f82b5b6d431af40ac268845" resname="Jewellery">
+        <source>Jewellery</source>
+        <target>Bijoux</target>
+      </trans-unit>
+      <trans-unit id="be993d105940ea02e5f77696afc02971" resname="Venue">
+        <source>Venue</source>
+        <target>Lieu</target>
+      </trans-unit>
+      <trans-unit id="a2a5c33eda9046576764de2400b1aa50" resname="Photography">
+        <source>Photography</source>
+        <target>Photographie</target>
+      </trans-unit>
+      <trans-unit id="47dcbd834e669233d7eb8a51456ed217" resname="Music">
+        <source>Music</source>
+        <target>Musique</target>
+      </trans-unit>
+      <trans-unit id="06df33001c1d7187fdd81ea1f5b277aa" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="d57ceb4533b61b9746f4fc10d958f5c5" resname="Actual">
+        <source>Actual</source>
+        <target>Actuel</target>
+      </trans-unit>
+      <trans-unit id="e0010a0a1a3259ab5c06a19bad532851" resname="Paid">
+        <source>Paid</source>
+        <target>Payé</target>
+      </trans-unit>
+      <trans-unit id="d0363921c897ec48ae2a05228c825d0d" resname="Due">
+        <source>Due</source>
+        <target>Dû</target>
+      </trans-unit>
+      <trans-unit id="f5f0c488ed56cf789d19a13ffba8abe3" resname="Transport">
+        <source>Transport</source>
+        <target>Transport</target>
+      </trans-unit>
+      <trans-unit id="cc9c45edab8c8a0d0058f7fee1e5d39f" resname="My Dashboard">
+        <source>My Dashboard</source>
+        <target>Mon tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="a7dd00e1e029f5a265eba755c0759861" resname="Wedding Days To Go">
+        <source>Wedding Days To Go</source>
+        <target>Jours avant marriage</target>
+      </trans-unit>
+      <trans-unit id="96b22813c9baa99a178ebf96faa76ff3" resname="Your Budget">
+        <source>Your Budget</source>
+        <target>Ton budget</target>
+      </trans-unit>
+      <trans-unit id="e1a107a4d919d5674bd2f9ba4ffb6a3a" resname="Checklist to do">
+        <source>Checklist to do</source>
+        <target>Taches à faire</target>
+      </trans-unit>
+      <trans-unit id="723edf7c24638ed18d2fa831e647a5cc" resname="wishlist">
+        <source>wishlist</source>
+        <target>favoris</target>
+      </trans-unit>
+      <trans-unit id="aa8fb77e57d1ca18d593e909729871fe" resname="completed">
+        <source>completed</source>
+        <target>complété</target>
+      </trans-unit>
+      <trans-unit id="2938c7f7e560ed972f8a4f68e80ff834" resname="Dashboard">
+        <source>Dashboard</source>
+        <target>Tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="cce99c598cfdb9773ab041d54c3d973a" resname="Profile">
+        <source>Profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="33425240a981000f9e611351dbf27198" resname="To Do List">
+        <source>To Do List</source>
+        <target>Taches à faire</target>
+      </trans-unit>
+      <trans-unit id="b67828a21741b4ec19fea23a747949f6" resname="My Budget">
+        <source>My Budget</source>
+        <target>Mon Budget</target>
+      </trans-unit>
+      <trans-unit id="4840f4437f55e68a587d358090b948d1" resname="My Wishlist">
+        <source>My Wishlist</source>
+        <target>Mes favoris</target>
+      </trans-unit>
+      <trans-unit id="556d0a4fa9efefecab833732e171e72e" resname="Guest List">
+        <source>Guest List</source>
+        <target>Liste des invités</target>
+      </trans-unit>
+      <trans-unit id="be53a0541a6d36f6ecb879fa2c584b08" resname="Image">
+        <source>Image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="b78a3223503896721cca1303f776159b" resname="Title">
+        <source>Title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="dd7bf230fde8d4836917806aff6a6b27" resname="Address">
+        <source>Address</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="3601146c4e948c32b6424d2c0a7f0118" resname="Price">
+        <source>Price</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="004bf6c9a40003140292e97330236c53" resname="Action">
+        <source>Action</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="665a4bd44be4cf78fbbefb998d249382" resname="About Our Weddlist">
+        <source>About Our Weddlist</source>
+        <target>About Our Weddlist</target>
+      </trans-unit>
+      <trans-unit id="ed632d9e5c80aa9ce6def34d451b057d" resname="Sed ut perspiciatis unde omnis iste natus error sit voluptatem">
+        <source>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</source>
+        <target>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</target>
+      </trans-unit>
+      <trans-unit id="5f38708044a81342fa8aa681dec2105e" resname="Weddlist History">
+        <source>Weddlist History</source>
+        <target>Weddlist History</target>
+      </trans-unit>
+      <trans-unit id="f6cf30f3d71b1b99e8dd72e775e9b843" resname="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium doloremque laudantium totam rem aperiam eaque.">
+        <source>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium doloremque laudantium totam rem aperiam eaque.</source>
+        <target>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium doloremque laudantium totam rem aperiam eaque.</target>
+      </trans-unit>
+      <trans-unit id="decbe415d8accca7c2c16d48a79ee934" resname="Read More">
+        <source>Read More</source>
+        <target>Read More</target>
+      </trans-unit>
+      <trans-unit id="7e3b02d784ebaf64152722b66c9d1e42" resname="Our Vision">
+        <source>Our Vision</source>
+        <target>Our Vision</target>
+      </trans-unit>
+      <trans-unit id="7da2f32634f4d82f164596ab03d4e756" resname="Our Mission">
+        <source>Our Mission</source>
+        <target>Our Mission</target>
+      </trans-unit>
+      <trans-unit id="1a6663a3493d502b11f431cc5a37c02a" resname="Start Planning Your Wedding Step By Step">
+        <source>Start Planning Your Wedding Step By Step</source>
+        <target>Commencez à planifier votre mariage étape par étape</target>
+      </trans-unit>
+      <trans-unit id="0190086c270b47055a97846a69332398" resname="Budget Planner">
+        <source>Budget Planner</source>
+        <target>Planificateur de budget</target>
+      </trans-unit>
+      <trans-unit id="52fe65cec1db5472745884265d40eefc" resname="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accus.">
+        <source>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accus.</source>
+        <target>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accus.</target>
+      </trans-unit>
+      <trans-unit id="5d5cd268b8acccf04f63d81c5d0d2cab" resname="View Details">
+        <source>View Details</source>
+        <target>Voir détails</target>
+      </trans-unit>
+      <trans-unit id="5a7f5e5530bbde682da4698c26b0198b" resname="Check List">
+        <source>Check List</source>
+        <target>Taches</target>
+      </trans-unit>
+      <trans-unit id="84ff8dd44f78101151d84f05dc3313cd" resname="Are you trying our planning tools ?">
+        <source>Are you trying our planning tools ?</source>
+        <target>Are you trying our planning tools ?</target>
+      </trans-unit>
+      <trans-unit id="f8d2c5e1c5e6b682aa9d7aa535e29bd1" resname="Start Planning Today">
+        <source>Start Planning Today</source>
+        <target>Commencez à planifier aujourd'hui</target>
+      </trans-unit>
+      <trans-unit id="0981dea76075320f9a002994f60401ff" resname="Why Choose Weddlist">
+        <source>Why Choose Weddlist</source>
+        <target>Why Choose Weddlist</target>
+      </trans-unit>
+      <trans-unit id="dcefa6c4012ef5dc88a0498f812e9e7e" resname="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit.">
+        <source>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit.</source>
+        <target>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit.</target>
+      </trans-unit>
+      <trans-unit id="5585724ebf2df26148147a1dc37ff29b" resname="20 Year Experience">
+        <source>20 Year Experience</source>
+        <target>20 Year Experience</target>
+      </trans-unit>
+      <trans-unit id="f548cfb3c9d44e60e62fb635e7fdd856" resname="Sed ut perspiciatis unde omnis iste na voluptatem accusantium doloremque laudantium">
+        <source>Sed ut perspiciatis unde omnis iste na voluptatem accusantium doloremque laudantium</source>
+        <target>Sed ut perspiciatis unde omnis iste na voluptatem accusantium doloremque laudantium</target>
+      </trans-unit>
+      <trans-unit id="6054a246d465b151be32490d3c00058b" resname="1500+ Wedding Suppliers">
+        <source>1500+ Wedding Suppliers</source>
+        <target>1500+ Wedding Suppliers</target>
+      </trans-unit>
+      <trans-unit id="e20b465b4d6f6aa586c074d5beec64e2" resname="100 Real Weddings">
+        <source>100 Real Weddings</source>
+        <target>100 Real Weddings</target>
+      </trans-unit>
+      <trans-unit id="d6720694da5b8eb076c96b70d78ed157" resname="Perfect Checklist">
+        <source>Perfect Checklist</source>
+        <target>Perfect Checklist</target>
+      </trans-unit>
+      <trans-unit id="aabda4eca330774a2b26847bbdefbd5d" resname="How It Works">
+        <source>How It Works</source>
+        <target>Comment ça marche</target>
+      </trans-unit>
+      <trans-unit id="033ab13ce2ebe33408c293ada8248959" resname="Sed ut perspiciatis unde omnis iste natu">
+        <source>Sed ut perspiciatis unde omnis iste natu</source>
+        <target>Sed ut perspiciatis unde omnis iste natu</target>
+      </trans-unit>
+      <trans-unit id="06afe89c88062dc20ebab2ac3e6aa94c" resname="1.Find The Vendor">
+        <source>1.Find The Vendor</source>
+        <target>1.Find The Vendor</target>
+      </trans-unit>
+      <trans-unit id="dc96668030a282f933f08575f19a3b7f" resname="2.Compare The Proposal">
+        <source>2.Compare The Proposal</source>
+        <target>2.Compare The Proposal</target>
+      </trans-unit>
+      <trans-unit id="91becde2b4e57da1f9cab5eac7a7f242" resname="3.Hire The Right Vendor">
+        <source>3.Hire The Right Vendor</source>
+        <target>3.Hire The Right Vendor</target>
+      </trans-unit>
+      <trans-unit id="db8f90d86ec67ec26a6de8edc2c7f9e4" resname="Top Feature Vendor Profile">
+        <source>Top Feature Vendor Profile</source>
+        <target>Top Feature Vendor Profile</target>
+      </trans-unit>
+      <trans-unit id="a6534d2d07bc07b5ce1a29b1ead9b5dc" resname="Sed ut perspiciatis unde omnis iste natus error">
+        <source>Sed ut perspiciatis unde omnis iste natus error</source>
+        <target>Sed ut perspiciatis unde omnis iste natus error</target>
+      </trans-unit>
+      <trans-unit id="a0cceed7cae225b6bf780574f30cea12" resname="Photographer">
+        <source>Photographer</source>
+        <target>Photographer</target>
+      </trans-unit>
+      <trans-unit id="3f14ad571ea93f428498ff2d3b91121a" resname="Sed ut perspiciatis unde omnis iste natus error sit volu ptatem.">
+        <source>Sed ut perspiciatis unde omnis iste natus error sit volu ptatem.</source>
+        <target>Sed ut perspiciatis unde omnis iste natus error sit volu ptatem.</target>
+      </trans-unit>
+      <trans-unit id="9f55ee91521abfb05edfa1f553597d63" resname="Weddlist Contact Details">
+        <source>Weddlist Contact Details</source>
+        <target>Weddlist Contact Details</target>
+      </trans-unit>
+      <trans-unit id="14b73c655d177e7ebb43ac04a23459db" resname="Our Address">
+        <source>Our Address</source>
+        <target>Notre adresse</target>
+      </trans-unit>
+      <trans-unit id="445432e5dc430657ecaaa3cdb4a99743" resname="Call Us">
+        <source>Call Us</source>
+        <target>Appelez nous</target>
+      </trans-unit>
+      <trans-unit id="b2274265360392e3ab0d8bbda29d5a3f" resname="Mail Us">
+        <source>Mail Us</source>
+        <target>Envoyez nous un message</target>
+      </trans-unit>
+      <trans-unit id="5020f246a147b06735b9379033eb7245" resname="Feel Free To Contact Us">
+        <source>Feel Free To Contact Us</source>
+        <target>N'hésitez pas à nous contacter</target>
+      </trans-unit>
+      <trans-unit id="1432f32780bbd9cde496343b060fd75d" resname="Send Message">
+        <source>Send Message</source>
+        <target>Envoyer Message</target>
+      </trans-unit>
+      <trans-unit id="af1b98adf7f686b84cd0b443e022b7a0" resname="Categories">
+        <source>Categories</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id="836000c3bbe29790e83bb6f688e8cc25" resname="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto">
+        <source>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto</source>
+        <target>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto</target>
+      </trans-unit>
+      <trans-unit id="c77c2780a83d1bcebf8fa7ebdd17df7f" resname="Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit sed quia .">
+        <source>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit sed quia .</source>
+        <target>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit sed quia .</target>
+      </trans-unit>
+      <trans-unit id="57ba67ec8603ad79a2180604cb5c0b4b" resname="Which Payment Methods Are Supported?">
+        <source>Which Payment Methods Are Supported?</source>
+        <target>Which Payment Methods Are Supported?</target>
+      </trans-unit>
+      <trans-unit id="0f4a87c6d13c0fd64ba43b2dd56fb786" resname="Can I cancel or refund my subscription?">
+        <source>Can I cancel or refund my subscription?</source>
+        <target>Can I cancel or refund my subscription?</target>
+      </trans-unit>
+      <trans-unit id="494bec5e766209f3442a37422b36168d" resname="What uisque ulrices eficiturn interdum justo?">
+        <source>What uisque ulrices eficiturn interdum justo?</source>
+        <target>What uisque ulrices eficiturn interdum justo?</target>
+      </trans-unit>
+      <trans-unit id="1c4b657dd407ec4cd22cfea0be08b7c1" resname="Why tibulum consectetur lorem sagittis?">
+        <source>Why tibulum consectetur lorem sagittis?</source>
+        <target>Why tibulum consectetur lorem sagittis?</target>
+      </trans-unit>
+      <trans-unit id="d0fbda9855d118740f1105334305c126" resname="Page not found">
+        <source>Page not found</source>
+        <target>Page not found</target>
+      </trans-unit>
+      <trans-unit id="c95864223a3b47be49c5307d2a81a90d" resname="Back To Home">
+        <source>Back To Home</source>
+        <target>Page d'accueil</target>
+      </trans-unit>
+      <trans-unit id="0ba7583639a274c434bbe6ef797115a4" resname="Register">
+        <source>Register</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="c67adbbc1dade039191787d6a7110e0b" resname="YOUR PROFILE">
+        <source>YOUR PROFILE</source>
+        <target>VOTRE PROFILE</target>
+      </trans-unit>
+      <trans-unit id="ec9ceefe0c19f4c029008c23e3c947b7" resname="Vendor">
+        <source>Vendor</source>
+        <target>Prestataire</target>
+      </trans-unit>
+      <trans-unit id="e8a56884b09279bb1e67e99601869ca1" resname="Couple">
+        <source>Couple</source>
+        <target>Couple</target>
+      </trans-unit>
+      <trans-unit id="2bd954c508642b5dd60a94ca6bc16e8d" resname="I agree to all">
+        <source>I agree to all</source>
+        <target>J'accepte tous</target>
+      </trans-unit>
+      <trans-unit id="a44fa7462a614a4dfd4c0467963c610d" resname="terms &amp; Conditions">
+        <source>terms &amp; Conditions</source>
+        <target>termes et conditions</target>
+      </trans-unit>
+      <trans-unit id="77096b231f99bf93ef4a09ad575adc59" resname="Register Now">
+        <source>Register Now</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="21bdc5689c12595ae14298354d5550d5" resname="Already have an account?">
+        <source>Already have an account?</source>
+        <target>Vous avez déjà un compte?</target>
+      </trans-unit>
+      <trans-unit id="f2fdea440d768b85591e936a803c3631" resname="Sign In">
+        <source>Sign In</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="dd2810c58acf331a63a228b91b8bf1b5" resname="Upload Profile Photo">
+        <source>Upload Profile Photo</source>
+        <target>Upload Profile Photo</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,69 @@
+<!--  top bar -->
+  <div class="top-trans">
+    <div class="top-nav-info top-nav-info-two">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 hidden-xs">
+            <div class="top-text">Welcome to Fouras</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="top-detail cssmenu mini text-right">
+              <ul>
+                <li><a href="{{ path('help') }}">Help</a></li>
+                <li><a href="#">{{ current_locale }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                  {% set locales = ['ar', 'fr', 'en'] %}
+                  <ul class="sub-menu">
+                    {% for locale in locales %}
+                    {% if current_locale != locale %}
+                    <li><a href="{{ path(current_route, app.request.attributes|merge({'_locale':locale})) }}">{{ locale }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ app.user.username }}</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                {% else %}
+                <li><a href="{{ path('fos_user_registration_register') }}" >{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#login-model">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+                {% endif %}
+                <li class="search-btn search-icon text-center">
+                  <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- search -->
+        <div class="search">
+          <div class="container">
+            <input type="search" class="search-box" placeholder="Search">
+            <a href="#" class="fa fa-times search-close"></a>
+          </div>
+        </div>
+        <!-- end search -->
+        <!-- login btn -->
+        <div class="modal fade login-model" id="login-model" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title text-center">Login</h5>
+              </div>
+              <div class="modal-body login-model-body text-center">
+                <form id="login-form" action="{{ path("fos_user_security_check") }}" method="post">
+                  <div class="form-group">
+                    <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" />
+                    <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" />
+                  </div>
+                  <input type="submit" class="btn btn-default" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                </form>
+              </div>            
+            </div>
+          </div>
+        </div>
+        <!-- end login btn -->
+
+      </div>
+    </div><!--  end top bar -->

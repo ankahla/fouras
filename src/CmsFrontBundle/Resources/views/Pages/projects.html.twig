@@ -1,0 +1,43 @@
+{% extends "CmsFrontBundle::layout.html.twig" %}
+
+{% block title %}ProbatechFrontendBundle:Pages:projects{% endblock %}
+
+{% block body %}
+    <section id="projectsRow" class="row contentRowPad">
+        <div class="container">
+            <div class="row filtersRow">
+                <button type="button" class="collapsed project_filderButton visible-xs" data-toggle="collapse" data-target="#filters">
+                    <i class="fa fa-filter"></i> Project Filter
+                </button>
+                <ul class="list-inline text-center collapse navbar-collapse filters" id="filters">
+                    <li class="active" data-filter="*">Tous</li>
+                    {% if categories is defined and categories is not empty %}
+                    {% for category in categories %}
+                    <li data-filter=".{{ category.id }}">{{ category.name }}</li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="row" id="projectsContainer">
+            {% if projects is defined and projects is not empty%}
+            {% for p in projects %}
+                <div class="col-sm-4 project {{ p.categoryId.id }}">
+                    <div class="post_thumbnail_row row m0">
+                        <a href="{{ url('probatech_frontend_project',{'project_slug':p.slug})}}">
+                            <img src="{{ asset(p.images.0.url) }}" alt="" class="post_thumbnail">
+                            <div class="post_thumbnail_bg"></div>
+                            <i class="fa fa-link"></i>
+                        </a>
+                    </div>
+                    <a href="{{ url('probatech_frontend_project',{'project_slug':p.slug})}}"><h5 class="porjectTitle">{{ p.title }}</h5></a>
+                    <div class="row m0 project_meta">
+                        <div class="fleft project_category"><i class="fa fa-folder-o"></i>{{ p.categoryId.name }}</div>
+                        <div class="fleft project_views"><i class="fa fa-eye"></i>1.2k</div>
+                    </div>
+                </div> 
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

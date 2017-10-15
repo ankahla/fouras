@@ -1,0 +1,22 @@
+<section id="blogs" class="row homeBlogArea">
+	<div class="container">
+		<div class="row">
+			{% for item in items %}
+			<article class="col-sm-4 blog">
+				<div class="row m0">
+					<div class="post_thumbnail_row row m0">
+						<a href="">
+							<img src="{{ asset(item.coverImage) }}" alt="" class="post_thumbnail">
+							<div class="post_thumbnail_bg"></div>
+							<i class="fa fa-file-text"></i>
+						</a>
+					</div>
+					<h5 class="blog_title"><a href="">{{ item.title }}</a></h5>
+					{{ item.intro|raw }}
+					<a href="" class="read_more"><i class="fa fa-arrow-circle-o-right"></i>EN SAVOIR PLUS</a>
+				</div>
+			</article>
+			{% endfor %}
+		</div>
+	</div>
+</section>

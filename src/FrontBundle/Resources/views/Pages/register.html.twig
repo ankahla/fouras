@@ -1,0 +1,48 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block banner %}
+{% include 'front/banner.html.twig' with {'title' : 'Register'} %}
+{% endblock %}
+
+{% block body %}
+<section id="register-page" class="register-main-block">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="register-block">
+            <h4 class="register-heading text-center">{% trans %}Register{% endtrans %}</h4>
+            <div class="form-group">
+              <form>
+                <input type="text" id="name" class="form-control" placeholder="USERNAME">
+                <input type="email" id="email" class="form-control" placeholder="EMAIL ADDRESS">
+                <input type="password" id="password" class="form-control" placeholder="PASSWORD">
+                <input type="password" id="con-password" class="form-control" placeholder="PASSWORD (CONFIRM)">
+                <div class="form-group">
+                	<div class=" dropdown">
+                		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                		<span class="drp-name" data-bind="label">{% trans %}YOUR PROFILE{% endtrans %}</span>
+                			<span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                		</button>
+                		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                			<li><a href="add-listing.html#">{% trans %}Vendor{% endtrans %}</a></li>
+                			<li><a href="add-listing.html#">{% trans %}Couple{% endtrans %}</a></li>
+                		</ul>
+                	</div>
+                </div> 
+                <div class="checkbox-dtl">
+                  <input type="checkbox" value="None" id="checkbox" name="check">
+                  <label for="checkbox"></label>
+                  <div class="terms-conditions">{% trans %}I agree to all{% endtrans %} <a href="#">{% trans %}terms & Conditions{% endtrans %}</a></div>
+                </div>
+                <button type="button" class="btn btn-pink">{% trans %}Register Now{% endtrans %}</button>
+              </form>
+              <p class="sign-in text-center">
+                {% trans %}Already have an account?{% endtrans %} <a href="#">{% trans %}Sign In{% endtrans %}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+{% endblock %}

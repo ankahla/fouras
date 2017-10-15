@@ -1,0 +1,35 @@
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /registration
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /user
+
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group
+
+user_actions:
+    resource: '@UserBundle/Resources/config/user.yml'
+    prefix: /user
+
+couple_actions:
+    resource: '@UserBundle/Resources/config/couple.yml'
+    prefix: /couple
+
+vendor_actions:
+    resource: '@UserBundle/Resources/config/vendor.yml'
+    prefix: /vendor

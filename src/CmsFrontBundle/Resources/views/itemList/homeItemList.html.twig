@@ -1,0 +1,21 @@
+<section id="whyChoose" class="row contentRowPad">
+	<div class="container">
+		<div class="row sectionTitle">
+		<h4>{{ category.name}}</h4>
+			{{ category.description | raw }}
+		</div>
+		<div class="row text-center">
+			<img src="{{ asset(category.coverImage) }}" alt="" class="img-responsive">
+		</div>
+		<div class="row whyChooseRow">
+			{% for item in items %}
+			<div class="col-sm-4 whyChoose">
+				<div class="row m0">
+					<h4><i class="fa fa-check-circle-o"></i>{{ item.title }}</h4>
+					{{ item.intro|raw }}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

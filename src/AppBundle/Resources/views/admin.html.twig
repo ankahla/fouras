@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<form>
+<label>Bundles</label>
+<select name="bundle">
+{% for b in bundles %}
+<option value="{{b}}" {% if b == bundle %}selected{% endif %}>{{b}}</option>
+{% endfor %}
+</select>
+<br>
+<label>Langue</label>
+<input name="locale" value="{{ locale }}">
+<br>
+<label>Format</label>
+<select name="output">
+<option value="xlf">xlf</option>
+<option value="xlf">yml</option>
+<option value="xlf">php</option>
+</select>
+<br>
+
+<input type="submit" name="" value="charger">
+</form>
+
+<form method="post">
+<input type="hidden" name="bundle" value="{{ bundle }}">
+<input type="hidden" name="locale" value="{{ locale }}">
+<table>
+	<thead>
+		<tr>
+			<th width="300">
+				Text original
+			</th>
+			<th>
+				Traduction
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for domain, strings in messages %}
+		<h3>{{ domain }}</h3>
+		{% for original, translated in strings %}
+		<tr>
+			<td>
+				<label>{{ original }}</label>
+			</td>
+			<td>
+			<textarea name="translations[{{ domain }}][{{ original }}]" cols="60" rows="2">{{ translated }}</textarea>
+			</td>
+		</tr>
+		{% endfor %}
+		{% endfor %}
+	</tbody>
+</table>
+<input type="submit" name="" value="Valider">
+</form>
+{% endblock %}

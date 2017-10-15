@@ -1,0 +1,80 @@
+{% extends 'FrontBundle::Vendor/Dashboard/layout.html.twig' %}
+
+{% block body %}
+<section id="manage-item-listing" class="manage-item-listing-main-block">
+    <div class="container">
+      {% include 'FrontBundle::Vendor/Dashboard/menu.html.twig' %}
+      <div class="manage-item-listing-block">
+        <table>
+          <tbody><tr class="top-heading-row">
+            <th class="vendor-img">Image</th>
+            <th class="title">Title</th>
+            <th class="address">Address</th>
+            <th class="price">Price</th>
+            <th class="action-icons">Action</th>
+          </tr>
+          <tr>
+            <td class="vendor-img"><img src="{{ asset('bundles/front/images/vendor-profile-1.jpg') }}" width="200" class="img-responsive" alt="vendor-img"></td>
+            <th class="title">Varundavan Party Plot</th>
+            <td class="address">Nr. Judges Bunglow, Ahmedabad</td>
+            <td class="price">$750</td>
+            <td class="action-icons">
+              <div class="table-editable-icon">
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="vendor-img"><img src="{{ asset('bundles/front/images/vendor-profile-2.jpg') }}" width="200" class="img-responsive" alt="vendor-img"></td>
+            <th class="title">Varundavan Party Plot</th>
+            <td class="address">Nr. Judges Bunglow, Ahmedabad</td>
+            <td class="price">$750</td>
+            <td class="action-icons">
+              <div class="table-editable-icon">
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="vendor-img"><img src="{{ asset('bundles/front/images/vendor-profile-3.jpg') }}" width="200" class="img-responsive" alt="vendor-img"></td>
+            <th class="title">Varundavan Party Plot</th>
+            <td class="address">Nr. Judges Bunglow, Ahmedabad</td>
+            <td class="price">$750</td>
+            <td class="action-icons">
+              <div class="table-editable-icon">
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="vendor-img"><img src="{{ asset('bundles/front/images/vendor-profile-1.jpg') }}" width="200" class="img-responsive" alt="vendor-img"></td>
+            <th class="title">Varundavan Party Plot</th>
+            <td class="address">Nr. Judges Bunglow, Ahmedabad</td>
+            <td class="price">$750</td>
+            <td class="action-icons">
+              <div class="table-editable-icon">
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="vendor-img"><img src="{{ asset('bundles/front/images/vendor-profile-4.jpg') }}" width="200" class="img-responsive" alt="vendor-img"></td>
+            <th class="title">Varundavan Party Plot</th>
+            <td class="address">Nr. Judges Bunglow, Ahmedabad</td>
+            <td class="price">$750</td>
+            <td class="action-icons">
+              <div class="table-editable-icon">
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                <a href="{{ path('vendor_add_service') }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              </div>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

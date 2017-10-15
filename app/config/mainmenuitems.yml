@@ -1,0 +1,37 @@
+parameters:
+    mainmenuitems:
+        homepage:
+            label: Home
+        fos_user_profile_show:
+            label: 'My wedding'
+            sub:
+                fos_user_profile_show:
+                    label: 'Couple profile'
+                couple_budget:
+                    label: 'Budget Planner'
+                couple_todo:
+                    label: 'To Do List'
+                couple_guestlist:
+                    label: 'Guest List'
+        vendors:
+            label: Services
+        about:
+            label: 'About us'
+            sub:
+                about:
+                    label: About
+                wedding_list:
+                    label: 'Real wedding Listing'
+                gallery:
+                    label: Gallery
+        help:
+            label: 'ideas & advice'
+            sub:
+                faq:
+                    label: Faq
+                help:
+                    label: Help
+        blog:
+            label: Blog
+        contact:
+            label: 'Contact us'

@@ -1,0 +1,366 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/front/js/jquery.mapit.js') }}"></script>
+<script>
+// Google Map Banner
+  $(function() {
+  	var options = { locations : 
+  			[
+				[37.979252, 23.731353, '{{ asset('bundles/front/images/icons/map-marker.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-1.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.976104, 23.745001, '{{ asset('bundles/front/images/icons/map-marker-2.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-2.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.979408, 23.743982, '{{ asset('bundles/front/images/icons/map-marker-3.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-3.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.973563, 23.732041, '{{ asset('bundles/front/images/icons/map-marker.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-4.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.977436, 23.739695, '{{ asset('bundles/front/images/icons/map-marker-2.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-5.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.979630, 23.736751, '{{ asset('bundles/front/images/icons/map-marker-1-1.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-6.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.976104, 23.72341811, '{{ asset('bundles/front/images/icons/map-marker-2.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-7.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.974630, 23.734751, '{{ asset('bundles/front/images/icons/map-marker-3.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-8.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
+				[37.979104, 23.72341811, '{{ asset('bundles/front/images/icons/map-marker-1-1.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-9.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0']
+			
+  	],
+  	address: '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-2.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><a href="#"><h6 class="listing-topmap-dtl-heading">Venue Vendor Title</h6></a></div></div></div>',
+  	marker: {
+				latitude: 	37.977996,
+				longitude: 	23.733542,
+				icon: 			'{{ asset('bundles/front/images/icons/map-marker.png') }}',
+				title: 			'Wedding Vendor',
+				open: 			false,
+				center: 		true
+			},
+  };
+    $('#mct-map_canvas').mapit(options);
+  });
+</script>
+{% endblock %}
+
+{% block banner %}
+<!-- top map -->
+  <section id="top-map" class="top-map">
+    <div id="mct-map_canvas" class="map-banner"></div>
+  </section>
+<!-- end top map -->
+{% endblock %}
+
+{% block body %}
+<!-- listing with top map -->
+  <section id="listing-with-topmap" class="listing-with-topmap-main-block">
+    <div class="container">
+      <div class="refine-search">
+        <h4 class="refine-search-heading">Refine Your Search</h4>
+        <form>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <div class="select-category-dropdown dropdown">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   <span class="drp-name" data-bind="label">Select Category</span>
+                    <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="listing-with-topmap.html#">Cake</a></li>
+                    <li><a href="listing-with-topmap.html#">Florist</a></li>
+                    <li><a href="listing-with-topmap.html#">Dresses</a></li>
+                    <li><a href="listing-with-topmap.html#">Jewellery</a></li>
+                    <li><a href="listing-with-topmap.html#">Venue</a></li>
+                    <li><a href="listing-with-topmap.html#">Photography</a></li>
+                    <li><a href="listing-with-topmap.html#">Music</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="select-city-dropdown dropdown">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   <span class="drp-name" data-bind="label">Select City</span>
+                    <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><a href="listing-with-topmap.html#">New York</a></li>
+                    <li><a href="listing-with-topmap.html#">California</a></li>
+                    <li><a href="listing-with-topmap.html#">London</a></li>
+                    <li><a href="listing-with-topmap.html#">Australia</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="price-filter">
+                  <div class="price-slider-amount">
+                    <input type="text" class="form-control" id="amount" name="price" placeholder="Add Your Price">
+                  </div>  
+                  <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all slider-range">
+                    <div class="ui-slider-range ui-widget-header ui-corner-all">
+                    </div>
+                    <span class="ui-slider-handle ui-state-default ui-corner-all"></span>
+                    <span class="ui-slider-handle ui-state-default ui-corner-all"></span>
+                  </div> 
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="search-btn">
+                  <button type="button" class="btn btn-pink">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="listing-with-topmap-block">
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-1.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-2.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-3.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-4.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-5.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-6.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-7.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-8.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="feature-block">
+              <div class="feature-img">
+                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-9.jpg') }}" class="img-responsive" alt="category-img"></a>
+              </div>
+              <div class="feature-dtl top-map-dtl-pad">
+                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="row">
+                      <div class="col-xs-6 pad-rt-0">
+                        <div class="rating"><span>3.5</span> 2 Rating</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                      </div>
+                      <div class="col-xs-6 text-right pad-lft-0">
+                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
+                        <h5 class="price">$120-$500</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default">1</a></li>
+          <li class="active"><a href="listing-with-topmap.html#" class="btn btn-default">2</a></li>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default">3</a></li>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default">4</a></li>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<!-- end listing with top map -->
+{% endblock %}

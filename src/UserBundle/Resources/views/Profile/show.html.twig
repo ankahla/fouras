@@ -1,0 +1,9 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block body%}
+{% if user.userType.id == '1' %}
+{% include "FOSUserBundle:Profile:Couple:profile.html.twig" %}
+{% elseif user.userType.id == '2' %}
+{% include "FOSUserBundle:Profile:Couple:profile.html.twig" %}
+{% endif %}
+{% endblock %}
