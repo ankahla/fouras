@@ -1,0 +1,64 @@
+{% extends 'front/layout.html.twig' %}
+{% set currentCategoryTitle = (currentCategory is not null ? currentCategory.title : '') %}
+{% block banner %}
+{% include 'front/banner.html.twig' with {'title' : ((faqCategories is defined) ? faqCategories.title : 'Faq'|trans) ~ (currentCategoryTitle ? ' / ' ~ currentCategoryTitle : '') } %}
+{% endblock %}
+{% block title %}
+{{ parent() }} - 
+{{ ((faqCategories is defined) ? faqCategories.title : 'Faq'|trans) ~ (currentCategoryTitle ? ' - ' ~ currentCategoryTitle : '') }}
+{% endblock %}
+{% block body %}
+<section class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="search-block">
+            <form>
+              <input name="search" type="search" class="form-control" id="search" placeholder="{% trans %}Enter Keyword{% endtrans %}" {% if search is defined %}value="{{ search }}"{% endif %}>
+              <a href="faq.html#"><i class="fa fa-search"></i></a>
+            </form>
+          </div>
+
+          {% if faqCategories is defined %}
+          <div class="faq-nav-list">
+            <h6 class="faq-nav-heading">{% trans %}Categories{% endtrans %}</h6>
+            <ul>
+              {% for cat in faqCategories.children %}
+              <li{% if currentCategory is not null and currentCategory.id == cat.id %} class="active"{% endif %}><a href="{{ path('faq', {categoryId:cat.id, alias:cat.alias}) }}">{{ cat.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-md-9">
+          <div class="faq-block">
+            <div class="panel-group faq-panel" id="accordion" role="tablist" aria-multiselectable="true">
+              
+          {% if data.total != 0%}
+          {% for article in data.results %}
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading-{{ article.id }}">
+                  <h6 class="panel-title question-heading">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ article.id }}" aria-controls="collapse-{{ article.id }}">
+                      {{ article.title }}
+                      <span class="btn btn-default faq-btn faq-btn-minus hidden-xs"><i class="fa fa-minus"></i></span>
+                      <span class="btn btn-default faq-btn faq-btn-plus hidden-xs"><i class="fa fa-plus"></i></span>
+                    </a>
+                  </h6>
+                </div>
+                <div id="collapse-{{ article.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ article.id }}">
+                  <div class="panel-body">
+                    <p>{{ article.introtext|raw }}</p>
+                  </div>
+                </div>
+              </div>
+          {% endfor %}
+          {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

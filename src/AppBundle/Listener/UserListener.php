@@ -37,14 +37,17 @@ class UserListener
 
             $profileName = '';
             if ($user->isVendor()) {
-                // TODO
+                // @TODO
             } else {
                 $couple = $this->em->getRepository(Couple::class)->findOneByUser($user);
 
                 if ($couple) {
                     $wife = $couple->getWife();
                     $husband = $couple->getHusband();
-                    $profileName = $wife->getFirstName() . ' & ' .$husband->getFirstName();
+                    $profileName = '';
+                    if ($wife->getFirstName() && $husband->getFirstName()) {
+                        $profileName = $wife->getFirstName() . ' & ' .$husband->getFirstName();
+                    }
                     $address = $husband->getAddress() ? $husband->getAddress() : $wife->getAddress();
                     $phone = $husband->getPhone() ? $husband->getPhone() : $wife->getPhone();
                 }

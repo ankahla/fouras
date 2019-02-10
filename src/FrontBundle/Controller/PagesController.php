@@ -33,7 +33,7 @@ class PagesController extends Controller
     }
 
     /**
-     * @Route("/faq", name="faq")
+     * @Route("/faq2", name="faq2")
      */
     public function faqAction()
     {
@@ -54,14 +54,6 @@ class PagesController extends Controller
     public function galleryAction()
     {
         return $this->render('FrontBundle:Pages:gallery.html.twig');
-    }
-
-    /**
-     * @Route("/register", name="register")
-     */
-    public function registerAction()
-    {
-        return $this->render('FrontBundle:Pages:register.html.twig');
     }
 
     /**

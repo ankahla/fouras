@@ -3,7 +3,7 @@
 {% block body %}
 <section id="manage-item-listing" class="manage-item-listing-main-block">
     <div class="container">
-      {{ render(controller('UserBundle:Menu:index')) }}
+      {{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
 
 
 
@@ -60,3 +60,4 @@
 
 </div>
 </section>
+{% endblock %}

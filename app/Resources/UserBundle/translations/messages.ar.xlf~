@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="ar" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="d29080135fa4792d1d97949ace637afa" resname="Are yous sure you want to delete this Task ?">
+        <source>Are yous sure you want to delete this Task ?</source>
+        <target>Are yous sure you want to delete this Task ?</target>
+      </trans-unit>
+      <trans-unit id="e69490840e1f8344175aefa05fd22c74" resname="Create New Category">
+        <source>Create New Category</source>
+        <target>إنشاء فئة جديدة</target>
+      </trans-unit>
+      <trans-unit id="03368e3c1eb4d2a9048775874301b19f" resname="Select category">
+        <source>Select category</source>
+        <target>Select category</target>
+      </trans-unit>
+      <trans-unit id="427ad81c68aa8e0d6b4186260d05b460" resname="Add category +">
+        <source>Add category +</source>
+        <target>إضافة فئة +</target>
+      </trans-unit>
+      <trans-unit id="d3d2e617335f08df83599665eef8a418" resname="Close">
+        <source>Close</source>
+        <target>إغلاق</target>
+      </trans-unit>
+      <trans-unit id="b8695e0ac461e1738555686a3cda7ef8" resname="Save Budget item">
+        <source>Save Budget item</source>
+        <target>حفظ الميزانية</target>
+      </trans-unit>
+      <trans-unit id="4a8103881cb16d3593bf9e4999745bd8" resname="Budget Category">
+        <source>Budget Category</source>
+        <target>فئة الميزانية</target>
+      </trans-unit>
+      <trans-unit id="dd82fe74531153816a03355626492490" resname="Actual Cost">
+        <source>Actual Cost</source>
+        <target>التكلفة الفعلية</target>
+      </trans-unit>
+      <trans-unit id="e0010a0a1a3259ab5c06a19bad532851" resname="Paid">
+        <source>Paid</source>
+        <target>مدفوع</target>
+      </trans-unit>
+      <trans-unit id="06df33001c1d7187fdd81ea1f5b277aa" resname="Actions">
+        <source>Actions</source>
+        <target>العمليات</target>
+      </trans-unit>
+      <trans-unit id="706cc83f2fc542fe9c298c766ea013f5" resname="Estimated Cost">
+        <source>Estimated Cost</source>
+        <target>التكلفة المتوقعة</target>
+      </trans-unit>
+      <trans-unit id="d57ceb4533b61b9746f4fc10d958f5c5" resname="Actual">
+        <source>Actual</source>
+        <target>التكلفة الفعلية</target>
+      </trans-unit>
+      <trans-unit id="d0363921c897ec48ae2a05228c825d0d" resname="Due">
+        <source>Due</source>
+        <target>المبلغ المستحق</target>
+      </trans-unit>
+      <trans-unit id="ef61fb324d729c341ea8ab9901e23566" resname="Add new">
+        <source>Add new</source>
+        <target>اضف جديد</target>
+      </trans-unit>
+      <trans-unit id="cc9c45edab8c8a0d0058f7fee1e5d39f" resname="My Dashboard">
+        <source>My Dashboard</source>
+        <target>ملفي الشخصي</target>
+      </trans-unit>
+      <trans-unit id="a7dd00e1e029f5a265eba755c0759861" resname="Wedding Days To Go">
+        <source>Wedding Days To Go</source>
+        <target>Wedding Days To Go</target>
+      </trans-unit>
+      <trans-unit id="96b22813c9baa99a178ebf96faa76ff3" resname="Your Budget">
+        <source>Your Budget</source>
+        <target>Your Budget</target>
+      </trans-unit>
+      <trans-unit id="e1a107a4d919d5674bd2f9ba4ffb6a3a" resname="Checklist to do">
+        <source>Checklist to do</source>
+        <target>Checklist to do</target>
+      </trans-unit>
+      <trans-unit id="723edf7c24638ed18d2fa831e647a5cc" resname="wishlist">
+        <source>wishlist</source>
+        <target>wishlist</target>
+      </trans-unit>
+      <trans-unit id="aa8fb77e57d1ca18d593e909729871fe" resname="completed">
+        <source>completed</source>
+        <target>completed</target>
+      </trans-unit>
+      <trans-unit id="c9cc8cce247e49bae79f15173ce97354" resname="Save">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="32fc7c83ce8f1872eab5e256edcffd09" resname="New guest">
+        <source>New guest</source>
+        <target>ضيف جديد</target>
+      </trans-unit>
+      <trans-unit id="fc8b272c677155b8de58adabc8e1e223" resname="Add New Guest">
+        <source>Add New Guest</source>
+        <target>إضافة ضيف جديد</target>
+      </trans-unit>
+      <trans-unit id="f1eb8902d0f11fa2650788c88972e607" resname="Add Guest">
+        <source>Add Guest</source>
+        <target>إضافة ضيف</target>
+      </trans-unit>
+      <trans-unit id="8f1e77e0d2be21da93cd4d9a939148f7" resname="Change Password">
+        <source>Change Password</source>
+        <target>تغيير كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="bf14e22854d5eda5f4578f3fe7e9b87c" resname="Wife Profile">
+        <source>Wife Profile</source>
+        <target>الزوجة</target>
+      </trans-unit>
+      <trans-unit id="965971ac6c77fb06d485d8b73f1aa58a" resname="Husband Profile">
+        <source>Husband Profile</source>
+        <target>الزوج</target>
+      </trans-unit>
+      <trans-unit id="5457c2d977205b36af275884a31d8552" resname="Wedding Details">
+        <source>Wedding Details</source>
+        <target>تفاصيل الزفاف</target>
+      </trans-unit>
+      <trans-unit id="fba7f6c863513d97922faab074d3c716" resname="Update Profile">
+        <source>Update Profile</source>
+        <target>تحديث الملف</target>
+      </trans-unit>
+      <trans-unit id="6ce2e0994a169989793482059fb14d66" resname="Social Media Profile">
+        <source>Social Media Profile</source>
+        <target> وسائل التواصل الاجتماعي</target>
+      </trans-unit>
+      <trans-unit id="78035c7d3557da4d68ee591e721c091a" resname="Add New Url">
+        <source>Add New Url</source>
+        <target>إضافة رابط جديد</target>
+      </trans-unit>
+      <trans-unit id="0317553251469214e22b1bcc0a4602b6" resname="Add Url">
+        <source>Add Url</source>
+        <target>إضافة رابط</target>
+      </trans-unit>
+      <trans-unit id="fbd6d26c25684a7b3daf684953d522da" resname="New task">
+        <source>New task</source>
+        <target>اضافة اشياء للبرنامج</target>
+      </trans-unit>
+      <trans-unit id="6dfc0dad5cbd7122a3919628850d5ad7" resname="Save Task">
+        <source>Save Task</source>
+        <target>حفظ المهمة</target>
+      </trans-unit>
+      <trans-unit id="be53a0541a6d36f6ecb879fa2c584b08" resname="Image">
+        <source>Image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="b78a3223503896721cca1303f776159b" resname="Title">
+        <source>Title</source>
+        <target>التسمية</target>
+      </trans-unit>
+      <trans-unit id="dd7bf230fde8d4836917806aff6a6b27" resname="Address">
+        <source>Address</source>
+        <target>العنوان</target>
+      </trans-unit>
+      <trans-unit id="3601146c4e948c32b6424d2c0a7f0118" resname="Price">
+        <source>Price</source>
+        <target>Price</target>
+      </trans-unit>
+      <trans-unit id="004bf6c9a40003140292e97330236c53" resname="Action">
+        <source>Action</source>
+        <target>Action</target>
+      </trans-unit>
+      <trans-unit id="dd2810c58acf331a63a228b91b8bf1b5" resname="Upload Profile Photo">
+        <source>Upload Profile Photo</source>
+        <target>تحميل صورة شخصية</target>
+      </trans-unit>
+      <trans-unit id="ea69ee010d229acbb94debbbbac426e0" resname="Upload Profile Image">
+        <source>Upload Profile Image</source>
+        <target>تحميل صورة</target>
+      </trans-unit>
+      <trans-unit id="0b39c5aca15b84b1ad53a94d6b3feb78" resname="Change password">
+        <source>Change password</source>
+        <target>تغيير كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="5432b3f9772723a7482861aa6f8095ee" resname="Drag file to upload">
+        <source>Drag file to upload</source>
+        <target>اسحب الملف لتحميله</target>
+      </trans-unit>
+      <trans-unit id="cce99c598cfdb9773ab041d54c3d973a" resname="Profile">
+        <source>Profile</source>
+        <target>الملف الشخصي</target>
+      </trans-unit>
+      <trans-unit id="8e1b3ded7b0a795eef94d9526f46317e" resname="Edit Service">
+        <source>Edit Service</source>
+        <target>Edit Service</target>
+      </trans-unit>
+      <trans-unit id="c84f1d83a15b7d5d381594eafa5c5b1a" resname="Add Your New Service">
+        <source>Add Your New Service</source>
+        <target>أضف خدمتك الجديدة</target>
+      </trans-unit>
+      <trans-unit id="1e4e35c0d042ce9cf591f9bf75571a1c" resname="Edit picture">
+        <source>Edit picture</source>
+        <target>Edit picture</target>
+      </trans-unit>
+      <trans-unit id="cffde36cb9692ed0563a7a86671e6dc1" resname="Video Url">
+        <source>Video Url</source>
+        <target>رابط الفيديو</target>
+      </trans-unit>
+      <trans-unit id="d769ac6229993d6cf95b596907c55105" resname="Map Location">
+        <source>Map Location</source>
+        <target>خريطة الموقع</target>
+      </trans-unit>
+      <trans-unit id="aad31b93b628c8a4005f2de9abec3a1e" resname="Latitude (For google maps)">
+        <source>Latitude (For google maps)</source>
+        <target>خط العرض</target>
+      </trans-unit>
+      <trans-unit id="0126ee69edc53bb5e30ac34718d03c5b" resname="Longitude (For google maps)">
+        <source>Longitude (For google maps)</source>
+        <target>خط الطول</target>
+      </trans-unit>
+      <trans-unit id="f22088e5d2aef0adfedd8259975fa5f2" resname="View my profile">
+        <source>View my profile</source>
+        <target>عرض ملفي الشخصي</target>
+      </trans-unit>
+      <trans-unit id="0ba7583639a274c434bbe6ef797115a4" resname="Register">
+        <source>Register</source>
+        <target>التسجيل</target>
+      </trans-unit>
+      <trans-unit id="2bd954c508642b5dd60a94ca6bc16e8d" resname="I agree to all">
+        <source>I agree to all</source>
+        <target>أوافق على جميع</target>
+      </trans-unit>
+      <trans-unit id="a44fa7462a614a4dfd4c0467963c610d" resname="terms &amp; Conditions">
+        <source>terms &amp; Conditions</source>
+        <target>الشروط</target>
+      </trans-unit>
+      <trans-unit id="21bdc5689c12595ae14298354d5550d5" resname="Already have an account?">
+        <source>Already have an account?</source>
+        <target>لديك بالفعل حساب؟</target>
+      </trans-unit>
+      <trans-unit id="f2fdea440d768b85591e936a803c3631" resname="Sign In">
+        <source>Sign In</source>
+        <target>تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="57c3b562adb51ac8f08ed5135e824711" resname="You d'ont have an account?">
+        <source>You d'ont have an account?</source>
+        <target>ليس لديك حساب ؟</target>
+      </trans-unit>
+      <trans-unit id="99804d0f6c72187504e870fea7e32a3c" resname="Forget password?">
+        <source>Forget password?</source>
+        <target>نسيت كلمة المرور ؟</target>
+      </trans-unit>
+      <trans-unit id="3b5b0f1e26d98a827ef82af202c2e85b" resname="Reset password">
+        <source>Reset password</source>
+        <target>إعادة تعيين كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="f6039d44b29456b20f8f373155ae4973" resname="Username">
+        <source>Username</source>
+        <target>اسم المستخدم</target>
+      </trans-unit>
+      <trans-unit id="b357b524e740bc85b9790a0712d84a30" resname="Email address">
+        <source>Email address</source>
+        <target>عنوان البريد الالكتروني</target>
+      </trans-unit>
+      <trans-unit id="20db0bfeecd8fe60533206a2b5e9891a" resname="First name">
+        <source>First name</source>
+        <target>الاسم</target>
+      </trans-unit>
+      <trans-unit id="8d3f5eff9c40ee315d452392bed5309b" resname="Last name">
+        <source>Last name</source>
+        <target>اللقب</target>
+      </trans-unit>
+      <trans-unit id="dc647eb65e6711e155375218212b3964" resname="Password">
+        <source>Password</source>
+        <target>كلمه السر</target>
+      </trans-unit>
+      <trans-unit id="5bb39e509afcc4236fba44152e5a85fa" resname="Password (confirm)">
+        <source>Password (confirm)</source>
+        <target>تأكيد كلمة السر</target>
+      </trans-unit>
+      <trans-unit id="ce8ae9da5b7cd6c3df2929543a9af92d" resname="Email">
+        <source>Email</source>
+        <target>البريد الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="bcc254b55c4a1babdf1dcb82c207506b" resname="Phone">
+        <source>Phone</source>
+        <target>هاتف</target>
+      </trans-unit>
+      <trans-unit id="b5a7adde1af5c87d7fd797b6245c2a39" resname="Description">
+        <source>Description</source>
+        <target>الوصف</target>
+      </trans-unit>
+      <trans-unit id="44749712dbec183e983dcd78a7736c41" resname="Date">
+        <source>Date</source>
+        <target>تاريخ</target>
+      </trans-unit>
+      <trans-unit id="ee657559c5445484f74adf35162e397e" resname="weddingDate">
+        <source>weddingDate</source>
+        <target>موعد العرس</target>
+      </trans-unit>
+      <trans-unit id="ed89387bcd11937a7a92a99a2cbfb5d7" resname="firstName">
+        <source>firstName</source>
+        <target>الاسم</target>
+      </trans-unit>
+      <trans-unit id="14671d9081ca63cda8509b68290bd260" resname="Budget planner">
+        <source>Budget planner</source>
+        <target>أداة إدارة الميزانية</target>
+      </trans-unit>
+      <trans-unit id="0190086c270b47055a97846a69332398" resname="Budget Planner">
+        <source>Budget Planner</source>
+        <target>مخطط الميزانية</target>
+      </trans-unit>
+      <trans-unit id="a544292cdfd27fce5651f11e8c6e03bd" resname="Couple profile">
+        <source>Couple profile</source>
+        <target>الملف الشخصي للزوجين</target>
+      </trans-unit>
+      <trans-unit id="8f7f4c1ce7a4f933663d10543562b096" resname="About">
+        <source>About</source>
+        <target>حول</target>
+      </trans-unit>
+      <trans-unit id="7b15be0878bd46a7dbb912cd0f7f2e8c" resname="Real wedding Listing">
+        <source>Real wedding Listing</source>
+        <target>حفلات زفاف</target>
+      </trans-unit>
+      <trans-unit id="26cae7718c32180a7a0f8e19d6d40a59" resname="facebook">
+        <source>facebook</source>
+        <target>Facebook</target>
+      </trans-unit>
+      <trans-unit id="b73c2d22763d1ce2143a3755c1d0ad3a" resname="twitter">
+        <source>twitter</source>
+        <target>Twitter</target>
+      </trans-unit>
+      <trans-unit id="ba9bf05693b9fa202d922dd43a08f281" resname="youtube">
+        <source>youtube</source>
+        <target>Youtube</target>
+      </trans-unit>
+      <trans-unit id="f1576406b382b7d1c8c2607f7c563d4f" resname="linkedin">
+        <source>linkedin</source>
+        <target>Linkedin</target>
+      </trans-unit>
+      <trans-unit id="ffe8560492ef96f860b965341d0c9698" resname="instagram">
+        <source>instagram</source>
+        <target>Instagram</target>
+      </trans-unit>
+      <trans-unit id="795f3202b17cb6bc3d4b771d8c6c9eaf" resname="other">
+        <source>other</source>
+        <target>other</target>
+      </trans-unit>
+      <trans-unit id="5bef3b29c81ba667be57272bf5043fb8" resname="Father name">
+        <source>Father name</source>
+        <target>اسم الأب</target>
+      </trans-unit>
+      <trans-unit id="cafbc0d48abd69d81c5b4fba2d5e0084" resname="Mother name">
+        <source>Mother name</source>
+        <target>اسم الأم</target>
+      </trans-unit>
+      <trans-unit id="87d17f4624a514e81dc7c8e016a7405c" resname="Mobile">
+        <source>Mobile</source>
+        <target>رقم الهاتف المحمول</target>
+      </trans-unit>
+      <trans-unit id="7bfce611f5597645488677a008da3521" resname="Wedding date">
+        <source>Wedding date</source>
+        <target>موعد الزفاف</target>
+      </trans-unit>
+      <trans-unit id="e44ff181ccb7cae8a2e8c7d8e373cbe4" resname="Wedding city">
+        <source>Wedding city</source>
+        <target>مدينة الزفاف</target>
+      </trans-unit>
+      <trans-unit id="c451a7dc3168d0e4ae8235916dd3f4a6" resname="Are you sure you want to delete this Item ?">
+        <source>Are you sure you want to delete this Item ?</source>
+        <target>هل أنت متأكد أنك تريد الحذف ؟</target>
+      </trans-unit>
+      <trans-unit id="5d096dd78c79109f2926d126bf21b30a" resname="Are you sure you want to delete this Task ?">
+        <source>Are you sure you want to delete this Task ?</source>
+        <target>هل أنت متأكد أنك تريد الحذف ؟</target>
+      </trans-unit>
+      <trans-unit id="b40a5160ec0e76875dd4507bdc163f23" resname="guest gifts">
+        <source>guest gifts</source>
+        <target>هدايا الضيوف</target>
+      </trans-unit>
+      <trans-unit id="5ae0c1c8a5260bc7b6648f6fbd115c35" resname="photo">
+        <source>photo</source>
+        <target>صورة فوتوغرافية</target>
+      </trans-unit>
+      <trans-unit id="421b47ffd946ca083b65cd668c6b17e6" resname="video">
+        <source>video</source>
+        <target>فيديو</target>
+      </trans-unit>
+      <trans-unit id="e6d96502596d7e7887b76646c5f615d9" resname="car">
+        <source>car</source>
+        <target>السيارات</target>
+      </trans-unit>
+      <trans-unit id="d20f83ee6933aa1ea047fe5cbd9c1fd5" resname="bus">
+        <source>bus</source>
+        <target>حافلة</target>
+      </trans-unit>
+      <trans-unit id="044d1970901083698a30d5462ed773f2" resname="decoration">
+        <source>decoration</source>
+        <target>التزيين</target>
+      </trans-unit>
+      <trans-unit id="7b65dcf020279efe8040bb20835ea938" resname="tent">
+        <source>tent</source>
+        <target>خيمة</target>
+      </trans-unit>
+      <trans-unit id="6f1c25ed1523962f1bbf9dee9be5092b" resname="animation">
+        <source>animation</source>
+        <target>تنشيط الحفلات</target>
+      </trans-unit>
+      <trans-unit id="7d37c580f9c36fa004af865448a6e278" resname="flowers">
+        <source>flowers</source>
+        <target>خدمات الورود</target>
+      </trans-unit>
+      <trans-unit id="b4c1948c087fafc89a88450fcbb64c77" resname="organization">
+        <source>organization</source>
+        <target>تنظيم الحفلات</target>
+      </trans-unit>
+      <trans-unit id="9673c0d22096dc8d2d640956462ce009" resname="honeymoon">
+        <source>honeymoon</source>
+        <target>شهر العسل</target>
+      </trans-unit>
+      <trans-unit id="a1b8585122e1ad60623d6a74d3eb3b6a" resname="cake">
+        <source>cake</source>
+        <target>كعكةالزفاف</target>
+      </trans-unit>
+      <trans-unit id="47dcbd834e669233d7eb8a51456ed217" resname="Music">
+        <source>Music</source>
+        <target>موسيقى</target>
+      </trans-unit>
+      <trans-unit id="280e3aab402964da720f428799fad562" resname="Couple dashboard">
+        <source>Couple dashboard</source>
+        <target>الملف الشخصي للزوجين</target>
+      </trans-unit>
+      <trans-unit id="20a8e429d58dfe01327b4e6f0a1cf05a" resname="Ariana">
+        <source>Ariana</source>
+        <target>أريانة</target>
+      </trans-unit>
+      <trans-unit id="e9b498b62e25622706e495866cc7ed35" resname="Béja">
+        <source>Béja</source>
+        <target>باجة</target>
+      </trans-unit>
+      <trans-unit id="b65759c07593dd82ef4ca4129b5e6542" resname="Ben Arous">
+        <source>Ben Arous</source>
+        <target>بن عروس</target>
+      </trans-unit>
+      <trans-unit id="9537b5aad02c60ba4efc384fe25c000e" resname="Bizerte">
+        <source>Bizerte</source>
+        <target>بنزرت</target>
+      </trans-unit>
+      <trans-unit id="374f442c5f6e3dd58ef25540e2c6d452" resname="Gabes">
+        <source>Gabes</source>
+        <target>قابس</target>
+      </trans-unit>
+      <trans-unit id="07d059fdf7f3aef710dc2edbbe6c4a02" resname="Gafsa">
+        <source>Gafsa</source>
+        <target>قفصة</target>
+      </trans-unit>
+      <trans-unit id="53e028a8dbc4519c9a6f0684f59d3c80" resname="Jendouba">
+        <source>Jendouba</source>
+        <target>جندوبة</target>
+      </trans-unit>
+      <trans-unit id="8c5c2030089851884366a2157d10ab6f" resname="Kairouan">
+        <source>Kairouan</source>
+        <target>القيروان</target>
+      </trans-unit>
+      <trans-unit id="6120f232ce589187bb63776a2df145ce" resname="Kasserine">
+        <source>Kasserine</source>
+        <target>القصرين</target>
+      </trans-unit>
+      <trans-unit id="bb43a30c363b7a7cf2cc0916dc496a3d" resname="Kebili">
+        <source>Kebili</source>
+        <target>قبلي</target>
+      </trans-unit>
+      <trans-unit id="9a5aa61a4f6e4041ee4a2b2e56a5b25c" resname="La Manouba">
+        <source>La Manouba</source>
+        <target>منوبة</target>
+      </trans-unit>
+      <trans-unit id="0603d36fcda9f8d07101eccdea4def0c" resname="Le Kef">
+        <source>Le Kef</source>
+        <target>الكاف</target>
+      </trans-unit>
+      <trans-unit id="d4034f2b1b0f7bb076cb48d01509153a" resname="Mahdia">
+        <source>Mahdia</source>
+        <target>المهدية</target>
+      </trans-unit>
+      <trans-unit id="e410e908aa99b795f672d024980ba634" resname="Médenine">
+        <source>Médenine</source>
+        <target>مدنين</target>
+      </trans-unit>
+      <trans-unit id="45c94f4e917410f3e332987ca7f6f94d" resname="Monastir">
+        <source>Monastir</source>
+        <target>المنستير</target>
+      </trans-unit>
+      <trans-unit id="6a0598be4f01b77d753959fda15e3ca1" resname="Nabeul">
+        <source>Nabeul</source>
+        <target>نابل</target>
+      </trans-unit>
+      <trans-unit id="545aac8b5336ac5c13e2f36382481fc0" resname="Sfax">
+        <source>Sfax</source>
+        <target>صفاقس</target>
+      </trans-unit>
+      <trans-unit id="cfb33a96c8eab32854cd204574445ff6" resname="Sidi Bouzid">
+        <source>Sidi Bouzid</source>
+        <target>سيدي بوزيد</target>
+      </trans-unit>
+      <trans-unit id="f212f794a0a1e7884f19ea2ffe8bb9d9" resname="Siliana">
+        <source>Siliana</source>
+        <target>سليانة</target>
+      </trans-unit>
+      <trans-unit id="653d8a914e87941ed3007265d386151f" resname="Sousse">
+        <source>Sousse</source>
+        <target>سوسة</target>
+      </trans-unit>
+      <trans-unit id="02b04509f6324ce383c3305a4590cd75" resname="Tataouine">
+        <source>Tataouine</source>
+        <target>تطاوين</target>
+      </trans-unit>
+      <trans-unit id="734dcd87cd3eb442237d283dccb8718c" resname="Tozeur">
+        <source>Tozeur</source>
+        <target>توزر</target>
+      </trans-unit>
+      <trans-unit id="044c0f755d7e410a0da4c7d2b1a52263" resname="Tunis">
+        <source>Tunis</source>
+        <target>تونس</target>
+      </trans-unit>
+      <trans-unit id="aaf8b07e256490ddd3d4142a17f5d2e2" resname="Zaghouan">
+        <source>Zaghouan</source>
+        <target>زغوان</target>
+      </trans-unit>
+      <trans-unit id="57d056ed0984166336b7879c2af3657f" resname="City">
+        <source>City</source>
+        <target>المدينة</target>
+      </trans-unit>
+      <trans-unit id="ff206acaee6540cff25de82b480121b5" resname="My Services">
+        <source>My Services</source>
+        <target>خدماتي</target>
+      </trans-unit>
+      <trans-unit id="f3bf4268bb9cbebf425920795caef252" resname="Couple inquery">
+        <source>Couple inquery</source>
+        <target>طلبات الاتصال</target>
+      </trans-unit>
+      <trans-unit id="2938c7f7e560ed972f8a4f68e80ff834" resname="Dashboard">
+        <source>Dashboard</source>
+        <target>لوحة القيادة</target>
+      </trans-unit>
+      <trans-unit id="8ae5811be1a55b9b8447ad2dbdadbf6e" resname="Picture">
+        <source>Picture</source>
+        <target>الصورة</target>
+      </trans-unit>
+      <trans-unit id="c2ba7e785c49050f48da9aacc45c2b85" resname="Service">
+        <source>Service</source>
+        <target>الخدمة</target>
+      </trans-unit>
+      <trans-unit id="7bd14a231864e618e1840c7e117e59c1" resname="capacity">
+        <source>capacity</source>
+        <target>قدرة الاستيعاب</target>
+      </trans-unit>
+      <trans-unit id="049a7df6105d08a14510e3f9d4116fa8" resname="Min cost">
+        <source>Min cost</source>
+        <target>التكلفة الدنيا</target>
+      </trans-unit>
+      <trans-unit id="d81b7c85ec9b6ccc8c22cf275967dbdc" resname="Max cost">
+        <source>Max cost</source>
+        <target>التكلفة القصوى</target>
+      </trans-unit>
+      <trans-unit id="b6874ac18a7bd274406d2cb33494a336" resname="* At least 1 image is required for a valid submission">
+        <source>* At least 1 image is required for a valid submission</source>
+        <target>* يلزم وجود صورة واحدة على الأقل لتقديمها بشكل صحيح</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

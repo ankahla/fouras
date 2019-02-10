@@ -1,8 +1,6 @@
-{% set current_route = app.request.attributes.get('_route') %}
-
 <ul class="vendor_dashboard-tabs general-nav-tabs tabs">
 {% for routeid, label in menuitems %}
-	<li><a href="{{ path(routeid) }}" class="{% if current_route == routeid %}active{% endif %} btn btn-default"><span class="badge">{{ label }}</span></a></li>
+	<li><a href="{{ path(routeid) }}" class="{% if currentRoute == routeid %}active{% endif %} btn btn-default"><span class="badge">{{ label }}</span></a></li>
 {% endfor %}
 
 </ul>

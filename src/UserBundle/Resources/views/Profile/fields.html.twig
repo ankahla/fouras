@@ -5,7 +5,7 @@
     {% set attr = attr|merge({'class': 'form-control'}) %}
     {% endif %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-4"><label>{{ form.vars.name }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
       <div class="col-sm-8">
         {{ block('form_widget') }}
         <span class="help-block">{{ block('form_errors') }}</span>
@@ -20,7 +20,7 @@
     {% set attr = attr|merge({'class': 'form-control'}) %}
     {% endif %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-4"><label>{{ form.vars.name }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
       <div class="col-sm-8">
         {{ block('choice_widget') }}
         <span class="help-block">{{ block('form_errors') }}</span>
@@ -35,7 +35,7 @@
     {% set attr = attr|merge({'class': 'form-control'}) %}
     {% endif %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-4"><label>{{ form.vars.name }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
       <div class="col-sm-8">
         {{ block('textarea_widget') }}
         <span class="help-block">{{ block('form_errors') }}</span>
@@ -50,7 +50,7 @@
     {% set attr = attr|merge({'class': 'form-control'}) %}
     {% endif %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-3"><label>{{ form.vars.name }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-3"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
       <div class="col-sm-9">
         {{ block('url_widget') }}
         <span class="help-block">{{ block('form_errors') }}</span>

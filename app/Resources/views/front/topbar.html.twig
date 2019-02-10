@@ -4,12 +4,12 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 hidden-xs">
-            <div class="top-text">Welcome to Fouras</div>
+            <div class="top-text">{% trans %}Welcome to Fouras{% endtrans %}</div>
           </div>
           <div class="col-sm-6">
             <div class="top-detail cssmenu mini text-right">
               <ul>
-                <li><a href="{{ path('help') }}">Help</a></li>
+                <li><a href="{{ path('help') }}">{% trans %}Help{% endtrans %}</a></li>
                 <li><a href="#">{{ current_locale }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                   {% set locales = ['ar', 'fr', 'en'] %}
                   <ul class="sub-menu">
@@ -27,20 +27,21 @@
                 <li><a href="{{ path('fos_user_registration_register') }}" >{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#login-model">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                 {% endif %}
-                <li class="search-btn search-icon text-center">
+              }
+<!--                 <li class="search-btn search-icon text-center">
                   <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
         </div>
         <!-- search -->
-        <div class="search">
+<!--         <div class="search">
           <div class="container">
             <input type="search" class="search-box" placeholder="Search">
             <a href="#" class="fa fa-times search-close"></a>
           </div>
-        </div>
+        </div> -->
         <!-- end search -->
         <!-- login btn -->
         <div class="modal fade login-model" id="login-model" role="dialog">
@@ -48,7 +49,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h5 class="modal-title text-center">Login</h5>
+                <h5 class="modal-title text-center">{% trans %}Login{% endtrans %}</h5>
               </div>
               <div class="modal-body login-model-body text-center">
                 <form id="login-form" action="{{ path("fos_user_security_check") }}" method="post">

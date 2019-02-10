@@ -1,4 +1,4 @@
-{% extends 'front/layout.html.twig' %}
+{% extends 'UserBundle::Profile/Vendor/layout.html.twig' %}
 
 {% form_theme profileForm 'UserBundle::Profile/fields.html.twig' %}
 
@@ -64,7 +64,7 @@
 {% block body %}
 <section id="couple_profile" class="couple-profile-main-page">
     <div class="container">
-      {{ render(controller('UserBundle:Menu:index')) }}
+      {{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
       <div class="row">
         <div class="col-md-6">
           {% include 'UserBundle::Profile/picture.html.twig' %}

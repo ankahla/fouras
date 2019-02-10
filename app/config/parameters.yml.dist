@@ -28,3 +28,26 @@ parameters:
     vendor_service_pic_dir: 'uploads/profiles/vendor_service'
 
     maps.embedded.api.key : AIzaSyC7DfJcfvHtlpZLcEjgivtmjnyXlky0GB4
+
+    #cms
+    cms_api_url: http://localhost/cms/api/
+    cms_api_key: 8d6f1fbea40c389706b796068ed37505
+    cms_base_url: http://localhost/cms/
+
+    cms_cat_id:
+        blog:
+            ar: 17
+            fr: 9
+            en: ~
+        news:
+            ar: 10
+            fr: 10
+            en: 10
+        faq:
+            ar: 20
+            fr: 20
+            en: 20
+        gallery:
+            ar: 23
+            fr: 23
+            en: 23

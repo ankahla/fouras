@@ -21,6 +21,7 @@ class RegistrationFormType extends BaseType
             [
                 'class' => 'AppBundle:UserType',
                 'choice_label' => 'name',
+                'choice_translation_domain' => 'messages',
             ]
         );
     }

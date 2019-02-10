@@ -3,7 +3,7 @@
 {% block body %}
 <section id="manage-item-listing" class="manage-item-listing-main-block">
     <div class="container">
-      {{ render(controller('UserBundle:Menu:index')) }}
+      {{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
       <p>
       <a class="btn btn-pink" href="{{ path('vendor_service_new') }}">{% trans %}Add new{% endtrans %}</a>
       </p>

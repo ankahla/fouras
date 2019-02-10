@@ -14,3 +14,11 @@ services:
     app.gravatar_service:
         class: AppBundle\Services\GravatarService
         arguments: ['%gravatar.default_options%', '@templating.helper.assets']
+
+    app.cms_api:
+        class: AppBundle\Services\CmsService
+        arguments: 
+            - '@csa_guzzle.client.cms_api'
+            - '%cms_api_key%'
+            - '@request_stack'
+            - '%cms_cat_id%'

@@ -2359,7 +2359,7 @@ ul {
   font-weight: 700;
   text-transform: uppercase;
 }
-.blog-dtl .blog-dis {
+.blog-dtl .blog-dis p {
   font-size: 16px;
   color: #777;
   line-height: 1.63;
@@ -4528,6 +4528,7 @@ input[type=checkbox] {
 }
 .upcoming-wedd-img {
   overflow: hidden;
+  max-height: 210px;
 }
 .upcoming-wedd-img img {
   width: 100%;

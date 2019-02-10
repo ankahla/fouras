@@ -4,7 +4,7 @@
 
 {% block banner %}
 {% if title is not defined %}
-{% set title = 'Couple dashboard' %}
+{% set title = 'Couple dashboard'|trans %}
 {% endif %}
 {% include 'front/banner.html.twig' with {'title' : title} %}
 {% endblock %}

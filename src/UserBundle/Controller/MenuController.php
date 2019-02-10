@@ -12,6 +12,8 @@ class MenuController extends Controller
     {
     	$user = $this->container->get('security.context')->getToken()->getUser();
     	$translator = $this->get('translator');
+        $currentRoute = $request->attributes->get('_route');
+
     	$menuItems = [];
 
     	if ($user->isVendor()) {
@@ -33,6 +35,6 @@ class MenuController extends Controller
     		];
     	}
 
-        return $this->render('UserBundle:Profile:menu.html.twig', ['menuitems' => $menuItems]);
+        return $this->render('UserBundle:Profile:menu.html.twig', ['menuitems' => $menuItems, 'currentRoute' => $currentRoute]);
     }
 }

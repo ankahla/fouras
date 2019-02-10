@@ -3,7 +3,7 @@
 {% block body %}
 <section id="vendor-dashboard" class="vendor-dashboard-main-block">
     <div class="container">
-      {{ render(controller('UserBundle:Menu:index')) }}
+      {{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
       <div class="vendor-dashboard-block">
         <h3 class="vendor-dashboard-heading dashboard-heading">My Dashboard</h3>
         <div class="row">

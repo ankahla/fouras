@@ -1,4 +1,0 @@
-services:
-    cms.twig.loader:
-        class: CmsBundle\Services\CmsTwigLoader
-        arguments: [@Doctrine]

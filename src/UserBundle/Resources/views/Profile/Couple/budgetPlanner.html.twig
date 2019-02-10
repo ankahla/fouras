@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
 
   jQuery('.table-editable-icon .delete').click(function(e){
     var itemName = $(this).parents('tr:first').find('.heading-align:first').text();
-    if (confirm('{% trans %}Are yous sure you want to delete this Task ?{% endtrans %} ('+itemName+')')) {
+    if (confirm('{% trans %}Are you sure you want to delete this Item ?{% endtrans %} ('+itemName+')')) {
       $(this).parents('tr:first').remove();
       return true;
     }
@@ -71,7 +71,7 @@ jQuery(document).ready(function(){
 {% block body %}
 <section id="budget-planner" class="budget-planner-main-block">
     <div class="container">
-        {{ render(controller('UserBundle:Menu:index')) }}
+        {{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
         <div class="create-category-block">
             <h4 class="create-category-heading">{% trans %}Create New Category{% endtrans %}</h4>
             <div class="form-group">
@@ -113,10 +113,10 @@ jQuery(document).ready(function(){
         <table>
           <tbody><tr>
             <th class="heading-align budget-planner-heading">{% trans %}Budget Category{% endtrans %}</th>
-            <td class="estimated-align hidden-xs">Estimated Cost <div class="budget-planner-price estimated"></div></td>
+            <td class="estimated-align hidden-xs">{% trans %}Estimated Cost{% endtrans %} <div class="budget-planner-price estimated"></div></td>
             <td class="actual-align">{% trans %}Actual Cost{% endtrans %} <div class="budget-planner-price actuel"></div></td>
             <td class="paid-align">{% trans %}Paid{% endtrans %} <div class="budget-planner-price paid"></div></td>
-            <td class="due-align hidden-xs">Due <div class="budget-planner-price due"></div></td>
+            <td class="due-align hidden-xs">{% trans %}Due{% endtrans %} <div class="budget-planner-price due"></div></td>
             <td class="action-align">{% trans %}Actions{% endtrans %}</td>
           </tr>
         </tbody></table>
@@ -141,7 +141,7 @@ jQuery(document).ready(function(){
                   <div class="panel-heading" role="tab" id="heading-{{ key }}">
                     <h4 class="panel-title to-do-list-heading collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse-{{ key }}" aria-expanded="{% if key == 0 %}true{% else %}false{% endif %}" aria-controls="collapse-{{ key }}">
                       <a>
-                        {{ budget.service.name }}
+                        {{ budget.service.name|trans }}
                         <span class="faq-btn faq-btn-plus hidden-xs"><i class="fa fa-angle-double-down" aria-hidden="true"></i></span>
                         <span class="faq-btn faq-btn-minus hidden-xs"><i class="fa fa-angle-double-up" aria-hidden="true"></i></span>
                       </a>

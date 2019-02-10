@@ -20,19 +20,19 @@ class VendorServiceType extends AbstractType
     {
 
         $builder
-            ->add('title')
-            ->add('service')
-            ->add('city')
-            ->add('costMin')
-            ->add('costMax')
-            ->add('email')
-            ->add('description', TextareaType::class, ['required' => false])
-            ->add('address', TextareaType::class, ['required' => false])
+            ->add('title', null, ['label' => 'Title'])
+            ->add('service', null, ['label' => 'Service', 'choice_translation_domain' => 'messages'])
+            ->add('city', null, ['label' => 'City', 'choice_translation_domain' => 'messages'])
+            ->add('costMin', null, ['label' => 'Min cost'])
+            ->add('costMax', null, ['label' => 'Max cost'])
+            ->add('email', null, ['label' => 'Email'])
+            ->add('description', TextareaType::class, ['label' => 'Description', 'required' => false])
+            ->add('address', TextareaType::class, ['label' => 'Address', 'required' => false])
             ->add('latitude')
             ->add('longitude')
-            ->add('capacity')
+            ->add('capacity', null, ['label' => 'capacity', 'choice_translation_domain' => 'messages'])
             ->add('vendor')
-            ->add('picture', FileType::class)
+            ->add('picture', FileType::class, ['label' => 'Picture'])
             ->add('urls', CollectionType::class,
                 [
                     'entry_type'   => VendorServiceUrlType::class,

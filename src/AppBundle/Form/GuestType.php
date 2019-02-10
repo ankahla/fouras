@@ -7,14 +7,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class GuestType extends AbstractType
+class GuestType extends AbstractPersonType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName')->add('lastName')->add('email')->add('phone')->add('description', TextareaType::class, ['required' => false]);
+        parent::buildForm($builder, $options);
+        $builder->add('description', TextareaType::class, ['required' => false]);
     }
     
     /**

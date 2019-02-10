@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="ar" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="8cb8613420d290c215803d3d560b33b6" resname="layout.logout">
+        <source>layout.logout</source>
+        <target>layout.logout</target>
+      </trans-unit>
+      <trans-unit id="c5f381db6e7b9180a6280cbc3530f925" resname="layout.register">
+        <source>layout.register</source>
+        <target>layout.register</target>
+      </trans-unit>
+      <trans-unit id="af6ea03982f84cbc9acb9e0784f674fc" resname="layout.login">
+        <source>layout.login</source>
+        <target>تسجيل دخول</target>
+      </trans-unit>
+      <trans-unit id="accaadbea56cdf27b83766bc084ef60e" resname="security.login.username">
+        <source>security.login.username</source>
+        <target>security.login.username</target>
+      </trans-unit>
+      <trans-unit id="3e6fda7a3e4805b55f02fb7d4732182e" resname="security.login.password">
+        <source>security.login.password</source>
+        <target>security.login.password</target>
+      </trans-unit>
+      <trans-unit id="eab2445b91e08139c983aed41704f73b" resname="security.login.submit">
+        <source>security.login.submit</source>
+        <target>security.login.submit</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

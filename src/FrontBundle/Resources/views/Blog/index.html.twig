@@ -1,146 +1,31 @@
-{% extends 'front/layout.html.twig' %}
-
-{% block banner %}
-{% include 'front/banner.html.twig' with {'title' : 'Blog'} %}
-{% endblock %}
+{% extends 'FrontBundle::Blog/layout.html.twig' %}
 
 {% block body %}
 <section class="ptb120">
     <div class="container">
       <div class="row">
         <div class="col-md-9">
+          {% if data.total != 0%}
+          {% for article in data.results %}
           <div class="blog-block">
             <div class="blog-img">
-              <a href="blog-detail.html"><img src="{{ asset('bundles/front/images/blog-1.jpg') }}" class="img-responsive" alt="blog-img"></a>
-              <div class="meta-tag">March 12, 2017</div>
+              <a href="{{ path('article', {id : article.id, alias : article.alias}) }}"><img src="{{ cms_base_url ~ article.images.image_intro }}" class="img-responsive" alt="blog-img"></a>
+              <div class="meta-tag">{{ date(article.created)|localizeddate('full', 'none', current_locale, null, 'd MMMM Y') }}</div>
             </div>
             <div class="blog-dtl">
-              <h4 class="blog-heading"><a href="blog-detail.html">Sed ut perspiciatis unde omnis iste natus error sit voluptat antium</a></h4>
-              <p class="blog-dis">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut.</p>
-              <a href="blog-detail.html" class="btn btn-pink">Read More</a>
+              <h4 class="blog-heading"><a href="{{ path('article', {id : article.id, alias : article.alias}) }}">{{ article.title }}</a></h4>
+              <div class="blog-dis">{{ article.introtext|raw }}</div>
+              <a href="{{ path('article', {id : article.id, alias : article.alias}) }}" class="btn btn-pink">{% trans %}Read More{% endtrans %}</a>
             </div>
           </div>
-          <div class="blog-block">
-            <div class="blog-img">
-              <a href="blog-detail.html"><img src="{{ asset('bundles/front/images/blog-2.jpg') }}" class="img-responsive" alt="blog-img"></a>
-              <div class="meta-tag">March 12, 2017</div>
-            </div>
-            <div class="blog-dtl">
-              <h4 class="blog-heading"><a href="blog-detail.html">Ut enim ad minima veniam quis nostrum exercitationem ullam corp</a></h4>
-              <h6 class="blog-dis">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</h6>
-              <a href="blog-detail.html" class="btn btn-pink">Read More</a>
-            </div>
-          </div>
-          <div class="blog-block">
-            <div class="blog-img">
-              <a href="blog-detail.html"><img src="{{ asset('bundles/front/images/blog-3.jpg') }}" class="img-responsive" alt="blog-img"></a>
-              <div class="meta-tag">March 11, 2017</div>
-            </div>
-            <div class="blog-dtl">
-              <h4 class="blog-heading"><a href="blog-detail.html">Excepteur sint occaecat cupidatat non proident sunt in culpa qui</a></h4>
-              <p class="blog-dis">Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia conseuntur magni dolores eos qui ratione voluptatem sequi nesciunt dolor sit amet consectetur.</p>
-              <a href="blog-detail.html" class="btn btn-pink">Read More</a>
-            </div>
-          </div>
-          <div class="blog-block">
-            <div class="blog-img">
-              <a href="blog-detail.html"><img src="{{ asset('bundles/front/images/blog-4.jpg') }}" class="img-responsive" alt="blog-img"></a>
-              <div class="meta-tag">March 10, 2017</div>
-            </div>
-            <div class="blog-dtl">
-              <h4 class="blog-heading"><a href="blog-detail.html">quis nostrud exercitation ullamco laboris nisi commodo consequat</a></h4>
-              <p class="blog-dis">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
-              <a href="blog-detail.html" class="btn btn-pink">Read More</a>
-            </div>
-          </div>
-          <div class="blog-block">
-            <div class="blog-img">
-              <a href="blog-detail.html"><img src="{{ asset('bundles/front/images/blog-5.jpg') }}" class="img-responsive" alt="blog-img"></a>
-              <div class="meta-tag">March 10, 2017</div>
-            </div>
-            <div class="blog-dtl">
-              <h4 class="blog-heading"><a href="blog-detail.html">beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia</a></h4>
-              <p class="blog-dis">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              <a href="blog-detail.html" class="btn btn-pink">Read More</a>
-            </div>
-          </div>
-          <div class="pagination">
-            <ul>
-              <li class="active"><a href="blog.html#" class="btn btn-default">1</a></li>
-              <li><a href="blog.html#" class="btn btn-default">2</a></li>
-              <li><a href="blog.html#" class="btn btn-default">3</a></li>
-              <li><a href="blog.html#" class="btn btn-default">4</a></li>
-            </ul>
-          </div>
+          {% endfor %}
+          {% endif %}
+
+          {% block pagination %}{{ parent() }}{% endblock %}
+
         </div>
         <div class="col-md-3">
-          <div class="blog-sidebar">
-            <div class="widget blog-search text-right">
-              <form>
-                <input type="search" id="search" class="form-control" placeholder="Enter Keyword">
-                <button type="button" class="btn btn-pink">Go</button>
-              </form>
-            </div> 
-            <div class="widget">
-              <h4 class="blog-sidebar-heading">Blog Categories</h4>
-              <ul>
-                <li><a href="blog.html#">Wedding Venue <span>(10)</span></a></li>
-                <li><a href="blog.html#">Wedding Cakes <span>(07)</span></a></li>
-                <li><a href="blog.html#">Wedding Dress <span>(15)</span></a></li>
-                <li><a href="blog.html#">Transport <span>(13)</span></a></li>
-                <li><a href="blog.html#">Jewelery <span>(05)</span></a></li>
-              </ul>
-            </div>
-            <div class="widget blog-latest-news">
-              <h4 class="blog-sidebar-heading">Latest News</h4>
-              <div class="blog-news">
-                <div class="blog-news-img">
-                  <img src="{{ asset('bundles/front/images/latest-news-1.jpg') }}" class="img-responsive" alt="latest-news">
-                </div>
-                <div class="blog-news-dtl">
-                  <h6 class="blog-news-dtl-heading"><a href="blog.html#">Veritatis et qsrch beatae vitae</a></h6>
-                  <div class="date">March 13, 2017</div>
-                </div>
-              </div>
-              <div class="blog-news">
-                <div class="blog-news-img">
-                  <img src="{{ asset('bundles/front/images/latest-news-2.jpg') }}" class="img-responsive" alt="latest-news">
-                </div>
-                <div class="blog-news-dtl">
-                  <h6 class="blog-news-dtl-heading"><a href="blog.html#">Numqua eius modi tempora incid</a></h6>
-                  <div class="date">March 13, 2017</div>
-                </div>
-              </div>
-              <div class="blog-news">
-                <div class="blog-news-img">
-                  <img src="{{ asset('bundles/front/images/latest-news-3.jpg') }}" class="img-responsive" alt="latest-news">
-                </div>
-                <div class="blog-news-dtl">
-                  <h6 class="blog-news-dtl-heading"><a href="blog.html#">Vel illum qui dolo eum fugiat</a></h6>
-                  <div class="date">March 13, 2017</div>
-                </div>
-              </div>
-            </div>
-            <div class="widget popular-tab">
-              <h4 class="blog-sidebar-heading">Popular Tags</h4>
-              <div class="tabs">
-                <a href="blog.html#" class="btn btn-default"><span class="badge">Transport</span></a>
-                <a href="blog.html#" class="btn btn-default"><span class="badge">Venue</span></a>
-                <a href="blog.html#" class="btn btn-default"><span class="badge">Dress</span></a>
-                <a href="blog.html#" class="btn btn-default"><span class="badge">Jewelery</span></a>
-                <a href="blog.html#" class="btn btn-default"><span class="badge">Photography</span></a>
-              </div>  
-            </div>
-            <div class="widget">
-              <h4 class="blog-sidebar-heading">Our Archives</h4>
-              <ul>
-                <li><a href="blog.html#">April<span>(05)</span></a></li>
-                <li><a href="blog.html#">March<span>(13)</span></a></li>
-                <li><a href="blog.html#">January<span>(07)</span></a></li>
-                <li><a href="blog.html#">December<span>(02)</span></a></li>
-              </ul>
-            </div>
-          </div>
+          {% block sidebar %}{{ parent() }}{% endblock %}
         </div>
       </div>
     </div>

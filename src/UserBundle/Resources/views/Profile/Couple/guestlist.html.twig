@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 {% block body %}
 <section id="guest-list" class="guest-list-main-block">
     <div class="container">
-      {{ render(controller('UserBundle:Menu:index')) }}
+      {{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
       <div class="guest-list-block">
       {{ form_start(form, {'action': path('couple_guest_update')}) }}
         <div class="row">

@@ -90,7 +90,8 @@ class ProfileController extends profileBaseController
             if ($form->isSubmitted() && $form->isValid()) {
                 $em->flush();
             } else {
-                //die($form->getErrors());
+                // @todo
+                dump($form->getErrors());
             }
 
             return new RedirectResponse($this->getRedirectionUrl($user));
@@ -139,7 +140,10 @@ class ProfileController extends profileBaseController
 
             if (!$vendor) {
                 $vendor = new Vendor;
-                $vendor->setUser($user);
+                $vendor
+                    ->setFirstName($user->getFirstName())
+                    ->setLastName($user->getLastName())
+                    ->setUser($user);
                 $em->persist($vendor);
                 $em->flush();
             }
@@ -149,7 +153,7 @@ class ProfileController extends profileBaseController
             $couple = $em->getRepository(Couple::class)->findOneByUser($user);
 
             if (!$couple) {
-                $em->persist($user);
+                $couple = new Couple;
                 $couple->setUser($user);
                 $em->persist($couple);
                 $em->flush();

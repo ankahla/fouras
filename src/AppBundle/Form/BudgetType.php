@@ -23,7 +23,9 @@ class BudgetType extends AbstractType
                 'prototype_data' => new BudgetItem,
             ]
         )
-        ->add('service');
+        ->add('service', null, [
+            'choice_translation_domain' => 'messages',
+        ]);
     }
     
     /**

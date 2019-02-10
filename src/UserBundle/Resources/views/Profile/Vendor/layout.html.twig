@@ -10,7 +10,7 @@ $(".datepicker").datepicker();
 
 {% block banner %}
 {% if title is not defined %}
-{% set title = 'Vendor dashboard' %}
+{% set title = 'Vendor dashboard'|trans %}
 {% endif %}
   <section id="page-banner" class="page-banner bg-dark" style="background-image: url('{{ asset('bundles/front/images/banner-2.jpg') }}');"> 
     <div class="overlay-bg"></div>
@@ -21,22 +21,28 @@ $(".datepicker").datepicker();
             <div class="row">
               <div class="col-sm-4">
                 <div class="couple-img">
-                  <img src="{{ asset('bundles/front/images/vendor-dashboard-vendor.jpg') }}" class="img-responsive" alt="couple">
+                  <img src="{% if 'http' in app.user.profilePicture %}{{ app.user.profilePicture }}{% else %}{{ asset(profile_pic_dir ~ app.user.profilePicture) }}{% endif %}" class="img-responsive" alt="vendor">
                 </div>
               </div>
               <div class="col-sm-8">
                 <div class="couple-dtl">
                   <div class="row">
+                    {% if app.session.get('profileName') %}
                     <div class="col-xs-7 pad-rt-0">
                       <h3 class="couple-name">{{ app.session.get('profileName') }}</h3>
                     </div>
+                    {% endif %}
                     <div class="col-xs-5 pad-lft-0">
                       <a href="{{ path('fos_user_profile_show') }}" class="btn btn-pink">Edit Profile</a>
                     </div>
                   </div>
-                  <div class="couple-contact">   
+                  <div class="couple-contact">
+                    {% if app.session.get('address') %}
                     <div><i class="fa fa-map-marker"></i>{{ app.session.get('address') }}.</div>
+                    {% endif %}
+                    {% if app.session.get('phone') %}
                     <div><i class="fa fa-phone"></i>{{ app.session.get('phone') }}</div>
+                    {% endif %}
                   </div>    
                 </div>
               </div>

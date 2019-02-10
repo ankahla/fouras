@@ -9,21 +9,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use AppBundle\Entity\VendorUrl;
 
-class VendorType extends AbstractType
+class VendorType extends AbstractPersonType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
         $builder
-        ->add('firstName')
-        ->add('lastName')
-        ->add('email')
-        ->add('phone')
-        ->add('mobile')
-        ->add('city')
-        ->add('address', TextareaType::class, ['required' => false])
+        ->add('mobile', null, ['label' => 'Mobile'])
+        ->add('city', null, ['label' => 'City', 'choice_translation_domain' => 'messages'])
+        ->add('address', TextareaType::class, ['label' => 'Address', 'required' => false])
         ->add('urls', CollectionType::class,
             [
                 'entry_type'   => VendorUrlType::class,

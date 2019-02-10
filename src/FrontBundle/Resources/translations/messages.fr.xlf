@@ -497,6 +497,50 @@
         <source>Save Task</source>
         <target>Enregistrer</target>
       </trans-unit>
+      <trans-unit id="68d9e5edc46ef22e721ba8a76e272bca" resname="ideas &amp; advice">
+        <source>ideas &amp; advice</source>
+        <target>Idées et conseils</target>
+      </trans-unit>
+      <trans-unit id="be8df1f28c0abc85a0ed0c6860e5d832" resname="Blog">
+        <source>Blog</source>
+        <target>Blog</target>
+      </trans-unit>
+      <trans-unit id="7e020bfe3037675eef5e308d4070f37d" resname="Related Post">
+        <source>Related Post</source>
+        <target>Related Post</target>
+      </trans-unit>
+      <trans-unit id="bac7fd3fc4e482107b7eab3466eb744d" resname="Enter Keyword">
+        <source>Enter Keyword</source>
+        <target>Enter Keyword</target>
+      </trans-unit>
+      <trans-unit id="5f075ae3e1f9d0382bb8c4632991f96f" resname="Go">
+        <source>Go</source>
+        <target>Go</target>
+      </trans-unit>
+      <trans-unit id="979ac0eb39f23e70f45b79282ccab548" resname="Blog Categories">
+        <source>Blog Categories</source>
+        <target>Blog Categories</target>
+      </trans-unit>
+      <trans-unit id="099afb04ddf259fff6a50c50d7eae060" resname="Latest News">
+        <source>Latest News</source>
+        <target>Latest News</target>
+      </trans-unit>
+      <trans-unit id="58674eb29fcce52481c292ef4aa4bbc3" resname="Faq">
+        <source>Faq</source>
+        <target>Faq</target>
+      </trans-unit>
+      <trans-unit id="5c93310dd0291e121181e830cdda892e" resname="Gallery">
+        <source>Gallery</source>
+        <target>Gallery</target>
+      </trans-unit>
+      <trans-unit id="d5ff126addeee8e1b2d3a466758efc63" resname="Real Wedding Listing">
+        <source>Real Wedding Listing</source>
+        <target>Mariages</target>
+      </trans-unit>
+      <trans-unit id="e576c23d915755d83e2d1f47bd9f6c22" resname="No results found">
+        <source>No results found</source>
+        <target>Aucun résultat trouvé</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

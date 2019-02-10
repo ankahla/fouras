@@ -1,130 +1,34 @@
 {% extends 'front/layout.html.twig' %}
 
 {% block banner %}
-{% include 'front/banner.html.twig' with {'title' : 'Real Wedding Listing'} %}
+{% include 'front/banner.html.twig' with {'title' : 'Real Wedding Listing'|trans} %}
 {% endblock %}
 
 {% block body %}
 <section id="real-wedding-listing" class="real-wedding-listing">
     <div class="container">
+      {% if weddings and weddings.children|length > 0 %}
       <div class="row">
+        {% for wedding in weddings.children %}
         <div class="col-md-4 col-sm-6">
           <div class="upcoming-wedding-block real-wedding-block">
             <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-1.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
+              <a href="{{ path('wedding_gallery', {categoryId: wedding.id, alias: wedding.alias }) }}"><img src="{{ cms_base_url ~ wedding.image.url }}" class="img-responsive" alt="upcoming-wedding"></a>
             </div>
             <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Caitlin &amp; Hentze</a></h4>
+              <div class="date">{{ date(wedding.image.alt)|localizeddate('full', 'none', current_locale, null, 'd MMMM Y') }}</div>
+              <h4 class="wdding-couple"><a href="{{ path('wedding_gallery', {categoryId: wedding.id, alias: wedding.alias }) }}">{{ wedding.title }}</a></h4>
               <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-2.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Lewers &amp; Isabella</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
+        {% endfor %}
+        {% else %}
+        <div class="section text-center">
+          <h3 class="section-heading">{% trans %}No results found{% endtrans %}</h3>
+          <p class="section-sub-heading"></p>
         </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-3.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Castleton &amp; Sean</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-             <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-2.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Lewers &amp; Isabella</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-3.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Caitlin &amp; Hentze</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-1.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Castleton &amp; Sean</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-1.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Caitlin &amp; Hentze</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-2.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Castleton &amp; Sean</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="upcoming-wedding-block real-wedding-block">
-            <div class="upcoming-wedd-img">
-              <a href="{{ path('wedding') }}"><img src="{{ asset('bundles/front/images/upcoming-wedd-3.jpg') }}" class="img-responsive" alt="upcoming-wedding"></a>
-            </div>
-            <div class="upcoming-wedding-dtl text-center">
-              <div class="date">March 28, 2017</div>
-              <h4 class="wdding-couple"><a href="{{ path('wedding') }}">Lewers &amp; Isabella</a></h4>
-              <img src="{{ asset('bundles/front/images/sep-1.png') }}" class="img-responsive" alt="icon">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pagination">
-        <ul>
-          <li class="active"><a href="real-wedding-listing.html#" class="btn btn-default">1</a></li>
-          <li><a href="real-wedding-listing.html#" class="btn btn-default">2</a></li>
-          <li><a href="real-wedding-listing.html#" class="btn btn-default">3</a></li>
-          <li><a href="real-wedding-listing.html#" class="btn btn-default">4</a></li>
-          <li><a href="real-wedding-listing.html#" class="btn btn-default"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-        </ul>
+        {% endif %}
       </div>
     </div>
   </section>

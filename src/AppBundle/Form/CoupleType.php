@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,8 +22,8 @@ class CoupleType extends AbstractType
         $builder
         ->add('husband', new HusbandType)
         ->add('wife', new WifeType)
-        ->add('weddingDate', DateType::class, ['widget' => 'single_text'])
-        ->add('weddingCity')
+        ->add('weddingDate', DateType::class, ['widget' => 'single_text', 'label' => 'Wedding date'])
+        ->add('weddingCity', null, ['label' => 'Wedding city', 'choice_translation_domain' => 'messages'])
         ->add('urls', CollectionType::class,
             [
                 'entry_type'   => CoupleUrlType::class,

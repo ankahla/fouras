@@ -1,4 +1,4 @@
-{% extends 'FrontBundle::Vendor/Dashboard/layout.html.twig' %}
+{% extends 'UserBundle::Profile/Vendor/layout.html.twig' %}
 
 {% form_theme vendorServiceForm _self %}
 
@@ -9,7 +9,7 @@
 {% set attr = attr|merge({'class': 'form-control'}) %}
 {% endif %}
 <div class="form-group">
-	<label>{{ form.vars.name }} {% if required %}<span>*</span>{% endif %}</label>
+	<label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}<span>*</span>{% endif %}</label>
 	{{ block('form_widget') }}
 	<span class="help-block">{{ block('form_errors') }}</span>
 </div>
@@ -22,7 +22,7 @@
 {% set attr = attr|merge({'class': 'form-control'}) %}
 {% endif %}
 <div class="form-group">
-	<label>{{ form.vars.name }} {% if required %}<span>*</span>{% endif %}</label>
+	<label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}<span>*</span>{% endif %}</label>
 	{{ block('textarea_widget') }}
 	<span class="help-block">{{ block('form_errors') }}</span>
 </div>
@@ -35,7 +35,7 @@
 {% set attr = attr|merge({'class': 'form-control'}) %}
 {% endif %}
 <div class="form-group {% if errors|length %}has-error{% endif %}">
-	<label>{{ form.vars.name }} {% if required %}<span>*</span>{% endif %}</label>
+	<label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}<span>*</span>{% endif %}</label>
 	{{ block('choice_widget') }}
 	<span class="help-block">{{ block('form_errors') }}</span>
 </div>
@@ -44,7 +44,7 @@
 {% block body %}
 <section id="add-listing" class="add-listing-main-block">
 	<div class="container">
-		{{ render(controller('UserBundle:Menu:index')) }}
+		{{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
 		<h4 class="new-add-listing-heading">
 		{% if vendorService is defined %}
 		{% trans %}Edit Service{% endtrans %}</h4>
@@ -140,7 +140,7 @@
 					<!-- <a href="#" data-toogle="model" data-target="#upload-model" class="btn btn-pink">Select Media</a> -->
 					
 					<ul class="add-listing-note">
-						<li>* At least 1 image is required for a valid submission</li>
+						<li>{% trans %}* At least 1 image is required for a valid submission{% endtrans %}</li>
 					</ul>
 					<button type="submit" class="btn btn-pink">{% trans %}Save{% endtrans %}</button>
 				</div>
@@ -178,7 +178,7 @@
 		geocoder = new google.maps.Geocoder();
 		var mapOptions = {
 			center: defaultPosition, 
-			zoom: 15,
+			zoom: 10,
 			disableDefaultUI: false,
 			scrollwheel: true,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -197,7 +197,7 @@
 			var position = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
 			placeMarkerAndPanTo(position, map);
 		} else {
-			searchAddress('{{ vendorServiceForm.city.vars.value }}');
+			searchAddress('{{ vendorServiceForm.city.vars.data.name }}');
 		}
 	}
 

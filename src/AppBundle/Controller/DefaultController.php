@@ -38,12 +38,14 @@ class DefaultController extends Controller
                 $foundBundle->getPath().'/Resources/',
                 sprintf('%s/Resources/%s/', $kernel->getRootDir(), $foundBundle->getName()),
             ];
+            dump($foundBundle->getPath().'/Resources/', sprintf('%s/Resources/%s/', $kernel->getRootDir(), $foundBundle->getName()));
         }
 
         // load any existing messages from the translation files
         $currentCatalogue = new MessageCatalogue($locale);
         foreach ($transPaths as $path) {
             $path .= 'translations';
+
             if (is_dir($path)) {
                 $loader->loadMessages($path, $currentCatalogue);
             }
@@ -51,43 +53,48 @@ class DefaultController extends Controller
 
         if ($request->isMethod('post') && count($request->get('translations'))) {
             $translations = $request->get('translations');
-
             $extractedCatalogue = new MessageCatalogue($locale);
 
             foreach ($translations as $domain => $msg) {
-                $currentCatalogue->add($msg, $domain);
+                if ($msg) {
+                    $currentCatalogue->add($msg, $domain);
+                }
             }
 
             $operation = new MergeOperation($currentCatalogue, $extractedCatalogue);
 
             if (count($operation->getDomains())) {
-               $bundleTransPath = false;
-               foreach ($transPaths as $path) {
+                $bundleTransPath = false;
+
+                foreach ($transPaths as $path) {
                     $path .= 'translations';
+
                     if (is_dir($path)) {
                         $bundleTransPath = $path;
                     }
                 }
 
-            if (!$bundleTransPath) {
-                $bundleTransPath = end($transPaths).'translations';
-            }
+                if (!$bundleTransPath) {
+                    $bundleTransPath = end($transPaths).'translations';
+                }
 
 
-            $writer->writeTranslations(
-                $operation->getResult(),
-                $output,
-                [
-                    'path'           => $bundleTransPath,
-                    'default_locale' => $this->getParameter('kernel.default_locale'),
-                ]
+                $writer->writeTranslations(
+                    $operation->getResult(),
+                    $output,
+                    [
+                        'path'           => $bundleTransPath,
+                        'default_locale' => $this->getParameter('kernel.default_locale'),
+                    ]
                 );
             }
         }
 
         $extractedCatalogue = new MessageCatalogue($locale);
+
         foreach ($transPaths as $path) {
             $path .= 'views';
+
             if (is_dir($path)) {
                 $extractor->extract($path, $extractedCatalogue);
             }

@@ -221,7 +221,7 @@
       image: {
         tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
         titleSrc: function(item) {
-          return item.el.attr('title') + '<small>by Weddlist</small>';
+          return item.el.attr('title');
         }
       }
     });
@@ -345,5 +345,5 @@ jQuery.fn.prettySelect = function(defaultLabel)
 })(jQuery);
 
 jQuery(document).ready(function(){
-  jQuery('select').prettySelect();
+  jQuery('select:visible').prettySelect();
 });

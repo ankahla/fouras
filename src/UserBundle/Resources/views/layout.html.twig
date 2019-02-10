@@ -24,7 +24,7 @@
 
 
 {% block banner %}
-{% include 'front/banner.html.twig' with {'title' : 'Dashboard'} %}
+{% include 'front/banner.html.twig' with {'title' : 'Sign In'|trans} %}
 {% endblock %}
 
 {% block body%}
@@ -37,7 +37,7 @@
 		</div>
 		{% endfor %}
 		{% endfor %}
-		{{ render(controller('UserBundle:Menu:index')) }}
+		{{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
 		{% block fos_user_content %}{% endblock fos_user_content %}
 	</div>
 </section>

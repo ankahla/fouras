@@ -22,8 +22,6 @@ parameters:
                     label: About
                 wedding_list:
                     label: 'Real wedding Listing'
-                gallery:
-                    label: Gallery
         help:
             label: 'ideas & advice'
             sub:

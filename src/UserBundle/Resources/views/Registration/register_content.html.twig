@@ -2,19 +2,23 @@
 <div class="form-group">
 	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
 		<font color="red">{{ form_errors(form.username) }}</font>
-		{{ form_widget(form.username, {'attr':{'class':'form-control','placeholder':'USERNAME'}}) }}
+		{{ form_widget(form.username, {'attr':{'class':'form-control','placeholder':'Username'|trans }}) }}
 		<font color="red">{{ form_errors(form.email) }}</font>
-		{{ form_widget(form.email, {'attr':{'class':'form-control','placeholder':'EMAIL ADDRESS'}}) }}
+		{{ form_widget(form.email, {'attr':{'class':'form-control','placeholder':'Email address'|trans }}) }}
 		<font color="red">{{ form_errors(form.firstName) }}</font>
-		{{ form_widget(form.firstName, {'attr':{'class':'form-control','placeholder':'FIRST NAME'}}) }}
+		{{ form_widget(form.firstName, {'attr':{'class':'form-control','placeholder':'First name'|trans }}) }}
 		<font color="red">{{ form_errors(form.lastName) }}</font>
-		{{ form_widget(form.lastName, {'attr':{'class':'form-control','placeholder':'LAST NAME'}}) }}
+		{{ form_widget(form.lastName, {'attr':{'class':'form-control','placeholder':'Last name'|trans }}) }}
 		<font color="red">{{ form_errors(form.plainPassword.first) }}</font>
-		{{ form_widget(form.plainPassword.first, {'attr':{'class':'form-control','placeholder':'PASSWORD'}}) }}
+		{{ form_widget(form.plainPassword.first, {'attr':{'class':'form-control','placeholder':'Password'|trans }}) }}
 		<font color="red">{{ form_errors(form.plainPassword.second) }}</font>
-		{{ form_widget(form.plainPassword.second, {'attr':{'class':'form-control','placeholder':'PASSWORD (CONFIRM)'}}) }}
+		{{ form_widget(form.plainPassword.second, {'attr':{'class':'form-control','placeholder':'Password (confirm)'|trans }}) }}
 		<font color="red">{{ form_errors(form.usertype) }}</font>
-		{{ form_widget(form.usertype, {'attr':{'class':'form-control','placeholder':'PASSWORD (CONFIRM)'}}) }}
+		{% if is_granted('ROLE_ADMIN') %}
+		{{ form_widget(form.usertype, {'attr':{'class':'form-control'}}) }}
+		{% else %}
+		{{ form_widget(form.usertype, {'attr':{'class':'form-control hidden'}}) }}
+		{% endif %}
 		<div class="checkbox-dtl">
 			<input type="checkbox" value="None" id="checkbox" name="check" required="required">
 			<label for="checkbox"></label>

@@ -1,0 +1,73 @@
+.blog-sidebar .widget ul li span {
+	left: 0;
+	right: inherit;
+}
+.cssmenu > ul > li {
+	float: right;
+}
+.blog-latest-news .blog-news-img {
+    float: right;
+    margin-left: 24px;
+}
+.blog-sidebar .blog-search input {
+	width: 183px;
+	padding-right: 20px;
+    float: right;
+}
+.faq-panel .btn-default {
+	left: 30px;
+	right: inherit;
+}
+.faq-nav-list ul li a {
+	margin-right: 16px;
+	margin-left: 0px;
+}
+
+.search-block i {
+	left: 19px;
+	right: inherit;
+}
+
+input[type=checkbox] {
+    float: right;
+}
+
+.checkbox-dtl label {
+	left: inherit;
+    right: 0;
+}
+
+.gallery-block .gallery-dtl {
+	right: 8%;
+	left: inherit;
+}
+
+.cssmenu ul ul {
+    right: -9999px;
+    left: inherit;
+}
+
+.cssmenu li:hover > ul {
+  right: auto;
+}
+
+.to-do-list-heading a span {
+    left: 45px;
+    right: inherit;
+}
+
+.dropdown button span {
+	left: 19px;
+	right: inherit;
+}
+
+.dropdown button span.drp-name {
+	right: 15px;
+	left: inherit;
+	text-align: right;
+}
+
+.heading-align {
+    padding-left: inherit;
+    padding-right: 37px;
+}

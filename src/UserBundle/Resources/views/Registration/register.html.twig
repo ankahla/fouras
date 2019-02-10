@@ -1,4 +1,8 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block banner %}
+{% include 'front/banner.html.twig' with {'title' : 'layout.register'|trans({}, 'FOSUserBundle')} %}
+{% endblock %}
+
 {% block body %}
 <section id="couple-register" class="couple-dashboard-main-block">
 	<div class="container">

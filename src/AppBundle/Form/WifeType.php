@@ -6,23 +6,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class WifeType extends AbstractType
+class WifeType extends AbstractPersonType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('fatherName')
-            ->add('motherName')
-            ->add('email')
-            ->add('phone')
-            ->add('mobile')
-            ->add('address', TextareaType::class, ['required' => false])
+            ->add('fatherName', TextType::class, ['label' => 'Father name'])
+            ->add('motherName', TextType::class, ['label' => 'Mother name'])
+            ->add('mobile', TextType::class, ['label' => 'Mobile', 'required' => false])
+            ->add('address', TextareaType::class, ['label' => 'Address', 'required' => false])
         ;
     }
     
@@ -43,6 +41,4 @@ class WifeType extends AbstractType
     {
         return 'couple_wife_form';
     }
-
-
 }

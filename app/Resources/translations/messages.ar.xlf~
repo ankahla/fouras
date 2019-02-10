@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="ar" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="8cf04a9734132302f96da8e113e80ce5" resname="Home">
+        <source>Home</source>
+        <target>الصفحة الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="4768b9eb24bd6ea9a5ee2401b266c822" resname="Welcome to Fouras">
+        <source>Welcome to Fouras</source>
+        <target>مرحبا بك في Fouras</target>
+      </trans-unit>
+      <trans-unit id="6a26f548831e6a8c26bfbbd9f6ec61e0" resname="Help">
+        <source>Help</source>
+        <target>مساعدة</target>
+      </trans-unit>
+      <trans-unit id="99dea78007133396a7b8ed70578ac6ae" resname="Login">
+        <source>Login</source>
+        <target>تسجيل دخول</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

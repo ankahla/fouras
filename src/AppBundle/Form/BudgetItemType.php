@@ -15,11 +15,11 @@ class BudgetItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('budget')
-            ->add('estimatedAmount', MoneyType::class)
-            ->add('actuelAmount', MoneyType::class)
-            ->add('paidAmount', MoneyType::class)
+            ->add('name', null, ['label' => 'Title'])
+            ->add('budget', null, ['label' => 'Budget Category', 'choice_translation_domain' => 'messages'])
+            ->add('estimatedAmount', MoneyType::class, ['label' => 'Estimated Cost'])
+            ->add('actuelAmount', MoneyType::class, ['label' => 'Actual Cost'])
+            ->add('paidAmount', MoneyType::class, ['label' => 'Paid'])
             ;
     }
     

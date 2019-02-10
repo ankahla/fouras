@@ -17,10 +17,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Csa\Bundle\GuzzleBundle\CsaGuzzleBundle(),
             new AppBundle\AppBundle(),
             new FrontBundle\FrontBundle(),
             new UserBundle\UserBundle(),
-            new AdminBundle\AdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

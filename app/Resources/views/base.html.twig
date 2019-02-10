@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}" dir="{{ app.request.locale == 'ar' ? 'rtl' : 'ltr' }}">
     <head>
         {% block meta %}
         <meta name="description" content="{% if metaDescription is defined %}{{ metaDescription }}{% endif %}">

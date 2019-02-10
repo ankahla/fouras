@@ -6,7 +6,7 @@ imports:
     - { resource: "@AppBundle/Resources/config/services.yml" }
     - { resource: "@FrontBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
-    - { resource: "@AdminBundle/Resources/config/services.yml" }
+    # - { resource: "@AdminBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -44,6 +44,7 @@ twig:
         profile_pic_dir: %profile_pic_dir%
         vendor_service_pic_dir: %vendor_service_pic_dir%
         maps_key: %maps.embedded.api.key%
+        cms_base_url: %cms_base_url%
 
 
 # Doctrine Configuration
@@ -85,3 +86,13 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+csa_guzzle:
+    profiler: '%kernel.debug%'
+    clients:
+        cms_api:
+            config: # you can specify the options as in http://docs.guzzlephp.org/en/latest/quickstart.html#creating-a-client
+                base_uri: '%cms_api_url%'
+                timeout: 5.0
+                # headers:
+                #     Accept: application/vnd.github.v3+json
