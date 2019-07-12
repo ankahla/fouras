@@ -18,7 +18,7 @@
 }
 .share .tooltip {
   position: absolute;
-  top: -195px;
+  bottom: 60px;
   left: 0;
   padding: 10px;
   box-shadow: 0 8px 13px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -35,7 +35,7 @@
   content: "";
   display: block;
   width: 0;
-  height: 0;
+  height: 36px;
   position: absolute;
   left: 30px;
   bottom: -30px;

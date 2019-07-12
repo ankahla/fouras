@@ -23,6 +23,7 @@ class VendorServiceType extends AbstractType
             ->add('title', null, ['label' => 'Title'])
             ->add('service', null, ['label' => 'Service', 'choice_translation_domain' => 'messages'])
             ->add('city', null, ['label' => 'City', 'choice_translation_domain' => 'messages'])
+            ->add('phone', null, ['label' => 'Phone'])
             ->add('costMin', null, ['label' => 'Min cost'])
             ->add('costMax', null, ['label' => 'Max cost'])
             ->add('email', null, ['label' => 'Email'])
@@ -33,6 +34,7 @@ class VendorServiceType extends AbstractType
             ->add('capacity', null, ['label' => 'capacity', 'choice_translation_domain' => 'messages'])
             ->add('vendor')
             ->add('picture', FileType::class, ['label' => 'Picture'])
+            ->add('youtubeVideoId', null, ['label' => 'Youtube video id'])
             ->add('urls', CollectionType::class,
                 [
                     'entry_type'   => VendorServiceUrlType::class,

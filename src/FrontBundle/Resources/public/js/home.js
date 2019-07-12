@@ -291,4 +291,57 @@
     $('.preloader').delay(350).fadeOut('slow'); 
   }); 
 
+// enabling bootstrap dropdown in form submit
+jQuery.fn.prettySelect = function(defaultLabel)
+{
+  return this.each(function()
+  {
+      var d = new Date();
+      var id = d.getTime();
+      var selectElement = $(this);
+      if (selectElement.data('pretty-select-rendred')) {
+        // rerender
+        selectElement.next('.dropdown').remove();
+        selectElement.data('pretty-select-rendred', false);
+      }
+      
+      if (!defaultLabel) {
+        defaultLabel = selectElement.attr('place-holder') ? selectElement.attr('place-holder') : '';
+      }
+
+      var selectedOption = selectElement.find('option:selected');
+      if (selectedOption.size()) {
+        defaultLabel = selectedOption.text();
+      }
+
+      var mainObject = $('<div class="dropdown"><div>');
+      var placeHolder = $('<button class="btn dropdown-toggle" type="button" id="dropdownMenu-'+id+'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="drp-name" data-bind="label">'+defaultLabel+'</span><span><i class="fa fa-angle-down" aria-hidden="true"></i></span></button>')
+      placeHolder.appendTo(mainObject);
+      var selectList = $('<ul class="dropdown-menu" aria-labelledby="dropdownMenu-'+id+'">');
+
+      selectElement.find('option').each(function(key, optionElement){
+        var selectListLink = $('<a href="#"></a>');
+        selectListLink.data('value', $(optionElement).attr('value'));
+        selectListLink.text($(optionElement).text());
+        selectListLink.click(function(e){
+          e.preventDefault();
+          selectElement.val($(e.target).data('value'));
+        });
+
+        var liElement = $('<li></li>');
+        selectListLink.appendTo(liElement);
+        liElement.appendTo(selectList);
+
+      });
+
+      selectList.appendTo(mainObject);
+      selectElement.data('pretty-select-rendred', true).hide().after(mainObject);
+  });
+
+};
+
 })(jQuery);
+
+jQuery(document).ready(function(){
+  jQuery('select:visible').prettySelect();
+});

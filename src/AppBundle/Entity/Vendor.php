@@ -36,6 +36,11 @@ class Vendor
      */
     private $city;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Enquiry", mappedBy="vendor", cascade={"persist", "remove"})
+     */
+    private $enquiries;
+
     function __construct()
     {
         $this->urls = new ArrayCollection;
@@ -115,6 +120,7 @@ class Vendor
         $this->services = $services;
         return $this;
     }
+
     public function addService(VendorService $service)
     {
         if (!$service->getCity() && $vendor->getCity()) {
@@ -130,5 +136,22 @@ class Vendor
     {
         $this->services->removeElement($service);
     }
-    
+
+    public function setEnquiries($enquiries)
+    {
+        $this->enquiries = $enquiries;
+        return $this;
+    }
+
+    public function addEnquiry(Enquiry $enquiry)
+    {
+        $this->enquiries[] = $enquiry;
+
+        return $this;
+    }
+
+    public function removeEnquiry(Enquiry $enquiry)
+    {
+        $this->enquiries->removeElement($enquiry);
+    }
 }

@@ -590,22 +590,6 @@
         <source>dresses</source>
         <target>فساتين</target>
       </trans-unit>
-      <trans-unit id="a90938fca03323924c02ea23f7c6e819" resname="Refine Your Search">
-        <source>Refine Your Search</source>
-        <target>حدد بحثك</target>
-      </trans-unit>
-      <trans-unit id="ab32949f2983f906d338f2de4f053198" resname="Select city">
-        <source>Select city</source>
-        <target>اختر مدينة</target>
-      </trans-unit>
-      <trans-unit id="13348442cc6a27032d2b4aa28b75a5d3" resname="Search">
-        <source>Search</source>
-        <target>بحث</target>
-      </trans-unit>
-      <trans-unit id="c7a3eeee660820ee7d07e031c3855872" resname="Usefull Links">
-        <source>Usefull Links</source>
-        <target>روابط مفيدة</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -204,5 +204,10 @@ class Couple
     {
         $this->guests->removeElement($guest);
     }
+
+    public function __toString()
+    {
+        return $this->user->getFirstName() . ' ' . $this->user->getLastName();
+    }
     
 }

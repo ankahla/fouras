@@ -45,7 +45,7 @@ class VendorService
     private $service;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Vendor")
+     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="services")
      * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id")
      */
     private $vendor;
@@ -55,6 +55,19 @@ class VendorService
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private $city;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     * @Assert\Length(
+     *     min=8,
+     *     max=20,
+     *     minMessage="The phone is invalid.",
+     *     maxMessage="The phone is invalid.",
+     *     groups={"Profile"}
+     * )
+     *
+     */
+    private $phone;
 
     /**
      * @ORM\Column(type="decimal",precision=10, scale=3, nullable=true)
@@ -75,7 +88,7 @@ class VendorService
     protected $email;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      *
      */
     protected $description;
@@ -115,9 +128,22 @@ class VendorService
      */
     private $urls;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     *
+     */
+    private $youtubeVideoId;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Enquiry", mappedBy="vendorService", cascade={"persist", "remove"})
+     */
+    private $enquiries;
+
     function __construct()
     {
         $this->urls = new ArrayCollection;
+        $this->costMin = 10;
+        $this->costMax = 1000;
     }
 
     public function getId()
@@ -181,6 +207,19 @@ class VendorService
     public function setCity($city)
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+    
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
         return $this;
     }
     
@@ -283,6 +322,18 @@ class VendorService
         return $this;
     }
 
+    public function getYoutubeVideoId()
+    {
+        return $this->youtubeVideoId;
+    }
+    
+    public function setYoutubeVideoId($youtubeVideoId)
+    {
+        $this->youtubeVideoId = $youtubeVideoId;
+
+        return $this;
+    }
+
     public function addUrl(VendorServiceUrl $vendorServiceUrl)
     {
         $vendorServiceUrl->setVendorService($this);
@@ -300,7 +351,7 @@ class VendorService
     {
         return $this->urls;
     }
-    
+
     public function setUrls($urls)
     {
         $this->urls = $urls;

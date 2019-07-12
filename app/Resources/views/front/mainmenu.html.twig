@@ -12,7 +12,7 @@
         <div class="navigation">
           <div id="cssmenu" class="cssmenu">
             <ul>
-              {% for route, item in mainmenuitems %}
+              {% for route, item in mainmenuItems %}
               <li {% if current_route == route %}class="active{% endif %}"><a href="{{ path(route) }}">{{ item.label|trans }} {% if item.sub is defined %}<i class="fa fa-angle-down" aria-hidden="true"></i>{% endif %}</a>
                 {% if item.sub is defined %}
                 <ul class="sub-menu">

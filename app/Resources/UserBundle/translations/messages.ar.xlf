@@ -13,10 +13,6 @@
         <source>Create New Category</source>
         <target>إنشاء فئة جديدة</target>
       </trans-unit>
-      <trans-unit id="03368e3c1eb4d2a9048775874301b19f" resname="Select category">
-        <source>Select category</source>
-        <target>Select category</target>
-      </trans-unit>
       <trans-unit id="427ad81c68aa8e0d6b4186260d05b460" resname="Add category +">
         <source>Add category +</source>
         <target>إضافة فئة +</target>
@@ -143,7 +139,7 @@
       </trans-unit>
       <trans-unit id="be53a0541a6d36f6ecb879fa2c584b08" resname="Image">
         <source>Image</source>
-        <target>Image</target>
+        <target>الصورة</target>
       </trans-unit>
       <trans-unit id="b78a3223503896721cca1303f776159b" resname="Title">
         <source>Title</source>
@@ -155,7 +151,7 @@
       </trans-unit>
       <trans-unit id="3601146c4e948c32b6424d2c0a7f0118" resname="Price">
         <source>Price</source>
-        <target>Price</target>
+        <target>السعر</target>
       </trans-unit>
       <trans-unit id="004bf6c9a40003140292e97330236c53" resname="Action">
         <source>Action</source>
@@ -556,6 +552,34 @@
       <trans-unit id="b6874ac18a7bd274406d2cb33494a336" resname="* At least 1 image is required for a valid submission">
         <source>* At least 1 image is required for a valid submission</source>
         <target>* يلزم وجود صورة واحدة على الأقل لتقديمها بشكل صحيح</target>
+      </trans-unit>
+      <trans-unit id="bde1f55131d0a2446125e10c9c656fd3" resname="Vendor dashboard">
+        <source>Vendor dashboard</source>
+        <target>Vendor dashboard</target>
+      </trans-unit>
+      <trans-unit id="4b99c13013f59eb4aa6fc87d531d9c24" resname="not applicable">
+        <source>not applicable</source>
+        <target>لا ينطبق</target>
+      </trans-unit>
+      <trans-unit id="9c4d4ef5519e6befce2601c7142ff5c5" resname="from 10 to 50">
+        <source>from 10 to 50</source>
+        <target>من 10 إلى 50</target>
+      </trans-unit>
+      <trans-unit id="63a5138895a7669e8fcc64f1dbf58175" resname="from 50 to 100">
+        <source>from 50 to 100</source>
+        <target>من 50 إلى 100</target>
+      </trans-unit>
+      <trans-unit id="d9b84e25aca1bd92bf67afbd9e85750d" resname="from 100 to 300">
+        <source>from 100 to 300</source>
+        <target>من 100 إلى 300</target>
+      </trans-unit>
+      <trans-unit id="d14e2cb368db96b1ec8511cd94a55d99" resname="more than 300">
+        <source>more than 300</source>
+        <target>أكثر من 300</target>
+      </trans-unit>
+      <trans-unit id="03368e3c1eb4d2a9048775874301b19f" resname="Select category">
+        <source>Select category</source>
+        <target>اختر الفئة</target>
       </trans-unit>
     </body>
   </file>

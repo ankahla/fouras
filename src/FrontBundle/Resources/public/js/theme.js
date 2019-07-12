@@ -33,8 +33,6 @@
   var $window = $( window )
   var datepick = $( '.date-pick' )
   var counter = $( '.counter' )
-  var sliderrange = $( '#slider-range' )
-  var amount = $( '#amount' )
   var search = $( '.search' )  
   
 // Owl Carousel 
@@ -236,7 +234,7 @@
 // Datepicker
     if ($(datepick).length) {
       $(datepick).datepicker({
-        format : "dd/mm/yyyy"
+        format : "yyyy-mm-dd"
       });
     }
 
@@ -248,20 +246,6 @@
       });       
     }
   
-// Price Slider / Filter
-    $( sliderrange ).slider({
-        range: true,
-        min: 0,
-        max: 1500,
-        values: [ 200, 800 ],
-        slide: function( event, ui ) {
-            $( amount ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        }
-    });
-    $( amount ).val( "$" + $( sliderrange ).slider( "values", 0 ) +
-        " - $" + $( sliderrange ).slider( "values", 1 ) );
-
-
 // Search
   $('.search-icon').on('click', function (e) {
     e.preventDefault();

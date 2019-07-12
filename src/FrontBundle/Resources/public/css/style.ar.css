@@ -71,3 +71,26 @@ input[type=checkbox] {
     padding-left: inherit;
     padding-right: 37px;
 }
+
+.manage-item-listing-block .vendor-img {
+    padding-right: 20px;
+    padding-left: inherit;
+}
+
+.date-picker label {
+    left: 15px;
+    right: inherit;
+}
+
+.datepicker-dropdown {
+	left: inherit;
+	right: inherit;
+}
+
+.fa-angle-right:before {
+    content: "\f104";
+}
+
+.fa-angle-left:before {
+    content: "\f105";
+}

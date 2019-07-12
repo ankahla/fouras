@@ -21,7 +21,7 @@
 
 {% block header %}
 {% include 'front/topbar.html.twig' %}
-{% include 'front/mainmenu.html.twig' with {'logo':'logo-2.png'} %}
+{{ render(controller('FrontBundle:Mainmenu:index')) }}
 {% endblock %}
 
 {% block body %}

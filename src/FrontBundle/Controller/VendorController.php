@@ -3,32 +3,165 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use FOS\UserBundle\Model\UserInterface;
+use AppBundle\Entity\Service;
+use AppBundle\Entity\City;
+use AppBundle\Entity\Couple;
+use AppBundle\Entity\Vendor;
+use AppBundle\Entity\VendorService;
+use AppBundle\Entity\Enquiry;
+use AppBundle\Form\VendorServiceFilterType;
+use AppBundle\Form\EnquiryType;
 
 class VendorController extends Controller
 {
     /**
-     * @Route("/vendors", name="vendors")
+     * @Route("/prestataires", name="vendors")
      */
     public function indexAction()
     {
-        return $this->render('FrontBundle::Vendor/categories.html.twig');
+        $em = $this->container->get('Doctrine')->getEntityManager();
+        $services = $em->getRepository(Service::class)->findAll();
+
+        return $this->render('FrontBundle::Vendor/categories.html.twig', ['services' => $services]);
     }
 
     /**
-     * @Route("/vendor_profile", name="vendor_profile")
+     * @Route("/prestataire/{id}/profile", name="vendor_profile")
      */
-    public function profileAction()
+    public function profileAction($id)
     {
-        return $this->render('FrontBundle::Vendor/profile.html.twig');
+        $em = $this->container->get('Doctrine')->getEntityManager();
+        $vendorService = $em->getRepository(VendorService::class)->findOneById($id);
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        if (!$vendorService) {
+            return $this->createNotFoundException('Service not found');           
+        }
+
+        $enquirySent = false;
+        $enquiryForm = null;
+        $enquiry = new Enquiry();
+        $enquiry
+            ->setVendor($vendorService->getVendor())
+            ->setVendorService($vendorService);
+
+        if ($user instanceof UserInterface && $user->isCouple()) {
+            $couple = $em->getRepository(Couple::class)->findOneByUser($user);
+
+            $qb = $em->getRepository(Enquiry::class)->createQueryBuilder('enquiry')->setMaxResults(1);
+
+            if ($couple) {
+                $query = $qb
+                    ->andWhere('enquiry.vendorService = :vendorServiceId')
+                    ->andWhere('enquiry.couple = :coupleId')
+                    ->setParameter('vendorServiceId', $vendorService->getId())
+                    ->setParameter('coupleId', $couple->getId())
+                    ->getQuery();
+
+                $enquiries = $query->getResult();
+                
+                if (count($enquiries) == 0) {
+                    $enquiry->setCouple($couple);
+                    $enquiryForm = $this->createForm(EnquiryType::class, $enquiry);
+                } else {
+                    $enquirySent = true;
+                }
+            }
+
+        }
+        
+        $request = $this->getRequest();
+        
+        if ($request->isMethod('POST') && !$enquirySent) {
+            $enquiryForm->handleRequest($request);
+
+            if ($enquiryForm && $enquiryForm->isSubmitted() && $enquiryForm->isValid()) {
+                $postedEnquiry = $enquiryForm->getData();
+                $postedEnquiry
+                    ->setVendor($enquiry->getVendor())
+                    ->setCouple($enquiry->getCouple())
+                    ->setVendorService($enquiry->getVendorService());
+
+                $em->persist($postedEnquiry);
+                $em->flush();
+
+                $enquirySent = true;
+            } else {
+                // @todo
+                dump($form->getErrors());
+            }
+        }
+
+        return $this->render('FrontBundle::Vendor/profile.html.twig',
+            [
+                'vendorService' => $vendorService,
+                'enquirySent' => $enquirySent,
+                'enquiryForm' => $enquiryForm ? $enquiryForm->createView() : null,
+            ]
+        );
     }
 
     /**
-     * @Route("/vendor_search", name="vendor_search")
+     * @Route("/prestataire/recherche/{serviceId}", name="vendor_search")
      */
-    public function searchAction()
+    public function searchAction(Request $request, $serviceId = null)
     {
-        return $this->render('FrontBundle::Vendor/search.html.twig');
+        $em = $this->container->get('Doctrine')->getEntityManager();
+        $vendorServiceFilter = new VendorService();
+
+        if ($serviceId) {
+            $service = $em->getRepository(Service::class)->findOneById($serviceId);
+            $vendorServiceFilter->setService($service);
+        }
+
+        $cityId = $request->query->get('cityId');
+
+        if ($cityId) {
+            $city = $em->getRepository(City::class)->findOneById($cityId);
+            $vendorServiceFilter->setCity($city);
+        }
+
+        $searchForm = $this->createForm(VendorServiceFilterType::class, $vendorServiceFilter);
+        
+        if ($request->isMethod('POST')) {
+            $searchForm->handleRequest($request);
+        }
+
+        $qb = $em->getRepository(VendorService::class)->createQueryBuilder('vs')
+            ->setFirstResult(0)
+            ->setMaxResults(100);
+
+
+        if ($vendorServiceFilter->getService()) {
+            $qb
+                ->andWhere('vs.service = :serviceId')
+                ->setParameter('serviceId', $vendorServiceFilter->getService()->getId());
+        }
+
+        if ($vendorServiceFilter->getCity()) {
+            $qb
+                ->andWhere('vs.city = :cityId')
+                ->setParameter('cityId', $vendorServiceFilter->getCity()->getId());
+        }
+
+        $qb
+            ->andWhere('vs.costMin >= :costMin')
+            ->andWhere('vs.costMax <= :costMax')
+            ->setParameter('costMin', $vendorServiceFilter->getcostMin())
+            ->setParameter('costMax', $vendorServiceFilter->getcostMax())
+        ;
+
+        $vendorServices = new Paginator($qb->getQuery());
+
+        return $this->render('FrontBundle::Vendor/search.html.twig', [
+                'vendorServices' => $vendorServices,
+                'searchForm' => $searchForm->createView(),
+            ]
+        );
     }
 
     /**

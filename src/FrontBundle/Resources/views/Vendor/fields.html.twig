@@ -1,0 +1,42 @@
+{% block form_row %}
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% endif %}
+    {% set label = (form.vars.label ? form.vars.label : form.vars.name)|trans ~ (required ? ' *' : '' ) %}
+    {% set attr = attr|merge({'placeholder': label }) %}
+    {{ form_widget(form, {'attr':attr}) }}
+{% endblock %}
+
+{% block form_widget %}
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% endif %}
+    {{ block('form_widget_simple') }}
+{% endblock %}
+
+{% block date_widget %}
+  <div class="date-picker">
+    {% if attr.class is defined %}
+    {% set attr = attr|merge({'class': 'form-control date-pick ' ~ attr.class}) %}
+    {% else %}
+    {% set attr = attr|merge({'class': 'form-control date-pick'}) %}
+    {% endif %}
+    {% set type = 'text' %}
+    {{ block('form_widget_simple') }}
+    <label><i class="fa fa-calendar" aria-hidden="true"></i></label>
+  </div>
+{% endblock %}
+
+{% block checkbox_widget %}
+{% set type = 'checkbox' %}
+{% set attr = attr|merge({'class': ''}) %}
+<div class="checkbox-dtl {{ form.vars.id }}">
+  {{ block('form_widget_simple') }}
+  <label for="{{ form.vars.id }}"></label>
+  <div class="checkbox-label">{{ attr.placeholder }}</div>
+</div>
+{% endblock %}

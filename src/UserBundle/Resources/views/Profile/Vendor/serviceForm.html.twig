@@ -88,6 +88,7 @@
 							{{ form_row(vendorServiceForm.costMin) }}
 							{{ form_row(vendorServiceForm.costMax) }}
 							{{ form_row(vendorServiceForm.email) }}
+							{{ form_row(vendorServiceForm.phone) }}
 						</div>
 					</div>
 				</div>
@@ -103,6 +104,7 @@
 									{{ form_errors(vendorServiceForm.urls[0].url.url) }}
 									{{ form_widget(vendorServiceForm.urls[0].url.url, {attr:{'class':'form-control'}}) }}
 								</div>
+								{{ form_row(vendorServiceForm.youtubeVideoId) }}
 							</div>
 						</div>
 					</div>
@@ -159,7 +161,7 @@
 <script>
 	var map;
 	var markers = [];
-	var markerIcon = '{{ asset('bundles/front/images/icons/map-marker-1-1.png') }}';
+	var markerIcon = '{{ asset('bundles/front/images/icons/love.png') }}';
 	var defaultPosition = {lat: 36.8064948, lng: 10.181531599999971};
 	var geocoder;
 

@@ -5,6 +5,8 @@ namespace FrontBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\VendorService;
+use AppBundle\Form\VendorServiceFilterType;
 
 class PagesController extends Controller
 {
@@ -13,7 +15,12 @@ class PagesController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('FrontBundle:Pages:home.html.twig');
+        $vendorServiceFilter = new VendorService();
+        $searchForm = $this->createForm(VendorServiceFilterType::class, $vendorServiceFilter);
+
+        return $this->render('FrontBundle:Pages:home.html.twig', [
+            'searchForm' => $searchForm->createView(),
+        ]);
     }
 
     /**

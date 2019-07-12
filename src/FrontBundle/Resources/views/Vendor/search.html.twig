@@ -1,39 +1,5 @@
 {% extends 'front/layout.html.twig' %}
 
-{% block javascripts %}
-{{ parent() }}
-<script type="text/javascript" src="{{ asset('bundles/front/js/jquery.mapit.js') }}"></script>
-<script>
-// Google Map Banner
-  $(function() {
-  	var options = { locations : 
-  			[
-				[37.979252, 23.731353, '{{ asset('bundles/front/images/icons/map-marker.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-1.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.976104, 23.745001, '{{ asset('bundles/front/images/icons/map-marker-2.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-2.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.979408, 23.743982, '{{ asset('bundles/front/images/icons/map-marker-3.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-3.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.973563, 23.732041, '{{ asset('bundles/front/images/icons/map-marker.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-4.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.977436, 23.739695, '{{ asset('bundles/front/images/icons/map-marker-2.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-5.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.979630, 23.736751, '{{ asset('bundles/front/images/icons/map-marker-1-1.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-6.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.976104, 23.72341811, '{{ asset('bundles/front/images/icons/map-marker-2.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-7.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.974630, 23.734751, '{{ asset('bundles/front/images/icons/map-marker-3.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-8.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0'],
-				[37.979104, 23.72341811, '{{ asset('bundles/front/images/icons/map-marker-1-1.png') }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-9.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">Venue Vendor Title</a></h6></div></div></div>', false, '0']
-			
-  	],
-  	address: '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('bundles/front/images/category-listing/category-list-2.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><a href="#"><h6 class="listing-topmap-dtl-heading">Venue Vendor Title</h6></a></div></div></div>',
-  	marker: {
-				latitude: 	37.977996,
-				longitude: 	23.733542,
-				icon: 			'{{ asset('bundles/front/images/icons/map-marker.png') }}',
-				title: 			'Wedding Vendor',
-				open: 			false,
-				center: 		true
-			},
-  };
-    $('#mct-map_canvas').mapit(options);
-  });
-</script>
-{% endblock %}
-
 {% block banner %}
 <!-- top map -->
   <section id="top-map" class="top-map">
@@ -47,45 +13,21 @@
   <section id="listing-with-topmap" class="listing-with-topmap-main-block">
     <div class="container">
       <div class="refine-search">
-        <h4 class="refine-search-heading">Refine Your Search</h4>
-        <form>
+        <h4 class="refine-search-heading">{% trans %}Refine Your Search{% endtrans %}</h4>
+        {{ form_start(searchForm) }}
           <div class="form-group">
             <div class="row">
               <div class="col-md-3 col-sm-6">
-                <div class="select-category-dropdown dropdown">
-                  <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                   <span class="drp-name" data-bind="label">Select Category</span>
-                    <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="listing-with-topmap.html#">Cake</a></li>
-                    <li><a href="listing-with-topmap.html#">Florist</a></li>
-                    <li><a href="listing-with-topmap.html#">Dresses</a></li>
-                    <li><a href="listing-with-topmap.html#">Jewellery</a></li>
-                    <li><a href="listing-with-topmap.html#">Venue</a></li>
-                    <li><a href="listing-with-topmap.html#">Photography</a></li>
-                    <li><a href="listing-with-topmap.html#">Music</a></li>
-                  </ul>
-                </div>
+                {{ form_widget(searchForm.service) }}
               </div>
               <div class="col-md-3 col-sm-6">
-                <div class="select-city-dropdown dropdown">
-                  <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                   <span class="drp-name" data-bind="label">Select City</span>
-                    <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><a href="listing-with-topmap.html#">New York</a></li>
-                    <li><a href="listing-with-topmap.html#">California</a></li>
-                    <li><a href="listing-with-topmap.html#">London</a></li>
-                    <li><a href="listing-with-topmap.html#">Australia</a></li>
-                  </ul>
-                </div>
+                {{ form_widget(searchForm.city) }}
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="price-filter">
                   <div class="price-slider-amount">
-                    <input type="text" class="form-control" id="amount" name="price" placeholder="Add Your Price">
+                    <br>
+                    <label id="range"><span class="min">{{ searchForm.costMin.vars.value }}</span> - <span class="max">{{ searchForm.costMax.vars.value }}</span></label>
                   </div>  
                   <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all slider-range">
                     <div class="ui-slider-range ui-widget-header ui-corner-all">
@@ -97,261 +39,48 @@
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="search-btn">
-                  <button type="button" class="btn btn-pink">Search</button>
+                  <button type="submit" class="btn btn-pink">{% trans %}Search{% endtrans %}</button>
                 </div>
               </div>
             </div>
           </div>
-        </form>
+          {{ form_widget(searchForm._token) }}
+          {{ form_end(searchForm) }}
       </div>
       <div class="listing-with-topmap-block">
         <div class="row">
+          
+          {% for vendorService in vendorServices %}
           <div class="col-md-4 col-sm-6">
             <div class="feature-block">
               <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-1.jpg') }}" class="img-responsive" alt="category-img"></a>
+                <a href="{{ path('vendor_profile', {'id':vendorService.id}) }}"><img src="{{ asset('uploads/profiles/vendor_service/' ~ vendorService.picture) }}" class="img-responsive" alt="category-img"></a>
               </div>
               <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
+                <h6 class="feature-heading"><a href="{{ path('vendor_profile', {'id':vendorService.vendor.id}) }}">{{ vendorService.title }}</a></h6>
                 <div class="row">
                   <div class="col-xs-10">
                     <div class="row">
                       <div class="col-xs-6 pad-rt-0">
                         <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
+                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ vendorService.city.name|trans }}</div>
                       </div>
                       <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
+                        <a href="{{ path('vendor_profile', {'id':vendorService.vendor.id}) }}" class="venue-vendor">{{ vendorService.vendor.firstName ~' '~  vendorService.vendor.lastName}}</a>
+                        <h5 class="price">{{ vendorService.costMin|number_format }}-{{ vendorService.costMax|number_format }}</h5>
                       </div>
                     </div>
                   </div>
                   <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
+                    <a href="#"><div class="icon"><i class="fa fa-heart"></i></div></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-2.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-3.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-4.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-5.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-6.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-7.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-8.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="feature-block">
-              <div class="feature-img">
-                <a href="listing-with-topmap.html#"><img src="{{ asset('bundles/front/images/category-list-9.jpg') }}" class="img-responsive" alt="category-img"></a>
-              </div>
-              <div class="feature-dtl top-map-dtl-pad">
-                <h6 class="feature-heading"><a href="listing-with-topmap.html#">Venue Vendor Title</a></h6>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="row">
-                      <div class="col-xs-6 pad-rt-0">
-                        <div class="rating"><span>3.5</span> 2 Rating</div>
-                        <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> Paris</div>
-                      </div>
-                      <div class="col-xs-6 text-right pad-lft-0">
-                        <a href="listing-with-topmap.html#" class="venue-vendor">Venue Vendor</a>
-                        <h5 class="price">$120-$500</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-2">
-                    <a href="listing-with-topmap.html#"><div class="icon"><i class="fa fa-heart"></i></div></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pagination">
+          {% endfor %}
+
+<!--       <div class="pagination">
         <ul>
           <li><a href="listing-with-topmap.html#" class="btn btn-default">1</a></li>
           <li class="active"><a href="listing-with-topmap.html#" class="btn btn-default">2</a></li>
@@ -359,8 +88,58 @@
           <li><a href="listing-with-topmap.html#" class="btn btn-default">4</a></li>
           <li><a href="listing-with-topmap.html#" class="btn btn-default"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </section>
 <!-- end listing with top map -->
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+  $(document).ready(function(){
+
+  var costMin = $('#{{ searchForm.costMin.vars.id }}');
+  var costMax = $('#{{ searchForm.costMax.vars.id }}');
+  var sliderrange = $('#slider-range');
+  // Price Slider / Filter
+  sliderrange.slider({
+    range: true,
+    min: 0,
+    max: 1000,
+    values: [ costMin.val(), costMax.val() ],
+    slide: function( event, ui ) {
+      costMin.val(ui.values[0]);
+      costMax.val(ui.values[1]);
+      $('#range span.min').text(ui.values[0]);
+      $('#range span.max').text(ui.values[1]);
+    }
+  });
+});
+</script>
+<script type="text/javascript" src="{{ asset('bundles/front/js/jquery.mapit.js') }}"></script>
+<script>
+
+  var vendorServices = [];
+  {% for vendorService in vendorServices %}
+        vendorServices.push([{{ vendorService.latitude }}, {{ vendorService.longitude }}, '{{ asset(vendorService.service.mapIcon) }}', 'listing', '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img src="{{ asset('uploads/profiles/vendor_service/' ~ vendorService.picture) }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><h6 class="listing-topmap-dtl-heading"><a href="#">{{ vendorService.title }}</a></h6></div></div></div>', false, '0']);
+  {% endfor %}
+
+  $(function() {
+    var options = { locations : vendorServices,
+    address: '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img stye="max-width:200px" src="{{ asset('bundles/front/images/category-listing/default.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><a href="#"><h6 class="listing-topmap-dtl-heading">{{'Fouras'|trans}}</h6></a></div></div></div>',
+    zoom: 9,
+    marker: {
+        latitude:   36.8064948,
+        longitude:  10.181531599999971,
+        icon:       '{{ asset('bundles/front/images/icons/love.png') }}',
+        title:      'Fouras',
+        open:       false,
+        center:     true
+      },
+  };
+
+    $('#mct-map_canvas').mapit(options);
+  });
+</script>
 {% endblock %}

@@ -10,11 +10,11 @@
       <div class="manage-item-listing-block">
         <table>
           <tbody><tr class="top-heading-row">
-            <th class="vendor-img">Image</th>
-            <th class="title">Title</th>
-            <th class="address">Address</th>
-            <th class="price">Price</th>
-            <th class="action-icons">Action</th>
+            <th class="vendor-img">{% trans %}Image{% endtrans %}</th>
+            <th class="title">{% trans %}Title{% endtrans %}</th>
+            <th class="address">{% trans %}Address{% endtrans %}</th>
+            <th class="price">{% trans %}Price{% endtrans %}</th>
+            <th class="action-icons">{% trans %}Actions{% endtrans %}</th>
           </tr>
           {% for vendorService in vendor.services %}
           <tr>

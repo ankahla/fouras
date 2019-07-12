@@ -1,5 +1,30 @@
 {% extends 'front/home/layout.html.twig' %}
 
+{% block vendorSearch %}
+<!-- slider bottom panel -->
+<div class="slider-bottom-panel-two hidden-xs">
+  <div class="container">
+    {{ form_start(searchForm, {'action': path('vendor_search'), 'method': 'POST'}) }}
+    <div class="slider-bottom-two">
+      <div class="col-sm-4">
+        {{ form_widget(searchForm.service) }}
+      </div>
+      <div class="col-sm-4">
+        {{ form_widget(searchForm.city) }}
+      </div>
+      <div class="col-sm-4">
+        <div class="slider-bottom-panel-btn">
+          <button type="submit" class="btn btn-pink">{% trans %}Find A Vendor{% endtrans %}</button>
+        </div>
+      </div>
+    </div>
+    {{ form_widget(searchForm._token) }}
+    {{ form_end(searchForm) }}
+  </div>
+</div>
+<!-- end slider bottom panel -->
+{% endblock %}
+        
 {% block javascripts %}
 {{ parent() }}
 <script type="text/javascript">
