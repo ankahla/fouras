@@ -68,6 +68,9 @@ doctrine:
         auto_mapping: true
 
 fos_user:
+    from_email: 
+        address:        noreply@example.com
+        sender_name:    Demo App
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User

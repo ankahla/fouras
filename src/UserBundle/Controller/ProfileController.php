@@ -11,9 +11,8 @@
 
 namespace UserBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -22,11 +21,6 @@ use FOS\UserBundle\Controller\ProfileController as profileBaseController;
 
 use AppBundle\Entity\Vendor;
 use AppBundle\Entity\Couple;
-use AppBundle\Entity\Url;
-use AppBundle\Entity\CoupleUrl;
-use AppBundle\Entity\VendorUrl;
-use AppBundle\Entity\UserType;
-use AppBundle\Entity\Capacity;
 
 use AppBundle\Form\VendorType;
 use AppBundle\Form\CoupleType;
@@ -51,7 +45,7 @@ class ProfileController extends profileBaseController
     /**
      * Edit the user
      */
-    public function editAction()
+    public function editAction(Request $request)
     {
         return $this->mainProcess();
     }
@@ -115,7 +109,7 @@ class ProfileController extends profileBaseController
 
     private function getUserProfile()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }

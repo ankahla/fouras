@@ -2,8 +2,7 @@
 namespace AppBundle\Listener;
 
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use AppBundle\Entity\Couple;
 use AppBundle\Entity\User;
@@ -14,7 +13,7 @@ class UserListener
     private $managerRegistry;
     private $em;
 
-    public function __construct(SecurityContext $securityContext, Registry $managerRegistry)
+    public function __construct(TokenStorage $securityContext, Registry $managerRegistry)
     {
         $this->securityContext = $securityContext;
         $this->managerRegistry = $managerRegistry;

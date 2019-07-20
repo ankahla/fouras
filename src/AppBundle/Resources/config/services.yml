@@ -7,13 +7,13 @@ services:
 
     app.user_listener:
         class: AppBundle\Listener\UserListener
-        arguments: ['@security.context', '@Doctrine']
+        arguments: ['@security.token_storage', '@Doctrine']
         tags:
             - { name: kernel.event_listener, event: kernel.controller }
 
     app.gravatar_service:
         class: AppBundle\Services\GravatarService
-        arguments: ['%gravatar.default_options%', '@templating.helper.assets']
+        arguments: ['%gravatar.default_options%', '@assets.packages']
 
     app.cms_api:
         class: AppBundle\Services\CmsService

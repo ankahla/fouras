@@ -4,7 +4,7 @@
 #     prefix:   /admin
 
 front_homepage:
-    pattern:   /{_locale}
+    path:   /{_locale}
     defaults: {_controller: FrontBundle:Pages:index, _locale: %locale% }
     requirements:
         _locale: ar|fr|en

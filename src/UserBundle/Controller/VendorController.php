@@ -34,7 +34,7 @@ class VendorController extends Controller
 
     public function inqueryAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
@@ -43,7 +43,7 @@ class VendorController extends Controller
 
     public function serviceAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
@@ -52,7 +52,7 @@ class VendorController extends Controller
 
     public function newServiceAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
         $vendorService = new VendorService;
@@ -79,7 +79,7 @@ class VendorController extends Controller
 
     public function editServiceAction(Request $request, $id)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
@@ -116,7 +116,7 @@ class VendorController extends Controller
 
     public function updateServiceAction(Request $request, $id)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
@@ -186,7 +186,7 @@ class VendorController extends Controller
 
     public function createServiceAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
         $vendorService = new VendorService;
@@ -232,7 +232,7 @@ class VendorController extends Controller
 
     public function deleteServiceAction(Request $request, $id)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
@@ -253,7 +253,7 @@ class VendorController extends Controller
 
     public function tasksAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         
         $em = $this->get('Doctrine')->getEntityManager();
         $task = new Task;

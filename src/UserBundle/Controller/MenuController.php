@@ -10,7 +10,7 @@ class MenuController extends Controller
 {
     public function indexAction(Request $request)
     {
-    	$user = $this->container->get('security.context')->getToken()->getUser();
+    	$user = $this->container->get('security.token_storage')->getToken()->getUser();
     	$translator = $this->get('translator');
         $currentRoute = $request->attributes->get('_route');
 
