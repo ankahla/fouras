@@ -3,9 +3,8 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -41,7 +40,7 @@ class Budget
 
     function __construct()
     {
-        $this->items = new ArrayCollection;
+        $this->items = new ArrayCollection();
     }
 
     public function getId()

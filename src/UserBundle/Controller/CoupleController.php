@@ -22,7 +22,7 @@ class CoupleController extends Controller
 {
     public function todoAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         
         $em = $this->get('Doctrine')->getEntityManager();
         $task = new Task;
@@ -70,7 +70,7 @@ class CoupleController extends Controller
 
     public function budgetPlannerAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         
         $em = $this->get('Doctrine')->getEntityManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
@@ -92,7 +92,7 @@ class CoupleController extends Controller
 
     public function updateBudgetAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
 
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
@@ -104,7 +104,7 @@ class CoupleController extends Controller
 
     public function createBudgetAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
 
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
@@ -132,7 +132,7 @@ class CoupleController extends Controller
 
     public function deleteBudgetAction($id, $itemId)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         
         $em = $this->get('Doctrine')->getEntityManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
@@ -165,7 +165,7 @@ class CoupleController extends Controller
 
     public function guestlistAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $em = $this->get('Doctrine')->getEntityManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
@@ -185,7 +185,7 @@ class CoupleController extends Controller
 
     public function updateGuestAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         
         $em = $this->get('Doctrine')->getEntityManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
@@ -217,7 +217,7 @@ class CoupleController extends Controller
 
     public function createGuestAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         
         $em = $this->get('Doctrine')->getEntityManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
@@ -242,7 +242,7 @@ class CoupleController extends Controller
 
     public function deleteGuestAction($id)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         
         $em = $this->get('Doctrine')->getEntityManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);

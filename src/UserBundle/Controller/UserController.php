@@ -23,7 +23,7 @@ class UserController extends Controller
 {
 	public function createUrlAction(Request $request)
 	{
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $em = $this->get('Doctrine')->getEntityManager();
 
 		if ($user->isVendor()) {
@@ -52,7 +52,7 @@ class UserController extends Controller
 
     public function deleteUrlAction($id)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $em = $this->container->get('Doctrine')->getEntityManager();
 
@@ -78,7 +78,7 @@ class UserController extends Controller
      */
     public function deleteTaskAction(Request $request, Task $task)
     {
-    	$user = $this->container->get('security.context')->getToken()->getUser();
+    	$user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $form = $this->createDeleteTaskForm($task);
         $form->handleRequest($request);
@@ -98,7 +98,7 @@ class UserController extends Controller
 
     public function pictureUploadAction(Request $request)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         if ($user->getProfilePicture()) {
         	$user->setProfilePicture(new File($user->getProfilePicture(), false));

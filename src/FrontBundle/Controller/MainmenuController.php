@@ -13,7 +13,7 @@ class MainmenuController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $isConnected = $user instanceof User;
 
         $userMenu = [

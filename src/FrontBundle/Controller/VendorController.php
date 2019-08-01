@@ -36,7 +36,7 @@ class VendorController extends Controller
     {
         $em = $this->container->get('Doctrine')->getEntityManager();
         $vendorService = $em->getRepository(VendorService::class)->findOneById($id);
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         if (!$vendorService) {
             return $this->createNotFoundException('Service not found');           
