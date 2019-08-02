@@ -1,9 +1,10 @@
 clean:
-	rm -rf app/cache/ app/logs/
-	mkdir app/cache/ app/logs/
-	chmod -R 777 app/cache/ app/logs/
+	rm -rf var/*
+	mkdir var/cache/ var/logs/
+	chmod -R 777 var
 install:
 	php composer install
+	cp pre-commit .git/hooks/pre-commit
 
 all:
 	make install

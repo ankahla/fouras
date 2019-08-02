@@ -14,7 +14,7 @@ class VendorServiceUrlType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('url', new UrlFormType)
+        ->add('url', UrlFormType::class)
         ;
     }
     

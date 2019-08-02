@@ -2,27 +2,24 @@
 
 namespace UserBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class MenuController extends Controller
+class MenuController extends AbstractController
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, TranslatorInterface $translator)
     {
-    	$user = $this->container->get('security.token_storage')->getToken()->getUser();
-    	$translator = $this->get('translator');
+    	$user = $this->getUser();
         $currentRoute = $request->attributes->get('_route');
 
-    	$menuItems = [];
-
-    	if ($user->isVendor()) {
+    	if ($user && $user->isVendor()) {
     		$menuItems = [
 				'vendor_dashboard' 		=> $translator->trans('Dashboard'),
 				'fos_user_profile_show' => $translator->trans('Profile'),
 				'vendor_todo' 			=> $translator->trans('To Do List'),
 				'vendor_service' 		=> $translator->trans('My Services'),
-				'vendor_inquery' 		=> $translator->trans('Couple inquery'),
+				//'vendor_inquery' 		=> $translator->trans('Couple inquery'),
     		];
     	} else {
     		$menuItems = [

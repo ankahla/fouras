@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -19,6 +18,7 @@ class Couple
     protected $id;
 
     /**
+     * @var User
      * @ORM\OneToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -43,7 +43,7 @@ class Couple
     private $weddingCity;
 
     /**
-     * @var date $weddingDate
+     * @var \dateTime $weddingDate
      *
      * @ORM\Column(type="date", nullable=true)
      */
@@ -209,5 +209,4 @@ class Couple
     {
         return $this->user->getFirstName() . ' ' . $this->user->getLastName();
     }
-    
 }

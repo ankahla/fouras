@@ -27,7 +27,6 @@ framework:
         engines: ['twig']
     default_locale: '%locale%'
     trusted_hosts: ~
-    trusted_proxies: ~
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id: ~
@@ -39,10 +38,10 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-        profile_pic_dir: %profile_pic_dir%
-        vendor_service_pic_dir: %vendor_service_pic_dir%
-        maps_key: %maps.embedded.api.key%
-        cms_base_url: %cms_base_url%
+        profile_pic_dir: '%profile_pic_dir%'
+        vendor_service_pic_dir: '%vendor_service_pic_dir%'
+        maps_key: '%maps.embedded.api.key%'
+        cms_base_url: '%cms_base_url%'
 
 
 # Doctrine Configuration
@@ -69,8 +68,8 @@ doctrine:
 
 fos_user:
     from_email: 
-        address:        noreply@example.com
-        sender_name:    Demo App
+        address:        noreply@fouras.com
+        sender_name:    Fouras
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
@@ -78,7 +77,7 @@ fos_user:
         group_class: AppBundle\Entity\Group
     registration:
         form:
-            type: app_user_registration_form
+            type: AppBundle\Form\Type\RegistrationFormType
 
 # Swiftmailer Configuration
 swiftmailer:

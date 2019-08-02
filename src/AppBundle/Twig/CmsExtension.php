@@ -7,12 +7,12 @@
 * @package Gravatar 
 */ 
 
+namespace AppBundle\Twig;
+
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-namespace AppBundle\Twig;
-
-class CmsExtension extends Twig_Extension
+class CmsExtension extends AbstractExtension
 {
 	private $absoluteUrl;
 

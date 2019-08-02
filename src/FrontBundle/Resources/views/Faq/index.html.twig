@@ -1,11 +1,11 @@
 {% extends 'front/layout.html.twig' %}
 {% set currentCategoryTitle = (currentCategory is not null ? currentCategory.title : '') %}
 {% block banner %}
-{% include 'front/banner.html.twig' with {'title' : ((faqCategories is defined) ? faqCategories.title : 'Faq'|trans) ~ (currentCategoryTitle ? ' / ' ~ currentCategoryTitle : '') } %}
+{% include 'front/banner.html.twig' with {'title' : ((faqCategories is defined) ? (faqCategories.title ?? '') : 'Faq'|trans) ~ (currentCategoryTitle ? ' / ' ~ currentCategoryTitle : '') } %}
 {% endblock %}
 {% block title %}
 {{ parent() }} - 
-{{ ((faqCategories is defined) ? faqCategories.title : 'Faq'|trans) ~ (currentCategoryTitle ? ' - ' ~ currentCategoryTitle : '') }}
+{{ ((faqCategories is defined) ? (faqCategories.title ?? '') : 'Faq'|trans) ~ (currentCategoryTitle ? ' - ' ~ currentCategoryTitle : '') }}
 {% endblock %}
 {% block body %}
 <section class="main-container">
@@ -15,7 +15,7 @@
           <div class="search-block">
             <form>
               <input name="search" type="search" class="form-control" id="search" placeholder="{% trans %}Enter Keyword{% endtrans %}" {% if search is defined %}value="{{ search }}"{% endif %}>
-              <a href="faq.html#"><i class="fa fa-search"></i></a>
+              <a href="#"><i class="fa fa-search"></i></a>
             </form>
           </div>
 
@@ -23,7 +23,7 @@
           <div class="faq-nav-list">
             <h6 class="faq-nav-heading">{% trans %}Categories{% endtrans %}</h6>
             <ul>
-              {% for cat in faqCategories.children %}
+              {% for cat in faqCategories.children ?? [] %}
               <li{% if currentCategory is not null and currentCategory.id == cat.id %} class="active"{% endif %}><a href="{{ path('faq', {categoryId:cat.id, alias:cat.alias}) }}">{{ cat.title }}</a></li>
               {% endfor %}
             </ul>
@@ -34,7 +34,7 @@
           <div class="faq-block">
             <div class="panel-group faq-panel" id="accordion" role="tablist" aria-multiselectable="true">
               
-          {% if data.total != 0%}
+          {% if data is not empty and data.total != 0%}
           {% for article in data.results %}
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading-{{ article.id }}">
@@ -53,6 +53,8 @@
                 </div>
               </div>
           {% endfor %}
+          {% else %}
+            <h3>{{ 'faq.no_result'|trans }}</h3>
           {% endif %}
 
             </div>

@@ -1,10 +1,8 @@
 /web/bundles/
+/web/uploads/
 /app/bootstrap.php.cache
-/app/cache/*
+/var/
 /app/config/parameters.yml
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
 /app/phpunit.xml
 /build/
 /vendor/

@@ -2,18 +2,18 @@
 
 namespace FrontBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\User;
 
-class MainmenuController extends Controller
+class MainmenuController extends AbstractController
 {
     /**
      * @Route("/mainmenu", name="mainmenu")
      */
     public function indexAction()
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         $isConnected = $user instanceof User;
 
         $userMenu = [

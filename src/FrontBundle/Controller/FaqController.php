@@ -2,28 +2,31 @@
 
 namespace FrontBundle\Controller;
 
-use AppBundle\Entity\QueryBuilder\ArticleQueryBuilder;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Services\CmsService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class FaqController extends Controller
+class FaqController extends AbstractController
 {
     /**
      * @Route("/faq/{categoryId}-{alias}", name="faq", defaults={"categoryId":"", "alias":""})
+     * @param Request    $request
+     * @param            $categoryId
+     * @param CmsService $cmsApi
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, $categoryId)
+    public function indexAction(Request $request, $categoryId, CmsService $cmsApi)
     {
-        $page = $request->get('page', 1);
+        //$page = $request->get('page', 1);
         $tag = $request->get('tag', 0);
         $search = $request->get('search', '');
-        $cmsApi = $this->get('app.cms_api');
 
         $faqCategories = $cmsApi->getFaqCategories();
         $faqCategoriesIds = [];
 
-        foreach ($faqCategories->children as $cat) {
+        foreach ($faqCategories->children ?? [] as $cat) {
             $faqCategoriesIds[] = $cat->id;
         }
 

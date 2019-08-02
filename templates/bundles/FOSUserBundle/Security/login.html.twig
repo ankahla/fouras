@@ -1,4 +1,4 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "bundles/FOSUserBundle/layout.html.twig" %}
 
 {% block body %}
 <section id="couple-dashboard" class="couple-dashboard-main-block">
@@ -7,7 +7,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="register-block">
 					{% if error %}
-					<p class="text-center alert alert-danger">{{ error|trans({}, 'FOSUserBundle') }}</p>
+					<p class="text-center alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
 					{% endif %}
 					<h4 class="register-heading text-center">{% trans %}Sign In{% endtrans %}</h4>
 					<div class="form-group">

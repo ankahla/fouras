@@ -1,6 +1,6 @@
 <h4 class="register-heading text-center">{% trans %}Register{% endtrans %}</h4>
 <div class="form-group">
-	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+		{{ form_start(form, {'method': 'POST'}) }}
 		<font color="red">{{ form_errors(form.username) }}</font>
 		{{ form_widget(form.username, {'attr':{'class':'form-control','placeholder':'Username'|trans }}) }}
 		<font color="red">{{ form_errors(form.email) }}</font>
@@ -24,9 +24,9 @@
 			<label for="checkbox"></label>
 			<div class="terms-conditions">{% trans %}I agree to all{% endtrans %} <a href="#">{% trans %}terms & Conditions{% endtrans %}</a></div>
 		</div>
-		{{ form_widget(form) }}
+
 		<button type="submit" class="btn btn-pink">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button>
-	</form>
+	{{ form_end(form) }}
 	<p class="sign-in text-center">
 		{% trans %}Already have an account?{% endtrans %} <a href="{{ path('fos_user_security_login') }}">{% trans %}Sign In{% endtrans %}</a>
 	</p>

@@ -2,7 +2,7 @@
 
 namespace AppBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use AppBundle\Entity\Husband;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -30,7 +30,7 @@ class HusbandType extends AbstractPersonType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Husband'
+            'data_class' => Husband::class
         ));
     }
 

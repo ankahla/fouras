@@ -52,6 +52,7 @@ class Enquiry
     private $phone;
 
 	/**
+     * @var Couple
      * @ORM\ManyToOne(targetEntity="Couple")
      * @ORM\JoinColumn(name="couple_id", referencedColumnName="id", nullable=false)
      */
@@ -70,21 +71,21 @@ class Enquiry
     private $vendorService;
 
     /**
-     * @var date $weddingDate
+     * @var \dateTime $weddingDate
      *
      * @ORM\Column(type="date", nullable=true)
      */
     private $weddingDate;
 
     /**
-     * @var date $phoneCallBack
+     * @var \dateTime $phoneCallBack
      *
      * @ORM\Column(type="boolean", nullable=true, options={"default" : true})
      */
     private $phoneCallBack;
 
     /**
-     * @var date $emailResponseBack
+     * @var \dateTime $emailResponseBack
      *
      * @ORM\Column(type="boolean", nullable=true, options={"default" : true})
      */
@@ -151,7 +152,7 @@ class Enquiry
         return $this->couple;
     }
     
-    public function setCouple($couple)
+    public function setCouple(Couple $couple)
     {
         $this->couple = $couple;
         

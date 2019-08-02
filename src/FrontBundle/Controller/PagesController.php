@@ -2,13 +2,13 @@
 
 namespace FrontBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\VendorService;
 use AppBundle\Form\VendorServiceFilterType;
 
-class PagesController extends Controller
+class PagesController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")

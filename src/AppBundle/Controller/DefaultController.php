@@ -3,13 +3,12 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\MessageCatalogue;
-use Symfony\Component\Translation\Catalogue\TargetOperation;
 use Symfony\Component\Translation\Catalogue\MergeOperation;
 
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
     /**
      * @Route("/admin")
@@ -20,7 +19,6 @@ class DefaultController extends Controller
         $locale = $request->get('locale') ? $request->get('locale') : 'fr';
         $output = $request->get('output') ? $request->get('output') : 'xlf';
         $bundle = $request->get('bundle') ? $request->get('bundle') : '';
-        $clean = true;
 
         $kernel = $this->get('kernel');
         $transPaths = [$kernel->getRootDir().'/Resources/'];
@@ -43,6 +41,7 @@ class DefaultController extends Controller
 
         // load any existing messages from the translation files
         $currentCatalogue = new MessageCatalogue($locale);
+
         foreach ($transPaths as $path) {
             $path .= 'translations';
 

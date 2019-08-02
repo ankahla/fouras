@@ -20,8 +20,8 @@ class CoupleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('husband', new HusbandType)
-        ->add('wife', new WifeType)
+        ->add('husband', HusbandType::class)
+        ->add('wife', WifeType::class)
         ->add('weddingDate', DateType::class, ['widget' => 'single_text', 'label' => 'Wedding date'])
         ->add('weddingCity', null, ['label' => 'Wedding city', 'choice_translation_domain' => 'messages'])
         ->add('urls', CollectionType::class,

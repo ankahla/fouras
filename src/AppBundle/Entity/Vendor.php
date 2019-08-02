@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Traits\PersonTrait;
 
@@ -37,6 +36,7 @@ class Vendor
     private $city;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Enquiry", mappedBy="vendor", cascade={"persist", "remove"})
      */
     private $enquiries;
@@ -70,6 +70,11 @@ class Vendor
 
         if (!$this->email && $user->getEmail()) {
             $this->email = $user->getEmail();
+        }
+
+        if (!$this->firstName && !$this->lastName) {
+            $this->firstName = $user->getFirstName();
+            $this->lastName = $user->getLastName();
         }
 
         return $this;
@@ -123,8 +128,8 @@ class Vendor
 
     public function addService(VendorService $service)
     {
-        if (!$service->getCity() && $vendor->getCity()) {
-            $service->setCity($vendor->getCity());
+        if (!$service->getCity() && $this->getCity()) {
+            $service->setCity($this->getCity());
         }
 
         $this->services[] = $service;

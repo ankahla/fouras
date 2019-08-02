@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class VendorService
 {
-    const CAPACITY_A = 'Inférieur à 50',
+    public const CAPACITY_A = 'Inférieur à 50',
     CAPACITY_B = 'Entre 50 et 100',
     CAPACITY_C = 'Entre 100 et 200',
     CAPACITY_D = 'Entre 200 et 500',
@@ -134,11 +134,6 @@ class VendorService
      */
     private $youtubeVideoId;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Enquiry", mappedBy="vendorService", cascade={"persist", "remove"})
-     */
-    private $enquiries;
-
     function __construct()
     {
         $this->urls = new ArrayCollection;
@@ -184,7 +179,7 @@ class VendorService
         return $this->vendor;
     }
     
-    public function setVendor($vendor)
+    public function setVendor(Vendor $vendor)
     {
         $this->vendor = $vendor;
         

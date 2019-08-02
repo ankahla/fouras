@@ -1,6 +1,7 @@
 <?php
 namespace UserBundle\Controller;
 
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -10,13 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 Trait ControllerTrait
 {
-    public function createForm($type, $data = null, array $options = array())
+    public function createForm(string $type, $data = null, array $options = array()): FormInterface
     {
-        return $this->container->get('form.factory')->create($type, $data, $options);
+        return $this->get('form.factory')->create($type, $data, $options);
     }
 
     public function getRequest(): Request
     {
-        return $this->container->get('request_stack')->getCurrentRequest();
+        return $this->get('request_stack')->getCurrentRequest();
     }
 }

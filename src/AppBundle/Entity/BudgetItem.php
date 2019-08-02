@@ -56,91 +56,136 @@ class BudgetItem
     protected $paidAmount = 0;
 
     /**
-     * @ORM\Column(type="decimal",precision=10, scale=3, nullable=true)
-     *
+     * @return mixed
      */
-    protected $dueAmount = 0;
-
-
     public function getId()
     {
     	return $this->id;
     }
 
+    /**
+     * @param $id
+     *
+     * @return $this
+     */
     public function setId($id)
     {
     	$this->id = $id;
     	return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getBudget()
     {
         return $this->budget;
     }
-    
+
+    /**
+     * @param $budget
+     *
+     * @return $this
+     */
     public function setBudget($budget)
     {
         $this->budget = $budget;
+
         return $this;
     }
-    
+
+    /**
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
-    
+
+    /**
+     * @param $name
+     *
+     * @return $this
+     */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
-    public function getEstimatedAmount()
+    /**
+     * @return float
+     */
+    public function getEstimatedAmount(): float
     {
         return $this->estimatedAmount;
     }
-    
+
+    /**
+     * @param $estimatedAmount
+     *
+     * @return $this
+     */
     public function setEstimatedAmount($estimatedAmount)
     {
         $this->estimatedAmount = $estimatedAmount;
+
         return $this;
     }
-    
-    public function getActuelAmount()
+
+    /**
+     * @return int
+     */
+    public function getActuelAmount(): int
     {
         return $this->actuelAmount;
     }
-    
+
+    /**
+     * @param $actuelAmount
+     *
+     * @return $this
+     */
     public function setActuelAmount($actuelAmount)
     {
         $this->actuelAmount = $actuelAmount;
         return $this;
     }
-    
+
+    /**
+     * @return int
+     */
     public function getPaidAmount()
     {
         return $this->paidAmount;
     }
-    
+
+    /**
+     * @param $paidAmount
+     *
+     * @return $this
+     */
     public function setPaidAmount($paidAmount)
     {
         $this->paidAmount = $paidAmount;
+
         return $this;
     }
-    
+
+    /**
+     * @return float|int
+     */
     public function getDueAmount()
     {
         $toPay = $this->actuelAmount != 0.0 ? $this->actuelAmount : $this->estimatedAmount;
 
         return $toPay - $this->paidAmount;
     }
-    
-    public function setDueAmount($dueAmount)
-    {
-        $this->dueAmount = $dueAmount;
-        return $this;
-    }
-    
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
     	return $this->name;

@@ -2,6 +2,7 @@
 namespace AppBundle\Listener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -14,12 +15,14 @@ class LocaleListener implements EventSubscriberInterface
         $this->defaultLocale = $defaultLocale;
     }
 
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(RequestEvent $event)
     {
         $request = $event->getRequest();
-/*        if (!$request->hasPreviousSession()) {
+        if (!$request->hasSession()) {
+
             return;
-        }*/
+        }
+
         $locale = $request->attributes->get('_locale') ? 
         	$request->attributes->get('_locale') :
         	$request->get('_locale');
@@ -36,7 +39,7 @@ class LocaleListener implements EventSubscriberInterface
     {
         return array(
             // must be registered after the default Locale listener
-            KernelEvents::REQUEST => array(array('onKernelRequest', 15)),
+            KernelEvents::REQUEST => [['onKernelRequest', 15]],
         );
     }
 }

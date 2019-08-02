@@ -2,29 +2,18 @@
 
 namespace UserBundle\Controller;
 
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use FOS\UserBundle\Model\UserInterface;
 use AppBundle\Entity\Task;
-use AppBundle\Entity\Budget;
-use AppBundle\Entity\BudgetItem;
-use AppBundle\Entity\Couple;
 use AppBundle\Entity\Vendor;
 use AppBundle\Entity\VendorService;
-use AppBundle\Entity\Guest;
 use AppBundle\Entity\Url;
 use AppBundle\Entity\VendorServiceUrl;
 use AppBundle\Form\TaskType;
-use AppBundle\Form\BudgetType;
-use AppBundle\Form\BudgetItemType;
-use AppBundle\Form\CoupleType;
-use AppBundle\Form\GuestType;
 use AppBundle\Form\VendorServiceType;
 
-class VendorController extends Controller
+class VendorController extends AbstractController
 {
 
     public function dashboardAction()
@@ -34,8 +23,8 @@ class VendorController extends Controller
 
     public function inqueryAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
         return $this->render('UserBundle::Profile/Vendor/inquery.html.twig', ['vendor' => $vendor]);
@@ -43,8 +32,8 @@ class VendorController extends Controller
 
     public function serviceAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
         return $this->render('UserBundle::Profile/Vendor/services.html.twig', ['vendor' => $vendor]);
@@ -52,8 +41,8 @@ class VendorController extends Controller
 
     public function newServiceAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
         $vendorService = new VendorService;
         $vendorService->setVendor($vendor);
@@ -79,8 +68,8 @@ class VendorController extends Controller
 
     public function editServiceAction(Request $request, $id)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
         $vendorService = $em->getRepository(VendorService::class)->findOneBy(
@@ -116,8 +105,8 @@ class VendorController extends Controller
 
     public function updateServiceAction(Request $request, $id)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
         $vendorService = $em->getRepository(VendorService::class)->findOneBy(
@@ -155,7 +144,7 @@ class VendorController extends Controller
                     // upload file
                     $file = $vendorService->getPicture();
                     // Generate a unique name for the file before saving it
-                    $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                    $fileName = md5(uniqid('', true)).'.'.$file->guessExtension();
                     // Move the file to the directory where brochures are stored
                     $file->move(
                         $this->getParameter('vendor_service_pic_dir'),
@@ -186,8 +175,8 @@ class VendorController extends Controller
 
     public function createServiceAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
         $vendorService = new VendorService;
         $vendorService->setVendor($vendor);
@@ -206,7 +195,7 @@ class VendorController extends Controller
                 // upload file
                 $file = $vendorService->getPicture();
                 // Generate a unique name for the file before saving it
-                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $fileName = md5(uniqid('', true)).'.'.$file->guessExtension();
                 // Move the file to the directory where brochures are stored
                 $file->move(
                     $this->getParameter('vendor_service_pic_dir'),
@@ -230,10 +219,10 @@ class VendorController extends Controller
         );
     }
 
-    public function deleteServiceAction(Request $request, $id)
+    public function deleteServiceAction($id)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
         $vendorService = $em->getRepository(VendorService::class)->findOneBy(
@@ -253,9 +242,9 @@ class VendorController extends Controller
 
     public function tasksAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $task = new Task;
 
         $form = $this->createForm(TaskType::class, $task, ['method' => 'PATCH']);
@@ -304,7 +293,7 @@ class VendorController extends Controller
      *
      * @param Task $task The task entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\FormInterface The form
      */
     private function createDeleteTaskForm(Task $task)
     {

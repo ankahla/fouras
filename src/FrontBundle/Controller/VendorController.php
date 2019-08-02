@@ -2,7 +2,8 @@
 
 namespace FrontBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -10,21 +11,19 @@ use FOS\UserBundle\Model\UserInterface;
 use AppBundle\Entity\Service;
 use AppBundle\Entity\City;
 use AppBundle\Entity\Couple;
-use AppBundle\Entity\Vendor;
 use AppBundle\Entity\VendorService;
 use AppBundle\Entity\Enquiry;
 use AppBundle\Form\VendorServiceFilterType;
 use AppBundle\Form\EnquiryType;
 
-class VendorController extends Controller
+class VendorController extends AbstractController
 {
     /**
      * @Route("/prestataires", name="vendors")
      */
     public function indexAction()
     {
-        $em = $this->container->get('Doctrine')->getEntityManager();
-        $services = $em->getRepository(Service::class)->findAll();
+        $services = $this->getDoctrine()->getRepository(Service::class)->findAll();
 
         return $this->render('FrontBundle::Vendor/categories.html.twig', ['services' => $services]);
     }
@@ -34,9 +33,9 @@ class VendorController extends Controller
      */
     public function profileAction($id)
     {
-        $em = $this->container->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $vendorService = $em->getRepository(VendorService::class)->findOneById($id);
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
 
         if (!$vendorService) {
             return $this->createNotFoundException('Service not found');           
@@ -74,7 +73,7 @@ class VendorController extends Controller
 
         }
         
-        $request = $this->getRequest();
+        $request = $this->get('request_stack');
         
         if ($request->isMethod('POST') && !$enquirySent) {
             $enquiryForm->handleRequest($request);
@@ -92,7 +91,7 @@ class VendorController extends Controller
                 $enquirySent = true;
             } else {
                 // @todo
-                dump($form->getErrors());
+                //dump($form->getErrors());
             }
         }
 
@@ -108,9 +107,8 @@ class VendorController extends Controller
     /**
      * @Route("/prestataire/recherche/{serviceId}", name="vendor_search")
      */
-    public function searchAction(Request $request, $serviceId = null)
+    public function searchAction(Request $request, EntityManagerInterface $em, $serviceId = null)
     {
-        $em = $this->container->get('Doctrine')->getEntityManager();
         $vendorServiceFilter = new VendorService();
 
         if ($serviceId) {

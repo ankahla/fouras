@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
@@ -20,9 +21,7 @@ class TaskController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $tasks = $em->getRepository('AppBundle:Task')->findAll();
+        $tasks = $this->getDoctrine()->getRepository('AppBundle:Task')->findAll();
 
         return $this->render('task/index.html.twig', array(
             'tasks' => $tasks,
@@ -35,8 +34,9 @@ class TaskController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        $user = $this->getUser();
+
+        if (!$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
@@ -80,8 +80,10 @@ class TaskController extends Controller
      */
     public function editAction(Request $request, Task $task)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        // @TODO this must be handled by firewall
+        $user = $this->getUser();
+
+        if (!$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
@@ -125,9 +127,9 @@ class TaskController extends Controller
      *
      * @param Task $task The task entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return FormInterface
      */
-    private function createDeleteForm(Task $task)
+    private function createDeleteForm(Task $task): FormInterface
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('task_delete', array('id' => $task->getId())))

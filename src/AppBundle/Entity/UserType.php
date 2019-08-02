@@ -12,8 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class UserType
 {
-	const COUPLE_TYPE = 1;
-	const VENDOR_TYPE = 2;
+	public const COUPLE_TYPE = 1;
+	public const VENDOR_TYPE = 2;
 	
     /**
      * @ORM\Id

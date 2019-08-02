@@ -16,7 +16,7 @@ class CoupleUrlType extends AbstractType
     {
         $builder
         ->add('id', HiddenType::class)
-        ->add('url', new UrlFormType);
+        ->add('url', UrlFormType::class);
     }
     
     /**

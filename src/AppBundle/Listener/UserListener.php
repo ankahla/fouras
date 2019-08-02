@@ -1,26 +1,24 @@
 <?php
 namespace AppBundle\Listener;
 
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use AppBundle\Entity\Couple;
 use AppBundle\Entity\User;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class UserListener
 {
     private $securityContext;
-    private $managerRegistry;
     private $em;
 
-    public function __construct(TokenStorage $securityContext, Registry $managerRegistry)
+    public function __construct(TokenStorageInterface $securityContext, RegistryInterface $managerRegistry)
     {
         $this->securityContext = $securityContext;
-        $this->managerRegistry = $managerRegistry;
-        $this->em = $managerRegistry->getEntityManager();
+        $this->em = $managerRegistry->getManager();
     }
 
-    public function onKernelController(FilterControllerEvent $event)
+    public function onKernelController(ControllerEvent $event)
     {
         $user = null;
         if ($this->securityContext->getToken()) {
@@ -34,10 +32,13 @@ class UserListener
         if (is_object($user) && $user instanceof User) {
             $session = $event->getRequest()->getSession();
 
+            if(!$session) return;
+
             $profileName = '';
             if ($user->isVendor()) {
                 // @TODO
             } else {
+                /** @var Couple $couple **/
                 $couple = $this->em->getRepository(Couple::class)->findOneByUser($user);
 
                 if ($couple) {

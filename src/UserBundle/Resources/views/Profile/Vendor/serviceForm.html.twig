@@ -199,7 +199,7 @@
 			var position = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
 			placeMarkerAndPanTo(position, map);
 		} else {
-			searchAddress('{{ vendorServiceForm.city.vars.data.name }}');
+			searchAddress('{{ vendorServiceForm.city.vars.data.name ?? '' }}');
 		}
 	}
 

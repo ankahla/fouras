@@ -104,7 +104,10 @@ class Task
         $this->description = $description;
         return $this;
     }
-    
+
+    /**
+     * @return \DateTime
+     */
     public function getDate()
     {
         return $this->date;
@@ -115,10 +118,13 @@ class Task
         $this->date = $date;
         return $this;
     }
-    
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
-    	return $this->name;
+    	return $this->id;
     }
 
 }

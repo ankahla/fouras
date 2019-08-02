@@ -2,15 +2,13 @@
 
 namespace UserBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\File;
 
 use AppBundle\Entity\Vendor;
 use AppBundle\Entity\Couple;
-use AppBundle\Entity\Url;
 use AppBundle\Entity\CoupleUrl;
 use AppBundle\Entity\VendorUrl;
 use AppBundle\Entity\Task;
@@ -18,13 +16,14 @@ use AppBundle\Entity\Task;
 use AppBundle\Form\VendorType;
 use AppBundle\Form\CoupleType;
 use AppBundle\Form\ProfilePictureFormType;
+use Symfony\Component\HttpKernel\KernelInterface;
 
-class UserController extends Controller
+class UserController extends AbstractController
 {
 	public function createUrlAction(Request $request)
 	{
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
 
 		if ($user->isVendor()) {
 			$vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
@@ -52,9 +51,9 @@ class UserController extends Controller
 
     public function deleteUrlAction($id)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
 
-        $em = $this->container->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         if ($user->isVendor()) {
         	$vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
@@ -78,7 +77,7 @@ class UserController extends Controller
      */
     public function deleteTaskAction(Request $request, Task $task)
     {
-    	$user = $this->container->get('security.token_storage')->getToken()->getUser();
+    	$user = $this->getUser();
 
         $form = $this->createDeleteTaskForm($task);
         $form->handleRequest($request);
@@ -96,48 +95,40 @@ class UserController extends Controller
         return $this->redirectToRoute('couple_todo');
     }
 
-    public function pictureUploadAction(Request $request)
+    public function pictureUploadAction(Request $request, KernelInterface $kernel)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
-        if ($user->getProfilePicture()) {
-        	$user->setProfilePicture(new File($user->getProfilePicture(), false));
-        } else {
-        	$src = $this->container->get('app.gravatar_service')->getSrcByEmail($user->getEmail());
-        	$user->setProfilePicture(new File($src, false));
-        }
-
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
 
         $profilePictureForm = $this->createForm(ProfilePictureFormType::class, $user);
 
+        $filePath = (string) $user->getProfilePicture();
         $profilePictureForm->handleRequest($request);
-        if (
-            $profilePictureForm->isSubmitted()
-            && $profilePictureForm->isValid()
-        ) {
-            $file = $user->getProfilePicture();
+
+        if ($profilePictureForm->isSubmitted() && $profilePictureForm->isValid()) {
+            $file = $user->getProfilePictureFile();
+
             if (!$file) {
                 return new Response('File too big');
             }
+            // remove old file
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
             // Generate a unique name for the file before saving it
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $filePath = $this->container->get('kernel')->getRootDir() .
-                '/../web/' .
-                $this->container->getParameter('profile_pic_dir');
+            $fileName = md5(uniqid("", true)).'.'.$file->guessExtension();
+            $filePath = $kernel->getProjectDir() . '/web/' . $this->getParameter('profile_pic_dir');
 
-            // Move the file to the directory where profile picture are stored
-            $file->move(
-                $filePath,
-                $fileName
-            );
+            // Move the file to the directory where profile pics are stored
+            $file->move($filePath, $fileName);
 
+            // save user in db
+            $em = $this->getDoctrine()->getManager();
             $user->setProfilePicture($fileName);
             $em->persist($user);
             $em->flush();
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -145,7 +136,7 @@ class UserController extends Controller
      *
      * @param Task $task The task entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\FormInterface The form
      */
     private function createDeleteTaskForm(Task $task)
     {

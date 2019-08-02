@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -10,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Url
 {
-    const FB_TYPE = 'facebook',
+    public const FB_TYPE = 'facebook',
     TW_TYPE = 'twitter',
     YT_TYPE = 'youtube',
     IN_TYPE = 'linkedin',

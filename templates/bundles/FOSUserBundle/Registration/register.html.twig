@@ -1,0 +1,19 @@
+{% extends "bundles/FOSUserBundle/layout.html.twig" %}
+{% block banner %}
+  {% include 'front/banner.html.twig' with {'title' : 'layout.register'|trans({}, 'FOSUserBundle')} %}
+{% endblock %}
+
+{% block body %}
+  <section id="couple-register" class="couple-dashboard-main-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="register-block">
+            {{ form_errors(form) }}
+            {% include "bundles/FOSUserBundle/Registration/register_content.html.twig" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -2,29 +2,24 @@
 
 namespace UserBundle\Controller;
 
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use FOS\UserBundle\Model\UserInterface;
 use AppBundle\Entity\Task;
 use AppBundle\Entity\Budget;
 use AppBundle\Entity\BudgetItem;
 use AppBundle\Entity\Couple;
 use AppBundle\Entity\Guest;
 use AppBundle\Form\TaskType;
-use AppBundle\Form\BudgetType;
-use AppBundle\Form\BudgetItemType;
 use AppBundle\Form\CoupleType;
-use AppBundle\Form\GuestType;
 
-class CoupleController extends Controller
+class CoupleController extends AbstractController
 {
     public function todoAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $task = new Task;
 
         $form = $this->createForm(TaskType::class, $task, ['method' => 'PATCH']);
@@ -70,9 +65,9 @@ class CoupleController extends Controller
 
     public function budgetPlannerAction()
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
         $list = $couple->getBudgets();
 
@@ -92,8 +87,8 @@ class CoupleController extends Controller
 
     public function updateBudgetAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
 
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
         $form = $this->createForm(CoupleType::class, $couple, ['method' => 'PATCH']);
@@ -104,8 +99,8 @@ class CoupleController extends Controller
 
     public function createBudgetAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $em = $this->get('Doctrine')->getEntityManager();
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
 
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
         $couple->addBudget(new Budget);
@@ -132,9 +127,9 @@ class CoupleController extends Controller
 
     public function deleteBudgetAction($id, $itemId)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
 
         $budget = $em->getRepository(Budget::class)->findOneBy(['couple' => $couple, 'id' => $id]);
@@ -163,11 +158,11 @@ class CoupleController extends Controller
         return $this->render('UserBundle::Couple/wishlist.html.twig');
     }
 
-    public function guestlistAction(Request $request)
+    public function guestlistAction()
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
 
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
         $list = $couple->getGuests();
 
@@ -185,9 +180,9 @@ class CoupleController extends Controller
 
     public function updateGuestAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
         $list = $couple->getGuests();
 
@@ -217,9 +212,9 @@ class CoupleController extends Controller
 
     public function createGuestAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
 
         $couple->addGuest(new Guest);
@@ -242,9 +237,9 @@ class CoupleController extends Controller
 
     public function deleteGuestAction($id)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         
-        $em = $this->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $couple = $em->getRepository(Couple::class)->findOneByUser($user);
 
         $guest = $em->getRepository(Guest::class)->findOneBy(['couple' => $couple, 'id' => $id]);
@@ -261,7 +256,7 @@ class CoupleController extends Controller
      *
      * @param Task $task The task entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return \Symfony\Component\Form\FormInterface The form
      */
     private function createDeleteTaskForm(Task $task)
     {
