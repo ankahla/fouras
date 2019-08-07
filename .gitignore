@@ -8,4 +8,9 @@
 /vendor/
 /bin/
 /composer.phar
+/web/cms/
+!/cms/cms.zip
+!/cms/.htaccess
+!/cms/plugins
+!/cms/configuration
 .idea/
