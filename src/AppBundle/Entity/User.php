@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -94,6 +95,7 @@ class User extends \FOS\UserBundle\Model\User
     private $city;
 
     /**
+     * @var UserType
      * @ORM\ManyToOne(targetEntity="UserType")
      * @ORM\JoinColumn(name="user_type_id", referencedColumnName="id")
      */
@@ -104,6 +106,11 @@ class User extends \FOS\UserBundle\Model\User
      *
      */
     protected $profilePicture;
+
+    /**
+     * @var File
+     */
+    protected $profilePictureFile;
 
     /**
      * @ORM\OneToMany(targetEntity="Task", mappedBy="user", cascade={"persist"})
@@ -235,6 +242,28 @@ class User extends \FOS\UserBundle\Model\User
         $this->profilePicture = $profilePicture;
         return $this;
     }
+
+    /**
+     * @return File
+     */
+    public function getProfilePictureFile(): File
+    {
+        return $this->profilePictureFile ?? new File($this->profilePicture, false);
+    }
+
+    /**
+     * @param File $profilePictureFile
+     *
+     * @return self
+     */
+    public function setProfilePictureFile(File $profilePictureFile): self
+    {
+        $this->profilePictureFile = $profilePictureFile;
+
+        return $this;
+    }
+
+
 
     public function addTask(Task $task)
     {

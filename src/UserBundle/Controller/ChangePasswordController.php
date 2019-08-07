@@ -11,12 +11,11 @@
 
 namespace UserBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Controller\ChangePasswordController as ChangePasswordBaseController;
-use UserBundle\Controller\DefaultControllerMethods;
 
 /**
  * Controller managing the password change
@@ -30,15 +29,15 @@ class ChangePasswordController extends ChangePasswordBaseController
     /**
      * Change user password
      */
-    public function changePasswordAction()
+    public function changePasswordAction(Request $request)
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        $form = $this->container->get('fos_user.change_password.form');
-        $formHandler = $this->container->get('fos_user.change_password.form.handler');
+        $form = $this->get('fos_user.change_password.form');
+        $formHandler = $this->get('fos_user.change_password.form.handler');
 
         $process = $formHandler->process($user);
         if ($process) {
@@ -68,7 +67,7 @@ class ChangePasswordController extends ChangePasswordBaseController
      */
     protected function getRedirectionUrl(UserInterface $user)
     {
-        return $this->container->get('router')->generate('fos_user_profile_show');
+        return $this->get('router')->generate('fos_user_profile_show');
     }
 
     /**
@@ -77,6 +76,6 @@ class ChangePasswordController extends ChangePasswordBaseController
      */
     protected function setFlash($action, $value)
     {
-        $this->container->get('session')->getFlashBag()->set($action, $value);
+        $this->get('session')->getFlashBag()->set($action, $value);
     }
 }

@@ -4,11 +4,15 @@ parameters:
     #parameter_name: value
 
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
     app.form.registration:
         class: AppBundle\Form\Type\RegistrationFormType
-        arguments: [%fos_user.model.user.class%]
+        arguments: ['%fos_user.model.user.class%']
         tags:
-            - { name: form.type, alias: app_user_registration_form }
+            - { name: 'form.type', alias: 'app_user_registration_form' }
 
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl

@@ -69,6 +69,9 @@ class Capacity implements Translatable
         $this->locale = $locale;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
     	return $this->name;

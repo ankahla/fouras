@@ -3,22 +3,27 @@
 namespace FrontBundle\Controller;
 
 use AppBundle\Entity\QueryBuilder\ArticleQueryBuilder;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Services\CmsService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class BlogController extends Controller
+class BlogController extends AbstractController
 {
     /**
      * @Route("/blog/{categoryId}-{alias}", name="blog", defaults={"categoryId":"", "alias":""})
+     * @param Request    $request
+     * @param            $categoryId
+     * @param $
+     * @param CmsService $cmsApi
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, $categoryId)
+    public function indexAction(Request $request, $categoryId, CmsService $cmsApi)
     {
         $page = $request->get('page', 1);
         $tag = $request->get('tag', 0);
         $search = $request->get('search', '');
-        $cmsApi = $this->get('app.cms_api');
 
         $blogCategory = $cmsApi->getBlogCategories();
         $blogCategoryIds = [];
@@ -49,7 +54,7 @@ class BlogController extends Controller
         $currentCategory = $cmsApi->getCategories($categoryId);
         
         // news articles
-        $newsArticles = $this->getSideNewsArticles();
+        $newsArticles = $this->getSideNewsArticles($cmsApi);
 
         return $this->render('FrontBundle:Blog:index.html.twig', [
             'data' => $data,
@@ -62,11 +67,14 @@ class BlogController extends Controller
 
     /**
      * @Route("/article/{id}-{alias}", name="article")
+     * @param            $id
+     * @param            $alias
+     * @param CmsService $cmsApi
+     *
+     * @return \Symfony\Component\HttpFoundation\Response|\Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function articleAction($id, $alias)
+    public function articleAction($id, $alias, CmsService $cmsApi)
     {
-        $cmsApi = $this->get('app.cms_api');
-
         $qb = new ArticleQueryBuilder();
         $qb
             ->setArticleId($id)
@@ -90,7 +98,7 @@ class BlogController extends Controller
 
         $relatedArticles = $cmsApi->getArticles($qb);
         // news articles
-        $newsArticles = $this->getSideNewsArticles();
+        $newsArticles = $this->getSideNewsArticles($cmsApi);
         // blog categories
         $blogCategory = $cmsApi->getBlogCategories();
 
@@ -102,10 +110,13 @@ class BlogController extends Controller
         ]);
     }
 
-    private function getSideNewsArticles()
+    /**
+     * @param CmsService $cmsApi
+     *
+     * @return mixed
+     */
+    private function getSideNewsArticles(CmsService $cmsApi)
     {
-        $cmsApi = $this->get('app.cms_api');
-
         $qb = $cmsApi->getDefaultNewsQueryBuilder();
         $qb
             ->setLimit(5)

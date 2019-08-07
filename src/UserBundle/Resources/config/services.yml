@@ -1,4 +1,14 @@
 services:
-#    user.example:
-#        class: UserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    FOS\UserBundle\Form\Factory\FactoryInterface: "@fos_user.profile.form.factory"
+
+    UserBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    UserBundle\Listener\RegistrationListener:
+        tags:
+            - { name: kernel.event_subscriber }

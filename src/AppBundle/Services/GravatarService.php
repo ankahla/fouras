@@ -20,7 +20,7 @@ class GravatarService
     /** 
      * Gravatar's url 
      */ 
-    const GRAVATAR_URL = "http://www.gravatar.com/avatar.php"; 
+    private const GRAVATAR_URL = "http://www.gravatar.com/avatar.php";
 
     /** 
      * Ratings available 

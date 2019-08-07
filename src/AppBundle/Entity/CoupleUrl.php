@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -29,7 +28,7 @@ class CoupleUrl
      */
     private $couple;
 
-    function __construct($type = 'facebook', $url = '')
+    public function __construct($type = 'facebook', $url = '')
     {
         $this->url = new Url();
         $this->url

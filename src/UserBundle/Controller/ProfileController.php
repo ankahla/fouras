@@ -11,13 +11,10 @@
 
 namespace UserBundle\Controller;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
-use FOS\UserBundle\Controller\ProfileController as profileBaseController;
 
 use AppBundle\Entity\Vendor;
 use AppBundle\Entity\Couple;
@@ -31,15 +28,14 @@ use AppBundle\Form\ProfilePictureFormType;
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ProfileController extends profileBaseController
+class ProfileController extends AbstractController
 {
-    use ControllerTrait;
     /**
      * Show the user
      */
-    public function showAction()
+    public function showAction(Request $request)
     {
-        return $this->mainProcess();
+        return $this->mainProcess($request);
     }
 
     /**
@@ -47,24 +43,23 @@ class ProfileController extends profileBaseController
      */
     public function editAction(Request $request)
     {
-        return $this->mainProcess();
+        return $this->mainProcess($request);
     }
 
     /**
      * Edit the user
      */
-    public function editProfileAction()
+    public function editProfileAction(Request $request)
     {
-        return $this->mainProcess();
+        return $this->mainProcess($request);
     }
 
-    private function mainProcess()
+    private function mainProcess(Request $request)
     {
         $userProfile = $this->getUserProfile();
         $user = $userProfile['user'];
-        $request = $this->getRequest();
 
-        $em = $this->container->get('Doctrine')->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $profilePictureForm = $this->createForm(ProfilePictureFormType::class, $user);
 
         if ($user->isVendor()) {
@@ -74,9 +69,6 @@ class ProfileController extends profileBaseController
             $couple = $userProfile['couple'];
             $form = $this->createForm(CoupleType::class, $couple, ['method' => 'PATCH']);
         }
-
-        $passwordForm = $this->container->get('fos_user.change_password.form');
-
 
         if ($request->isMethod('PATCH')) {
             $form->handleRequest($request);
@@ -88,7 +80,7 @@ class ProfileController extends profileBaseController
                 dump($form->getErrors());
             }
 
-            return new RedirectResponse($this->getRedirectionUrl($user));
+            return $this->redirectToRoute('fos_user_profile_show');
         }
 
         $template = $user->isVendor() ?
@@ -102,127 +94,26 @@ class ProfileController extends profileBaseController
                 'profilePictureForm' => $profilePictureForm->createView(),
                 'profileForm' => $form->createView(),
                 'newUrlForm' =>  $form->createView(),
-                'passwordForm' => $passwordForm->createView(),
             ]
         );
     }
 
     private function getUserProfile()
     {
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
+
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        if ($user->getProfilePicture()) {
-            $user->setProfilePicture(new File($user->getProfilePicture(), false));
-        } else {
-            $src = $this->container->get('app.gravatar_service')->getSrcByEmail($user->getEmail());
-            $user->setProfilePicture(new File($src, false));
-        }
+        $em = $this->getDoctrine()->getManager();
 
         $userData = [
-        'user' => $user,
-        'couple' => null,
-        'vendor' => null
+            'user' => $user,
+            'couple' => $em->getRepository(Couple::class)->findOneByUser($user),
+            'vendor' => $em->getRepository(Vendor::class)->findOneByUser($user),
         ];
 
-        $em = $this->container->get('Doctrine')->getEntityManager();
-
-        if ($user->isVendor()) {
-            $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
-
-            if (!$vendor) {
-                $vendor = new Vendor;
-                $vendor
-                    ->setFirstName($user->getFirstName())
-                    ->setLastName($user->getLastName())
-                    ->setUser($user);
-                $em->persist($vendor);
-                $em->flush();
-            }
-
-            $userData['vendor'] = $vendor;
-        } else {
-            $couple = $em->getRepository(Couple::class)->findOneByUser($user);
-
-            if (!$couple) {
-                $couple = new Couple;
-                $couple->setUser($user);
-                $em->persist($couple);
-                $em->flush();
-            }
-
-            $userData['couple'] = $couple;
-        }
-
         return $userData;
-    }
-
-    public function pictureUploadAction()
-    {
-        $userProfile = $this->getUserProfile();
-        $user = $userProfile['user'];
-
-        $em = $this->container->get('Doctrine')->getEntityManager();
-
-        $profilePictureForm = $this->createForm(ProfilePictureFormType::class, $user);
-
-        $request = $this->getRequest();
-        $filePath = (string) $user->getProfilePicture();
-        $profilePictureForm->handleRequest($request);
-
-        if (
-            $profilePictureForm->isSubmitted()
-            && $profilePictureForm->isValid()
-        ) {
-            $file = $user->getProfilePicture();
-
-            if (!$file) {
-                return new Response('File too big');
-            }
-            // remove old file
-            if (file_exists($filePath)) {
-                unlink($filePath);
-            }
-            // Generate a unique name for the file before saving it
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $filePath = $this->container->get('kernel')->getRootDir() .
-                '/../web/' .
-                $this->container->getParameter('profile_pic_dir');
-
-            // Move the file to the directory where brochures are stored
-            $file->move(
-                $filePath,
-                $fileName
-            );
-
-            $user->setProfilePicture($fileName);
-            $em->persist($user);
-            $em->flush();
-        }
-
-        return new Response;
-    }
-
-    /**
-     * Generate the redirection url when editing is completed.
-     *
-     * @param \FOS\UserBundle\Model\UserInterface $user
-     *
-     * @return string
-     */
-    protected function getRedirectionUrl(UserInterface $user)
-    {
-        return $this->container->get('router')->generate('fos_user_profile_show');
-    }
-
-    /**
-     * @param string $action
-     * @param string $value
-     */
-    protected function setFlash($action, $value)
-    {
-        $this->container->get('session')->getFlashBag()->set($action, $value);
     }
 }

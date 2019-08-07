@@ -26,6 +26,7 @@ class Budget
     private $couple;
 
     /**
+     * @var Service
      * @ORM\ManyToOne(targetEntity="Service")
      * @ORM\JoinColumn(name="service_id", referencedColumnName="id")
      */
@@ -97,7 +98,7 @@ class Budget
 
     public function removeTask(BudgetItem $item)
     {
-        $this->item->removeElement($item);
+        $this->items->removeElement($item);
     }
 
     public function getTotals()

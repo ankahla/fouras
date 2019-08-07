@@ -79,23 +79,7 @@ class City
         $this->zipcode = $zipcode;
         return $this;
     }
-    public function getBudgets()
-    {
-        return $this->budgets;
-    }
 
-    public function addBudget(Budget $budget)
-    {
-        $this->budgets[] = $budget;
-
-        return $this;
-    }
-
-    public function removeBudget(Budget $budget)
-    {
-        $this->budgets->removeElement($budget);
-    }
-    
     public function __toString()
     {
     	return $this->name;

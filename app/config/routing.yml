@@ -5,7 +5,7 @@
 
 front_homepage:
     path:   /{_locale}
-    defaults: {_controller: FrontBundle:Pages:index, _locale: %locale% }
+    defaults: {_controller: FrontBundle:Pages:index, _locale: '%locale%'}
     requirements:
         _locale: ar|fr|en
 

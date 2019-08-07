@@ -3,6 +3,7 @@
 namespace FrontBundle\Controller;
 
 use AppBundle\Entity\QueryBuilder\ArticleQueryBuilder;
+use AppBundle\Services\CmsService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,9 +13,8 @@ class WeddingController extends Controller
     /**
      * @Route("/wedding_list", name="wedding_list")
      */
-    public function indexAction()
+    public function indexAction(CmsService $cmsApi)
     {
-        $cmsApi = $this->get('app.cms_api');
         $weddings = $cmsApi->getGalleryCategories();
 
         return $this->render('FrontBundle:Wedding:index.html.twig', ['weddings' => $weddings]);
@@ -23,10 +23,8 @@ class WeddingController extends Controller
     /**
      * @Route("/wedding_gallery/{categoryId}-{alias}", name="wedding_gallery")
      */
-    public function galleryAction(Request $request, $categoryId)
+    public function galleryAction(CmsService $cmsApi, $categoryId)
     {
-        $cmsApi = $this->get('app.cms_api');
-
         $wedding = $cmsApi->getCategories($categoryId);
         
         $qb = new ArticleQueryBuilder();

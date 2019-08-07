@@ -5,6 +5,7 @@ fos_user_security:
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile
+    defaults: {_controller: UserBundle:Profile:show, _locale: '%locale%'}
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"

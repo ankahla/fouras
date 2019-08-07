@@ -7,17 +7,16 @@ services:
 
     app.user_listener:
         class: AppBundle\Listener\UserListener
-        arguments: ['@security.token_storage', '@Doctrine']
+        arguments: ['@security.token_storage', '@doctrine']
         tags:
             - { name: kernel.event_listener, event: kernel.controller }
 
-    app.gravatar_service:
+    AppBundle\Services\GravatarService:
         class: AppBundle\Services\GravatarService
         arguments: ['%gravatar.default_options%', '@assets.packages']
 
-    app.cms_api:
-        class: AppBundle\Services\CmsService
-        arguments: 
+    AppBundle\Services\CmsService:
+        arguments:
             - '@csa_guzzle.client.cms_api'
             - '%cms_api_key%'
             - '@request_stack'

@@ -1,4 +1,4 @@
-{% extends 'front/layout.html.twig' %}
+{% extends 'UserBundle::layout.html.twig' %}
 
 {% block javascripts %}
 {{ parent() }}
@@ -12,7 +12,7 @@ $(".datepicker").datepicker();
 {% if title is not defined %}
 {% set title = 'Couple dashboard'|trans %}
 {% endif %}
-  <section id="page-banner" class="page-banner bg-dark" style="background-image: url('{{ asset('bundles/front/images/banner-2.jpg') }}');"> 
+  <section id="page-banner" class="page-banner bg-dark" style="background-image: url('{{ asset('bundles/front/images/banner-2.jpg') }}');">
     <div class="overlay-bg"></div>
     <div class="container">
       <div class="banner-dtl">
@@ -43,12 +43,12 @@ $(".datepicker").datepicker();
                     {% if app.session.get('phone') %}
                     <div><i class="fa fa-phone"></i>{{ app.session.get('phone') }}</div>
                     {% endif %}
-                  </div>    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>        
+        </div>
       </div>
     </div>
   </section>

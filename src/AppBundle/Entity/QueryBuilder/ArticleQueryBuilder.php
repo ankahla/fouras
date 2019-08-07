@@ -3,7 +3,7 @@ namespace AppBundle\Entity\QueryBuilder;
 
 class ArticleQueryBuilder
 {
-    const DEFAULT_FIELDS = [
+    private const DEFAULT_FIELDS = [
         'id',
         'title',
         'alias',
@@ -14,67 +14,126 @@ class ArticleQueryBuilder
         'created',
     ];
 
+    /**
+     * @var array
+     */
     private $fields;
+
+    /**
+     * @var string
+     */
     private $articleId;
+
+    /**
+     * @var array
+     */
     private $categoryIds;
+
+    /**
+     * @var string
+     */
     private $featured;
+
+    /**
+     * @var string
+     */
     private $tag;
+
+    /**
+     * @var string
+     */
     private $search;
+
+    /**
+     * @var string
+     */
     private $createdBy;
+
+    /**
+     * @var string
+     */
     private $limit;
+
+    /**
+     * @var string
+     */
     private $start;
+
+    /**
+     * @var string
+     */
     private $page;
+
+    /**
+     * @var string
+     */
     private $sort;
+
+    /**
+     * @var string
+     */
     private $sortDirection;
+
+    /**
+     * @var string
+     */
     private $locale;
+
+    /**
+     * @var string
+     */
     private $apiKey;
 
-    function __construct()
+    /**
+     * ArticleQueryBuilder constructor.
+     */
+    public function __construct ()
     {
         $this->fields = self::DEFAULT_FIELDS;
         $this->start = 0;
     }
 
     /**
-     * @param int $id
+     * @param string $articleId
      *
      * @return self
      */
-    public function setArticleId($id)
+    public function setArticleId(string $articleId): self
     {
-        $this->articleId = $id;
+        $this->articleId = $articleId;
 
         return $this;
     }
 
     /**
-     * @param int $id
+     * @param array $categoryIds
+     *
+     * @return self
      */
-    public function setCategoryIds($ids)
+    public function setCategoryIds(array $categoryIds): self
     {
-        $this->categoryIds = $ids;
+        $this->categoryIds = $categoryIds;
 
         return $this;
     }
 
     /**
-     * @param bool $isFeatured
+     * @param string $featured
      *
      * @return self
      */
-    public function setFeatured($isFeatured)
+    public function setFeatured(string $featured): self
     {
-        $this->featured = $isFeatured;
+        $this->featured = $featured;
 
         return $this;
     }
 
     /**
      * @param string $tag
-     *
      * @return self
      */
-    public function setTag($tag)
+    public function setTag(string $tag): self
     {
         $this->tag = $tag;
 
@@ -86,7 +145,7 @@ class ArticleQueryBuilder
      *
      * @return self
      */
-    public function setSearch($search)
+    public function setSearch(string $search): self
     {
         $this->search = $search;
 
@@ -94,11 +153,11 @@ class ArticleQueryBuilder
     }
 
     /**
-     * @param int $createdBy
+     * @param string $createdBy
      *
      * @return self
      */
-    public function setCreatedBy($createdBy)
+    public function setCreatedBy(string $createdBy): self
     {
         $this->createdBy = $createdBy;
 
@@ -106,11 +165,11 @@ class ArticleQueryBuilder
     }
 
     /**
-     * @param int $limit
+     * @param string $limit
      *
      * @return self
      */
-    public function setLimit($limit)
+    public function setLimit(string $limit): self
     {
         $this->limit = $limit;
 
@@ -118,11 +177,11 @@ class ArticleQueryBuilder
     }
 
     /**
-     * @param int $start
+     * @param string $start
      *
      * @return self
      */
-    public function setStart($start)
+    public function setStart(string $start): self
     {
         $this->start = $start;
 
@@ -130,11 +189,11 @@ class ArticleQueryBuilder
     }
 
     /**
-     * @param int $page
+     * @param string $page
      *
      * @return self
      */
-    public function setPage($page)
+    public function setPage(string $page): self
     {
         $this->page = $page;
 
@@ -142,14 +201,13 @@ class ArticleQueryBuilder
     }
 
     /**
-     * @param string $sort
+     * @param string $sortDirection
      *
      * @return self
      */
-    public function setSort($sortField, $direction = 'desc')
+    public function setSortDirection(string $sortDirection): self
     {
-        $this->sort = $sortField;
-        $this->sortDirection = ($direction == 'asc' ? 'asc' : 'desc');
+        $this->sortDirection = $sortDirection;
 
         return $this;
     }
@@ -159,7 +217,7 @@ class ArticleQueryBuilder
      *
      * @return self
      */
-    public function setLocale($locale)
+    public function setLocale(string $locale): self
     {
         $this->locale = $locale;
 
@@ -171,9 +229,23 @@ class ArticleQueryBuilder
      *
      * @return self
      */
-    public function setApiKey($apiKey)
+    public function setApiKey(string $apiKey): self
     {
         $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * @param $sortField
+     * @param string $direction
+     *
+     * @return self
+     */
+    public function setSort($sortField, $direction = 'desc'): self
+    {
+        $this->sort = $sortField;
+        $this->sortDirection = ($direction === 'asc' ? 'asc' : 'desc');
 
         return $this;
     }
@@ -183,7 +255,7 @@ class ArticleQueryBuilder
      * 
      * @return self
      */
-    public function addField($field)
+    public function addField($field): self
     {
         $this->fields[] = $field;
 
@@ -195,14 +267,17 @@ class ArticleQueryBuilder
      * 
      * @return self
      */
-    public function setFields($fields)
+    public function setFields($fields): self
     {
         $this->fields = $fields;
 
         return $this;
     }
 
-    public function getQuery()
+    /**
+     * @return array
+     */
+    public function getQuery(): array
     {
         $query = [];
 
@@ -235,7 +310,7 @@ class ArticleQueryBuilder
         }
 
         if ($this->createdBy) {
-            $query['created_by'] = $this->created_by;
+            $query['created_by'] = $this->createdBy;
         }
 
         if ($this->limit) {
