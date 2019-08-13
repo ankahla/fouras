@@ -14,6 +14,7 @@ RUN apt-get update && deps=" \
         wget \
         git \
         vim \
+        unzip \
         netcat \
     " \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -q $deps
@@ -32,8 +33,6 @@ RUN pecl install xdebug-2.7.0 \
     && docker-php-ext-enable xdebug
 
 
-RUN rm -rf var/cache/* var/logs/*
-
 COPY ./ /
 WORKDIR /var/www/
 VOLUME /var/www
@@ -47,4 +46,3 @@ From base
 SHELL ["/bin/bash", "-c"]
 
 RUN echo "you should now run composer install"
-
