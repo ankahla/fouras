@@ -11,6 +11,7 @@
 
 namespace UserBundle\Controller;
 
+use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -32,7 +33,7 @@ class ChangePasswordController extends ChangePasswordBaseController
     public function changePasswordAction(Request $request)
     {
         $user = $this->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        if (!is_object($user) || !$user instanceof User) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 

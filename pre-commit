@@ -12,7 +12,7 @@ ROOT_DIR="/var/www"
 DIFF=$(git diff -r -p -m -M --full-index --staged | cat)
 
 # Run GrumPHP
-(cd "./" && echo "${DIFF}" | docker exec -i $CONTAINER bash -c "cd ${ROOT_DIR} && ./bin/grumphp git:pre-commit --ansi --skip-success-output")
+(cd "./" && echo "${DIFF}" | docker exec -i $CONTAINER bash -c "/var/www/bin/grumphp git:pre-commit --ansi --skip-success-output")
 
 # Validate exit code of above command
 RC=$?

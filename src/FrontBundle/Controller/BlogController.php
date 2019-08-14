@@ -13,8 +13,7 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/{categoryId}-{alias}", name="blog", defaults={"categoryId":"", "alias":""})
      * @param Request    $request
-     * @param            $categoryId
-     * @param $
+     * @param string  $categoryId
      * @param CmsService $cmsApi
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -67,8 +66,8 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/article/{id}-{alias}", name="article")
-     * @param            $id
-     * @param            $alias
+     * @param string $id
+     * @param string $alias
      * @param CmsService $cmsApi
      *
      * @return \Symfony\Component\HttpFoundation\Response|\Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -92,7 +91,7 @@ class BlogController extends AbstractController
         // related articles
         $qb = new ArticleQueryBuilder();
         $qb
-            ->setCategoryIds([$article->catid])
+            ->setCategoryIds([isset($article->catid) ? $article->catid : ''])
             ->setSort('modified')
             ->setFields(['id', 'alias', 'title', 'images']);
 

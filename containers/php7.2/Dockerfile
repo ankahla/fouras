@@ -11,6 +11,7 @@ RUN apt-get update && deps=" \
         libicu-dev \
         libmcrypt-dev \
         libssl-dev \
+        libpq-dev \
         wget \
         git \
         vim \
@@ -26,7 +27,7 @@ RUN docker-php-ext-install intl zip \
     && docker-php-ext-enable redis \
     && rm -r /var/lib/apt/lists/*
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql pgsql pdo_pgsql
 
 
 RUN pecl install xdebug-2.7.0 \

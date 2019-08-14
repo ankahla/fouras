@@ -10,7 +10,6 @@
 namespace AppBundle\Services;
 
 use AppBundle\Entity\QueryBuilder\ArticleQueryBuilder;
-use AppBundle\Entity\QueryBuilder\CategoryQueryBuilder;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -21,7 +20,7 @@ class CmsService
     const CATEGORY_URI = 'categories/categories';
 
     /**
-     * @var GuzzleClient
+     * @var Client
      */
     private $client;
 
@@ -107,7 +106,7 @@ class CmsService
             if (empty($contents->err_code)) {
                 $results = $contents->data;
             } else {
-                throw new \Exception($contents->err_msg);
+                throw new \Exception(isset($contents->err_msg)? $contents->err_msg : 'error when getting categories');
             }
         } catch(\Exception $e) {
             dump($e->getMessage());

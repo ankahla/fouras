@@ -90,7 +90,7 @@ class ArticleQueryBuilder
     public function __construct ()
     {
         $this->fields = self::DEFAULT_FIELDS;
-        $this->start = 0;
+        $this->start = '0';
     }
 
     /**
@@ -107,7 +107,7 @@ class ArticleQueryBuilder
 
     /**
      * @param array $categoryIds
-     *
+     *18:18
      * @return self
      */
     public function setCategoryIds(array $categoryIds): self
@@ -237,7 +237,7 @@ class ArticleQueryBuilder
     }
 
     /**
-     * @param $sortField
+     * @param string $sortField
      * @param string $direction
      *
      * @return self

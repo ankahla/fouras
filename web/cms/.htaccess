@@ -62,8 +62,6 @@ RewriteRule .* index.php [F]
 # Update Your Joomla! Directory (just / for root).
 ##
 
-RewriteBase /web/cms
-
 ## Begin - Joomla! core SEF Section.
 #
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

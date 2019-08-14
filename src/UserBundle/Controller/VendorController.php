@@ -71,7 +71,7 @@ class VendorController extends AbstractController
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
-
+        /** @var VendorService $vendorService */
         $vendorService = $em->getRepository(VendorService::class)->findOneBy(
             [
                 'vendor' => $vendor,
@@ -262,7 +262,7 @@ class VendorController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
 
                 if (!$task->getId()) {
-                    $task->setCreatedAt(new \Datetime);
+                    $task->setCreatedAt(new \DateTime);
                 }
                 
                 $task->setUser($user);

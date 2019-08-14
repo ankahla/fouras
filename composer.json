@@ -16,6 +16,7 @@
     },
     "require": {
         "php": ">=7.2",
+        "ext-intl": "^1.1",
         "csa/guzzle-bundle": "^3.1",
         "doctrine/doctrine-bundle": "^1.11",
         "doctrine/orm": "^2.6",
@@ -41,17 +42,16 @@
     },
     "scripts": {
         "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "app/console doctrine:schema:update --force",
+            "app/console assets:install web"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+        ],
+        "compile": [
+            "unzip -o web/cms/cms.zip -d web/cms/"
         ]
     },
     "config": {
@@ -65,9 +65,6 @@
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
         "branch-alias": {
             "dev-master": "3.4-dev"
         }

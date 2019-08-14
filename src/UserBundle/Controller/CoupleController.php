@@ -37,7 +37,7 @@ class CoupleController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
 
                 if (!$task->getId()) {
-                    $task->setCreatedAt(new \Datetime);
+                    $task->setCreatedAt(new \DateTime);
                 }
                 
                 $task->setUser($user);

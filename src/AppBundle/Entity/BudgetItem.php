@@ -64,13 +64,14 @@ class BudgetItem
     }
 
     /**
-     * @param $id
+     * @param int $id
      *
-     * @return $this
+     * @return self
      */
-    public function setId($id)
+    public function setId($id): self
     {
     	$this->id = $id;
+
     	return $this;
     }
 
@@ -83,11 +84,11 @@ class BudgetItem
     }
 
     /**
-     * @param $budget
+     * @param Budget $budget
      *
-     * @return $this
+     * @return self
      */
-    public function setBudget($budget)
+    public function setBudget(Budget $budget)
     {
         $this->budget = $budget;
 
@@ -103,9 +104,9 @@ class BudgetItem
     }
 
     /**
-     * @param $name
+     * @param string $name
      *
-     * @return $this
+     * @return self
      */
     public function setName($name)
     {
@@ -123,9 +124,9 @@ class BudgetItem
     }
 
     /**
-     * @param $estimatedAmount
+     * @param float $estimatedAmount
      *
-     * @return $this
+     * @return self
      */
     public function setEstimatedAmount($estimatedAmount)
     {
@@ -143,9 +144,9 @@ class BudgetItem
     }
 
     /**
-     * @param $actuelAmount
+     * @param int $actuelAmount
      *
-     * @return $this
+     * @return self
      */
     public function setActuelAmount($actuelAmount)
     {
@@ -162,9 +163,9 @@ class BudgetItem
     }
 
     /**
-     * @param $paidAmount
+     * @param int $paidAmount
      *
-     * @return $this
+     * @return self
      */
     public function setPaidAmount($paidAmount)
     {

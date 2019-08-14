@@ -216,20 +216,12 @@ class User extends \FOS\UserBundle\Model\User
 
     public function isVendor()
     {
-        if ($this->userType) {
-            return $this->userType->getId() == UserType::VENDOR_TYPE;
-        }
-
-        return false;
+        return $this->userType->getId() == UserType::VENDOR_TYPE;
     }
 
     public function isCouple()
     {
-        if ($this->userType) {
-            return $this->userType->getId() == UserType::COUPLE_TYPE;
-        }
-
-        return false;
+        return $this->userType->getId() == UserType::COUPLE_TYPE;
     }
     
     public function getProfilePicture()

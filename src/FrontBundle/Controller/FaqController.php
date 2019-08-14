@@ -12,7 +12,7 @@ class FaqController extends AbstractController
     /**
      * @Route("/faq/{categoryId}-{alias}", name="faq", defaults={"categoryId":"", "alias":""})
      * @param Request    $request
-     * @param            $categoryId
+     * @param string $categoryId
      * @param CmsService $cmsApi
      *
      * @return \Symfony\Component\HttpFoundation\Response
