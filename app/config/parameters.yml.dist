@@ -2,12 +2,6 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    # @todo change localhost by db or env variable
-    database_host: localhost
-    database_port: ~
-    database_name: fouras
-    database_user: root
-    database_password: ~
     # You should uncomment this if you want to use pdo_sqlite
     #database_path: "%kernel.root_dir%/data.db3"
 
@@ -31,9 +25,9 @@ parameters:
     maps.embedded.api.key : AIzaSyC7DfJcfvHtlpZLcEjgivtmjnyXlky0GB4
 
     #cms
-    cms_api_url: http://localhost/cms/api/
+    cms_api_url: '%env(CMS_API_URL)%'
     cms_api_key: 8d6f1fbea40c389706b796068ed37505
-    cms_base_url: http://localhost/cms/
+    cms_base_url: '%env(CMS_BASE_URL)%'
 
     cms_cat_id:
         blog:

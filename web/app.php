@@ -1,13 +1,15 @@
 <?php
 
+use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
 require __DIR__.'/../app/autoload.php';
-include_once __DIR__.'/../app/bootstrap.php.cache';
 
-$kernel = new AppKernel('prod', false);
+if (getenv('APP_DEBUG') === 'true') {
+    Debug::enable();
+}
 
-//$kernel = new AppCache($kernel);
+$kernel = new kernel(getenv('APP_ENV'), getenv('APP_DEBUG'));
 
 // When using the HttpCache, you need to call the method in your front controller instead of relying on the configuration parameter
 //Request::enableHttpMethodParameterOverride();

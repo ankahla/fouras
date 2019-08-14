@@ -15,6 +15,7 @@
 # they work, then it has been set by your server administrator and you do not need to 
 # set it here.
 ##
+DirectoryIndex index.php
 
 ## No directory listings
 <IfModule autoindex>

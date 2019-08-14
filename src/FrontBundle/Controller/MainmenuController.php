@@ -60,7 +60,7 @@ class MainmenuController extends AbstractController
             'contact' => ['label' => 'Contact us'],
         ];
 
-        return $this->render('::front/mainmenu.html.twig', [
+        return $this->render('front/mainmenu.html.twig', [
             'mainmenuItems' => $mainmenuItems,
             'logo' => 'logo.png'
             ]

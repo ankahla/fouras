@@ -5,6 +5,10 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
+      <trans-unit id="f22088e5d2aef0adfedd8259975fa5f2" resname="View my profile">
+        <source>View my profile</source>
+        <target>Voir mon profil</target>
+      </trans-unit>
       <trans-unit id="41a7f93915f95cbcf39daac94bad9602" resname="Cake">
         <source>Cake</source>
         <target>Gâteau</target>
@@ -33,10 +37,6 @@
         <source>Music</source>
         <target>Musique</target>
       </trans-unit>
-      <trans-unit id="06df33001c1d7187fdd81ea1f5b277aa" resname="Actions">
-        <source>Actions</source>
-        <target>Actions</target>
-      </trans-unit>
       <trans-unit id="d57ceb4533b61b9746f4fc10d958f5c5" resname="Actual">
         <source>Actual</source>
         <target>Actuel</target>
@@ -64,10 +64,6 @@
       <trans-unit id="96b22813c9baa99a178ebf96faa76ff3" resname="Your Budget">
         <source>Your Budget</source>
         <target>Ton budget</target>
-      </trans-unit>
-      <trans-unit id="e1a107a4d919d5674bd2f9ba4ffb6a3a" resname="Checklist to do">
-        <source>Checklist to do</source>
-        <target>Taches à faire</target>
       </trans-unit>
       <trans-unit id="723edf7c24638ed18d2fa831e647a5cc" resname="wishlist">
         <source>wishlist</source>

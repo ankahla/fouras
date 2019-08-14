@@ -12,7 +12,7 @@ class JConfig {
 	public $debug = '0';
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
-	public $host = 'db';
+	public $host = 'localhost';
 	public $user = 'root';
 	public $password = '';
 	public $db = 'cms';
@@ -98,4 +98,12 @@ class JConfig {
 	public $cookie_domain = '';
 	public $cookie_path = '';
 	public $asset_id = '1';
+
+	public function __construct()
+    {
+        $this->host = getenv('DATABASE_CMS_HOST');
+        $this->user = getenv('DATABASE_CMS_USER');
+        $this->password = getenv('DATABASE_CMS_PWD');
+        $this->db = getenv('DATABASE_CMS_DB');
+    }
 }

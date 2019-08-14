@@ -1,6 +1,6 @@
 clean:
 	rm -rf var/*
-	mkdir var/cache/ var/logs/
+	mkdir var/cache/ var/log/
 	chmod -R 777 var
 install:
 	php composer install

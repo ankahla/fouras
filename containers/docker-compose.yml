@@ -15,7 +15,15 @@ services:
         build:
           context: ./php7.2
         environment:
-            - SF_DEBUG=true
+            - DATABASE_URL=mysql://root:@db:3306/fouras
+            - DATABASE_CMS_HOST=db
+            - DATABASE_CMS_USER=root
+            - DATABASE_CMS_PWD=
+            - DATABASE_CMS_DB=cms
+            - APP_ENV=dev
+            - APP_DEBUG=true
+            - CMS_API_URL=http://apache/web/cms/api/
+            - CMS_BASE_URL=/web/cms/
         volumes:
             - "../:/var/www/:delegated"
     db:

@@ -5,6 +5,119 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
+      <trans-unit id="d0fbda9855d118740f1105334305c126" resname="Page not found">
+        <source>Page not found</source>
+        <target>الصفحة غير موجودة</target>
+      </trans-unit>
+      <trans-unit id="c95864223a3b47be49c5307d2a81a90d" resname="Back To Home">
+        <source>Back To Home</source>
+        <target>الرجوع إلى الصفحة الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="0ba7583639a274c434bbe6ef797115a4" resname="Register">
+        <source>Register</source>
+        <target>تسجيل</target>
+      </trans-unit>
+      <trans-unit id="c67adbbc1dade039191787d6a7110e0b" resname="YOUR PROFILE">
+        <source>YOUR PROFILE</source>
+        <target>ملفي الشخصي</target>
+      </trans-unit>
+      <trans-unit id="ec9ceefe0c19f4c029008c23e3c947b7" resname="Vendor">
+        <source>Vendor</source>
+        <target>عارض خدمات</target>
+      </trans-unit>
+      <trans-unit id="e8a56884b09279bb1e67e99601869ca1" resname="Couple">
+        <source>Couple</source>
+        <target>زوجان</target>
+      </trans-unit>
+      <trans-unit id="2bd954c508642b5dd60a94ca6bc16e8d" resname="I agree to all">
+        <source>I agree to all</source>
+        <target>أوافق على الجميع</target>
+      </trans-unit>
+      <trans-unit id="a44fa7462a614a4dfd4c0467963c610d" resname="terms &amp; Conditions">
+        <source>terms &amp; Conditions</source>
+        <target>البنود و الظروف</target>
+      </trans-unit>
+      <trans-unit id="77096b231f99bf93ef4a09ad575adc59" resname="Register Now">
+        <source>Register Now</source>
+        <target>سجل الان</target>
+      </trans-unit>
+      <trans-unit id="21bdc5689c12595ae14298354d5550d5" resname="Already have an account?">
+        <source>Already have an account?</source>
+        <target>هل لديك حساب؟</target>
+      </trans-unit>
+      <trans-unit id="f2fdea440d768b85591e936a803c3631" resname="Sign In">
+        <source>Sign In</source>
+        <target>تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="2d77951cdd62294f84d822f806979b09" resname="My wedding">
+        <source>My wedding</source>
+        <target>حفل زفافي</target>
+      </trans-unit>
+      <trans-unit id="8cf04a9734132302f96da8e113e80ce5" resname="Home">
+        <source>Home</source>
+        <target>الصفحة الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="979ac0eb39f23e70f45b79282ccab548" resname="Blog Categories">
+        <source>Blog Categories</source>
+        <target>خدمات الاعراس</target>
+      </trans-unit>
+      <trans-unit id="be8df1f28c0abc85a0ed0c6860e5d832" resname="Blog">
+        <source>Blog</source>
+        <target>مقالات</target>
+      </trans-unit>
+      <trans-unit id="992a0f0542384f1ee5ef51b7cf4ae6c4" resname="Services">
+        <source>Services</source>
+        <target>خدمات</target>
+      </trans-unit>
+      <trans-unit id="b810f9b4c39e1b4219f7b0fea5122164" resname="Ideas &amp; Advice">
+        <source>Ideas &amp; Advice</source>
+        <target>أفكار و نصائح</target>
+      </trans-unit>
+      <trans-unit id="58674eb29fcce52481c292ef4aa4bbc3" resname="Faq">
+        <source>Faq</source>
+        <target>الأسئلة الشائعة</target>
+      </trans-unit>
+      <trans-unit id="cf23ee279844016288ea1c076638f3be" resname="About us">
+        <source>About us</source>
+        <target>من نحن</target>
+      </trans-unit>
+      <trans-unit id="02d4482d332e1aef3437cd61c9bcc624" resname="Contact us">
+        <source>Contact us</source>
+        <target>الاتصال بنا</target>
+      </trans-unit>
+      <trans-unit id="e14d0027bbee26b8e3853292fdfa532c" resname="Salles de mariage">
+        <source>Salles de mariage</source>
+        <target>قاعات الأفراح</target>
+      </trans-unit>
+      <trans-unit id="ec0060d1a3a2075e1c4fe01b1d0a0cae" resname="Gâteaux de mariage">
+        <source>Gâteaux de mariage</source>
+        <target>كعك الزفاف</target>
+      </trans-unit>
+      <trans-unit id="471c0f8269e6bda219269360117df300" resname="Robe de mariée">
+        <source>Robe de mariée</source>
+        <target>فستان الزفاف</target>
+      </trans-unit>
+      <trans-unit id="e36f9dfdf8a03baa72536cb64f912b03" resname="Photographe">
+        <source>Photographe</source>
+        <target>مصور&#13;
+</target>
+      </trans-unit>
+      <trans-unit id="4768b9eb24bd6ea9a5ee2401b266c822" resname="Welcome to Fouras">
+        <source>Welcome to Fouras</source>
+        <target>مرحبا بك في فرص</target>
+      </trans-unit>
+      <trans-unit id="6a26f548831e6a8c26bfbbd9f6ec61e0" resname="Help">
+        <source>Help</source>
+        <target>مساعدة</target>
+      </trans-unit>
+      <trans-unit id="99dea78007133396a7b8ed70578ac6ae" resname="Login">
+        <source>Login</source>
+        <target>تسجيل دخول</target>
+      </trans-unit>
+      <trans-unit id="1e28063d906deb6a6fa261163a533842" resname="Fouras">
+        <source>Fouras</source>
+        <target>فرص</target>
+      </trans-unit>
       <trans-unit id="d29080135fa4792d1d97949ace637afa" resname="Are yous sure you want to delete this Task ?">
         <source>Are yous sure you want to delete this Task ?</source>
         <target>Are yous sure you want to delete this Task ?</target>
@@ -69,10 +182,6 @@
         <source>Your Budget</source>
         <target>Your Budget</target>
       </trans-unit>
-      <trans-unit id="e1a107a4d919d5674bd2f9ba4ffb6a3a" resname="Checklist to do">
-        <source>Checklist to do</source>
-        <target>Checklist to do</target>
-      </trans-unit>
       <trans-unit id="723edf7c24638ed18d2fa831e647a5cc" resname="wishlist">
         <source>wishlist</source>
         <target>wishlist</target>
@@ -85,6 +194,42 @@
         <source>Save</source>
         <target>تسجيل</target>
       </trans-unit>
+      <trans-unit id="33425240a981000f9e611351dbf27198" resname="To Do List">
+        <source>To Do List</source>
+        <target>برنامجي</target>
+      </trans-unit>
+      <trans-unit id="b67828a21741b4ec19fea23a747949f6" resname="My Budget">
+        <source>My Budget</source>
+        <target>ميزانيتي</target>
+      </trans-unit>
+      <trans-unit id="4840f4437f55e68a587d358090b948d1" resname="My Wishlist">
+        <source>My Wishlist</source>
+        <target>قائمة امنياتي</target>
+      </trans-unit>
+      <trans-unit id="556d0a4fa9efefecab833732e171e72e" resname="Guest List">
+        <source>Guest List</source>
+        <target>قائمة الضيوف</target>
+      </trans-unit>
+      <trans-unit id="ea69ee010d229acbb94debbbbac426e0" resname="Upload Profile Image">
+        <source>Upload Profile Image</source>
+        <target>تحميل صورة</target>
+      </trans-unit>
+      <trans-unit id="8f1e77e0d2be21da93cd4d9a939148f7" resname="Change Password">
+        <source>Change Password</source>
+        <target>تغيير كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="f56aa590295b9637c7ffe19697853b17" resname="Old Password">
+        <source>Old Password</source>
+        <target>كلمة المرور القديمة</target>
+      </trans-unit>
+      <trans-unit id="ae3bb2a1ac61750150b606298091d38a" resname="New Password">
+        <source>New Password</source>
+        <target>كلمة المرور الجديدة</target>
+      </trans-unit>
+      <trans-unit id="887f7db126221fe60d18c895d41dc8f6" resname="Confirm Password">
+        <source>Confirm Password</source>
+        <target>تأكيد كلمة المرور</target>
+      </trans-unit>
       <trans-unit id="32fc7c83ce8f1872eab5e256edcffd09" resname="New guest">
         <source>New guest</source>
         <target>ضيف جديد</target>
@@ -96,10 +241,6 @@
       <trans-unit id="f1eb8902d0f11fa2650788c88972e607" resname="Add Guest">
         <source>Add Guest</source>
         <target>إضافة ضيف</target>
-      </trans-unit>
-      <trans-unit id="8f1e77e0d2be21da93cd4d9a939148f7" resname="Change Password">
-        <source>Change Password</source>
-        <target>تغيير كلمة المرور</target>
       </trans-unit>
       <trans-unit id="bf14e22854d5eda5f4578f3fe7e9b87c" resname="Wife Profile">
         <source>Wife Profile</source>
@@ -161,10 +302,6 @@
         <source>Upload Profile Photo</source>
         <target>تحميل صورة شخصية</target>
       </trans-unit>
-      <trans-unit id="ea69ee010d229acbb94debbbbac426e0" resname="Upload Profile Image">
-        <source>Upload Profile Image</source>
-        <target>تحميل صورة</target>
-      </trans-unit>
       <trans-unit id="0b39c5aca15b84b1ad53a94d6b3feb78" resname="Change password">
         <source>Change password</source>
         <target>تغيير كلمة المرور</target>
@@ -208,26 +345,6 @@
       <trans-unit id="f22088e5d2aef0adfedd8259975fa5f2" resname="View my profile">
         <source>View my profile</source>
         <target>عرض ملفي الشخصي</target>
-      </trans-unit>
-      <trans-unit id="0ba7583639a274c434bbe6ef797115a4" resname="Register">
-        <source>Register</source>
-        <target>التسجيل</target>
-      </trans-unit>
-      <trans-unit id="2bd954c508642b5dd60a94ca6bc16e8d" resname="I agree to all">
-        <source>I agree to all</source>
-        <target>أوافق على جميع</target>
-      </trans-unit>
-      <trans-unit id="a44fa7462a614a4dfd4c0467963c610d" resname="terms &amp; Conditions">
-        <source>terms &amp; Conditions</source>
-        <target>الشروط</target>
-      </trans-unit>
-      <trans-unit id="21bdc5689c12595ae14298354d5550d5" resname="Already have an account?">
-        <source>Already have an account?</source>
-        <target>لديك بالفعل حساب؟</target>
-      </trans-unit>
-      <trans-unit id="f2fdea440d768b85591e936a803c3631" resname="Sign In">
-        <source>Sign In</source>
-        <target>تسجيل الدخول</target>
       </trans-unit>
       <trans-unit id="57c3b562adb51ac8f08ed5135e824711" resname="You d'ont have an account?">
         <source>You d'ont have an account?</source>
