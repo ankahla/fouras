@@ -1,4 +1,4 @@
-FROM php:7.2-fpm as base
+FROM php:7.4-fpm as base
 MAINTAINER Maher LANDOLSI & ANOUAR KAHLA 
 
 # Install PHP extensions and PECL modules.
@@ -12,6 +12,7 @@ RUN apt-get update && deps=" \
         libmcrypt-dev \
         libssl-dev \
         libpq-dev \
+        libzip-dev \
         wget \
         git \
         vim \
@@ -21,7 +22,8 @@ RUN apt-get update && deps=" \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y -q $deps
 
 RUN docker-php-ext-install intl zip \
-    && pecl install mcrypt-1.0.1 \
+    && docker-php-ext-enable intl \
+    && pecl install mcrypt \
     && docker-php-ext-enable mcrypt \
     && pecl install redis \
     && docker-php-ext-enable redis \
@@ -30,7 +32,7 @@ RUN docker-php-ext-install intl zip \
 RUN docker-php-ext-install mysqli pdo pdo_mysql pgsql pdo_pgsql
 
 
-RUN pecl install xdebug-2.7.0 \
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
 

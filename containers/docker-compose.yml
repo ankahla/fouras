@@ -10,10 +10,10 @@ services:
         volumes:
             - "../:/var/www/html/:delegated"
 
-    php7.2:
-        container_name: php7.2
+    php7.4:
+        container_name: php7.4
         build:
-          context: php7.2
+          context: php7.4
         env_file: ../.env
         volumes:
             - "../:/var/www/:delegated"

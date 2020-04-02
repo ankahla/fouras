@@ -22,7 +22,7 @@ class JConfig
     public $live_site = '';
     public $secret = 'BccHiFIY6S3FAZQI';
     public $gzip = '0';
-    public $error_reporting = 'development';
+    public $error_reporting = 'production';
     public $helpurl = 'https://help.joomla.fr/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
     public $ftp_host = '';
     public $ftp_port = '';
@@ -123,6 +123,7 @@ class JConfig
         }
 
         $this->debug = getenv('APP_DEBUG');
+        //$this->error_reporting = getenv('APP_DEBUG') === 'true' ? 'development' : 'production';
         $this->log_path = __DIR__ . '/administrator/logs';
         $this->tmp_path = __DIR__ . '/tmp';
     }

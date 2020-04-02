@@ -5,7 +5,7 @@
 # Note: this will be replaced by the real command during copy.
 # https://gist.github.com/jverdeyen/9c0b247bb8b34c7fae514315db36a23e
 
-CONTAINER="php7.2"
+CONTAINER="php7.4"
 ROOT_DIR="/var/www"
 
 # Fetch the GIT diff and format it as command input:

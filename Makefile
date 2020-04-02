@@ -1,5 +1,5 @@
 DOCKER_COMPOSE = docker-compose --file=containers/docker-compose.yml
-EXEC_PHP       = $(DOCKER_COMPOSE) exec php7.2
+EXEC_PHP       = $(DOCKER_COMPOSE) exec php7.4
 SYMFONY        = $(EXEC_PHP) bin/console
 ENV            = dev
 COMPOSER       = $(EXEC_PHP) composer
@@ -24,10 +24,14 @@ B_WHITE  = \033[47m
 start: ## Start the project
 	@$(DOCKER_COMPOSE) up -d --remove-orphans --no-recreate
 
+restart: ## Start the project
+	@$(DOCKER_COMPOSE) stop
+	@$(DOCKER_COMPOSE) start
+
 clean:
-	rm -rf var/* web/cms/tmp/* web/cms/administrator/logs/*
-	mkdir var/cache/ var/log/
-	chmod -R 777 var web/cms/tmp web/cms/administrator/logs
+	@$(EXEC_PHP) rm -rf var/* web/cms/tmp/* web/cms/administrator/logs/*
+	@$(EXEC_PHP) mkdir var/cache/ var/log/
+	@$(EXEC_PHP) chmod -R 777 var web/cms/tmp web/cms/administrator/logs
 
 install:
 	@$(EXEC_PHP) php composer install

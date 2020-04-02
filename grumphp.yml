@@ -35,7 +35,7 @@ parameters:
                         - 'var_dump'
                         - 'dump'
         phpcs:
-            standard: "phpcs.xml"
+            standard: "php_cs.php"
             whitelist_patterns:
               - /^src\/(.*)/
             metadata:
