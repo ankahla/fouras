@@ -31,14 +31,14 @@ class GravatarService
      * Query string. key/value 
      */ 
     protected $properties = array( 
-        "gravatar_id" => NULL, 
-        "default" => NULL, 
+        "gravatar_id" => null,
+        "default" => null,
         "size" => 128,
-        "rating" => NULL, 
-        "border" => NULL, 
+        "rating" => null,
+        "border" => null,
     );
 
-    function __construct($options)
+    function __construct($options = [])
     {
         $this->properties = array_merge($this->properties, $options);
     }

@@ -22,6 +22,9 @@ services:
         command: --default-authentication-plugin=mysql_native_password
         build:
             context: mysql
+        ports:
+            - "3306:3306"
         restart: always
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_ROOT_PASSWORD=root

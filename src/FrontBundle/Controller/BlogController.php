@@ -27,7 +27,7 @@ class BlogController extends AbstractController
         $blogCategory = $cmsApi->getBlogCategories();
         $blogCategoryIds = [];
 
-        foreach ($blogCategory->children as $cat) {
+        foreach ($blogCategory->children ?? [] as $cat) {
             $blogCategoryIds[] = $cat->id;
         }
 
@@ -55,7 +55,7 @@ class BlogController extends AbstractController
         // news articles
         $newsArticles = $this->getSideNewsArticles($cmsApi);
 
-        return $this->render('FrontBundle:Blog:index.html.twig', [
+        return $this->render('front/Blog/index.html.twig', [
             'data' => $data,
             'currentCategory' => $currentCategory,
             'search' => $search,
@@ -85,7 +85,7 @@ class BlogController extends AbstractController
         $article = reset($items->results);
 
         if (!isset($article->id)) {
-            return $this->createNotFoundException();
+            throw $this->createNotFoundException();
         }
 
         // related articles
@@ -101,7 +101,7 @@ class BlogController extends AbstractController
         // blog categories
         $blogCategory = $cmsApi->getBlogCategories();
 
-        return $this->render('FrontBundle:Blog:article.html.twig', [
+        return $this->render('front/Blog/article.html.twig', [
             'article' => $article,
             'relatedArticles' => $relatedArticles,
             'newsArticles' => $newsArticles,

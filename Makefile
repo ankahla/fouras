@@ -24,9 +24,12 @@ B_WHITE  = \033[47m
 start: ## Start the project
 	@$(DOCKER_COMPOSE) up -d --remove-orphans --no-recreate
 
-restart: ## Start the project
+stop: ## Start the project
 	@$(DOCKER_COMPOSE) stop
-	@$(DOCKER_COMPOSE) start
+
+restart: ## Start the project
+	make stop
+	make start
 
 clean:
 	@$(EXEC_PHP) rm -rf var/* web/cms/tmp/* web/cms/administrator/logs/*
@@ -70,3 +73,6 @@ endif
 ## Get into php container interactive mode
 cli:
 	@$(EXEC_PHP) bash
+
+tu:
+	@$(EXEC_PHP) bin/phpunit tests
