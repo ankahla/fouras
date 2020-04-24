@@ -16,6 +16,7 @@
     },
     "require": {
         "php": ">=7.4",
+        "ext-intl": "*",
         "csa/guzzle-bundle": "^3.1",
         "doctrine/doctrine-bundle": "^1.11",
         "doctrine/orm": "^2.6",
