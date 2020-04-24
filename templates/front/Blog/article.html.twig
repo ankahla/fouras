@@ -1,0 +1,75 @@
+{% extends 'front/Blog/layout.html.twig' %}
+
+{% block banner %}
+{% include 'front/banner.html.twig' with {'title' : 'Blog'|trans ~ ' / ' ~ article.category_title ~ ' / ' ~ article.title} %}
+{% endblock %}
+
+{% block body %}
+<section class="pt120 pb80">
+    <div class="container">
+      <div class="blog-single-block">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="single-block">
+              <div class="blog-img">
+                <img src="{{ cms_base_url ~ (article.images.image_fulltext ? article.images.image_fulltext : article.images.image_intro) }}" class="img-responsive" alt="blog-img">
+                <div class="meta-tag">{{ date(article.created)|localizeddate('full', 'none', current_locale, null, 'd MMMM Y') }}</div>
+              </div>
+              <div class="blog-dtl">
+                <h4 class="blog-heading">{{ article.title }}</h4>
+                <div class="blog-dis">{{ article.fulltext|raw }}</div>
+              </div>
+              <div class="blog-dtl-social">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="blog-dtl-tags">
+                      {% if article.tags.itemTags is not empty %}
+                      <div class="tags-heading"><span>Tags :</span>
+                        {% for tag in article.tags.itemTags %}
+                        <a href="{{ path('blog', {tag:tag.id}) }}">{{ tag.title }}</a>,
+                        {% endfor %}
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <ul class="social-btns text-right">
+                      <li><a class="btn facebook" href="blog-detail.html#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                      <li><a class="btn twitter" href="blog-detail.html#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                      <li><a class="btn google" href="blog-detail.html#" target="_blank"><i class="fa fa-google"></i></a></li>
+                      <li><a class="btn linkedin" href="blog-detail.html#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if relatedArticles.results is not empty %}
+            <div class="blog-related-post">
+              <h3 class="blog-main-hedaing">{% trans %}Related Post{% endtrans %}</h3>
+              <div class="row">
+                {% for related in relatedArticles.results %}
+                {% if related.id != article.id %}
+                <div class="col-md-4 col-sm-6">
+                  <div class="related-post">
+                    <div class="blog-related-img">
+                      <a href="{{ path('article', {id:related.id, alias:related.alias}) }}"><img src="{{ cms_base_url ~ related.images.image_intro }}" class="img-responsive" alt="related-img"></a>
+                    </div>
+                    <div class="related-dtl">
+                      <h6 class="related-dtl-heading"><a href="{{ path('article', {id:related.id, alias:related.alias })}}">{{ related.title }}</a></h6>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          <div class="col-md-3">
+          {% block sidebar %}{{ parent() }}{% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

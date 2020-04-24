@@ -54,11 +54,8 @@ class Task
 
     function __construct()
     {
-        if (!$this->createdAt) {
-            $this->createdAt = new \Datetime;
-        }
-
-        $this->updatedAt = new \Datetime;
+        $this->createdAt = new \DateTime;
+        $this->updatedAt = new \DateTime;
     }
 
     public function getId()

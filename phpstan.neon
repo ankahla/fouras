@@ -1,0 +1,20 @@
+parameters:
+    checkMissingIterableValueType: false
+    inferPrivatePropertyTypeFromConstructor: true
+    checkGenericClassInNonGenericObjectType: false
+    autoload_files:
+        - vendor/autoload.php
+    excludes_analyse:
+        - var
+        - vendor
+        - tests
+    paths:
+        - src/
+    level: 3
+
+    symfony:
+        container_xml_path: '%rootDir%/../../../var/cache/dev/srcKernelDevDebugContainer.xml'
+
+    ignoreErrors:
+        # magic method findOneBy...
+        - '#Call to an undefined method Doctrine#'

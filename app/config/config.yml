@@ -1,11 +1,9 @@
 imports:
-    - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@AppBundle/Resources/config/services.yml" }
     - { resource: "@FrontBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
-    # - { resource: "@AdminBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -17,7 +15,7 @@ framework:
     translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
-        resource: '%kernel.root_dir%/config/routing.yml'
+        resource: '%kernel.project_dir%/app/config/routing.yml'
         strict_requirements: ~
     form: ~
     csrf_protection: ~
@@ -48,11 +46,7 @@ twig:
 doctrine:
     dbal:
         driver: pdo_mysql
-        host: '%database_host%'
-        port: '%database_port%'
-        dbname: '%database_name%'
-        user: '%database_user%'
-        password: '%database_password%'
+        url: '%env(DATABASE_URL)%'
         charset: UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml

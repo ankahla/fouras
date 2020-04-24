@@ -71,21 +71,21 @@ class Enquiry
     private $vendorService;
 
     /**
-     * @var \dateTime $weddingDate
+     * @var \DateTime $weddingDate
      *
      * @ORM\Column(type="date", nullable=true)
      */
     private $weddingDate;
 
     /**
-     * @var \dateTime $phoneCallBack
+     * @var \DateTime $phoneCallBack
      *
      * @ORM\Column(type="boolean", nullable=true, options={"default" : true})
      */
     private $phoneCallBack;
 
     /**
-     * @var \dateTime $emailResponseBack
+     * @var \DateTime $emailResponseBack
      *
      * @ORM\Column(type="boolean", nullable=true, options={"default" : true})
      */
@@ -168,7 +168,7 @@ class Enquiry
             $this->phone = $couple->getUser()->getPhone() ? $couple->getUser()->getPhone() : $couple->getUser()->getMobile();
         }
 
-        if (!$this->weddingDate) {
+        if (!$this->weddingDate instanceof \DateTime) {
             $this->weddingDate = $couple->getWeddingDate();
         }
         

@@ -1,0 +1,53 @@
+parameters:
+    process_timeout: 380
+    bin_dir: ./vendor/bin
+    stop_on_failure: true
+    tasks:
+        git_blacklist:
+            keywords:
+                 - "console.log"
+                 - "console.debug"
+                 - "{% dump"
+                 - "VarDumper"
+                 - "extract("
+            triggered_by: [php, js, twig]
+            metadata:
+                priority: 3
+        git_commit_message:
+            allow_empty_message: false
+            enforce_capitalized_subject: false
+            enforce_no_subject_trailing_period: true
+            enforce_single_lined_subject: true
+            max_subject_width: 120
+            max_body_width: 500
+            matchers:
+                Must contain type and short description separate by a colon and space : '/(feat|fix|refactor|test): (.*){3,60}/'
+            case_insensitive: false
+            multiline: false
+            metadata:
+                priority: 10
+        phpparser:
+            visitors:
+                no_exit_statements: ~
+                forbidden_function_calls:
+                    blacklist:
+                        - 'extract'
+                        - 'var_dump'
+                        - 'dump'
+        phpcs:
+            standard: "php_cs.php"
+            whitelist_patterns:
+              - /^src\/(.*)/
+            metadata:
+                priority: 1
+        phpunit:
+            config_file: ./
+            always_execute: false
+            metadata:
+                priority: 0
+        phpstan:
+            configuration: ~
+            level: 4
+            triggered_by: ['php']
+            metadata:
+                priority: 0

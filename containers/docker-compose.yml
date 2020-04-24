@@ -4,25 +4,27 @@ services:
     apache:
         container_name: apache
         build:
-          context: ./apache
+          context: apache
         ports:
             - "8080:80"
         volumes:
             - "../:/var/www/html/:delegated"
 
-    php7.2:
-        container_name: php7.2
+    php7.4:
+        container_name: php7.4
         build:
-          context: ./php7.2
-        environment:
-            - SF_DEBUG=true
+          context: php7.4
+        env_file: ../.env
         volumes:
             - "../:/var/www/:delegated"
     db:
         container_name: db
         command: --default-authentication-plugin=mysql_native_password
         build:
-            context: ./mysql
+            context: mysql
+        ports:
+            - "3306:3306"
         restart: always
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_ROOT_PASSWORD=root

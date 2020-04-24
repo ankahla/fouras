@@ -1,0 +1,33 @@
+{% extends 'front/Blog/layout.html.twig' %}
+
+{% block body %}
+<section class="ptb120">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          {% if data.total != 0%}
+          {% for article in data.results %}
+          <div class="blog-block">
+            <div class="blog-img">
+              <a href="{{ path('article', {id : article.id, alias : article.alias}) }}"><img src="{{ cms_base_url ~ article.images.image_intro }}" class="img-responsive" alt="blog-img"></a>
+              <div class="meta-tag">{{ date(article.created)|localizeddate('full', 'none', current_locale, null, 'd MMMM Y') }}</div>
+            </div>
+            <div class="blog-dtl">
+              <h4 class="blog-heading"><a href="{{ path('article', {id : article.id, alias : article.alias}) }}">{{ article.title }}</a></h4>
+              <div class="blog-dis">{{ article.introtext|raw }}</div>
+              <a href="{{ path('article', {id : article.id, alias : article.alias}) }}" class="btn btn-pink">{% trans %}Read More{% endtrans %}</a>
+            </div>
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          {% block pagination %}{{ parent() }}{% endblock %}
+
+        </div>
+        <div class="col-md-3">
+          {% block sidebar %}{{ parent() }}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

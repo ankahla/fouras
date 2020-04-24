@@ -1,0 +1,34 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block banner %}
+{% include 'front/banner.html.twig' with {'title' : 'Blog'|trans } %}
+{% endblock %}
+
+{% block body %}
+
+{% block pagination %}
+{% if data.pagesStop is defined and data.pagesStop > 0 %}
+<div class="pagination">
+  <ul>
+    {% for page in data.pagesStart..data.pagesStop %}
+    {% if page == data.pagesCurrent %}
+    <li class="active"><a class="btn btn-default">{{ page }}</a></li>
+    {% else %}
+      {% if search is defined %}
+      <li><a href="{{ path('blog', {categoryId : currentCategory.id, alias:currentCategory.alias, page: page, search: search}) }}" class="btn btn-default">{{ page }}</a></li>
+      {% else %}
+      <li><a href="{{ path('blog', {categoryId : currentCategory.id, alias:currentCategory.alias, page: page}) }}" class="btn btn-default">{{ page }}</a></li>
+      {% endif %}
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% endblock %}
+
+
+{% block sidebar%}
+  {% include 'front/Blog/sidebar.html.twig' with {'currentCatId': currentCategory is defined ? currentCategory.id : ''} %}
+{% endblock %}
+
+{% endblock %}
