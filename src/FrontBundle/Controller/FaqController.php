@@ -5,14 +5,14 @@ namespace FrontBundle\Controller;
 use AppBundle\Services\CmsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class FaqController extends AbstractController
 {
     /**
      * @Route("/faq/{categoryId}-{alias}", name="faq", defaults={"categoryId":"", "alias":""})
      * @param Request    $request
-     * @param            $categoryId
+     * @param string $categoryId
      * @param CmsService $cmsApi
      *
      * @return \Symfony\Component\HttpFoundation\Response

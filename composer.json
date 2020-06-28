@@ -8,7 +8,6 @@
             "": "src/"
         },
         "classmap": [ 
-            "app/AppKernel.php",
             "app/AppCache.php"
         ]
     },
@@ -16,7 +15,8 @@
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.4",
+        "ext-intl": "*",
         "csa/guzzle-bundle": "^3.1",
         "doctrine/doctrine-bundle": "^1.11",
         "doctrine/orm": "^2.6",
@@ -24,13 +24,13 @@
         "gedmo/doctrine-extensions": "^2.4",
         "sensio/framework-extra-bundle": "^5.4",
         "stof/doctrine-extensions-bundle": "^1.3",
+        "symfony/intl": "^4.4",
         "symfony/monolog-bundle": "^3.4",
         "symfony/swiftmailer-bundle": "^3.2",
-        "symfony/symfony": "4.3.*",
+        "symfony/symfony": "^4.4",
         "twig/extensions": "^1.5"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
         "friendsofphp/php-cs-fixer": "^2.15",
         "phpmd/phpmd": "^2.7",
         "phpro/grumphp": "^0.15.2",
@@ -42,24 +42,22 @@
     },
     "scripts": {
         "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "app/console doctrine:schema:update --force",
+            "app/console assets:install web"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+        ],
+        "compile": [
+            "unzip -q -o web/cms/cms.zip -d web/cms/"
         ]
     },
     "config": {
         "bin-dir": "bin",
         "platform": {
-            "php": "7.2"
+            "php": "7.4"
         },
         "sort-packages": true
     },
@@ -67,9 +65,6 @@
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
         "branch-alias": {
             "dev-master": "3.4-dev"
         }

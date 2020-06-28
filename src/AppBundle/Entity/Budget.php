@@ -127,11 +127,6 @@ class Budget
 
     public function __toString()
     {
-        if ($this->service) {
-    	   return $this->service->getName();
-        }
-
-        return '';
+        return $this->service->getName();
     }
-
 }

@@ -13,7 +13,7 @@ services:
 
     AppBundle\Services\GravatarService:
         class: AppBundle\Services\GravatarService
-        arguments: ['%gravatar.default_options%', '@assets.packages']
+        arguments: ['%gravatar.default_options%']
 
     AppBundle\Services\CmsService:
         arguments:

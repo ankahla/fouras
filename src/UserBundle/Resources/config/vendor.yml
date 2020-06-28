@@ -1,35 +1,35 @@
 vendor_dashboard:
     path:     /dashboard
-    defaults: { _controller: UserBundle:Vendor:dashboard }
+    defaults: { _controller: UserBundle\Controller\VendorController::dashboardAction }
 
 vendor_service:
     path:     /service
-    defaults: { _controller: UserBundle:Vendor:service }
+    defaults: { _controller: UserBundle\Controller\VendorController::serviceAction }
 
 vendor_service_new:
     path:     /service/new
-    defaults: { _controller: UserBundle:Vendor:newService }
+    defaults: { _controller: UserBundle\Controller\VendorController::newServiceAction }
 
 vendor_service_edit:
     path:     /service/{id}/edit
-    defaults: { _controller: UserBundle:Vendor:editService }
+    defaults: { _controller: UserBundle\Controller\VendorController::editServiceAction }
 
 vendor_service_create:
     path:     /service/create
-    defaults: { _controller: UserBundle:Vendor:createService }
+    defaults: { _controller: UserBundle\Controller\VendorController::createServiceAction }
 
 vendor_service_update:
     path:     /service/{id}/update
-    defaults: { _controller: UserBundle:Vendor:updateService }
+    defaults: { _controller: UserBundle\Controller\VendorController::updateServiceAction }
 
 vendor_service_delete:
     path:     /service/{id}/delete
-    defaults: { _controller: UserBundle:Vendor:deleteService }
+    defaults: { _controller: UserBundle\Controller\VendorController::deleteServiceAction }
 
 vendor_todo:
     path:     /tasks
-    defaults: { _controller: UserBundle:Vendor:tasks }
+    defaults: { _controller: UserBundle\Controller\VendorController::tasksAction }
 
 vendor_inquery:
     path:     /inquery
-    defaults: { _controller: UserBundle:Vendor:inquery }
+    defaults: { _controller: UserBundle\Controller\VendorController::inqueryAction }

@@ -6,15 +6,14 @@ use AppBundle\Entity\QueryBuilder\ArticleQueryBuilder;
 use AppBundle\Services\CmsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
     /**
      * @Route("/blog/{categoryId}-{alias}", name="blog", defaults={"categoryId":"", "alias":""})
      * @param Request    $request
-     * @param            $categoryId
-     * @param $
+     * @param string  $categoryId
      * @param CmsService $cmsApi
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -28,7 +27,7 @@ class BlogController extends AbstractController
         $blogCategory = $cmsApi->getBlogCategories();
         $blogCategoryIds = [];
 
-        foreach ($blogCategory->children as $cat) {
+        foreach ($blogCategory->children ?? [] as $cat) {
             $blogCategoryIds[] = $cat->id;
         }
 
@@ -56,7 +55,7 @@ class BlogController extends AbstractController
         // news articles
         $newsArticles = $this->getSideNewsArticles($cmsApi);
 
-        return $this->render('FrontBundle:Blog:index.html.twig', [
+        return $this->render('front/Blog/index.html.twig', [
             'data' => $data,
             'currentCategory' => $currentCategory,
             'search' => $search,
@@ -67,8 +66,8 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/article/{id}-{alias}", name="article")
-     * @param            $id
-     * @param            $alias
+     * @param string $id
+     * @param string $alias
      * @param CmsService $cmsApi
      *
      * @return \Symfony\Component\HttpFoundation\Response|\Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -86,13 +85,13 @@ class BlogController extends AbstractController
         $article = reset($items->results);
 
         if (!isset($article->id)) {
-            return $this->createNotFoundException();
+            throw $this->createNotFoundException();
         }
 
         // related articles
         $qb = new ArticleQueryBuilder();
         $qb
-            ->setCategoryIds([$article->catid])
+            ->setCategoryIds([isset($article->catid) ? $article->catid : ''])
             ->setSort('modified')
             ->setFields(['id', 'alias', 'title', 'images']);
 
@@ -102,7 +101,7 @@ class BlogController extends AbstractController
         // blog categories
         $blogCategory = $cmsApi->getBlogCategories();
 
-        return $this->render('FrontBundle:Blog:article.html.twig', [
+        return $this->render('front/Blog/article.html.twig', [
             'article' => $article,
             'relatedArticles' => $relatedArticles,
             'newsArticles' => $newsArticles,

@@ -1,20 +1,20 @@
 user_profile_edit:
     path:     /profile/edit
-    defaults: { _controller: UserBundle:Profile:editProfile }
+    defaults: { _controller: UserBundle\Controller\ProfileController::editProfileAction }
 
 user_upload_picture:
     path:     picture-upload
-    defaults: { _controller: UserBundle:User:pictureUpload }
+    defaults: { _controller: UserBundle\Controller\UserController::pictureUploadAction }
 
 user_url_create:
     path: /url/create
-    defaults: { _controller: UserBundle:User:createUrl }
+    defaults: { _controller: UserBundle\Controller\UserController::createUrlAction }
 
 user_url_delete:
     path: /url/{id}/delete
-    defaults: { _controller: UserBundle:User:deleteUrl }
+    defaults: { _controller: UserBundle\Controller\UserController::deleteUrlAction }
 
 user_delete_task:
     path:     /task/{id}/delete
-    defaults: { _controller: "UserBundle:User:deleteTask" }
+    defaults: { _controller: UserBundle\Controller\UserController::deleteTaskAction }
     methods:  DELETE

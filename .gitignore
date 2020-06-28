@@ -1,6 +1,5 @@
 /web/bundles/
 /web/uploads/
-/app/bootstrap.php.cache
 /var/
 /app/config/parameters.yml
 /app/phpunit.xml
@@ -8,4 +7,10 @@
 /vendor/
 /bin/
 /composer.phar
+/web/cms/
+!/cms/cms.zip
+!/cms/.htaccess
+!/cms/plugins
+!/cms/configuration
 .idea/
+*.cache

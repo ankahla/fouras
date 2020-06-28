@@ -9,20 +9,20 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class UserListener
 {
-    private $securityContext;
+    private $tokenStorage;
     private $em;
 
-    public function __construct(TokenStorageInterface $securityContext, RegistryInterface $managerRegistry)
+    public function __construct(TokenStorageInterface $tokenStorage, RegistryInterface $managerRegistry)
     {
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
         $this->em = $managerRegistry->getManager();
     }
 
     public function onKernelController(ControllerEvent $event)
     {
         $user = null;
-        if ($this->securityContext->getToken()) {
-            $user = $this->securityContext->getToken()->getUser();
+        if (null !== $this->tokenStorage->getToken()) {
+            $user = $this->tokenStorage->getToken()->getUser();
         }
 
         $profileName = 'TODO Vendor';
@@ -41,7 +41,7 @@ class UserListener
                 /** @var Couple $couple **/
                 $couple = $this->em->getRepository(Couple::class)->findOneByUser($user);
 
-                if ($couple) {
+                if ($couple instanceof Couple) {
                     $wife = $couple->getWife();
                     $husband = $couple->getHusband();
                     $profileName = '';

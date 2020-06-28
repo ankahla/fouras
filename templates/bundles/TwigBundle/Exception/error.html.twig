@@ -1,0 +1,15 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block banner %}
+{% include 'front/banner.html.twig' with {'title' : '500'} %}
+{% endblock %}
+
+{% block body %}
+<section class="main-container">
+	<div class="container text-center">
+		<h1 class="error-heading">{{ status_code }}</h1>
+		<div class="error-sub-heading">{{ status_text }}</div>
+		<a href="{{ path('homepage') }}" class="btn btn-pink">{% trans %}Back To Home{% endtrans %}</a>
+	</div>
+</section>
+{% endblock %}

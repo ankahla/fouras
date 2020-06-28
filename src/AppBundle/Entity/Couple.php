@@ -43,7 +43,7 @@ class Couple
     private $weddingCity;
 
     /**
-     * @var \dateTime $weddingDate
+     * @var \DateTime $weddingDate
      *
      * @ORM\Column(type="date", nullable=true)
      */

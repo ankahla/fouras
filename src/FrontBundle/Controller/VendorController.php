@@ -2,12 +2,12 @@
 
 namespace FrontBundle\Controller;
 
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use FOS\UserBundle\Model\UserInterface;
 use AppBundle\Entity\Service;
 use AppBundle\Entity\City;
 use AppBundle\Entity\Couple;
@@ -48,7 +48,7 @@ class VendorController extends AbstractController
             ->setVendor($vendorService->getVendor())
             ->setVendorService($vendorService);
 
-        if ($user instanceof UserInterface && $user->isCouple()) {
+        if ($user instanceof User && $user->isCouple()) {
             $couple = $em->getRepository(Couple::class)->findOneByUser($user);
 
             $qb = $em->getRepository(Enquiry::class)->createQueryBuilder('enquiry')->setMaxResults(1);

@@ -3,7 +3,7 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\User;
 
 class MainmenuController extends AbstractController
@@ -60,7 +60,7 @@ class MainmenuController extends AbstractController
             'contact' => ['label' => 'Contact us'],
         ];
 
-        return $this->render('::front/mainmenu.html.twig', [
+        return $this->render('front/mainmenu.html.twig', [
             'mainmenuItems' => $mainmenuItems,
             'logo' => 'logo.png'
             ]

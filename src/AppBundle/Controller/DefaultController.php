@@ -2,32 +2,42 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Translation\Extractor\ExtractorInterface;
+use Symfony\Component\Translation\Loader\LoaderInterface;
 use Symfony\Component\Translation\MessageCatalogue;
 use Symfony\Component\Translation\Catalogue\MergeOperation;
+use Symfony\Component\Translation\Reader\TranslationReaderInterface;
+use Symfony\Component\Translation\Writer\TranslationWriterInterface;
 
 class DefaultController extends AbstractController
 {
     /**
      * @Route("/admin")
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(
+        Request $request,
+        ExtractorInterface $extractor,
+        TranslationWriterInterface $writer,
+        LoaderInterface $loader
+    ) {
         $prefix = '';
         $locale = $request->get('locale') ? $request->get('locale') : 'fr';
         $output = $request->get('output') ? $request->get('output') : 'xlf';
         $bundle = $request->get('bundle') ? $request->get('bundle') : '';
 
+        /** @var Kernel $kernel */
         $kernel = $this->get('kernel');
         $transPaths = [$kernel->getRootDir().'/Resources/'];
         $bundles = array_keys($kernel->getBundles());
 
-        $extractor = $this->get('translation.extractor');
+        //$extractor = $this->get('translation.extractor');
         $extractor->setPrefix($prefix);
-        $writer = $this->get('translation.writer');
-        $loader = $this->get('translation.loader');
+        //$writer = $this->get('translation.writer');
+        //$loader = $this->get('translation.loader');
 
         // Override with provided Bundle info
         if ($bundle) {
@@ -42,13 +52,13 @@ class DefaultController extends AbstractController
         // load any existing messages from the translation files
         $currentCatalogue = new MessageCatalogue($locale);
 
-        foreach ($transPaths as $path) {
+/*        foreach ($transPaths as $path) {
             $path .= 'translations';
 
             if (is_dir($path)) {
-                $loader->loadMessages($path, $currentCatalogue);
+                $loader->load($path, $locale);
             }
-        }
+        }*/
 
         if ($request->isMethod('post') && count($request->get('translations'))) {
             $translations = $request->get('translations');
@@ -78,7 +88,7 @@ class DefaultController extends AbstractController
                 }
 
 
-                $writer->writeTranslations(
+                $writer->write(
                     $operation->getResult(),
                     $output,
                     [
