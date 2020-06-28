@@ -35,7 +35,7 @@ class kernel extends BaseKernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getProjectDir().'/app/config/config_'.$this->getEnvironment().'.yml');
-        $dotenv = new Dotenv();
+        $dotenv = new Dotenv(false);
         $dotenv->load(
             $this->getProjectDir().'/.env',
             $this->getProjectDir().'/.env.dev',

@@ -25,6 +25,7 @@
 <link href="{{ asset('bundles/front/css/stucture.css') }}" rel="stylesheet" type="text/css"> <!-- stucture css -->
 <link href="{{ asset('bundles/front/css/share-tooltip.css') }}" rel="stylesheet" type="text/css"> <!-- google fonts -->
 <link href="{{ asset('bundles/front/css/style.css') }}" rel="stylesheet" type="text/css"> <!-- custom css -->
+<link href="{{ asset('bundles/front/css/vendor-categories.css') }}" rel="stylesheet" type="text/css"> <!-- custom css -->
 {% if app.request.locale == 'ar' %}
 <link href="{{ asset('bundles/front/css/style.ar.css') }}" rel="stylesheet" type="text/css">
 {% endif %}
@@ -59,7 +60,7 @@
 
 {% block header %}
 {% include 'front/topbar.html.twig' %}
-{{ render(controller('FrontBundle:Mainmenu:index')) }}
+{{ render(controller('FrontBundle\\Controller\\MainmenuController::indexAction')) }}
 {% endblock %}
 
 {% block banner %}{% endblock %}

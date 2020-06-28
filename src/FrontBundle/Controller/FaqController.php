@@ -5,7 +5,7 @@ namespace FrontBundle\Controller;
 use AppBundle\Services\CmsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class FaqController extends AbstractController
 {

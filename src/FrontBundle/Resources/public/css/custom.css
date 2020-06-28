@@ -832,6 +832,7 @@ ul {
 }
 .vendor-categories-img {
   position: relative;
+  min-height: 250px;
 }
 .vendor-categories-img img {
   width: 100%;
