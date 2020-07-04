@@ -51,9 +51,9 @@ INSERT INTO `user_type` (`id`, `name`) VALUES
 
 INSERT INTO `user` (`id`, `city_id`, `user_type_id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `first_name`, `last_name`, `address`, `phone`, `mobile`, `profile_picture`) VALUES
 (1, NULL, 1, 'kahla', 'kahla', 'kahla.anouar@yahoo.fr', 'kahla.anouar@yahoo.fr', 1, '5fkmxei2w44cg00s4skkwc08w0kokgc', '$2y$13$5fkmxei2w44cg00s4skkwOkDMH8Yni7H5J47Jds.Mdbttpx73oZAG', '2017-10-13 13:57:53', NULL, NULL, 'a:1:{i:0;s:11:"ROLE_COUPLE";}', 'Anouar', 'Kahla', NULL, NULL, NULL, 'ce97372417e768c78d9691b444a5ed9d.png'),
-(2, NULL, 2, 'vendor', 'vendor', 'kahla.anoir@gmail.com', 'kahla.anoir@gmail.com', 1, 'tda98zxnryoc8cokws84cow0400owcg', '$2y$13$tda98zxnryoc8cokws84cesP/LoL6ZwKMLIjOR1x.5L.nUgs3G4Oe', '2017-10-13 22:06:35', NULL, NULL, 'a:1:{i:0;s:11:"ROLE_VENDOR";}', 'Vendor first name', 'vendor last name', NULL, NULL, NULL, '3dd9885c20edb757eeab88d64f35a77b.jpeg'),
+(2, NULL, 2, 'vendor', 'vendor', 'kahla.anoir@gmail.com', 'kahla.anoir@gmail.com', 1, 'tda98zxnryoc8cokws84cow0400owcg', '$2y$13$7tBHHyMfeMMjtKthvB64Q.GhhdEh7UYK.D12pkvCw/M773Cr9BEAq', '2017-10-13 22:06:35', NULL, NULL, 'a:1:{i:0;s:11:"ROLE_VENDOR";}', 'Vendor first name', 'vendor last name', NULL, NULL, NULL, '3dd9885c20edb757eeab88d64f35a77b.jpeg'),
 (3, NULL, 2, 'John', 'john', 'hohn@demo.fr', 'hohn@demo.fr', 1, 's8k5xorzkdwcw00wcgksowcgokcwgo0', '$2y$13$s8k5xorzkdwcw00wcgksouyeqb4roRhtduD5WMEH8Ira7YNfVOsKC', '2017-10-08 13:22:26', NULL, NULL, 'a:1:{i:0;s:11:"ROLE_VENDOR";}', 'John', 'Travolta', NULL, NULL, NULL, 'http://www.gravatar.com/avatar.php?gravatar_id=dab47db918f088950221e2cd0bc06999&default=&size=260'),
-(4, NULL, 1, 'couple', 'couple', 'test@test.fr', 'test@test.fr', 1, '5nyr0w6hgcwsow48w4040wscscsoss0', '$2y$13$5nyr0w6hgcwsow48w4040uteCaLn/zHDWcQ9hOGsuwps53Qwpnp9O', '2017-10-08 13:51:35', NULL, NULL, 'a:1:{i:0;s:11:"ROLE_COUPLE";}', 'test', 'test', NULL, NULL, NULL, '');
+(4, NULL, 1, 'couple', 'couple', 'test@test.fr', 'test@test.fr', 1, '5nyr0w6hgcwsow48w4040wscscsoss0', '$2y$13$6qyzbN6Z3aGwYCQX6axZZefNeEGP8zMZbfECzJvrz2vPqnY4IkUzK', '2017-10-08 13:51:35', NULL, NULL, 'a:1:{i:0;s:11:"ROLE_COUPLE";}', 'test', 'test', NULL, NULL, NULL, '');
 
 --
 -- Contenu de la table `capacity`
