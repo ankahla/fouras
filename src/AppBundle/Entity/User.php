@@ -1,36 +1,17 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="user")
- */
 class User extends \FOS\UserBundle\Model\User
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Group")
-     * @ORM\JoinTable(name="user_user_group",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
-     * )
-     */
     protected $groups;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=3,
@@ -43,8 +24,6 @@ class User extends \FOS\UserBundle\Model\User
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=3,
@@ -56,14 +35,9 @@ class User extends \FOS\UserBundle\Model\User
      */
     protected $lastName;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     */
     protected $address;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
      * @Assert\Length(
      *     min=8,
      *     max=20,
@@ -76,7 +50,6 @@ class User extends \FOS\UserBundle\Model\User
     protected $phone;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
      * @Assert\Length(
      *     min=8,
      *     max=20,
@@ -88,23 +61,13 @@ class User extends \FOS\UserBundle\Model\User
      */
     protected $mobile;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
-     */
     private $city;
 
     /**
      * @var UserType
-     * @ORM\ManyToOne(targetEntity="UserType")
-     * @ORM\JoinColumn(name="user_type_id", referencedColumnName="id")
      */
     private $userType;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     */
     protected $profilePicture;
 
     /**
@@ -112,9 +75,6 @@ class User extends \FOS\UserBundle\Model\User
      */
     protected $profilePictureFile;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="user", cascade={"persist"})
-     */
     private $tasks;
 
     function __construct()

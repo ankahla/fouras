@@ -28,7 +28,7 @@
 
 
 {% block sidebar%}
-  {% include 'front/Blog/sidebar.html.twig' with {'currentCatId': currentCategory is defined ? currentCategory.id : ''} %}
+  {% include 'front/Blog/sidebar.html.twig' with {'currentCatId': currentCategory is defined and not currentCategory is empty ? currentCategory.id : ''} %}
 {% endblock %}
 
 {% endblock %}

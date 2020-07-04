@@ -1,6 +1,6 @@
 parameters:
     process_timeout: 380
-    bin_dir: ./vendor/bin
+    bin_dir: ./bin
     stop_on_failure: true
     tasks:
         git_blacklist:
@@ -10,6 +10,9 @@ parameters:
                  - "{% dump"
                  - "VarDumper"
                  - "extract("
+                 - "die("
+                 - "dump("
+                 - "exit;"
             triggered_by: [php, js, twig]
             metadata:
                 priority: 3
@@ -46,7 +49,7 @@ parameters:
             metadata:
                 priority: 0
         phpstan:
-            configuration: ~
+            configuration: phpstan.neon
             level: 4
             triggered_by: ['php']
             metadata:

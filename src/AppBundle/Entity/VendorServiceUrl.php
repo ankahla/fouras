@@ -1,31 +1,12 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="vendor_service_url")
- */
 class VendorServiceUrl
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Url", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="url_id", referencedColumnName="id")
-     */
     private $url;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="VendorService", inversedBy="urls")
-     * @ORM\JoinColumn(nullable=false)
-     */
     private $vendorService;
 
     public function getId()

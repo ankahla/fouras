@@ -16,12 +16,12 @@ use AppBundle\Form\VendorServiceType;
 class VendorController extends AbstractController
 {
 
-    public function dashboardAction()
+    public function dashboard()
     {
         return $this->render('UserBundle::Profile/Vendor/dashboard.html.twig');
     }
 
-    public function inqueryAction(Request $request)
+    public function inquery(Request $request)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -30,7 +30,7 @@ class VendorController extends AbstractController
         return $this->render('UserBundle::Profile/Vendor/inquery.html.twig', ['vendor' => $vendor]);
     }
 
-    public function serviceAction(Request $request)
+    public function service(Request $request)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -39,7 +39,7 @@ class VendorController extends AbstractController
         return $this->render('UserBundle::Profile/Vendor/services.html.twig', ['vendor' => $vendor]);
     }
 
-    public function newServiceAction(Request $request)
+    public function newService(Request $request)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -66,7 +66,7 @@ class VendorController extends AbstractController
         );
     }
 
-    public function editServiceAction(Request $request, $id)
+    public function editService(Request $request, $id)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -103,7 +103,7 @@ class VendorController extends AbstractController
         );
     }
 
-    public function updateServiceAction(Request $request, $id)
+    public function updateService(Request $request, $id)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -173,7 +173,7 @@ class VendorController extends AbstractController
         );
     }
 
-    public function createServiceAction(Request $request)
+    public function createService(Request $request)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -219,7 +219,7 @@ class VendorController extends AbstractController
         );
     }
 
-    public function deleteServiceAction($id)
+    public function deleteService($id)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -240,7 +240,7 @@ class VendorController extends AbstractController
         return $this->redirectToRoute('vendor_service');
     }
 
-    public function tasksAction(Request $request)
+    public function tasks(Request $request)
     {
         $user = $this->getUser();
         

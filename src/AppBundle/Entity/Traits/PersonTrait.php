@@ -1,21 +1,13 @@
 <?php
 namespace AppBundle\Entity\Traits;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait PersonTrait
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
      * @Assert\NotBlank(message="Please enter a name.")
      * @Assert\Length(
      *     min=3,
@@ -27,8 +19,6 @@ trait PersonTrait
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
      * @Assert\NotBlank(message="Please enter a name.")
      * @Assert\Length(
      *     min=3,
@@ -40,7 +30,6 @@ trait PersonTrait
     protected $lastName;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\Email(
      *     message = "The email is not valid.",
      * )
@@ -48,7 +37,6 @@ trait PersonTrait
     protected $email;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
      * @Assert\Length(
      *     min=8,
      *     max=20,
@@ -61,7 +49,6 @@ trait PersonTrait
     protected $phone;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
      * @Assert\Length(
      *     min=8,
      *     max=20,
@@ -73,10 +60,6 @@ trait PersonTrait
      */
     protected $mobile;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     */
     protected $address;
 
     public function getId()

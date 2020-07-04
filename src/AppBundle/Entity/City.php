@@ -2,25 +2,13 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="city")
- */
 class City
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @Assert\NotBlank(message="Please enter a valid name.")
      * @Assert\Length(
      *     min=3,
@@ -32,8 +20,6 @@ class City
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length=20)
-     *
      * @Assert\NotBlank(message="Please enter a zipcode.")
      * @Assert\Length(
      *     min=3,

@@ -15,7 +15,7 @@ use AppBundle\Form\CoupleType;
 
 class CoupleController extends AbstractController
 {
-    public function todoAction(Request $request)
+    public function todo(Request $request)
     {
         $user = $this->getUser();
         
@@ -63,7 +63,7 @@ class CoupleController extends AbstractController
         );
     }
 
-    public function budgetPlannerAction()
+    public function budgetPlanner()
     {
         $user = $this->getUser();
         
@@ -85,7 +85,7 @@ class CoupleController extends AbstractController
             );
     }
 
-    public function updateBudgetAction(Request $request)
+    public function updateBudget(Request $request)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -97,7 +97,7 @@ class CoupleController extends AbstractController
         return $this->redirectToRoute('couple_budget');
     }
 
-    public function createBudgetAction(Request $request)
+    public function createBudget(Request $request)
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
@@ -125,7 +125,7 @@ class CoupleController extends AbstractController
         }
     }
 
-    public function deleteBudgetAction($id, $itemId)
+    public function deleteBudget($id, $itemId)
     {
         $user = $this->getUser();
         
@@ -153,12 +153,12 @@ class CoupleController extends AbstractController
     /**
      * @Route("/couple_wishlist", name="couple_wishlist")
      */
-    public function wishlistAction()
+    public function wishlist()
     {
         return $this->render('UserBundle::Couple/wishlist.html.twig');
     }
 
-    public function guestlistAction()
+    public function guestlist()
     {
         $user = $this->getUser();
 
@@ -178,7 +178,7 @@ class CoupleController extends AbstractController
         );
     }
 
-    public function updateGuestAction(Request $request)
+    public function updateGuest(Request $request)
     {
         $user = $this->getUser();
         
@@ -210,7 +210,7 @@ class CoupleController extends AbstractController
             );
     }
 
-    public function createGuestAction(Request $request)
+    public function createGuest(Request $request)
     {
         $user = $this->getUser();
         
@@ -235,7 +235,7 @@ class CoupleController extends AbstractController
         }
     }
 
-    public function deleteGuestAction($id)
+    public function deleteGuest($id)
     {
         $user = $this->getUser();
         

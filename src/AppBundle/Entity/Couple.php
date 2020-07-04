@@ -1,67 +1,33 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="couple")
- */
 class Couple
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Husband", cascade={"persist"})
-     * @ORM\JoinColumn(name="husband_id", referencedColumnName="id")
-     */
     private $husband;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Wife", cascade={"persist"})
-     * @ORM\JoinColumn(name="wife_id", referencedColumnName="id")
-     */
     private $wife;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
-     */
     private $weddingCity;
 
     /**
      * @var \DateTime $weddingDate
      *
-     * @ORM\Column(type="date", nullable=true)
      */
     private $weddingDate;
 
-    /**
-     * @ORM\OneToMany(targetEntity="CoupleUrl", mappedBy="couple", cascade={"persist"})
-     */
     private $urls;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Budget", mappedBy="couple", cascade={"persist"})
-     */
     private $budgets;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Guest", mappedBy="couple", cascade={"persist"})
-     */
     private $guests;
 
     function __construct()

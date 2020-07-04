@@ -1,35 +1,19 @@
 <?php
-// src/AppBundle/Entity/User.php
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Entity\Traits\TimestampableTrait;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="task")
- */
 class Task
 {
     use TimestampableTrait;
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+
     protected $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="tasks")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
     private $user;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @Assert\NotBlank(message="Please enter a valid name.")
      * @Assert\Length(
      *     min=3,
@@ -40,16 +24,8 @@ class Task
      */
     protected $title;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     */
     protected $description;
 
-    /**
-     * @ORM\Column(type="date")
-     *
-     */
     protected $date;
 
     function __construct()

@@ -1,27 +1,14 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Traits\PersonTrait;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="guest")
- */
 class Guest
 {
     use PersonTrait;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Couple")
-     * @ORM\JoinColumn(name="couple_id", referencedColumnName="id")
-     */
     private $couple;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     */
     protected $description;
 
     public function getId()

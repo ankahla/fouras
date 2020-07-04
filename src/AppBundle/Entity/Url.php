@@ -1,12 +1,6 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="url")
- */
 class Url
 {
     public const FB_TYPE = 'facebook',
@@ -15,23 +9,11 @@ class Url
     IN_TYPE = 'linkedin',
     IG_TYPE = 'instagram',
     X_TYPE = 'other';
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+
     protected $id;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     */
     protected $url;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     */
     protected $type;
 
 

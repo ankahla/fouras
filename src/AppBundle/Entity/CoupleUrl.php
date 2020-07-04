@@ -1,31 +1,12 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="couple_url")
- */
 class CoupleUrl
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Url", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="url_id", referencedColumnName="id")
-     */
     private $url;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Couple", inversedBy="urls")
-     * @ORM\JoinColumn(nullable=false)
-     */
     private $couple;
 
     public function __construct($type = 'facebook', $url = '')

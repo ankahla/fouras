@@ -1,14 +1,9 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="vendor_service")
- */
 class VendorService
 {
     public const CAPACITY_A = 'Inférieur à 50',
@@ -18,16 +13,9 @@ class VendorService
     CAPACITY_E = 'Entre 500 et 1000',
     CAPACITY_F = 'Supérieur à 1000';
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *
      * @Assert\NotBlank(message="Please enter a valid name.")
      * @Assert\Length(
      *     min=3,
@@ -38,26 +26,13 @@ class VendorService
      */
     protected $title;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Service")
-     * @ORM\JoinColumn(name="service_id", referencedColumnName="id", nullable=false)
-     */
     private $service;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="services")
-     * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id")
-     */
     private $vendor;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
-     */
     private $city;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
      * @Assert\Length(
      *     min=8,
      *     max=20,
@@ -69,69 +44,31 @@ class VendorService
      */
     private $phone;
 
-    /**
-     * @ORM\Column(type="decimal",precision=10, scale=3, nullable=true)
-     */
     private $costMin;
 
-    /**
-     * @ORM\Column(type="decimal",precision=10, scale=3, nullable=true)
-     */
     private $costMax;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\Email(
      *     message = "The email is not valid.",
      * )
      */
     protected $email;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     *
-     */
     protected $description;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     */
     protected $address;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     *
-     */
     protected $latitude;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     *
-     */
     protected $longitude;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Capacity")
-     * @ORM\JoinColumn(name="capacity_id", referencedColumnName="id")
-     */
     protected $capacity;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     */
     protected $picture;
 
-    /**
-     * @ORM\OneToMany(targetEntity="VendorServiceUrl", mappedBy="vendorService", cascade={"persist", "remove"})
-     */
     private $urls;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     *
-     */
     private $youtubeVideoId;
 
     function __construct()

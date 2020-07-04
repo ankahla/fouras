@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Listener;
 
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use AppBundle\Entity\Couple;
 use AppBundle\Entity\User;
@@ -12,7 +12,7 @@ class UserListener
     private $tokenStorage;
     private $em;
 
-    public function __construct(TokenStorageInterface $tokenStorage, RegistryInterface $managerRegistry)
+    public function __construct(TokenStorageInterface $tokenStorage, ManagerRegistry $managerRegistry)
     {
         $this->tokenStorage = $tokenStorage;
         $this->em = $managerRegistry->getManager();

@@ -4,17 +4,17 @@ user_profile_edit:
 
 user_upload_picture:
     path:     picture-upload
-    defaults: { _controller: UserBundle:User:pictureUpload }
+    defaults: { _controller: UserBundle\Controller\UserController::pictureUpload }
 
 user_url_create:
     path: /url/create
-    defaults: { _controller: UserBundle:User:createUrl }
+    defaults: { _controller: UserBundle\Controller\UserController::createUrl }
 
 user_url_delete:
     path: /url/{id}/delete
-    defaults: { _controller: UserBundle:User:deleteUrl }
+    defaults: { _controller: UserBundle\Controller\UserController::deleteUrl }
 
 user_delete_task:
     path:     /task/{id}/delete
-    defaults: { _controller: "UserBundle:User:deleteTask" }
+    defaults: { _controller: UserBundle\Controller\UserController::deleteTask }
     methods:  DELETE
