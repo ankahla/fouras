@@ -2,27 +2,16 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="capacity")
- */
 class Capacity implements Translatable
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank(message="Please enter a valid name.")
      * @Assert\Length(

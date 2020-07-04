@@ -1,22 +1,15 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Entity\Traits\PersonTrait;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="wife")
- */
 class Wife
 {
 
     use PersonTrait;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
      * @Assert\NotBlank(message="Please enter a name.")
      * @Assert\Length(
      *     min=3,
@@ -28,8 +21,6 @@ class Wife
     protected $fatherName;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
      * @Assert\NotBlank(message="Please enter a name.")
      * @Assert\Length(
      *     min=3,

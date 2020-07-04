@@ -1,43 +1,23 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Traits\PersonTrait;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="vendor")
- */
 class Vendor
 {
     use PersonTrait;
 
-    /**
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
     private $user;
 
-    /**
-     * @ORM\OneToMany(targetEntity="VendorUrl", mappedBy="vendor", cascade={"persist"})
-     */
     private $urls;
 
-    /**
-     * @ORM\OneToMany(targetEntity="VendorService", mappedBy="vendor", cascade={"persist"})
-     */
     private $services;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
-     */
     private $city;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Enquiry", mappedBy="vendor", cascade={"persist", "remove"})
      */
     private $enquiries;
 

@@ -1,4 +1,4 @@
-FROM mysql:5.6
+FROM mysql:8.0
 
 MAINTAINER Maher LANDOLSI & ANOUAR KAHLA
 

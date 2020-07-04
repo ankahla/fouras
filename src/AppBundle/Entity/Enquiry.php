@@ -1,25 +1,13 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="enquiry")
- */
 class Enquiry
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     *
      * @Assert\NotBlank(message="Please enter a valid name.")
      * @Assert\Length(
      *     min=3,
@@ -31,7 +19,6 @@ class Enquiry
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=false)
      * @Assert\Email(
      *     message = "The email is not valid.",
      * )
@@ -39,7 +26,6 @@ class Enquiry
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=false)
      * @Assert\Length(
      *     min=8,
      *     max=20,
@@ -53,41 +39,29 @@ class Enquiry
 
 	/**
      * @var Couple
-     * @ORM\ManyToOne(targetEntity="Couple")
-     * @ORM\JoinColumn(name="couple_id", referencedColumnName="id", nullable=false)
      */
     private $couple;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="enquiries")
-     * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id")
      */
     private $vendor;
 
     /**
-     * @ORM\ManyToOne(targetEntity="VendorService")
-     * @ORM\JoinColumn(name="vendor_service_id", referencedColumnName="id", nullable=false)
      */
     private $vendorService;
 
     /**
      * @var \DateTime $weddingDate
-     *
-     * @ORM\Column(type="date", nullable=true)
      */
     private $weddingDate;
 
     /**
      * @var \DateTime $phoneCallBack
-     *
-     * @ORM\Column(type="boolean", nullable=true, options={"default" : true})
      */
     private $phoneCallBack;
 
     /**
      * @var \DateTime $emailResponseBack
-     *
-     * @ORM\Column(type="boolean", nullable=true, options={"default" : true})
      */
     private $emailResponseBack;
 

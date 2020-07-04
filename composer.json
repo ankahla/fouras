@@ -19,6 +19,7 @@
         "ext-intl": "*",
         "csa/guzzle-bundle": "^3.1",
         "doctrine/doctrine-bundle": "^1.11",
+        "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.6",
         "friendsofsymfony/user-bundle": "^2.1",
         "gedmo/doctrine-extensions": "^2.4",
@@ -43,6 +44,7 @@
     "scripts": {
         "symfony-scripts": [
             "app/console doctrine:schema:update --force",
+            "app/console doctrine:migrations:migrate -n",
             "app/console assets:install web"
         ],
         "post-install-cmd": [
@@ -57,7 +59,7 @@
     "config": {
         "bin-dir": "bin",
         "platform": {
-            "php": "7.4"
+            "php": "7.4.1"
         },
         "sort-packages": true
     },

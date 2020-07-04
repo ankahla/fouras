@@ -32,8 +32,8 @@ RUN docker-php-ext-install intl zip \
 RUN docker-php-ext-install mysqli pdo pdo_mysql pgsql pdo_pgsql
 
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
+#RUN pecl install xdebug \
+#    && docker-php-ext-enable xdebug
 
 
 COPY ./ /

@@ -1,8 +1,7 @@
 version: "3.3"
 
 services:
-    apache:
-        container_name: apache
+    fouras_apache:
         build:
           context: apache
         ports:
@@ -14,17 +13,19 @@ services:
         container_name: php7.4
         build:
           context: php7.4
-        env_file: ../.env
         volumes:
             - "../:/var/www/:delegated"
-    db:
-        container_name: db
-        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            - REDIS_URL=redis://root:@redis:3306/fouras
+            - DATABASE_CMS_URL=mysql://root:root@fouras_db/cms
+    fouras_db:
         build:
             context: mysql
+        command: --default-authentication-plugin=mysql_native_password --sql_mode=""
         ports:
             - "3306:3306"
         restart: always
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=yes
             - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=fouras

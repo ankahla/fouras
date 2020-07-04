@@ -1,31 +1,13 @@
 <?php
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="vendor_url")
- */
 class VendorUrl
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Url", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="url_id", referencedColumnName="id")
-     */
     private $url;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="urls")
-     * @ORM\JoinColumn(nullable=false)
-     */
     private $vendor;
 
     public function getId()

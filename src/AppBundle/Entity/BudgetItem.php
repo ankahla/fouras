@@ -2,30 +2,15 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="budget_item")
- */
 class BudgetItem
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Budget", inversedBy="items")
-     * @ORM\JoinColumn(name="budget_id", referencedColumnName="id")
-     */
     private $budget;
 
     /**
-     * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank(message="Please enter a valid name.")
      * @Assert\Length(
@@ -37,22 +22,10 @@ class BudgetItem
      */
     protected $name;
 
-    /**
-     * @ORM\Column(type="decimal",precision=10, scale=3, nullable=true)
-     *
-     */
     protected $estimatedAmount = 0.0;
 
-    /**
-     * @ORM\Column(type="decimal",precision=10, scale=3, nullable=true)
-     *
-     */
     protected $actuelAmount = 0;
 
-    /**
-     * @ORM\Column(type="decimal",precision=10, scale=3, nullable=true)
-     *
-     */
     protected $paidAmount = 0;
 
     /**
