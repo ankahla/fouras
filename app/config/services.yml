@@ -50,6 +50,8 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+        bind:
+            $projectDir: '%kernel.project_dir%'
 
     app.form.registration:
         class: AppBundle\Form\Type\RegistrationFormType
@@ -61,3 +63,7 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+
+    AdminBundle\Controller\:
+        resource: '%kernel.project_dir%/src/AdminBundle/Controller'
+        tags: ['controller.service_arguments']

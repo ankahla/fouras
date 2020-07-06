@@ -3,61 +3,62 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\User;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class MainmenuController extends AbstractController
 {
     /**
      * @Route("/mainmenu", name="mainmenu")
      */
-    public function indexAction()
+    public function indexAction(TranslatorInterface $translator)
     {
         $user = $this->getUser();
         $isConnected = $user instanceof User;
 
         $userMenu = [
-            'label' =>'My wedding',
+            'label' => $translator->trans('My wedding'),
             'sub' => [
-                'fos_user_profile_show' => ['label' => 'Couple profile'],
-                'couple_budget' => ['label' => 'Budget Planner'],
-                'couple_todo' => ['label' => 'To Do List'],
-                'couple_guestlist' => ['label' => 'Guest List'],
+                'fos_user_profile_show' => ['label' => $translator->trans('Couple profile')],
+                'couple_budget' => ['label' => $translator->trans('Budget Planner')],
+                'couple_todo' => ['label' => $translator->trans('To Do List')],
+                'couple_guestlist' => ['label' => $translator->trans('Guest List')],
             ],
         ];
 
         if ($user instanceof User && $user->isVendor()) {
             $userMenu = [
-                'label' =>'Dashboard',
+                'label' => $translator->trans('Dashboard'),
                 'sub' => [
-                    'fos_user_profile_show' => ['label' => 'Profile'],
-                    'vendor_service' => ['label' => 'My Services'],
-                    'vendor_todo' => ['label' => 'To Do List'],
-                    'vendor_inquery' => ['label' => 'Couple inquery'],
+                    'fos_user_profile_show' => ['label' => $translator->trans('Profile')],
+                    'vendor_service' => ['label' => $translator->trans('My Services')],
+                    'vendor_todo' => ['label' => $translator->trans('To Do List')],
+                    'vendor_inquery' => ['label' => $translator->trans('Couple inquery')],
                 ],
             ];
         }
 
         $mainmenuItems = [
-            'homepage' => ['label' => 'Home'],
+            'homepage' => ['label' => $translator->trans('Home')],
             'fos_user_profile_show' => $userMenu,
-            'vendors' => ['label' => 'Services'],
+            'vendors' => ['label' => $translator->trans('Services')],
             'about' => [
-                'label' => 'About us',
+                'label' => $translator->trans('About us'),
                 'sub' => [
-                    'about' => ['label' => 'About'],
-                    'wedding_list' => ['label' => 'Real wedding Listing'],
+                    'about' => ['label' => $translator->trans('About')],
+                    'wedding_list' => ['label' => $translator->trans('Real wedding Listing')],
                 ],
             ],
             'help' => [
-                'label' => 'Ideas & Advice',
+                'label' => $translator->trans('Ideas & Advice'),
                 'sub' => [
-                    'faq' => ['label' => 'Faq'],
-                    'help' => ['label' => 'Help'],
+                    'faq' => ['label' => $translator->trans('Faq')],
+                    'help' => ['label' => $translator->trans('Help')],
                 ],
             ],
-            'blog' => ['label' => 'Blog'],
-            'contact' => ['label' => 'Contact us'],
+            'blog' => ['label' => $translator->trans('Blog')],
+            'contact' => ['label' => $translator->trans('Contact us')],
         ];
 
         return $this->render('front/mainmenu.html.twig', [

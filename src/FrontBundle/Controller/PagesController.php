@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use AppBundle\Entity\SearchVendorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ class PagesController extends AbstractController
      */
     public function indexAction()
     {
-        $vendorServiceFilter = new VendorService();
+        $vendorServiceFilter = new SearchVendorService();
         $searchForm = $this->createForm(VendorServiceFilterType::class, $vendorServiceFilter);
 
         return $this->render('FrontBundle:Pages:home.html.twig', [

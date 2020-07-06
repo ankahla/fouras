@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use AppBundle\Entity\SearchVendorService;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +33,7 @@ class VendorController extends AbstractController
     /**
      * @Route("/prestataire/{id}/profile", name="vendor_profile")
      */
-    public function profileAction($id)
+    public function profileAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $vendorService = $em->getRepository(VendorService::class)->findOneById($id);
@@ -74,8 +75,6 @@ class VendorController extends AbstractController
 
         }
         
-        $request = $this->get('request_stack');
-        
         if ($request->isMethod('POST') && !$enquirySent) {
             $enquiryForm->handleRequest($request);
 
@@ -110,7 +109,7 @@ class VendorController extends AbstractController
      */
     public function searchAction(Request $request, EntityManagerInterface $em, $serviceId = null)
     {
-        $vendorServiceFilter = new VendorService();
+        $vendorServiceFilter = new SearchVendorService();
 
         if ($serviceId) {
             $service = $em->getRepository(Service::class)->findOneById($serviceId);

@@ -1,4 +1,12 @@
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    AppBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
     app.locale_listener:
         class: AppBundle\Listener\LocaleListener
         arguments: ['%kernel.default_locale%']

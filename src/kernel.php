@@ -21,6 +21,7 @@ class kernel extends BaseKernel
             new FOS\UserBundle\FOSUserBundle(),
             new Csa\Bundle\GuzzleBundle\CsaGuzzleBundle(),
             new AppBundle\AppBundle(),
+            new AdminBundle\AdminBundle(),
             new FrontBundle\FrontBundle(),
             new UserBundle\UserBundle(),
         );

@@ -16,6 +16,10 @@ front:
     requirements:
         _locale: ar|fr|en
 
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

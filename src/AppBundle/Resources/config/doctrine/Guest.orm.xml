@@ -11,7 +11,7 @@
     <field name="phone" type="string" column="phone" length="20" precision="0" scale="0" nullable="true"/>
     <field name="mobile" type="string" column="mobile" length="20" precision="0" scale="0" nullable="true"/>
     <field name="address" type="string" column="address" precision="0" scale="0" nullable="true"/>
-    <many-to-one field="couple" target-entity="AppBundle\Entity\Couple" fetch="LAZY">
+    <many-to-one field="couple" target-entity="AppBundle\Entity\Couple" inversed-by="guests" fetch="LAZY">
       <join-columns>
         <join-column name="couple_id" referenced-column-name="id" nullable="1"/>
       </join-columns>
