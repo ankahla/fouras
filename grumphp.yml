@@ -9,7 +9,6 @@ parameters:
                  - "console.debug"
                  - "{% dump"
                  - "VarDumper"
-                 - "extract("
                  - "die("
                  - "dump("
                  - "exit;"
@@ -37,12 +36,7 @@ parameters:
                         - 'extract'
                         - 'var_dump'
                         - 'dump'
-        phpcs:
-            standard: "php_cs.php"
-            whitelist_patterns:
-              - /^src\/(.*)/
-            metadata:
-                priority: 1
+
         phpunit:
             config_file: ./
             always_execute: false

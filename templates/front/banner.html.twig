@@ -3,11 +3,11 @@
     <div class="overlay-bg"></div>
     <div class="container">
       <div class="banner-dtl text-center">
-        <h2 class="banner-heading">{{ title }}</h2>
+        <h2 class="banner-heading">{{ title|trans }}</h2>
         <div class="breadcrumb-block">
           <ol class="breadcrumb">
             <li><a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a></li>
-            <li class="active">{{ title }}</li>
+            <li class="active">{{ title|trans }}</li>
           </ol>
         </div>
       </div>

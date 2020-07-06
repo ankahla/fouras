@@ -2,6 +2,9 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\City;
+use AppBundle\Entity\Service;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,15 +20,17 @@ class VendorServiceFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('service', null, [
-                'label' => 'Service',
-                'choice_translation_domain' => 'messages',
-                'placeholder' => 'Select category',
-                'required' => false,
+            ->add('service', EntityType::class, [
+                    'label' => 'Service',
+                    'class' => Service::class,
+                    'choice_translation_domain' => 'messages',
+                    'placeholder' => 'Select category',
+                    'required' => false,
                 ]
             )
-            ->add('city', null, [
+            ->add('city', EntityType::class, [
                 'label' => 'City',
+                    'class' => City::class,
                 'choice_translation_domain' => 'messages',
                 'placeholder' => 'Select city',
                 'required' => false,
@@ -52,7 +57,7 @@ class VendorServiceFilterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\VendorService'
+            'data_class' => 'AppBundle\Entity\SearchVendorService'
         ));
     }
 

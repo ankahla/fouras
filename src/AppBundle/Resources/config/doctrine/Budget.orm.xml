@@ -9,7 +9,7 @@
         <cascade-persist/>
       </cascade>
     </one-to-many>
-    <many-to-one field="couple" target-entity="AppBundle\Entity\Couple" fetch="LAZY">
+    <many-to-one field="couple" target-entity="AppBundle\Entity\Couple" inversed-by="budgets" fetch="LAZY">
       <join-columns>
         <join-column name="couple_id" referenced-column-name="id" nullable="1"/>
       </join-columns>

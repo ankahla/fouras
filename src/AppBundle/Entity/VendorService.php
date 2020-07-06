@@ -6,13 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class VendorService
 {
-    public const CAPACITY_A = 'Inférieur à 50',
-    CAPACITY_B = 'Entre 50 et 100',
-    CAPACITY_C = 'Entre 100 et 200',
-    CAPACITY_D = 'Entre 200 et 500',
-    CAPACITY_E = 'Entre 500 et 1000',
-    CAPACITY_F = 'Supérieur à 1000';
-
     protected $id;
 
     /**

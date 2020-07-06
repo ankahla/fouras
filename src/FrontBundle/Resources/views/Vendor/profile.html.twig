@@ -150,13 +150,8 @@
                     <div class="col-md-2 col-md-offset-5"><i class="fa fa-heart" style="color:#FF4061"></i></div>
                  </div>
                   <br>
-                  {% elseif app.user and app.user.couple and enquiryForm is not null  %}
-                  {% include 'FrontBundle::Vendor/enquery.html.twig' %}
                   {% else %}
-                  <br>
-                  <h6>{% trans %}You must be connected to send enquery{% endtrans %}</h6>
-                  <br>
-                  <a href="{{ path('fos_user_security_login') }}">{% trans %}Sign In{% endtrans %}</a>
+                  {% include 'FrontBundle::Vendor/enquery.html.twig' %}
                   {% endif %}
                 </div>
               </div>

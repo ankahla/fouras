@@ -11,12 +11,12 @@
   <div class="send-me">{% trans %}Send Me Info Via{% endtrans %}</div>
   {{ form_row(enquiryForm.emailResponseBack) }}
   {{ form_row(enquiryForm.phoneCallBack) }}
-  <button type="submmit" class="btn btn-pink">{% trans %}Send enquery{% endtrans %}</button>
+  <button type="button" class="btn btn-pink">{% trans %}Send enquery{% endtrans %}</button>
   {{ form_widget(enquiryForm._token) }}
 {{ form_end(enquiryForm) }}
 {% else %}
 <br>
 <h6>{% trans %}You must be connected to send enquery{% endtrans %}</h6>
 <br>
-<a href="{{ path('fos_user_security_login') }}">{% trans %}Sign In{% endtrans %}</a>
+  <a href="#" data-toggle="modal" data-target="#login-model">{% trans %}Sign In{% endtrans %}</a>
 {% endif %}

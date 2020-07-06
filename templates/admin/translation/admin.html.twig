@@ -1,0 +1,129 @@
+{% extends 'admin/layout.html.twig' %}
+{% block title %}{{ parent() }} - Gestion des traductions{% endblock %}
+{% block headerTitle %}Gestion des traductions{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <script type="text/javascript">
+            function updateSingleForm() {
+                var originalInputs = document.forms.single.elements.original;
+
+                for (var i = 0; i < originalInputs.length; i++) {
+                    originalInput = originalInputs[i];
+                    targetInput = document.forms.single.elements['translation' + i];
+
+                    if (targetInput && targetInput.value && originalInput.value) {
+                        targetInput.name = 'translations[messages][' + originalInput.value + ']';
+                    }
+                }
+            }
+        </script>
+        <hr>
+        <form method="post">
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                {% for domain, strings in messages %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="{{ domain }}Heading">
+                            <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion"
+                                href="#{{ domain }}Collapse" aria-expanded="true" aria-controls="{{ domain }}Collapse">
+                                <a role="button">
+                                    {{ domain|trans }}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="{{ domain }}Collapse" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="{{ domain }}Heading">
+                            <div class="panel-body">
+
+                                <table class="table table-hover table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th class="col-md-4">
+                                            Text original
+                                        </th>
+                                        <th>
+                                            Traduction
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for original, translated in strings %}
+                                        <tr>
+                                            <td>
+                                                <label>{{ original }}</label>
+                                            </td>
+                                            <td>
+                                <textarea class="form-control" name="translations[{{ domain }}][{{ original }}]"
+                                          cols="60"
+                                          rows="2">{{ translated }}</textarea>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <input type="submit" name="" value="Valider" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <input type="submit" name="" value="Valider" class="btn btn-primary">
+            <br>
+            <br>
+        </form>
+
+        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="AddTranslationHeading">
+                    <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion"
+                        href="#AddTranslationCollapse" aria-expanded="true" aria-controls="AddTranslationCollapse">
+                        <a role="button">
+                            Ajouter des nouvelles traductions
+                        </a>
+                    </h4>
+                </div>
+                <div id="AddTranslationCollapse" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="AddTranslationHeading">
+                    <div class="panel-body">
+
+
+                        <form method="post" id="single" onsubmit="updateSingleForm()">
+                            <input type="hidden" name="locale" value="{{ locale }}">
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th class="col-md-4">
+                                        Text original
+                                    </th>
+                                    <th>
+                                        Traduction
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for key in 0..9 %}
+                                    <tr>
+                                        <td>
+                                            <textarea class="form-control" name="original" cols="60"
+                                                      rows="2"></textarea>
+                                        </td>
+                                        <td>
+                            <textarea class="form-control" id="translation{{ key }}" name="target" cols="60"
+                                      rows="2"></textarea>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <input type="submit" name="" value="Valider" class="btn btn-primary">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
