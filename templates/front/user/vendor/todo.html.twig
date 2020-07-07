@@ -1,0 +1,81 @@
+{% extends 'front/user/vendor/layout.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+jQuery('.to-do-list-action-tabs .edit').click(function(e){
+    e.preventDefault();
+    var selectedItemData = jQuery(this).parents('div:first').find('input').serializeArray();
+    for (idx in selectedItemData) {
+        field = selectedItemData[idx];
+        document.forms['create-task-form']['task_form['+field.name+']'].value = field.value;
+    }
+
+});
+jQuery('.to-do-list-action-tabs .delete').click(function(e){
+    e.preventDefault();
+    var taskTile = $(this).parents('.row:first').find('.to-do-list-dtl-heading').text();
+    if (confirm('{% trans %}Are you sure you want to delete this Task ?{% endtrans %} ('+taskTile+')')) {
+        $(this).parent('form').submit();
+    }
+
+});
+jQuery('.new-task').click(function(e){
+    e.preventDefault();
+    document.forms['create-task-form'].reset();
+    document.forms['create-task-form']['task_form[id]'].value = '';
+});
+</script>
+{% endblock %}
+
+{% block body %}
+<section id="to-do-list" class="to-do-list-main-block">
+    <div class="container">
+        {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+        <div class="to-do-list-block">
+            <div class="row">
+                <p class="text-center">
+                <button data-toggle="modal" data-target="#task-form" class="btn btn-pink new-task">{% trans %}New task{% endtrans %}</button>
+                </p>
+                {% include 'front/user/task.list.html.twig' %}
+            </div>
+                
+            <div id="task-form" class="modal fade" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                {{ form_errors(form) }}
+                                {{ form_start(form, {'action': path('vendor_todo'), attr:{'id':'create-task-form'}}) }}
+                                    <p>
+                                    {{ form_label(form.title) }}
+                                    {{ form_errors(form.title) }}
+                                    {{ form_widget(form.title,{attr:{'class':'form-control'}}) }}
+
+                                    {{ form_label(form.date) }}
+                                    {{ form_errors(form.date) }}
+                                    {{ form_widget(form.date,{attr:{'class':'form-control'}}) }}
+
+                                    {{ form_label(form.description) }}
+                                    {{ form_errors(form.description) }}
+                                    {{ form_widget(form.description,{attr:{'class':'form-control'}}) }}
+                                    </p>
+                                    <p class="text-center">
+                                    <button type="submit" class="btn btn-pink">{% trans %}Save Task{% endtrans %}</button>
+                                    </p>
+                                    <div class="hidden">
+                                        {{ form_rest(form) }}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  {% endblock %}

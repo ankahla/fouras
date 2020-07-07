@@ -20,10 +20,6 @@ class kernel extends BaseKernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Csa\Bundle\GuzzleBundle\CsaGuzzleBundle(),
-            new AppBundle\AppBundle(),
-            new AdminBundle\AdminBundle(),
-            new FrontBundle\FrontBundle(),
-            new UserBundle\UserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -36,7 +32,7 @@ class kernel extends BaseKernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $dotenv = new Dotenv();
+        $dotenv = new Dotenv(true);
         $dotenv->load(
             $this->getProjectDir().'/.env',
             $this->getProjectDir().'/.env.dev',

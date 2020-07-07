@@ -4,9 +4,9 @@ use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Dotenv\Dotenv;
 
-require __DIR__.'/../app/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
-(new Dotenv())->load(
+(new Dotenv(true))->load(
     __DIR__.'/../.env',
     __DIR__.'/../.env.dev',
     __DIR__.'/../.env.test'

@@ -72,7 +72,7 @@ INSERT INTO `capacity` (`id`, `name`) VALUES
 --
 
 INSERT INTO `service` (`id`, `name`, `image`) VALUES
-(1, 'Wedding Cakes', '/bundles/front/images/vendor-categories-2.jpg'),
+(1, 'Wedding Cakes', '/assets/images/vendor-categories-2.jpg'),
 (2, 'Wedding Dress', '/bundles/front/images/vendor-categories-3.jpg'),
 (3, 'Wedding Photography', 'bundles/front/images/vendor-categories-4.jpg'),
 (4, 'Jewellery', NULL),

@@ -27,6 +27,9 @@
         <server name="SYMFONY_PHPUNIT_VERSION" value="7.5" />
         <server name="KERNEL_CLASS" value="kernel" />
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+        <env name="DATABASE_URL" value="mysql://root:root@fouras_db/fouras" />
+        <env name="CMS_BASE_URL" value="/web/cms/" />
+        <env name="CMS_API_URL" value="http://fouras_apache/web/cms/api/" />
     </php>
 
     <testsuites>

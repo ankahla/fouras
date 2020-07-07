@@ -54,7 +54,7 @@ services:
             $projectDir: '%kernel.project_dir%'
 
     app.form.registration:
-        class: AppBundle\Form\Type\RegistrationFormType
+        class: Form\RegistrationFormType
         arguments: ['%fos_user.model.user.class%']
         tags:
             - { name: 'form.type', alias: 'app_user_registration_form' }
@@ -64,6 +64,25 @@ services:
         tags:
             - { name: twig.extension }
 
-    AdminBundle\Controller\:
-        resource: '%kernel.project_dir%/src/AdminBundle/Controller'
-        tags: ['controller.service_arguments']
+    Controller\:
+        resource: '../../src/Controller/*'
+
+    Listener\:
+        resource: '../../src/Listener/*'
+
+    FOS\UserBundle\Form\Factory\FactoryInterface: "@fos_user.profile.form.factory"
+
+    Listener\LocaleListener:
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    Services\GravatarService:
+        arguments: ['%gravatar.default_options%', '@assets.packages']
+
+    Services\CmsService:
+        arguments:
+            - '@csa_guzzle.client.cms_api'
+            - '%cms_api_key%'
+            - '@request_stack'
+            - '%cms_cat_id%'

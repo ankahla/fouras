@@ -5,14 +5,12 @@ parameters:
     tasks:
         git_blacklist:
             keywords:
-                 - "console.log"
-                 - "console.debug"
                  - "{% dump"
                  - "VarDumper"
                  - "die("
                  - "dump("
                  - "exit;"
-            triggered_by: [php, js, twig]
+            triggered_by: [php, twig]
             metadata:
                 priority: 3
         git_commit_message:

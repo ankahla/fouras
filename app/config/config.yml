@@ -1,9 +1,6 @@
 imports:
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@AppBundle/Resources/config/services.yml" }
-    - { resource: "@FrontBundle/Resources/config/services.yml" }
-    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -21,8 +18,6 @@ framework:
     csrf_protection: ~
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
-    templating:
-        engines: ['twig']
     default_locale: '%locale%'
     trusted_hosts: ~
     session:
@@ -61,6 +56,13 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        mappings:
+            main:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/app/config/doctrine'
+                prefix: 'Model'
+                alias: main
 
 doctrine_migrations:
     # List of namespace/path pairs to search for migrations, at least one required
@@ -85,12 +87,14 @@ fos_user:
         sender_name:    Fouras
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: Model\User
     group:
-        group_class: AppBundle\Entity\Group
+        group_class: Model\Group
     registration:
         form:
-            type: AppBundle\Form\Type\RegistrationFormType
+            type: Form\RegistrationFormType
+    service:
+        mailer: fos_user.mailer.twig_swift
 
 # Swiftmailer Configuration
 swiftmailer:
