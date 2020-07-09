@@ -19,7 +19,7 @@
           </tr>
           {% for vendorService in vendor.services %}
           <tr>
-            <td class="vendor-img"><img src="{{ asset(vendor_service_pic_dir ~ '/' ~ vendorService.picture) }}" width="200" class="img-responsive" alt="vendor-img"></td>
+            <td class="vendor-img"><img src="{{ asset(vendor_service_pic_dir ~ vendorService.picture)|imagine_filter('320x360') }}" width="200" class="img-responsive" alt="vendor-img"></td>
             <td>{{ vendorService.title }}</td>
             <td>{{ vendorService.service.name }}</td>
             <td>{{ vendorService.address }}</td>

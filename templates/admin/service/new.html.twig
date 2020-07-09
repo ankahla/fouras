@@ -1,0 +1,16 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% form_theme new_form 'admin/fields.html.twig' %}
+
+{% block title %}{{ parent() }} - backoffice{% endblock %}
+{% block headerTitle %}Noueau service{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ form_errors(new_form) }}
+        {{ form_start(new_form) }}
+        {{ form_row(new_form.name) }}
+        {{ form_row(new_form.image) }}
+        {{ form_row(new_form.mapIcon) }}
+        {{ form_rest(new_form) }}
+    </div>
+{% endblock %}

@@ -40,6 +40,24 @@
             src="{{ asset('assets/js/price-slider.js') }}"></script> <!-- price slider / filter js-->
     <script type="text/javascript"
             src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script> <!-- datepicker js-->
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('input[type=file]').change(function (e) {
+                var previewImg = jQuery(this).prev('img.preview');
+                var reader = new FileReader();
+
+                reader.onload = function(){
+                    if ($(previewImg).hasClass('hidden')) {
+                        $(previewImg).removeClass('hidden');
+                    }
+
+                    previewImg.attr('src', reader.result);
+                };
+
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block header %}

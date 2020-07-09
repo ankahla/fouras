@@ -43,3 +43,6 @@ vendor_actions:
     prefix: /{_locale}/vendor
     requirements:
         _locale: ar|fr|en
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.yaml"

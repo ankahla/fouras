@@ -28,22 +28,18 @@ $(".datepicker").datepicker();
                 <div class="couple-dtl">
                   <div class="row">
                     {% if app.session.get('profileName') %}
-                    <div class="col-xs-7 pad-rt-0">
                       <h3 class="couple-name">{{ app.session.get('profileName') }}</h3>
-                    </div>
                     {% endif %}
-                    <div class="col-xs-5 pad-lft-0">
-                      <a href="{{ path('fos_user_profile_show') }}" class="btn btn-pink">Edit Profile</a>
-                    </div>
                   </div>
-                  <div class="couple-contact">
+                  <div class="row couple-contact">
                     {% if app.session.get('address') %}
                     <div><i class="fa fa-map-marker"></i>{{ app.session.get('address') }}.</div>
                     {% endif %}
                     {% if app.session.get('phone') %}
                     <div><i class="fa fa-phone"></i>{{ app.session.get('phone') }}</div>
                     {% endif %}
-                  </div>    
+                  </div>
+                  <div class="row"><a href="{{ path('fos_user_profile_show') }}" class="btn btn-pink">Edit Profile</a></div>
                 </div>
               </div>
             </div>

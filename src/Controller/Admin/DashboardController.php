@@ -14,7 +14,7 @@ class DashboardController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function indexAction(Request $request)
+    public function index(Request $request)
     {
         return $this->render('admin/dashboard.html.twig', []);
     }

@@ -1,0 +1,16 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% form_theme edit_form 'admin/fields.html.twig' %}
+
+{% block title %}{{ parent() }} - backoffice{% endblock %}
+{% block headerTitle %}Editer service{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ form_errors(edit_form) }}
+        {{ form_start(edit_form) }}
+        {{ form_row(edit_form.name) }}
+        {{ form_row(edit_form.image) }}
+        {{ form_row(edit_form.mapIcon) }}
+        {{ form_rest(edit_form) }}
+    </div>
+{% endblock %}

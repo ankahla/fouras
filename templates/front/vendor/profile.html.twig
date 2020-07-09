@@ -176,7 +176,7 @@
           				<div class="row"> 
           					<div class="col-md-5">
           						<div class="vendor-profile-img">
-          							<img src="{{ asset('uploads/profiles/vendor_service/' ~ vendorService.picture) }}" class="img-responsive" alt="vendor-img">
+          							<img src="{{ asset('uploads/profiles/vendor_service/' ~ vendorService.picture)|imagine_filter('300x300') }}" class="img-responsive" alt="vendor-img">
           						</div>
           					</div>
           					<div class="col-md-7">
@@ -249,33 +249,7 @@
           			<div class="row">
           				{% for vservice in vendorService.vendor.services %}
                     {% if vservice.id != vendorService.id %}
-                    <div class="col-sm-6">
-            					<div class="consider-item"> 
-            						<div class="category-listing-section">
-            							<div class="category-listing-dtl">
-            								<div class="category-listing-img">
-            									<a href="{{ path('vendor_profile', {'id':vservice.id}) }}"><img src="{{ asset('uploads/profiles/vendor_service/' ~  vservice.picture) }}" class="img-responsive" alt="category-img"></a>
-            								</div>
-            								<div class="category-info">
-            									<h6 class="category-dtl-heading"><a href="{{ path('vendor_search', {'serviceId':vservice.service.id}) }}">{{ vservice.service.name }}</a></h6>
-            									<div class="category-dtl-address"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ vservice.address }}</div>
-            								</div>
-            							</div>
-            							<div class="category-listing-text">
-            								<div class="row">
-            									<div class="col-xs-6">
-            										<div class="category-text-heading">
-            											<a href="{{ path('vendor_profile', {'id':vservice.id}) }}">{{ vservice.title }}</a>
-            										</div>
-            									</div>
-            									<div class="col-xs-6">
-            										<div class="category-price text-right">{{ vservice.costMin }}-{{ vservice.costMax }}</div>
-            									</div>
-            								</div>
-            							</div>
-            						</div>
-            					</div>
-            				</div>
+                        {% include 'front/vendor/service.block.html.twig' with {'vendorService' : vservice} %}
                     {% endif %}
                   {% endfor %}
           			</div>

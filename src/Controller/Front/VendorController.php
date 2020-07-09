@@ -5,6 +5,7 @@ namespace Controller\Front;
 use Model\SearchVendorService;
 use Model\User;
 use Doctrine\ORM\EntityManagerInterface;
+use OneCarrefour\Common\Domain\Manager\MediaManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,13 +17,14 @@ use Model\VendorService;
 use Model\Enquiry;
 use Form\VendorServiceFilterType;
 use Form\EnquiryType;
+use Symfony\Component\Routing\RouterInterface;
 
 class VendorController extends AbstractController
 {
     /**
      * @Route("/prestataires", name="vendors")
      */
-    public function indexAction()
+    public function indexAction(RouterInterface $router)
     {
         $services = $this->getDoctrine()->getRepository(Service::class)->findAll();
 

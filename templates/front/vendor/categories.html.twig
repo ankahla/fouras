@@ -15,7 +15,7 @@
         <div class="col-md-4 col-sm-6">
           <div class="vendor-categories-block">
             <div class="vendor-categories-img"> 
-              <img src="{{ asset(service.image ? service.image : 'assets/images/category-listing/default.jpg') }}" class="img-responsive" alt="vendor-category">
+              <img src="{{ asset(service.image ? service_pic_dir ~ service.image : 'assets/images/category-listing/default.jpg') | imagine_filter('340x240') }}" class="img-responsive" alt="vendor-category">
               {% if service.vendorServices|length %}<div class="meta-tags">{{ service.vendorServices|length }}</div>{% endif %}
               <div class="overlay-bg"></div>
               <a href="{{ path('vendor_search', {'serviceId':service.id}) }}" class="btn btn-plan">{% trans %}View Details{% endtrans %}</a>

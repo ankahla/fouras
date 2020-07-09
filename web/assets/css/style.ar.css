@@ -94,3 +94,14 @@ input[type=checkbox] {
 .fa-angle-left:before {
     content: "\f105";
 }
+
+.feature-block .feature-price-bottom {
+	float: left;
+}
+
+.listing-ul li.listing-location {
+	border-left: none;
+	padding-left: 0;
+	border-right: 1px solid #ccc;
+	padding-right: 15px;
+}

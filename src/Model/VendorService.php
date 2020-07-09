@@ -23,6 +23,9 @@ class VendorService
 
     private $vendor;
 
+    /**
+     * @Assert\NotNull(message="Please choose a city.")
+     */
     private $city;
 
     /**

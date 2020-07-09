@@ -49,7 +49,7 @@ class ProfileController extends AbstractController
     /**
      * Edit the user
      */
-    public function editProfileAction(Request $request)
+    public function editProfile(Request $request)
     {
         return $this->mainProcess($request);
     }

@@ -15,6 +15,15 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="{{ current_route == 'admin_translation' ? 'active' : '' }}"><a href="{{ path('admin_translation') }}">Gestion des traductions</a></li>
+
+        <li class="dropdown">
+          <a href="{{ path('admin_service_list') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion des services <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="{{ current_route == 'admin_service_list' ? 'active' : '' }}"><a href="{{ path('admin_service_list') }}">Liste des services</a></li>
+            <li class="{{ current_route == 'admin_service_new' ? 'active' : '' }}"><a href="{{ path('admin_service_new') }}">Ajouter nouveau</a></li>
+          </ul>
+        </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
