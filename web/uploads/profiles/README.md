@@ -1,0 +1,1 @@
+This folder will contain profile image uploaded by any user.

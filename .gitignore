@@ -1,5 +1,5 @@
 /web/bundles/
-/web/uploads/
+/web/uploads/*
 /web/media/
 /var/
 /vendor/
@@ -10,7 +10,14 @@
 !/cms/.htaccess
 !/cms/plugins
 !/cms/configuration
+!/web/uploads/profiles
+/web/uploads/profiles/*
+!/web/uploads/profiles/README.md
+!/web/uploads/profiles/vendor_service
+/web/uploads/profiles/vendor_service/*
 !/web/uploads/profiles/vendor_service/README.md
+!/web/uploads/services
+/web/uploads/services/*
 !/web/uploads/services/README.md
 !/media/README.md
 .idea/
