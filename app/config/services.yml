@@ -101,6 +101,6 @@ services:
 
     Infrastructure\Loader\FileSystemLoader:
         arguments:
-            - "%kernel.project_dir%/web"
+            - ['%kernel.project_dir%', '%kernel.project_dir%/web']
         tags:
             - { name: "liip_imagine.binary.loader", loader: fouras_loader }
