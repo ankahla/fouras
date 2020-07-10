@@ -1,16 +1,16 @@
 parameters:
     process_timeout: 380
-    bin_dir: ./vendor/bin
+    bin_dir: ./bin
     stop_on_failure: true
     tasks:
         git_blacklist:
             keywords:
-                 - "console.log"
-                 - "console.debug"
                  - "{% dump"
                  - "VarDumper"
-                 - "extract("
-            triggered_by: [php, js, twig]
+                 - "die("
+                 - "dump("
+                 - "exit;"
+            triggered_by: [php, twig]
             metadata:
                 priority: 3
         git_commit_message:
@@ -34,19 +34,14 @@ parameters:
                         - 'extract'
                         - 'var_dump'
                         - 'dump'
-        phpcs:
-            standard: "php_cs.php"
-            whitelist_patterns:
-              - /^src\/(.*)/
-            metadata:
-                priority: 1
+
         phpunit:
             config_file: ./
             always_execute: false
             metadata:
                 priority: 0
         phpstan:
-            configuration: ~
+            configuration: phpstan.neon
             level: 4
             triggered_by: ['php']
             metadata:

@@ -5,7 +5,7 @@
             <button type="submit" class="btn btn-pink">{% trans %}Go{% endtrans %}</button>
         </form>
     </div>
-    {% if blogCategory is defined %}
+    {% if blogCategory is defined and not blogCategory is empty %}
         <div class="widget">
             <h4 class="blog-sidebar-heading">{% trans %}Blog Categories{% endtrans %}</h4>
             <ul>
@@ -16,7 +16,7 @@
         </div>
     {% endif %}
 
-    {% if newsArticles is defined and newsArticles.total != 0 %}
+    {% if newsArticles is defined and newsArticles.total is defined and newsArticles.total != 0 %}
         <div class="widget blog-latest-news">
             <h4 class="blog-sidebar-heading">{% trans %}Latest News{% endtrans %}</h4>
             {% for news in newsArticles.results %}

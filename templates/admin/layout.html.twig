@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block meta %}
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="MobileOptimized" content="320">
+{% endblock %}
+{% block title %}{% trans %}Fouras{% endtrans %}{% endblock %}
+{% block stylesheets %}
+    <!-- theme style -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    {% if app.request.locale == 'ar' %}
+        <link href="{{ asset('assets/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css">
+    {% endif %}
+    <!-- bootstrap css -->
+    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet"
+          type="text/css"> <!-- fontawesome css -->
+    <link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet"
+          type="text/css"> <!-- magnify popup css -->
+    <link href="{{ asset('assets/css/datepicker.css') }}" rel="stylesheet"
+          type="text/css"> <!-- datepicker css -->
+    <link href="{{ asset('assets/css/flaticon.css') }}" rel="stylesheet" type="text/css"> <!-- flaticon css -->
+    <link href="{{ asset('assets/css/share-tooltip.css') }}" rel="stylesheet"
+          type="text/css"> <!-- google fonts -->
+    <!-- end theme style -->
+{% endblock %}
+{% block javascripts %}
+    <!-- jquery -->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/jquery.min.js') }}"></script>  <!-- jquery library js -->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/bootstrap.min.js') }}"></script> <!-- bootstrap js -->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/owl.carousel.js') }}"></script> <!-- owl carousel js -->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script> <!-- magnify popup js -->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/waypoints.min.js') }}"></script> <!-- facts count js required for jquery.counterup.js file -->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/jquery.share-tooltip.js') }}"></script> <!-- share tooltip js-->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/price-slider.js') }}"></script> <!-- price slider / filter js-->
+    <script type="text/javascript"
+            src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script> <!-- datepicker js-->
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('input[type=file]').change(function (e) {
+                var previewImg = jQuery(this).prev('img.preview');
+                var reader = new FileReader();
+
+                reader.onload = function(){
+                    if ($(previewImg).hasClass('hidden')) {
+                        $(previewImg).removeClass('hidden');
+                    }
+
+                    previewImg.attr('src', reader.result);
+                };
+
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block header %}
+    {% include 'admin/topbar.html.twig' %}
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>{% block headerTitle %}{% endblock %}</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {# include 'front/footer.html.twig' #}
+{% endblock %}
+
+{% if form is defined %}
+    {% form_theme form 'front/fields.html.twig' %}
+{% endif %}
+
+{% if passwordForm is defined %}
+    {% form_theme passwordForm 'front/fields.html.twig' %}
+{% endif %}

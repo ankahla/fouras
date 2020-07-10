@@ -1,0 +1,44 @@
+profile.show.username: profile.show.username
+profile.show.email: profile.show.email
+change_password.submit: change_password.submit
+group.edit.submit: 'Mettre à jour le groupe'
+group.show.name: 'Nom du groupe'
+group.new.submit: 'Créer le groupe'
+group.flash.updated: 'Le groupe a été mis à jour.'
+group.flash.created: 'Le groupe a été créé.'
+group.flash.deleted: 'Le groupe a été supprimé.'
+security.login.username: 'Nom d''utilisateur'
+security.login.password: 'Mot de passe'
+security.login.remember_me: 'Se souvenir de moi'
+security.login.submit: Connexion
+profile.edit.submit: 'Mettre à jour'
+profile.flash.updated: 'Le profil a été mis à jour.'
+change_password.flash.success: 'Le mot de passe a été modifié.'
+registration.check_email: 'Un e-mail a été envoyé à l''adresse %email%. Il contient un lien d''activation sur lequel il vous faudra cliquer afin d''activer votre compte.'
+registration.confirmed: 'Félicitations %username%, votre compte est maintenant activé.'
+registration.back: 'Retour à la page d''origine.'
+registration.submit: 'Créer mon compte'
+registration.flash.user_created: 'L''utilisateur a été créé avec succès.'
+registration.email.subject: 'Bienvenue %username% !'
+registration.email.message: "Bonjour %username% !\r\n\r\nPour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%\r\n\r\nCe lien ne peut être utilisé qu'une seule fois pour valider votre compte.\r\n\r\nCordialement,\r\nL'équipe\r\n"
+resetting.check_email: "Un e-mail a été envoyé. Il contient un lien sur lequel il vous faudra cliquer pour réinitialiser votre mot de passe.\r\nRemarque : Vous ne pouvez demander un nouveau mot de passe que toutes les %tokenLifetime% heures.\r\n\r\nSi vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.\r\n"
+resetting.request.username: 'Nom d''utilisateur ou adresse e-mail'
+resetting.request.submit: 'Réinitialiser le mot de passe'
+resetting.reset.submit: 'Modifier le mot de passe'
+resetting.flash.success: 'Le mot de passe a été réinitialisé avec succès.'
+resetting.email.subject: 'Réinitialisation de votre mot de passe'
+resetting.email.message: "Bonjour %username% !\r\n\r\nPour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%\r\n\r\nCordialement,\r\nL'équipe\r\n"
+layout.logout: Déconnexion
+layout.login: Connexion
+layout.register: Inscription
+layout.logged_in_as: 'Connecté en tant que %username%'
+form.group_name: 'Nom du groupe'
+form.username: 'Nom d''utilisateur'
+form.email: 'Adresse e-mail'
+form.current_password: 'Mot de passe actuel'
+form.password: 'Mot de passe'
+form.password_confirmation: 'Répéter le mot de passe'
+form.new_password: 'Nouveau mot de passe'
+form.new_password_confirmation: 'Répéter le nouveau mot de passe'
+resetting.password_already_requested: resetting.password_already_requested
+resetting.request.invalid_username: resetting.request.invalid_username

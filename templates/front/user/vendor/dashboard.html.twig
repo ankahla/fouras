@@ -1,0 +1,124 @@
+{% extends 'front/user/vendor/layout.html.twig' %}
+
+{% block body %}
+<section id="vendor-dashboard" class="vendor-dashboard-main-block">
+    <div class="container">
+      {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+      <div class="vendor-dashboard-block">
+        <h3 class="vendor-dashboard-heading dashboard-heading">My Dashboard</h3>
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="my-dashboard">
+              <div class="col-xs-2">
+                <i class="flaticon-social"></i>
+              </div>
+              <div class="col-xs-10">
+                <div class="may-dashboard-dtl facts-block">
+                  <h2 class="facts-number counter">500</h2>
+                  <div class="vendor-dashboard-text">Total Item Page Review</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="my-dashboard">
+              <div class="col-xs-2">
+                <i class="flaticon-social"></i>
+              </div>
+              <div class="col-xs-10">
+                <div class="may-dashboard-dtl facts-block">
+                  <h2 class="facts-number counter">89</h2>
+                  <div class="vendor-dashboard-text">Total Item Page Review</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="my-dashboard">
+              <div class="col-xs-2">
+                <i class="flaticon-like"></i>
+              </div>
+              <div class="col-xs-10">
+                <div class="may-dashboard-dtl facts-block">
+                  <h2 class="facts-number counter">250</h2>
+                  <div class="vendor-dashboard-text">Total Couple Inquiry</div>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="col-md-4 col-sm-6">
+            <div class="my-dashboard">
+              <div class="col-xs-2">
+                <i class="flaticon-like"></i>
+              </div>
+              <div class="col-xs-10">
+                <div class="may-dashboard-dtl facts-block">
+                  <h2 class="facts-number counter">31</h2>
+                  <div class="vendor-dashboard-text">Total Couple Inquiry</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="my-dashboard">
+              <div class="col-xs-2">
+                <i class="flaticon-file"></i>
+              </div>
+              <div class="col-xs-10">
+                <div class="may-dashboard-dtl facts-block">
+                  <h2 class="facts-number counter">215</h2>
+                  <div class="vendor-dashboard-text">Total Listing Items</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="my-progress-dashboard">   
+              <h4 class="progress-bar-heading">Profile Completed</h4>
+              <div class="progress-pie-chart clr-blue" data-percent="68">
+                <div class="ppc-progress">
+                  <div class="ppc-progress-fill"></div>
+                </div>
+                <div class="ppc-percents">
+                  <div class="pcc-percents-wrapper">
+                    <span class="clr-blue">%</span>
+                    <div class="text">completed</div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="your-plan-board">
+              <div class="your-plan-board-heading">Your Plan</div>
+              <h2 class="facts-number counter">60</h2>
+              <div class="per-month">Per Month</div>
+              <div class="expire-dtl">
+                <div class="expire-dtl-heading">plan expire date</div>
+                <div class="expire-date">August 11, 2017</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+
+  {% block javascripts %}
+  {{ parent() }}
+  <script>
+  $(function(){
+    var $ppc = $('.progress-pie-chart'),
+      percent = parseInt($ppc.data('percent')),
+      deg = 360*percent/100;
+    if (percent > 50) {
+      $ppc.addClass('gt-50');
+    }
+    $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+    $('.ppc-percents span').html(percent+'%');
+  });
+</script>
+  {% endblock %}

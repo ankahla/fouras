@@ -15,7 +15,7 @@
         {% if current_route == null %}
             {% set current_route = 'notfound' %}
         {% endif %}
-        {% set current_locale = app.request.attributes.get('_locale') %}
+        {% set current_locale = app.request.get('_locale') %}
         {% if current_locale == null %}
             {% set current_locale = 'fr' %}
         {% endif %}

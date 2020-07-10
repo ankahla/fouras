@@ -33,14 +33,14 @@
     {% block message%}
 		{% for type, messages in app.session.flashBag.all %}
 		{% for message in messages %}
-		<div class="alert {% if type == 'fos_user_success' %}alert-success{% else %}{{ type }}{% endif %}">
+		<div class="alert {% if type == 'fos_user_success' %}alert-success{% else %}alert-{{ type }}{% endif %}">
 			{{ message|trans({}, 'FOSUserBundle') }}
 		</div>
 		{% endfor %}
 		{% endfor %}
     {% endblock message %}
 
-		{{ render(controller('UserBundle:Menu:index', {'_route': app.request.attributes.get('_route')})) }}
+		{{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
 		{% block fos_user_content %}{% endblock fos_user_content %}
 	</div>
 </section>

@@ -1,0 +1,30 @@
+<div class="col-md-4 col-sm-6">
+    <div class="feature-block">
+        <div class="feature-img">
+            <a href="{{ path('vendor_profile', {'id':vendorService.id}) }}"><img src="{{ asset('uploads/profiles/vendor_service/' ~ vendorService.picture) | imagine_filter('320x360') }}" class="img-responsive" alt="category-img"></a>
+        </div>
+        <div class="feature-dtl">
+            <h6 class="feature-heading"><a href="{{ path('vendor_profile', {'id':vendorService.id}) }}" class="title">{{ vendorService.title }}</a></h6>
+
+            <ul class="listing-ul">
+                <li>
+                    <div class="comments-rating">
+                        <div class="rating-out-of">
+                            2.5
+                        </div>
+                    </div>
+                    <div class="totalrating">2 Ratings</div>
+                </li>
+                <li class="ml15 listing-location"><a href="{{ path('vendor_search', {'serviceId': vendorService.service.id })}}">{{ vendorService.service.name|trans }}</a></li>
+            </ul>
+        </div>
+        <div class="feature-dtl-bottom">
+            <div class="feature-vendor-bottom">
+                <i class="fa flaticon-wedding-location"></i><a href="{{ path('vendor_search', {'cityId': vendorService.city.id })}}">{{ vendorService.city.name|trans }}</a>
+
+            </div>
+            <div class="feature-price-bottom">{{ vendorService.costMin|number_format }} {% trans %}dt{% endtrans %} - {{ vendorService.costMax|number_format }} {% trans %}dt{% endtrans %}</div>
+        </div>
+
+    </div>
+</div>

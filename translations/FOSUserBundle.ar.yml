@@ -1,0 +1,44 @@
+layout.logout: خروج
+layout.register: تسجيل
+layout.login: دخول
+security.login.username: 'إسم المستخدم'
+security.login.password: 'كلمة المرور'
+security.login.submit: 'تسجيل دخول'
+registration.flash.user_created: 'تم إنشاء حسابك بنجاح'
+group.edit.submit: 'تحديث المجموعة'
+group.show.name: 'إسم المجموعة'
+group.new.submit: 'إنشاء مجموعة'
+group.flash.updated: 'تم تحديث المجموعة'
+group.flash.created: 'تم إنشاء المجموعة'
+group.flash.deleted: 'تم حـذف المجموعة'
+security.login.remember_me: 'حفظ البيانات'
+profile.show.username: 'إسم المستخدم'
+profile.show.email: 'بريد إلكتروني'
+profile.edit.submit: تحديث
+profile.flash.updated: 'تم تحديث الملف الشخصي'
+change_password.submit: 'تغيير كلمة المرور'
+change_password.flash.success: 'تم تغيير كلمة المرور'
+registration.check_email: 'لقد تم إرسال رسالة إلكترونية إلى %email% تحتوي على رابط يجب إتباعه لتفعيل حسابك الشخصي.'
+registration.confirmed: 'تهانينا %username%، لقد تم تفعيل حسابك.'
+registration.back: 'عودة إلى الصفحة الرئيسية'
+registration.submit: تسجيل
+registration.email.subject: '%username%! مرحبا'
+registration.email.message: "مرحبا %username%!\r\n\r\n\r\n لتفعيل حسابك يرجى إتباع الرابط التالي %confirmationUrl%\r\n\r\n الرابط يمكن إستخدامه مرة واحدة فقط لتفعيل حسابك\r\n\r\nشكرا،\r\nفريق العمل.\r\n"
+resetting.check_email: "لقد تم إرسال رسالة إلكترونية تحتوي على رابط يجب الضغط عليه لإعادة ضبط كلمة المرور الخاصة بك.\r\nملحوظة: يمكنك إعادة ضبط كلمة المرور الخاصة بك خلال %tokenLifetime% ساعة\r\n\r\nيرجى التحقق من ملف السبام إذا لم تستقبل الرسالة الإلكترونية قريبا أو أعد المحاولة\r\n"
+resetting.request.username: 'إسم المستخدم او البريد الالكتروني'
+resetting.request.submit: 'إعادة ضبط كلمة المرور'
+resetting.reset.submit: 'تغيير كلمة المرور'
+resetting.flash.success: 'تم إعادة ضبط كلمة المرور بنجاح'
+resetting.email.subject: 'إعادة ضبط كلمة المرور'
+resetting.email.message: "مرحبا %username%!\r\n\r\nلإعادة ضبط كلمة المرور يرجى إتباع الرابط التالي %confirmationUrl%\r\n\r\nشكرا،\r\nفريق العمل.\r\n"
+layout.logged_in_as: 'تم الدخول بإسم %username%'
+form.group_name: 'إسم المجموعة'
+form.username: 'إسم المستخدم'
+form.email: 'البريد الإلكتروني'
+form.current_password: 'كلمة المرور الحالية'
+form.password: 'كلمة المرور'
+form.password_confirmation: تأكيد
+form.new_password: 'كلمة المرور الجديدة'
+form.new_password_confirmation: 'تأكيد كلمة المرور'
+resetting.password_already_requested: resetting.password_already_requested
+resetting.request.invalid_username: resetting.request.invalid_username

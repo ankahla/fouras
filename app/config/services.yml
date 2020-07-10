@@ -19,7 +19,12 @@ parameters:
         rating: ~
         border: ~
     profile_pic_dir: 'uploads/profiles/'
-    vendor_service_pic_dir: 'uploads/profiles/vendor_service'
+    service_pic_dir: 'uploads/services/'
+    vendor_service_pic_dir: 'uploads/profiles/vendor_service/'
+    map_icon_dir: 'assets/images/icons/'
+
+    upload_service_pic_dir: '%kernel.project_dir%/web/%service_pic_dir%'
+
 
     maps.embedded.api.key : AIzaSyC7DfJcfvHtlpZLcEjgivtmjnyXlky0GB4
 
@@ -50,9 +55,11 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+        bind:
+            $projectDir: '%kernel.project_dir%'
 
     app.form.registration:
-        class: AppBundle\Form\Type\RegistrationFormType
+        class: Form\RegistrationFormType
         arguments: ['%fos_user.model.user.class%']
         tags:
             - { name: 'form.type', alias: 'app_user_registration_form' }
@@ -61,3 +68,39 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+
+    Controller\:
+        resource: '../../src/Controller/*'
+
+    Infrastructure\:
+        resource: '../../src/Infrastructure/*'
+
+    Services\:
+        resource: '../../src/Services/*'
+
+    FOS\UserBundle\Form\Factory\FactoryInterface: "@fos_user.profile.form.factory"
+
+    Infrastructure\Listener\LocaleListener:
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    Infrastructure\Listener\UserListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller }
+
+    Services\GravatarService:
+        arguments: ['%gravatar.default_options%']
+
+    Services\CmsService:
+        arguments:
+            - '@csa_guzzle.client.cms_api'
+            - '%cms_api_key%'
+            - '@request_stack'
+            - '%cms_cat_id%'
+
+    Infrastructure\Loader\FileSystemLoader:
+        arguments:
+            - "%kernel.project_dir%/web"
+        tags:
+            - { name: "liip_imagine.binary.loader", loader: fouras_loader }

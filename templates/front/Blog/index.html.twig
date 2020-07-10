@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-          {% if data.total != 0%}
+          {% if data.total is defined and data.total != 0%}
           {% for article in data.results %}
           <div class="blog-block">
             <div class="blog-img">

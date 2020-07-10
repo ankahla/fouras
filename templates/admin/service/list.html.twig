@@ -1,0 +1,31 @@
+{% extends 'admin/layout.html.twig' %}
+{% block title %}{{ parent() }} - backoffice{% endblock %}
+{% block headerTitle %}Liste des services{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+
+        <table class="table table-hover">
+            <thead>
+                <th class="col-md-1">Image</th>
+                <th class="col-md-8">Nom</th>
+                <th class="col-md-1">Prestataires</th>
+                <th class="col-md-1">Icon du map</th>
+                <th class="col-md-1">Actions</th>
+            </thead>
+            <tbody>
+            {% for service in services %}
+            <tr>
+                <td><a href="{{ path('admin_service_edit', {id:service.id}) }}"><img src="{{ asset(service_pic_dir ~ service.image)| imagine_filter('150x100') }}" class="img-responsive img-thumbnail" alt="{{ service.image }}"></a></td>
+                <td><h3>{{ service.name }}</h3></td>
+                <td><span class="badge badge-info">{{ service.vendorServices|length }}</span></td>
+                <td><img src="{{ asset( map_icon_dir ~ service.mapIcon) }}" /></td>
+                <td>
+                    <a href="{{ path('admin_service_edit', {id:service.id}) }}">Editer</a>
+                    <a class="{{ service.vendorServices|length > 0 ? 'hidden': '' }}" href="{{ path('admin_service_delete', {id:service.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

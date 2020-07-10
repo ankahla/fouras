@@ -1,0 +1,131 @@
+{% extends 'front/user/couple/layout.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+jQuery(document).ready(function(){
+  $('#new-guest-form').on("hidden.bs.modal", function () {
+    jQuery(this).find('.form-group .create-guest-block').html('');
+  });
+
+  $('#new-guest-form').on("show.bs.modal", function () {
+
+    var prototype = $('div[data-guest-prototype]').data('guest-prototype');
+    prototype = prototype.replace(/__name__/g, {{ list|length }});
+    jQuery(this).find('.form-group .create-guest-block').html(prototype);
+    });
+
+  });
+</script>
+{% endblock %}
+{% block body %}
+<section id="guest-list" class="guest-list-main-block">
+    <div class="container">
+      {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+      <div class="guest-list-block">
+      {{ form_start(form, {'action': path('couple_guest_update')}) }}
+        <div class="row">
+        <div class="col-md-6">
+          <div class="to-do-list">
+            <div class="panel-group faq-panel" id="accordion-left" role="tablist" aria-multiselectable="true">
+
+              {% for key,guest in list %}
+                {% if guest.id != null %}
+                  {% if key == ((list|length) / 2)|round %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="to-do-list">
+            <div class="panel-group faq-panel" id="accordion-right" role="tablist" aria-multiselectable="true">
+                 {% endif %}
+
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="heading-{{ key }}">
+                    <h4 class="panel-title to-do-list-heading">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ key }}" aria-expanded="true" aria-controls="collapse-{{ key }}">
+                        {{ guest.firstName }} {{ guest.lastName }}
+                        <span class="faq-btn faq-btn-plus hidden-xs"><i class="fa fa-angle-double-down" aria-hidden="true"></i></span>
+                        <span class="faq-btn faq-btn-minus hidden-xs"><i class="fa fa-angle-double-up" aria-hidden="true"></i></span>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-{{ key }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ key }}">
+                    <div class="panel-body to-do-list-dtl">
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <h4 class="to-do-list-dtl-heading">{{ guest.description }}</h4>
+                          <div class="date">{{ guest.email }}</div>
+                          <div class="phone">{{ guest.phone }}</div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="to-do-list-action-tabs">
+                            <a href="" data-toggle="modal" data-target="#guest-{{ key }}-form"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                            <a href="{{ path('couple_guest_delete', {id:guest.id}) }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                          </div>
+                        </div>
+
+                            <div id="guest-{{ key }}-form" class="modal fade" role="dialog">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}"><span aria-hidden="true">×</span></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <p>{{ form_widget(form.guests[key]) }}</p>
+                                      <p class="text-center">
+                                        <button type="submit" class="btn btn-pink">{% trans %}Save{% endtrans %}</button>
+                                      </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ form_widget(form._token) }}
+    </form>
+
+    <div class="row">
+      <p class="text-center">
+        <button data-toggle="modal" data-target="#new-guest-form" class="btn btn-pink btn-lg">{% trans %}New guest{% endtrans %}</button>
+      </p>
+    </div>
+<div data-guest-prototype="{{ form_widget(form.guests.vars.prototype)|e }}"></div>
+            <!-- modal -->
+        <div id="new-guest-form" class="modal fade" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="create-task-heading">{% trans %}Add New Guest{% endtrans %}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="{% trans %}Close{% endtrans %}"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                    {{ form_start(newGuestForm, {'action': path('couple_guest_create')}) }}
+                        <div class="form-group">
+                                  <div class="create-guest-block"></div>
+                                  <p></p>
+                                <p class="text-center">
+                                    <button type="submit" class="btn btn-pink">{% trans %}Add Guest{% endtrans %}</button>
+                                </p>
+                          </div>
+                          {{ form_widget(newGuestForm._token) }}
+                          </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+  </section>
+  {% endblock %}

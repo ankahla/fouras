@@ -15,13 +15,12 @@ class kernel extends BaseKernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Csa\Bundle\GuzzleBundle\CsaGuzzleBundle(),
-            new AppBundle\AppBundle(),
-            new FrontBundle\FrontBundle(),
-            new UserBundle\UserBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -34,12 +33,12 @@ class kernel extends BaseKernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getProjectDir().'/app/config/config_'.$this->getEnvironment().'.yml');
-        $dotenv = new Dotenv();
+        $dotenv = new Dotenv(true);
         $dotenv->load(
             $this->getProjectDir().'/.env',
             $this->getProjectDir().'/.env.dev',
             $this->getProjectDir().'/.env.test'
         );
+        $loader->load($this->getProjectDir().'/app/config/config_'.$this->getEnvironment().'.yml');
     }
 }

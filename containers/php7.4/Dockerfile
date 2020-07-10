@@ -7,6 +7,8 @@ RUN apt-get update && deps=" \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
         libcurl4-openssl-dev \
         libicu-dev \
         libmcrypt-dev \
@@ -27,13 +29,15 @@ RUN docker-php-ext-install intl zip \
     && docker-php-ext-enable mcrypt \
     && pecl install redis \
     && docker-php-ext-enable redis \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd \
     && rm -r /var/lib/apt/lists/*
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql pgsql pdo_pgsql
 
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
+#RUN pecl install xdebug \
+#    && docker-php-ext-enable xdebug
 
 
 COPY ./ /
