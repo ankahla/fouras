@@ -32,13 +32,13 @@ class FileSystemLoader implements LoggerAwareInterface, LoaderInterface
      */
     protected $locator;
 
-    public function __construct($dataRoot)
+    public function __construct(array $dataRoots)
     {
-        if (empty($dataRoot)) {
+        if (empty($dataRoots)) {
             throw new \InvalidArgumentException('Data root path must be specified.');
         }
 
-        $this->locator = new FileSystemLocator([$dataRoot]);
+        $this->locator = new FileSystemLocator($dataRoots);
     }
 
     /**
