@@ -4,10 +4,11 @@ namespace FrontBundle\Controller;
 
 use AppBundle\Entity\QueryBuilder\ArticleQueryBuilder;
 use AppBundle\Services\CmsService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
-class WeddingController extends AbstractController
+class WeddingController extends Controller
 {
     /**
      * @Route("/wedding_list", name="wedding_list")

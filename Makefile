@@ -34,7 +34,7 @@ restart: ## Start the project
 clean:
 	@$(EXEC_PHP) rm -rf var/* web/cms/tmp/* web/cms/administrator/logs/*
 	@$(EXEC_PHP) mkdir var/cache/ var/log/
-	@$(EXEC_PHP) chmod -R 777 var web/uploads web/cms/tmp web/cms/administrator/logs
+	@$(EXEC_PHP) chmod -R 777 var web/cms/tmp web/cms/administrator/logs
 
 install:
 	@$(EXEC_PHP) php composer install

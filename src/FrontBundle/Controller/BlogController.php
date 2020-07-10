@@ -6,7 +6,7 @@ use AppBundle\Entity\QueryBuilder\ArticleQueryBuilder;
 use AppBundle\Services\CmsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class BlogController extends AbstractController
 {

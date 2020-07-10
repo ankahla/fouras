@@ -1,35 +1,35 @@
 couple_todo:
     path:     /todo
-    defaults: { _controller: UserBundle\Controller\CoupleController::todoAction }
-    
+    defaults: { _controller: UserBundle:Couple:todo }
+
 couple_budget:
     path:     /budget
-    defaults: { _controller: UserBundle\Controller\CoupleController::budgetPlannerAction }
+    defaults: { _controller: UserBundle:Couple:budgetPlanner }
 
 couple_budget_update:
     path:     /budget/update
-    defaults: { _controller: UserBundle\Controller\CoupleController::updateBudgetAction }
+    defaults: { _controller: UserBundle:Couple:updateBudget }
 
 couple_budget_create:
     path:     /budget/create
-    defaults: { _controller: UserBundle\Controller\CoupleController::createBudgetAction }
+    defaults: { _controller: UserBundle:Couple:createBudget }
 
 couple_budget_delete:
     path:     /budget/{id}/{itemId}/delete/
-    defaults: { _controller: UserBundle\Controller\CoupleController::deleteBudgetAction }
+    defaults: { _controller: UserBundle:Couple:deleteBudget }
 
 couple_guestlist:
     path:     /guest/list
-    defaults: { _controller: UserBundle\Controller\CoupleController::guestlistAction }
+    defaults: { _controller: UserBundle:Couple:guestlist }
 
 couple_guest_update:
     path:     /guest/update
-    defaults: { _controller: UserBundle\Controller\CoupleController::updateGuestAction }
+    defaults: { _controller: UserBundle:Couple:updateGuest }
 
 couple_guest_create:
     path:     /guest/create
-    defaults: { _controller: UserBundle\Controller\CoupleController::createGuestAction }
+    defaults: { _controller: UserBundle:Couple:createGuest }
 
 couple_guest_delete:
     path:     /guest/{id}/delete/
-    defaults: { _controller: UserBundle\Controller\CoupleController::deleteGuestAction }
+    defaults: { _controller: UserBundle:Couple:deleteGuest }
