@@ -1,9 +1,6 @@
 imports:
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@AppBundle/Resources/config/services.yml" }
-    - { resource: "@FrontBundle/Resources/config/services.yml" }
-    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -21,8 +18,6 @@ framework:
     csrf_protection: ~
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
-    templating:
-        engines: ['twig']
     default_locale: '%locale%'
     trusted_hosts: ~
     session:
@@ -40,6 +35,8 @@ twig:
     globals:
         profile_pic_dir: '%profile_pic_dir%'
         vendor_service_pic_dir: '%vendor_service_pic_dir%'
+        service_pic_dir: '%service_pic_dir%'
+        map_icon_dir: '%map_icon_dir%'
         maps_key: '%maps.embedded.api.key%'
         cms_base_url: '%cms_base_url%'
 
@@ -61,6 +58,13 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        mappings:
+            main:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/app/config/doctrine'
+                prefix: 'Model'
+                alias: main
 
 doctrine_migrations:
     # List of namespace/path pairs to search for migrations, at least one required
@@ -85,12 +89,14 @@ fos_user:
         sender_name:    Fouras
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: Model\User
     group:
-        group_class: AppBundle\Entity\Group
+        group_class: Model\Group
     registration:
         form:
-            type: AppBundle\Form\Type\RegistrationFormType
+            type: Form\RegistrationFormType
+    service:
+        mailer: fos_user.mailer.twig_swift
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -109,3 +115,46 @@ csa_guzzle:
                 timeout: 5.0
                 # headers:
                 #     Accept: application/vnd.github.v3+json
+
+liip_imagine:
+    data_loader: fouras_loader
+    loaders:
+        default:
+            filesystem:
+                data_root: '%kernel.project_dir%/web'
+    resolvers :
+        default :
+            web_path :
+                web_root: '%kernel.project_dir%/web'
+    cache: default
+    filter_sets:
+        64x64:
+            default_image: /web/assets/images/default/unavailable-64x64.jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [64, 64], mode: outbound }
+        150x100:
+            default_image: /web/assets/images/default/unavailable-150x100.jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [150, 100], mode: outbound }
+        300x300:
+            default_image: /web/assets/images/default/unavailable-300x300.jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [300, 300], mode: outbound }
+        340x240:
+            default_image: /web/assets/images/default/unavailable-340x240.jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [340, 240], mode: outbound }
+        320x360:
+            default_image: /web/assets/images/default/unavailable-320x360.jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [320, 360], mode: outbound }
+        440x300:
+            default_image: /web/assets/images/default/unavailable-440x300.jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [440, 300], mode: outbound }

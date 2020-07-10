@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Model\Enquiry" table="enquiry">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="255" precision="0" scale="0" nullable="false"/>
+    <field name="email" type="string" column="email" length="50" precision="0" scale="0" nullable="false"/>
+    <field name="phone" type="string" column="phone" length="20" precision="0" scale="0" nullable="false"/>
+    <field name="weddingDate" type="date" column="wedding_date" precision="0" scale="0" nullable="true"/>
+    <field name="phoneCallBack" type="boolean" column="phone_call_back" precision="0" scale="0" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="emailResponseBack" type="boolean" column="email_response_back" precision="0" scale="0" nullable="true">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="couple" target-entity="Model\Couple" fetch="LAZY">
+      <join-columns>
+        <join-column name="couple_id" referenced-column-name="id" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="vendor" target-entity="Model\Vendor" inversed-by="enquiries" fetch="LAZY">
+      <join-columns>
+        <join-column name="vendor_id" referenced-column-name="id" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="vendorService" target-entity="Model\VendorService" fetch="LAZY">
+      <join-columns>
+        <join-column name="vendor_service_id" referenced-column-name="id" nullable=""/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

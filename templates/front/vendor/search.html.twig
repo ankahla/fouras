@@ -1,0 +1,130 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block banner %}
+<!-- top map -->
+  <section id="top-map" class="top-map">
+    <div id="mct-map_canvas" class="map-banner"></div>
+  </section>
+<!-- end top map -->
+{% endblock %}
+
+{% block body %}
+<!-- listing with top map -->
+  <section id="listing-with-topmap" class="listing-with-topmap-main-block">
+    <div class="container">
+      <div class="refine-search">
+        <h4 class="refine-search-heading">{% trans %}Refine Your Search{% endtrans %}</h4>
+        {{ form_start(searchForm) }}
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                {{ form_widget(searchForm.service) }}
+              </div>
+              <div class="col-md-3 col-sm-6">
+                {{ form_widget(searchForm.city) }}
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="price-filter">
+                  <div class="price-slider-amount">
+                    <br>
+                    <label id="range"><span class="min">{{ searchForm.costMin.vars.value }}</span> - <span class="max">{{ searchForm.costMax.vars.value }}</span></label>
+                  </div>  
+                  <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all slider-range">
+                    <div class="ui-slider-range ui-widget-header ui-corner-all">
+                    </div>
+                    <span class="ui-slider-handle ui-state-default ui-corner-all"></span>
+                    <span class="ui-slider-handle ui-state-default ui-corner-all"></span>
+                  </div> 
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="search-btn">
+                  <button type="submit" class="btn btn-pink">{% trans %}Search{% endtrans %}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{ form_widget(searchForm._token) }}
+          {{ form_end(searchForm) }}
+      </div>
+      <div class="listing-with-topmap-block">
+        <div class="row">
+          
+          {% for vendorService in vendorServices %}
+            {% include 'front/vendor/service.block.html.twig' with {'vendorService' : vendorService} %}
+          {% endfor %}
+
+<!--       <div class="pagination">
+        <ul>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default">1</a></li>
+          <li class="active"><a href="listing-with-topmap.html#" class="btn btn-default">2</a></li>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default">3</a></li>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default">4</a></li>
+          <li><a href="listing-with-topmap.html#" class="btn btn-default"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+        </ul>
+      </div> -->
+    </div>
+  </section>
+<!-- end listing with top map -->
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+  $(document).ready(function(){
+
+  var costMin = $('#{{ searchForm.costMin.vars.id }}');
+  var costMax = $('#{{ searchForm.costMax.vars.id }}');
+  var sliderrange = $('#slider-range');
+  // Price Slider / Filter
+  sliderrange.slider({
+    range: true,
+    min: 0,
+    max: 1000,
+    values: [ costMin.val(), costMax.val() ],
+    slide: function( event, ui ) {
+      costMin.val(ui.values[0]);
+      costMax.val(ui.values[1]);
+      $('#range span.min').text(ui.values[0]);
+      $('#range span.max').text(ui.values[1]);
+    }
+  });
+});
+</script>
+<script type="text/javascript" src="{{ asset('assets/js/jquery.mapit.js') }}"></script>
+<script>
+
+  var vendorServices = [];
+  {% for vendorService in vendorServices %}
+        vendorServices.push([
+          {{ vendorService.latitude }},
+          {{ vendorService.longitude }},
+          '{{ asset(map_icon_dir ~ vendorService.service.mapIcon) }}',
+          'listing', '<div class="infobox-wrap clearfix">' +
+          '<div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img text-center">' +
+          '<img src="{{ asset(vendor_service_pic_dir ~ vendorService.picture)|imagine_filter('64x64') }}" alt="category-img"/>' +
+          '</div><div class="listing-topmap-dtl pad-bt-0">' +
+          '<h6 class="listing-topmap-dtl-heading">' +
+          '<a href="{{ path('vendor_profile', {'id':vendorService.id}) }}">{{ vendorService.title }}</a>' +
+          '</h6></div></div></div>',
+          false, '0']);
+  {% endfor %}
+
+  $(function() {
+    var options = { locations : vendorServices,
+    address: '<div class="infobox-wrap clearfix"><div class="infobox-figure"><div class="listing-topmap-section"><div class="listing-with-topmap-img"><img stye="max-width:200px" src="{{ asset('assets/images/category-listing/default.jpg') }}" class="img-responsive" alt="category-img"></div><div class="listing-topmap-dtl pad-bt-0"><a href="#"><h6 class="listing-topmap-dtl-heading">{{'Fouras'|trans}}</h6></a></div></div></div>',
+    zoom: 7,
+    marker: {
+        latitude:   36.8064948,
+        longitude:  10.181531599999971,
+        icon:       '{{ asset('assets/images/icons/love.png') }}',
+        title:      'Fouras',
+        open:       false,
+        center:     true
+      },
+  };
+
+    $('#mct-map_canvas').mapit(options);
+  });
+</script>
+{% endblock %}

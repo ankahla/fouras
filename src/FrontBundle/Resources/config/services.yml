@@ -1,5 +1,0 @@
-services:
-    FrontBundle\Controller\:
-        resource: '../../Controller'
-        tags: ['controller.service_arguments']
-

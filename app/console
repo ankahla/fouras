@@ -13,8 +13,8 @@ use Symfony\Component\Dotenv\Dotenv;
 
 set_time_limit(0);
 
-require __DIR__.'/autoload.php';
-(new Dotenv())->load(
+require __DIR__.'/../vendor/autoload.php';
+(new Dotenv(true))->load(
     __DIR__.'/../.env',
     __DIR__.'/../.env.dev',
     __DIR__.'/../.env.test'

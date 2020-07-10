@@ -6,40 +6,58 @@
 {% block title %}{% trans %}Fouras{% endtrans %}{% endblock %}
 {% block stylesheets %}
     <!-- theme style -->
-    <link href="{{ asset('bundles/front/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     {% if app.request.locale == 'ar' %}
-        <link href="{{ asset('bundles/front/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css">
     {% endif %}
     <!-- bootstrap css -->
-    <link href="{{ asset('bundles/front/css/font-awesome.min.css') }}" rel="stylesheet"
+    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet"
           type="text/css"> <!-- fontawesome css -->
-    <link href="{{ asset('bundles/front/css/magnific-popup.css') }}" rel="stylesheet"
+    <link href="{{ asset('assets/css/magnific-popup.css') }}" rel="stylesheet"
           type="text/css"> <!-- magnify popup css -->
-    <link href="{{ asset('bundles/front/css/datepicker.css') }}" rel="stylesheet"
+    <link href="{{ asset('assets/css/datepicker.css') }}" rel="stylesheet"
           type="text/css"> <!-- datepicker css -->
-    <link href="{{ asset('bundles/front/css/flaticon.css') }}" rel="stylesheet" type="text/css"> <!-- flaticon css -->
-    <link href="{{ asset('bundles/front/css/share-tooltip.css') }}" rel="stylesheet"
+    <link href="{{ asset('assets/css/flaticon.css') }}" rel="stylesheet" type="text/css"> <!-- flaticon css -->
+    <link href="{{ asset('assets/css/share-tooltip.css') }}" rel="stylesheet"
           type="text/css"> <!-- google fonts -->
     <!-- end theme style -->
 {% endblock %}
 {% block javascripts %}
     <!-- jquery -->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/jquery.min.js') }}"></script>  <!-- jquery library js -->
+            src="{{ asset('assets/js/jquery.min.js') }}"></script>  <!-- jquery library js -->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/bootstrap.min.js') }}"></script> <!-- bootstrap js -->
+            src="{{ asset('assets/js/bootstrap.min.js') }}"></script> <!-- bootstrap js -->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/owl.carousel.js') }}"></script> <!-- owl carousel js -->
+            src="{{ asset('assets/js/owl.carousel.js') }}"></script> <!-- owl carousel js -->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/jquery.magnific-popup.min.js') }}"></script> <!-- magnify popup js -->
+            src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script> <!-- magnify popup js -->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/waypoints.min.js') }}"></script> <!-- facts count js required for jquery.counterup.js file -->
+            src="{{ asset('assets/js/waypoints.min.js') }}"></script> <!-- facts count js required for jquery.counterup.js file -->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/jquery.share-tooltip.js') }}"></script> <!-- share tooltip js-->
+            src="{{ asset('assets/js/jquery.share-tooltip.js') }}"></script> <!-- share tooltip js-->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/price-slider.js') }}"></script> <!-- price slider / filter js-->
+            src="{{ asset('assets/js/price-slider.js') }}"></script> <!-- price slider / filter js-->
     <script type="text/javascript"
-            src="{{ asset('bundles/front/js/bootstrap-datepicker.js') }}"></script> <!-- datepicker js-->
+            src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script> <!-- datepicker js-->
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('input[type=file]').change(function (e) {
+                var previewImg = jQuery(this).prev('img.preview');
+                var reader = new FileReader();
+
+                reader.onload = function(){
+                    if ($(previewImg).hasClass('hidden')) {
+                        $(previewImg).removeClass('hidden');
+                    }
+
+                    previewImg.attr('src', reader.result);
+                };
+
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block header %}

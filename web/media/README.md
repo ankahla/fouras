@@ -1,0 +1,1 @@
+This folder will contain runtime image rendred using liip_imagine bundle.

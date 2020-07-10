@@ -8,7 +8,6 @@
             "": "src/"
         },
         "classmap": [ 
-            "app/AppCache.php"
         ]
     },
     "autoload-dev": {
@@ -17,12 +16,14 @@
     "require": {
         "php": ">=7.4",
         "ext-intl": "*",
+        "ext-gd": "*",
         "csa/guzzle-bundle": "^3.1",
         "doctrine/doctrine-bundle": "^1.11",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.6",
         "friendsofsymfony/user-bundle": "^2.1",
         "gedmo/doctrine-extensions": "^2.4",
+        "liip/imagine-bundle": "^2.3",
         "sensio/framework-extra-bundle": "^5.4",
         "stof/doctrine-extensions-bundle": "^1.3",
         "symfony/intl": "^4.4",
@@ -45,7 +46,9 @@
         "symfony-scripts": [
             "app/console doctrine:schema:update --force",
             "app/console doctrine:migrations:migrate -n",
-            "app/console assets:install web"
+            "app/console assets:install web",
+            "cp -r web/assets/images/demo/profiles web/uploads/",
+            "cp -r web/assets/images/demo/services web/uploads/"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
