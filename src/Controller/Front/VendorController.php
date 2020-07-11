@@ -2,11 +2,13 @@
 
 namespace Controller\Front;
 
+use Infrastructure\Event\EnquiryEvent;
 use Model\SearchVendorService;
 use Model\User;
 use Doctrine\ORM\EntityManagerInterface;
 use OneCarrefour\Common\Domain\Manager\MediaManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -34,7 +36,7 @@ class VendorController extends AbstractController
     /**
      * @Route("/prestataire/{id}/profile", name="vendor_profile")
      */
-    public function profileAction(Request $request, $id)
+    public function profileAction(Request $request, EventDispatcherInterface $dispatcher, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $vendorService = $em->getRepository(VendorService::class)->findOneById($id);
@@ -88,6 +90,7 @@ class VendorController extends AbstractController
                 $em->persist($postedEnquiry);
                 $em->flush();
 
+                $dispatcher->dispatch(new EnquiryEvent($enquiry));
                 $enquirySent = true;
             } else {
                 // @todo
@@ -163,37 +166,5 @@ class VendorController extends AbstractController
                 'searchForm' => $searchForm->createView(),
             ]
         );
-    }
-
-    /**
-     * @Route("/vendor_dashboard", name="vendor_dashboard")
-     */
-    public function dashboardAction()
-    {
-        return $this->render('front/vendor/Dashboard/dashboard.html.twig');
-    }
-
-    /**
-     * @Route("/vendor_edit_profile", name="vendor_edit_profile")
-     */
-    public function editProfileAction()
-    {
-        return $this->render('front/vendor/Dashboard/profile.html.twig');
-    }
-
-    /**
-     * @Route("/vendor_services", name="vendor_services")
-     */
-    public function ServicesAction()
-    {
-        return $this->render('front/vendor/Dashboard/services.html.twig');
-    }
-
-    /**
-     * @Route("/vendor_add_service", name="vendor_add_service")
-     */
-    public function AddServiceAction()
-    {
-        return $this->render('front/vendor/Dashboard/serviceForm.html.twig');
     }
 }

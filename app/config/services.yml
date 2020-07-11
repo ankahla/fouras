@@ -22,11 +22,9 @@ parameters:
     service_pic_dir: 'uploads/services/'
     vendor_service_pic_dir: 'uploads/profiles/vendor_service/'
     map_icon_dir: 'assets/images/icons/'
-
     upload_service_pic_dir: '%kernel.project_dir%/web/%service_pic_dir%'
-
-
     maps.embedded.api.key : AIzaSyC7DfJcfvHtlpZLcEjgivtmjnyXlky0GB4
+    default_mailer_sender : 'noreply@fouras.com'
 
     #cms
     cms_api_url: '%env(CMS_API_URL)%'
@@ -57,6 +55,7 @@ services:
         autoconfigure: true
         bind:
             $projectDir: '%kernel.project_dir%'
+            $defaultMailerSender: '%default_mailer_sender%'
 
     app.form.registration:
         class: Form\RegistrationFormType
@@ -72,8 +71,14 @@ services:
     Controller\:
         resource: '../../src/Controller/*'
 
-    Infrastructure\:
-        resource: '../../src/Infrastructure/*'
+    Infrastructure\Listener\:
+        resource: '../../src/Infrastructure/Listener/*'
+
+    Infrastructure\EventSubscriber\:
+        resource: '../../src/Infrastructure/EventSubscriber/*'
+
+    Infrastructure\Loader\:
+        resource: '../../src/Infrastructure/Loader/*'
 
     Services\:
         resource: '../../src/Services/*'
