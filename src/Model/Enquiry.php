@@ -56,12 +56,12 @@ class Enquiry
     private $weddingDate;
 
     /**
-     * @var \DateTime $phoneCallBack
+     * @var bool $phoneCallBack
      */
     private $phoneCallBack;
 
     /**
-     * @var \DateTime $emailResponseBack
+     * @var bool $emailResponseBack
      */
     private $emailResponseBack;
 
@@ -172,7 +172,7 @@ class Enquiry
         return $this;
     }
 
-    public function getPhoneCallBack()
+    public function isPhoneCallBack()
     {
         return $this->phoneCallBack;
     }
@@ -184,7 +184,7 @@ class Enquiry
         return $this;
     }
 
-    public function getemailResponseBack()
+    public function isEmailResponseBack()
     {
         return $this->emailResponseBack;
     }
