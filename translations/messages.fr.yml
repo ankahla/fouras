@@ -206,3 +206,5 @@ FOSUserBundle: 'Textes formulaires utilisateurs (authentification, création com
 'Select city': 'Choisir la ville'
 Honeymoon: 'Voyage de noces'
 'Vendor profile': 'Profile du prestataire'
+Service: Service
+dt: dt

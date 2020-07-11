@@ -173,6 +173,16 @@ class Couple
 
     public function __toString()
     {
+        if ($this->wife->getFirstName() && $this->husband->getFirstName()) {
+            return sprintf(
+                '%s %s & %s %s',
+                $this->wife->getFirstName(),
+                $this->wife->getLastName(),
+                $this->husband->getFirstName(),
+                $this->husband->getLastName(),
+            );
+        }
+
         return $this->user->getFirstName() . ' ' . $this->user->getLastName();
     }
 }

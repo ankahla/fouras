@@ -1,0 +1,126 @@
+{% trans_default_domain 'email' %}
+{% extends 'front/mail/base.html.twig' %}
+{% block body %}
+<table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="bg_color">
+
+    <tr>
+        <td align="center">
+            <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
+
+                <tr>
+                    <td align="center" style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;"
+                        class="main-header">
+                        <!-- section text ======-->
+
+                        <div style="line-height: 35px">
+
+                            {% trans %}Welcome to the home of{% endtrans %} </br><span style="color: #5caad2;">{% trans %}wedding services{% endtrans %}</span>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <table border="0" width="40" align="center" cellpadding="0" cellspacing="0" bgcolor="eeeeee">
+                            <tr>
+                                <td height="2" style="font-size: 2px; line-height: 2px;">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td align="left">
+                        <table border="0" width="590" align="center" cellpadding="0" cellspacing="0" class="container590">
+                            <tr>
+                                <td align="left" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                                    <!-- section text ======-->
+
+                                    <p style="line-height: 24px; margin-bottom:15px;">
+
+                                        {{ enquiry.vendor.firstName }},
+
+                                    </p>
+                                    {% set link %}
+                                        <a target="_blank" href="{{ url('vendor_profile', {'id':enquiry.vendorService.id}) }}">{% trans %}this service{% endtrans %}</a>
+                                    {% endset %}
+                                    <p style="line-height: 24px;margin-bottom:15px;">
+                                        {% trans with {'%link%': link} %}Great news, new couple sent to you an enquiry about %link% that you offer.{% endtrans %}
+                                        {% if enquiry.phoneCallBack %}
+                                        <br>
+                                        {% trans with {'%phone%': enquiry.phone} %}They want to be called back on this number: %phone% .{% endtrans %}
+                                        {% endif %}
+                                        {% if enquiry.emailResponseBack %}
+                                            <br>
+                                            {% trans with {'%email%': enquiry.email} %}They want to receive an email on this address %email% .{% endtrans %}
+                                        {% endif %}
+                                        <br>
+                                        {% trans %}Here some details about the couple:{% endtrans %}
+                                    </p>
+                                    <p style="line-height: 24px;margin-bottom:15px;">
+                                    <ul>
+                                        <li>{% trans %}Future husband{% endtrans %}: {{ enquiry.couple.husband.lastName }} {{ enquiry.couple.husband.firstName }}</li>
+                                        <li>{% trans %}Future wife{% endtrans %}: {{ enquiry.couple.wife.lastName }} {{ enquiry.couple.husband.firstName }}</li>
+                                        <li>{% trans %}Wedding date{% endtrans %}: {{ date(enquiry.couple.weddingDate)|localizeddate('full', 'none', locale, null, 'd MMMM Y') }}</li>
+                                    </ul>
+                                    </p>
+                                    <p style="line-height: 24px; margin-bottom:20px;">
+                                        {% trans %}You can access your account to see this enquiry at any point using the link below.{% endtrans %}
+                                    </p>
+                                    <table border="0" align="center" width="180" cellpadding="0" cellspacing="0" bgcolor="5caad2" style="margin-bottom:20px;">
+
+                                        <tr>
+                                            <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 22px; letter-spacing: 2px;">
+                                                <!-- main section button -->
+
+                                                <div style="line-height: 22px;">
+                                                    <a href="#TODO" style="color: #ffffff; text-decoration: none;text-transform: uppercase">{% trans %}My received enquiries{% endtrans %}</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                                        </tr>
+
+                                    </table>
+                                    <p style="line-height: 24px">
+                                        {% trans %}cordially,{% endtrans %}
+                                        <br/>
+                                        {% trans %}Fouras team{% endtrans %}
+                                    </p>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+
+
+
+
+            </table>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td height="40" style="font-size: 40px; line-height: 40px;">&nbsp;</td>
+    </tr>
+
+</table>
+{% endblock %}
