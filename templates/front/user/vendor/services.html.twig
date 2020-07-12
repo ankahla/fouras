@@ -1,9 +1,6 @@
 {% extends 'front/user/vendor/layout.html.twig' %}
 
-{% block body %}
-<section id="manage-item-listing" class="manage-item-listing-main-block">
-    <div class="container">
-      {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+{% block bodycontent %}
       <p>
       <a class="btn btn-pink" href="{{ path('vendor_service_new') }}">{% trans %}Add new{% endtrans %}</a>
       </p>
@@ -34,6 +31,4 @@
           {% endfor %}
         </tbody></table>
       </div>
-    </div>
-  </section>
   {% endblock %}

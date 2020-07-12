@@ -30,6 +30,8 @@ vendor_todo:
     path:     /tasks
     defaults: { _controller: Controller\Front\User\VendorController::tasks }
 
-vendor_inquery:
-    path:     /inquery
-    defaults: { _controller: Controller\Front\User\VendorController::inquery }
+vendor_enquiry:
+    path:     /enquiry/{page}
+    defaults: { _controller: Controller\Front\User\VendorController::enquiry, page: 1 }
+    requirements:
+        page: \d

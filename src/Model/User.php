@@ -200,7 +200,7 @@ class User extends \FOS\UserBundle\Model\User
      */
     public function getProfilePictureFile(): File
     {
-        return $this->profilePictureFile ?? new File($this->profilePicture, false);
+        return $this->profilePictureFile ?? new File((string)$this->profilePicture, false);
     }
 
     /**

@@ -19,7 +19,7 @@ class MenuController extends AbstractController
                 'fos_user_profile_show' => $translator->trans('Profile'),
                 'vendor_todo' 			=> $translator->trans('To Do List'),
                 'vendor_service' 		=> $translator->trans('My Services'),
-                //'vendor_inquery' 		=> $translator->trans('Couple inquery'),
+                'vendor_enquiry' 		=> $translator->trans('Received enquiries'),
             ];
         } else {
             $menuItems = [
