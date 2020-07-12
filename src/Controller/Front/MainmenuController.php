@@ -34,7 +34,7 @@ class MainmenuController extends AbstractController
                     'fos_user_profile_show' => ['label' => $translator->trans('Profile')],
                     'vendor_service' => ['label' => $translator->trans('My Services')],
                     'vendor_todo' => ['label' => $translator->trans('To Do List')],
-                    'vendor_inquery' => ['label' => $translator->trans('Couple inquery')],
+                    'vendor_enquiry' => ['label' => $translator->trans('Received enquiries')],
                 ],
             ];
         }

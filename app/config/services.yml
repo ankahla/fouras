@@ -23,6 +23,7 @@ parameters:
     vendor_service_pic_dir: 'uploads/profiles/vendor_service/'
     map_icon_dir: 'assets/images/icons/'
     upload_service_pic_dir: '%kernel.project_dir%/web/%service_pic_dir%'
+    upload_profile_pic_dir: '%kernel.project_dir%/web/%profile_pic_dir%'
     maps.embedded.api.key : AIzaSyC7DfJcfvHtlpZLcEjgivtmjnyXlky0GB4
     default_mailer_sender : 'noreply@fouras.com'
 

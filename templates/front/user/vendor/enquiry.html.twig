@@ -1,0 +1,42 @@
+{% extends 'front/user/vendor/layout.html.twig' %}
+
+{% block bodycontent %}
+{% if enquiries|length > 0 %}
+    <h4>Total : {{ pagination.total }}</h4>
+    <hr />
+    <div class="row">
+        {% for enquiry in enquiries %}
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-4">
+                    <img src="{% if 'http' in enquiry.couple.user.profilePicture %}{{ enquiry.couple.user.profilePicture }}{% else %}{{ asset(profile_pic_dir ~ enquiry.couple.user.profilePicture)|imagine_filter('320x360') }}{% endif %}" class="img-responsive img-rounded" alt="upload img"/>
+                </div>
+                <div class="col-xs-8">
+                    <b>{{ enquiry.couple }}</b>
+                    {% if enquiry.phoneCallBack %}
+                    <div><i class="fa fa-phone" aria-hidden="true"></i>  {{ enquiry.phone }}</div>
+                    {% endif %}
+                    {% if enquiry.emailResponseBack %}
+                        <div><i class="fa fa-envelope-o" aria-hidden="true"></i>  {{ enquiry.email }}</div>
+                    {% endif %}
+                    <div><i class="fa fa-calendar-check-o" aria-hidden="true"></i>  {{ date(enquiry.weddingDate)|localizeddate('full', 'none', current_locale, null, 'd MMMM Y') }}</div>
+                    <a target="_blank" href="{{ path('vendor_service', {'id':enquiry.vendorService.id}) }}" title="{{ enquiry.vendorService.title }}" class="btn read-more">{{ enquiry.vendorService.title }}</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <hr />
+    {% include 'front/pagination.html.twig' with {'pagination': pagination, 'route_name':'vendor_enquiry'} %}
+{% else %}
+    <div class="row">
+        <div class="section text-center"><h3 class="section-heading">{% trans %}No enquiries yet{% endtrans %}</h3>
+            {% set link %}
+                <a href="{{ path('vendor_service') }}">{% trans %}here{% endtrans %}</a>
+            {% endset %}
+            <p class="section-sub-heading">{% trans with {'%link%': link } %}Propose more services %link% to get some enqueries{% endtrans %}</p>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

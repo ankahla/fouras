@@ -2,6 +2,9 @@
 
 namespace Controller\Front\User;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Model\Enquiry;
+use Model\Pagination;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
@@ -20,13 +23,32 @@ class VendorController extends AbstractController
         return $this->render('front/user/vendor/dashboard.html.twig');
     }
 
-    public function inquery(Request $request)
+    public function enquiry(Request $request, int $page)
     {
+        $itemsPerPage = 9;
+        $offset = ($page - 1) * $itemsPerPage;
+
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
+        /** @var Vendor $vendor */
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
-        return $this->render('front/user/vendor/inquery.html.twig', ['vendor' => $vendor]);
+        $qb = $em->getRepository(Enquiry::class)->createQueryBuilder('e')
+            ->setFirstResult($offset)
+            ->setMaxResults($itemsPerPage)
+            ->andWhere('e.vendor = :vendorId')
+            ->setParameter('vendorId', $vendor->getId())
+            ->orderBy('e.weddingDate', 'DESC');
+
+        $enquiries = new Paginator($qb->getQuery());
+        $pagination = new Pagination($page, count($enquiries), $itemsPerPage);
+
+        return $this->render('front/user/vendor/enquiry.html.twig',
+            [
+                'enquiries' => $enquiries,
+                'pagination' => $pagination,
+            ]
+        );
     }
 
     public function service(Request $request)

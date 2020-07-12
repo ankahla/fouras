@@ -2,21 +2,19 @@
 
 namespace Controller\Front\User;
 
+use Services\FileManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\File;
 
 use Model\Vendor;
 use Model\Couple;
 use Model\CoupleUrl;
 use Model\VendorUrl;
 use Model\Task;
-
 use Form\VendorType;
 use Form\CoupleType;
 use Form\ProfilePictureFormType;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 class UserController extends AbstractController
 {
@@ -94,37 +92,28 @@ class UserController extends AbstractController
         return $this->redirectToRoute('couple_todo');
     }
 
-    public function pictureUpload(Request $request, KernelInterface $kernel)
+    public function pictureUpload(Request $request, FileManager $fileManager)
     {
         $user = $this->getUser();
-
         $profilePictureForm = $this->createForm(ProfilePictureFormType::class, $user);
 
-        $filePath = (string) $user->getProfilePicture();
+        $currentFileName = (string) $user->getProfilePicture();
         $profilePictureForm->handleRequest($request);
 
         if ($profilePictureForm->isSubmitted() && $profilePictureForm->isValid()) {
-            $file = $user->getProfilePictureFile();
+            $fileManager->setTargetDirectory($this->getParameter('profile_pic_dir'));
+            $image = $profilePictureForm->get('profilePictureFile')->getData();
 
-            if (!$file) {
+            if ($image && $fileName = $fileManager->upload($image)) {
+                $fileManager->delete($currentFileName);
+                // save user in db
+                $em = $this->getDoctrine()->getManager();
+                $user->setProfilePicture($fileName);
+                $em->persist($user);
+                $em->flush();
+            } else {
                 return new Response('File too big');
             }
-            // remove old file
-            if (file_exists($filePath)) {
-                unlink($filePath);
-            }
-            // Generate a unique name for the file before saving it
-            $fileName = md5(uniqid("", true)).'.'.$file->guessExtension();
-            $filePath = $kernel->getProjectDir() . '/web/' . $this->getParameter('profile_pic_dir');
-
-            // Move the file to the directory where profile pics are stored
-            $file->move($filePath, $fileName);
-
-            // save user in db
-            $em = $this->getDoctrine()->getManager();
-            $user->setProfilePicture($fileName);
-            $em->persist($user);
-            $em->flush();
         }
 
         return new Response();
