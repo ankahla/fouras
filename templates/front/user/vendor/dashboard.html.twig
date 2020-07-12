@@ -1,9 +1,6 @@
 {% extends 'front/user/vendor/layout.html.twig' %}
 
-{% block body %}
-<section id="vendor-dashboard" class="vendor-dashboard-main-block">
-    <div class="container">
-      {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+{% block bodycontent %}
       <div class="vendor-dashboard-block">
         <h3 class="vendor-dashboard-heading dashboard-heading">My Dashboard</h3>
         <div class="row">
@@ -103,8 +100,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
   {% endblock %}
 
   {% block javascripts %}

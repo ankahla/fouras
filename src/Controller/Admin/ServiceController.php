@@ -87,9 +87,8 @@ class ServiceController extends AbstractController
         $currentImage = $service->getImage();
 
         $service->setImage(
-            new File($service->getImage() ? 'uploads/services/'.$service->getImage() : '', false)
+            new File($service->getImage() ? $this->getParameter('service_pic_dir').$service->getImage() : '', false)
         );
-
 
         $deleteForm = $this->createDeleteForm($service);
         $editForm = $this->createForm(ServiceType::class, $service);
@@ -101,6 +100,7 @@ class ServiceController extends AbstractController
 
             if ($image instanceof UploadedFile) {
                 $fileManager->setTargetDirectory($this->getParameter('upload_service_pic_dir'));
+
                 if ($filename = $fileManager->upload($image)) {
                     $fileManager->delete($currentImage);
                     $service->setImage($filename);

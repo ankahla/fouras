@@ -8,6 +8,18 @@ $(".datepicker").datepicker();
 </script>
 {% endblock %}
 
+{% block body %}
+<section id="manage-item-listing" class="manage-item-listing-main-block">
+    <div class="container">
+      {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+
+{% block bodycontent %}
+{% endblock %}
+
+    </div>
+</section>
+{% endblock %}
+
 {% block banner %}
 {% if title is not defined %}
 {% set title = 'Vendor dashboard'|trans %}

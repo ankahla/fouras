@@ -1,0 +1,15 @@
+{% if pagination.total > pagination.itemsPerPage %}
+    <div class="pagination">
+        <ul>
+            {% if pagination.hasPrev %}
+                <li><a href="{{ path(route_name, {'page':pagination.prev}) }}" class="btn btn-default"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+            {% endif %}
+            {% for page in 1..pagination.totalPages %}
+                <li {% if page == pagination.page %}class="active"{% endif %}><a href="{{ path(route_name, {'page':page}) }}" class="btn btn-default">{{ page }}</a></li>
+            {% endfor %}
+            {% if pagination.hasNext %}
+                <li><a href="{{ path(route_name, {'page':pagination.next}) }}" class="btn btn-default"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

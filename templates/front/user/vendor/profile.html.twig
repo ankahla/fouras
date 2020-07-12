@@ -61,10 +61,7 @@
 </script>
 {% endblock %}
 
-{% block body %}
-<section id="couple_profile" class="couple-profile-main-page">
-    <div class="container">
-      {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+{% block bodycontent %}
       <div class="row">
         <div class="col-md-6">
           {% include 'front/user/picture.html.twig' %}
@@ -105,7 +102,6 @@
     </div>
     {{ form_widget(profileForm._token) }}
     </form>
-  </div>
 
   <!-- modal -->
   <div id="new-url-form" class="modal fade" role="dialog">
@@ -130,6 +126,5 @@
               </div>
           </div>
       </div>
-</section>
 
 {% endblock %}
