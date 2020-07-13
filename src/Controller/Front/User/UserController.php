@@ -2,8 +2,12 @@
 
 namespace Controller\Front\User;
 
+use Form\ServiceType;
+use Form\UserParamsType;
+use Model\User;
 use Services\FileManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,6 +22,30 @@ use Form\ProfilePictureFormType;
 
 class UserController extends AbstractController
 {
+    public function preferences(Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $userParams = $user->getUserParams();
+        $em = $this->getDoctrine()->getManager();
+
+        $editForm = $this->createForm(UserParamsType::class, $userParams);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em->persist($userParams);
+            $user->setUserParams($userParams);
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('user_preferences');
+        }
+
+        return $this->render('front/user/preferences.html.twig', [
+            'edit_form' => $editForm->createView()
+        ]);
+    }
+
     public function createUrl(Request $request)
     {
         $user = $this->getUser();

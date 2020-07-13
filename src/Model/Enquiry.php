@@ -109,7 +109,7 @@ class Enquiry
         return $this;
     }
 
-    public function getVendor()
+    public function getVendor(): Vendor
     {
         return $this->vendor;
     }
