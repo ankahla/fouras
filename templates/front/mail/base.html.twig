@@ -1,7 +1,8 @@
 {% trans_default_domain 'email' %}
 {% set locale = locale is defined ? locale : 'fr' %}
+{% set align = (locale == 'ar') ? 'right' : 'left' %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:v="urn:schemas-microsoft-com:vml" lang="{{ locale }}">
+<html xmlns:v="urn:schemas-microsoft-com:vml" lang="{{ locale }}" dir="{{ locale == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -145,7 +146,7 @@
     <tr>
         <td>
             <div style="overflow:hidden;display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;maxheight:0px;max-width:0px;opacity:0;">
-                {% trans %}Welcome to Fouras{% endtrans %}
+                {% trans into locale %}Welcome to Fouras{% endtrans %}
             </div>
         </td>
     </tr>
@@ -179,13 +180,13 @@
                                            class="container590 hide">
                                         <tr>
                                             <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                <a target="_blank" href="{{ url('homepage') }}" style="color: #312c32; text-decoration: none;text-transform: uppercase">{% trans %}Home{% endtrans %}</a>
+                                                <a target="_blank" href="{{ url('homepage') }}" style="color: #312c32; text-decoration: none;text-transform: uppercase">{% trans into locale %}Home{% endtrans %}</a>
                                             </td>
                                             <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;text-transform: uppercase">
-                                                <a target="_blank" href="{{ url('vendors') }}" style="color: #312c32; text-decoration: none;">{% trans %}Services{% endtrans %}</a>
+                                                <a target="_blank" href="{{ url('vendors') }}" style="color: #312c32; text-decoration: none;">{% trans into locale %}Services{% endtrans %}</a>
                                             </td>
                                             <td width="120" align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                                <a target="_blank" href="{{ url('blog') }}" style="color: #312c32; text-decoration: none;text-transform: uppercase;">{% trans %}Blog{% endtrans %}</a>
+                                                <a target="_blank" href="{{ url('blog') }}" style="color: #312c32; text-decoration: none;text-transform: uppercase;">{% trans into locale %}Blog{% endtrans %}</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -233,7 +234,7 @@
 
                                                 <div style="line-height: 26px">
 
-                                                    {% trans %}Are you trying our planning tools ?{% endtrans %}
+                                                    {% trans into locale %}Are you trying our planning tools ?{% endtrans %}
 
                                                 </div>
                                             </td>
@@ -263,7 +264,7 @@
                                     <!-- main section button -->
 
                                     <div style="line-height: 22px;">
-                                        <a href="{{ url('couple_budget') }}" style="color: #fff; text-decoration: none;text-transform: uppercase">{% trans %}Start planning today{% endtrans %}</a>
+                                        <a href="{{ url('couple_budget') }}" style="color: #fff; text-decoration: none;text-transform: uppercase">{% trans into locale %}Start planning today{% endtrans %}</a>
                                     </div>
                                 </td>
                             </tr>
@@ -306,12 +307,12 @@
 
                             <tr>
                                 <td>
-                                    <table border="0" width="300" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                    <table border="0" width="300" align="{{ align }}" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
                                            class="container590">
 
                                         <tr>
                                             <!-- logo -->
-                                            <td align="left">
+                                            <td align="{{ align }}">
                                                 <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="80" border="0" style="display: block; width: 80px;" src="{{ absolute_url(asset('assets/images/logo.png')) }}" alt="" /></a>
                                             </td>
                                         </tr>
@@ -321,7 +322,7 @@
                                         </tr>
 
                                         <tr>
-                                            <td align="left" style="color: #888888; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 23px;"
+                                            <td align="{{ align }}" style="color: #888888; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 23px;"
                                                 class="text_color">
                                                 <div style="color: #333333; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 600; mso-line-height-rule: exactly; line-height: 23px;">
 
@@ -333,7 +334,7 @@
 
                                     </table>
 
-                                    <table border="0" width="2" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                    <table border="0" width="2" align="{{ align }}" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
                                            class="container590">
                                         <tr>
                                             <td width="2" height="10" style="font-size: 10px; line-height: 10px;"></td>
@@ -401,10 +402,10 @@
 
                 <tr>
                     <td>
-                        <table border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                        <table border="0" align="{{ align }}" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
                                class="container590">
                             <tr>
-                                <td align="left" style="color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                                <td align="{{ align }}" style="color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                     <div style="line-height: 24px;">
 
                                         <span style="color: #333333;">Fouras &copy;</span>
@@ -414,7 +415,7 @@
                             </tr>
                         </table>
 
-                        <table border="0" align="left" width="5" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                        <table border="0" align="{{ align }}" width="5" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
                                class="container590">
                             <tr>
                                 <td height="20" width="5" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
@@ -430,7 +431,7 @@
                                         <tr>
                                             <td align="center">
                                                 {% block unsubscribe %}
-                                                <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #5caad2; text-decoration: none;font-weight:bold;text-transform: uppercase" href="{# url('UnsubscribeURL', {'vendorId':vendor.id}) #}">{% trans %}unsubscribe{% endtrans %}</a>
+                                                <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #5caad2; text-decoration: none;font-weight:bold;text-transform: uppercase" href="{# url('UnsubscribeURL', {'vendorId':vendor.id}) #}">{% trans into locale %}unsubscribe{% endtrans %}</a>
                                                 {% endblock %}
                                             </td>
                                         </tr>

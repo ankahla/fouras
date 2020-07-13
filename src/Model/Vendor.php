@@ -39,7 +39,7 @@ class Vendor
         return $this;
     }
     
-    public function getUser()
+    public function getUser(): User
     {
         return $this->user;
     }
@@ -138,5 +138,10 @@ class Vendor
     public function removeEnquiry(Enquiry $enquiry)
     {
         $this->enquiries->removeElement($enquiry);
+    }
+
+    public function canDisplayPhone(): bool
+    {
+        return !$this->getUser()->getUserParams()->isPhoneNumberHidden();
     }
 }

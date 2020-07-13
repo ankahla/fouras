@@ -1,0 +1,24 @@
+{% extends "front/user/layout.html.twig" %}
+
+{% form_theme edit_form 'front/user/fields.html.twig' %}
+
+{% block banner %}
+    {% include 'front/banner.html.twig' with {'title' : 'My preferences'|trans} %}
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_start(edit_form) }}
+            {{ form_row(edit_form.emailNotificationsEnabled) }}
+            {{ form_row(edit_form.enquiryNotificationsEnabled) }}
+            {{ form_row(edit_form.newsletterSubscribed) }}
+            {{ form_row(edit_form.phoneNumberHidden) }}
+            {{ form_row(edit_form.emailLanguage) }}
+            <hr/>
+            <button class="btn btn-pink">{% trans %}Save{% endtrans %}</button>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+
+{% endblock fos_user_content %}

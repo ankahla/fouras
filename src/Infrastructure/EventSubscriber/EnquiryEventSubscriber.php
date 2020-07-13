@@ -2,6 +2,7 @@
 namespace Infrastructure\EventSubscriber;
 
 use Infrastructure\Event\EnquiryEvent;
+use Model\Enquiry;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -34,23 +35,32 @@ class EnquiryEventSubscriber implements EventSubscriberInterface, LoggerAwareInt
 
     public function onSentEnquiry(EnquiryEvent $event): void
     {
+        /** @var Enquiry $enquiry */
         $enquiry = $event->getEnquiry();
-        $this->logger->debug('Sending enquiry email to vendor');
-        $from = $enquiry->isEmailResponseBack() ? [$enquiry->getEmail() => (string) $enquiry->getCouple()] : $this->defaultMailerSender;
-        $to = [$enquiry->getVendor()->getEmail() => (string) $enquiry->getVendor()];
-        $locale = 'fr';
+        $userParams = $enquiry->getVendor()->getUser()->getUserParams();
 
-        $message = (new \Swift_Message($this->translator->trans('Enquiry received', [], 'email', $locale)))
-            ->setFrom($from)
-            ->setTo($to)
-            ->setBody(
-                $this->twig->render(
-                    'front/mail/enquiry.received.html.twig',
-                    ['enquiry' => $enquiry, 'locale' => $locale]
-                ),
-                'text/html'
-            );
+        if ($userParams->isEmailNotificationsEnabled() && $userParams->isEnquiryNotificationsEnabled()) {
+            $this->logger->debug('Sending enquiry email to vendor');
 
-        $this->mailer->send($message);
+            $from = $enquiry->isEmailResponseBack() ? [$enquiry->getEmail() => (string) $enquiry->getCouple()] : $this->defaultMailerSender;
+            $vendorEmail = $enquiry->getVendorService()->getEmail() ? $enquiry->getVendorService()->getEmail() : $enquiry->getVendor()->getEmail();
+            $to = [$vendorEmail => (string) $enquiry->getVendor()];
+            $locale = $userParams->getEmailLanguage();
+
+            $message = (new \Swift_Message($this->translator->trans('Enquiry received', [], 'email', $locale)))
+                ->setFrom($from)
+                ->setTo($to)
+                ->setBody(
+                    $this->twig->render(
+                        'front/mail/enquiry.received.html.twig',
+                        ['enquiry' => $enquiry, 'locale' => $locale]
+                    ),
+                    'text/html'
+                );
+
+            $this->mailer->send($message);
+        } else {
+            $this->logger->debug('Sending enquiry cancelled due to user preferences');
+        }
     }
 }
