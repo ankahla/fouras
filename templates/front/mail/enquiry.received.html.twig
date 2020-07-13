@@ -14,7 +14,7 @@
 
                         <div style="line-height: 35px">
 
-                            {% trans %}Welcome to the home of{% endtrans %} </br><span style="color: #5caad2;">{% trans %}wedding services{% endtrans %}</span>
+                            {% trans into locale %}Welcome to the home of{% endtrans %} </br><span style="color: #5caad2;">{% trans into locale %}wedding services{% endtrans %}</span>
 
                         </div>
                     </td>
@@ -39,10 +39,10 @@
                 </tr>
 
                 <tr>
-                    <td align="left">
+                    <td align="{{ align }}">
                         <table border="0" width="590" align="center" cellpadding="0" cellspacing="0" class="container590">
                             <tr>
-                                <td align="left" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                                <td align="{{ align }}" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                     <!-- section text ======-->
 
                                     <p style="line-height: 24px; margin-bottom:15px;">
@@ -51,30 +51,30 @@
 
                                     </p>
                                     {% set link %}
-                                        <a target="_blank" href="{{ url('vendor_profile', {'id':enquiry.vendorService.id}) }}">{% trans %}this service{% endtrans %}</a>
+                                        <a target="_blank" href="{{ url('vendor_profile', {'id':enquiry.vendorService.id}) }}">{% trans into locale %}this service{% endtrans %}</a>
                                     {% endset %}
                                     <p style="line-height: 24px;margin-bottom:15px;">
-                                        {% trans with {'%link%': link} %}Great news, new couple sent to you an enquiry about %link% that you offer.{% endtrans %}
+                                        {% trans with {'%link%': link} into locale %}Great news, new couple sent to you an enquiry about %link% that you offer.{% endtrans %}
                                         {% if enquiry.phoneCallBack %}
                                         <br>
-                                        {% trans with {'%phone%': enquiry.phone} %}They want to be called back on this number: %phone% .{% endtrans %}
+                                        {% trans with {'%phone%': enquiry.phone} into locale %}They want to be called back on this number: %phone% .{% endtrans %}
                                         {% endif %}
                                         {% if enquiry.emailResponseBack %}
                                             <br>
-                                            {% trans with {'%email%': enquiry.email} %}They want to receive an email on this address %email% .{% endtrans %}
+                                            {% trans with {'%email%': enquiry.email} into locale %}They want to receive an email on this address %email% .{% endtrans %}
                                         {% endif %}
                                         <br>
-                                        {% trans %}Here some details about the couple:{% endtrans %}
+                                        {% trans into locale %}Here some details about the couple:{% endtrans %}
                                     </p>
                                     <p style="line-height: 24px;margin-bottom:15px;">
                                     <ul>
-                                        <li>{% trans %}Future husband{% endtrans %}: {{ enquiry.couple.husband.lastName }} {{ enquiry.couple.husband.firstName }}</li>
-                                        <li>{% trans %}Future wife{% endtrans %}: {{ enquiry.couple.wife.lastName }} {{ enquiry.couple.husband.firstName }}</li>
-                                        <li>{% trans %}Wedding date{% endtrans %}: {{ date(enquiry.couple.weddingDate)|localizeddate('full', 'none', locale, null, 'd MMMM Y') }}</li>
+                                        <li>{% trans into locale %}Future husband{% endtrans %}: {{ enquiry.couple.husband.lastName }} {{ enquiry.couple.husband.firstName }}</li>
+                                        <li>{% trans into locale %}Future wife{% endtrans %}: {{ enquiry.couple.wife.lastName }} {{ enquiry.couple.husband.firstName }}</li>
+                                        <li>{% trans into locale %}Wedding date{% endtrans %}: {{ date(enquiry.couple.weddingDate)|localizeddate('full', 'none', locale, null, 'd MMMM Y') }}</li>
                                     </ul>
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        {% trans %}You can access your account to see this enquiry at any point using the link below.{% endtrans %}
+                                        {% trans into locale %}You can access your account to see this enquiry at any point using the link below.{% endtrans %}
                                     </p>
                                     <table border="0" align="center" width="180" cellpadding="0" cellspacing="0" bgcolor="5caad2" style="margin-bottom:20px;">
 
@@ -87,7 +87,7 @@
                                                 <!-- main section button -->
 
                                                 <div style="line-height: 22px;">
-                                                    <a href="{{ url('vendor_enquiry') }}" style="color: #ffffff; text-decoration: none;text-transform: uppercase">{% trans %}My received enquiries{% endtrans %}</a>
+                                                    <a href="{{ url('vendor_enquiry') }}" style="color: #ffffff; text-decoration: none;text-transform: uppercase">{% trans into locale %}My received enquiries{% endtrans %}</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -98,9 +98,9 @@
 
                                     </table>
                                     <p style="line-height: 24px">
-                                        {% trans %}cordially,{% endtrans %}
+                                        {% trans into locale %}cordially,{% endtrans %}
                                         <br/>
-                                        {% trans %}Fouras team{% endtrans %}
+                                        {% trans into locale %}Fouras team{% endtrans %}
                                     </p>
 
                                 </td>

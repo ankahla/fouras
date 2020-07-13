@@ -1,3 +1,5 @@
+{% use 'form_div_layout.html.twig' %}
+
 {% block text_widget %}
     {% if attr.class is defined %}
     {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
@@ -91,4 +93,15 @@
         </div> 
     </div>
     
+{% endblock %}
+
+{% block checkbox_widget %}
+    {% set type = 'checkbox' %}
+    {% if form.vars.data == true %}
+    {% set attr = attr|merge({'checked': 'checked'}) %}
+    {% endif %}
+    <div class="checkbox-dtl {{ form.vars.id }}">
+        {{ block('form_widget_simple') }}
+        <label for="{{ form.vars.id }}"></label>
+    </div>
 {% endblock %}

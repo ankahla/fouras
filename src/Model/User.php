@@ -68,6 +68,11 @@ class User extends \FOS\UserBundle\Model\User
      */
     private $userType;
 
+    /**
+     * @var UserParams
+     */
+    private $userParams;
+
     protected $profilePicture;
 
     /**
@@ -171,6 +176,17 @@ class User extends \FOS\UserBundle\Model\User
     public function setUserType($userType)
     {
         $this->userType = $userType;
+        return $this;
+    }
+
+    public function getUserParams(): UserParams
+    {
+        return $this->userParams ?? new UserParams();
+    }
+
+    public function setUserParams(UserParams $userParams)
+    {
+        $this->userParams = $userParams;
         return $this;
     }
 

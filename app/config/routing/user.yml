@@ -2,6 +2,10 @@ user_profile_edit:
     path:     /profile/edit
     defaults: { _controller: Controller\Front\User\ProfileController::editProfile }
 
+user_preferences:
+    path:     /preferences
+    defaults: { _controller: Controller\Front\User\UserController::preferences }
+
 user_upload_picture:
     path:     picture-upload
     defaults: { _controller: Controller\Front\User\UserController::pictureUpload }

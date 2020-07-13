@@ -188,9 +188,10 @@
           								<li>
           									<i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:#">{{ vendorService.email }}</a>
           								</li>
-          								<li>
+          								{% if vendorService.vendor.canDisplayPhone %}<li>
           									<i class="fa fa-mobile-phone" aria-hidden="true"></i> <a href="tel:#">{{ vendorService.phone ? vendorService.phone : vendorService.vendor.phone }}</a>
           								</li>
+                                        {% endif %}
 
                           {% if vendorService.vendor.urls|length %}
                             {% for socialLink in vendorService.vendor.urls %}

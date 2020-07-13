@@ -267,7 +267,6 @@ class VendorController extends AbstractController
     public function tasks(Request $request)
     {
         $user = $this->getUser();
-        
         $em = $this->getDoctrine()->getManager();
         $task = new Task;
 
