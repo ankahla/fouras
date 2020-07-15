@@ -110,3 +110,7 @@ services:
             - ['%kernel.project_dir%', '%kernel.project_dir%/web']
         tags:
             - { name: "liip_imagine.binary.loader", loader: fouras_loader }
+
+    Gedmo\Timestampable\TimestampableListener:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }

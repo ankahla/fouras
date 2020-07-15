@@ -1,0 +1,33 @@
+{% extends 'admin/layout.html.twig' %}
+{% block title %}{{ parent() }} - backoffice{% endblock %}
+{% block headerTitle %}Liste des Inscriptions newsletter{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <table class="table table-hover">
+            <thead>
+                <th class="col-md-2">Nom</th>
+                <th class="col-md-8">email</th>
+                <th class="col-md-1">Activée</th>
+                <th class="col-md-1">Actions</th>
+            </thead>
+            <tbody>
+            {% for subscribtion in newsletterSubscribtion %}
+            <tr>
+                <td>{{ subscribtion.name }}</td>
+                <td>{{ subscribtion.email }}</td>
+                <td>
+                    {% if subscribtion.enabled %}
+                        <a href="{{ path('admin_newsletter_subscribtion_switch_activation', {id:subscribtion.id}) }}" class="btn btn-danger">Désactiver</a>
+                    {% else %}
+                    <a href="{{ path('admin_newsletter_subscribtion_switch_activation', {id:subscribtion.id}) }}" class="btn btn-info">Activer</a>
+                    {% endif %}
+                    <a href="{{ path('admin_newsletter_subscribtion_delete', {id:subscribtion.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        {% include 'admin/pagination.html.twig' with {'pagination': pagination, 'route_name':'admin_newsletter_subscribtion_list'} %}
+    </div>
+{% endblock %}

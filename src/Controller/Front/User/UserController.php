@@ -6,6 +6,7 @@ use Form\ServiceType;
 use Form\UserParamsType;
 use Model\User;
 use Services\FileManager;
+use Services\NewsletterManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ use Form\ProfilePictureFormType;
 
 class UserController extends AbstractController
 {
-    public function preferences(Request $request)
+    public function preferences(Request $request, NewsletterManager $newsletterManager)
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -37,6 +38,12 @@ class UserController extends AbstractController
             $user->setUserParams($userParams);
             $em->persist($user);
             $em->flush();
+
+            if ($userParams->isNewsletterSubscribed()) {
+                $newsletterManager->subscribe($user->getEmail());
+            } else {
+                $newsletterManager->unsubscribe($user->getEmail());
+            }
 
             return $this->redirectToRoute('user_preferences');
         }

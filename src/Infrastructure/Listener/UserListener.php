@@ -29,7 +29,7 @@ class UserListener
         $address = '';
         $phone = '';
 
-        if (is_object($user) && $user instanceof User) {
+        if ($user instanceof User) {
             $session = $event->getRequest()->getSession();
 
             $profileName = '';

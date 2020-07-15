@@ -343,5 +343,19 @@ jQuery.fn.prettySelect = function(defaultLabel)
 })(jQuery);
 
 jQuery(document).ready(function(){
-  jQuery('select:visible').prettySelect();
+    jQuery('select:visible').prettySelect();
+
+    // display message modal if exist
+    if (jQuery('#message-modal').size() > 0) {
+        jQuery.magnificPopup.open({
+            items: {
+                src: jQuery('#message-modal').html(),
+                type: 'inline'
+            }
+        });
+
+        setTimeout(function () {
+            jQuery.magnificPopup.close();
+        }, 7000);
+    }
 });

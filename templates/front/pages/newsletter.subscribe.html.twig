@@ -1,0 +1,16 @@
+{% if alreadySubscribed is defined and alreadySubscribed %}
+    <div class="form-group">
+        <p>
+            {% trans with {'%address%':subscriptionForm.email.vars.value} %}Already subscribed using this address: %address% {% endtrans %}
+        </p>
+        <a href="{{ path('newsletter_unsubscribtion', {'email':newsletterSubscribtion.email|url_encode, 'token':newsletterSubscribtion.token}) }}">{% trans %}Unsubscribe{% endtrans %}</a>
+    </div>
+{% else %}
+    {{ form_start(subscriptionForm, {'action':path('newsletter_subscribtion')}) }}
+    <div class="form-group">
+        {{ form_widget(subscriptionForm.email, {'attr':{'placeholder':'Email address'|trans}}) }}
+        <button type="submit" class="btn btn-white">{% trans %}Subscribe Now{% endtrans %}</button>
+        <label for="mc-email"></label>
+    </div>
+    {{ form_end(subscriptionForm) }}
+{% endif %}

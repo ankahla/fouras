@@ -4,11 +4,11 @@
       <div class="row">
         <div class="col-md-4 col-sm-6">
           <div class="about-widget footer-widget">
-            <h4 class="footer-heading">About Fouras</h4>
+            <h4 class="footer-heading">{% trans %}About Fouras{% endtrans %}</h4>
             <div class="about-dtl">
               <p>Sed ut perspiciatis unde omnis iste natus error volup tatem.</p>
               <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam cor poris suscipit labo riosam.</p>
-              <a href="#" class="btn btn-pink">Find A Vendor</a>
+              <a href="{{ path('vendors') }}" >{% trans %}Find A Vendor{% endtrans %}</a>
             </div>
           </div>
         </div>
@@ -28,17 +28,15 @@
             </div>
             <div class="col-xs-6 pad-0">
               <div class="links-widget footer-widget">
-                <h4 class="footer-heading">Usefull Links</h4>
+                <h4 class="footer-heading">{% trans %}Usefull Links{% endtrans %}</h4>
                 <ul>
                   <li><a href="#">Venue</a></li>
-                  <li><a href="#">Catering</a></li>
                   <li><a href="#">Cakes</a></li>
                   <li><a href="#">Dresses</a></li>
                   <li><a href="#">Transport</a></li>
                 </ul>
                 <ul>
                   <li><a href="#">Jewellery</a></li>
-                  <li><a href="#">Music</a></li>
                 </ul>
               </div>
             </div>
@@ -46,14 +44,10 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="subscribe-widget footer-widget">
-            <h4 class="footer-heading">Subscribe Newsletter</h4>
-            <form id="subscribe-form" class="subscribe-form">
-              <div class="form-group"> 
-                <input type="email" id="mc-email" class="form-control" placeholder="EMAIL ADDRESS">
-                <button type="submit" class="btn btn-pink">Subscribe Now</button>
-                <label for="mc-email"></label>
-              </div>
-            </form>
+            <h4 class="footer-heading">{% trans %}Subscribe to newsletter{% endtrans %}</h4>
+
+            {{ render(controller('Controller\\Front\\NewsletterController::index')) }}
+
             <ul class="social-icons">
               <li><a href="https://www.facebook.com/" class="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
               <li><a href="https://www.twitter.com/" class="twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -64,7 +58,7 @@
       </div>       
     </div>
     <div class="copyright-block text-center">
-      <p>© 2017 All rights reserved.</p>
+      <p>{% trans with {'%year%':'now'|date('Y')} %}© %year% All rights reserved.{% endtrans %}</p>
     </div>
   </section>
 <!-- end footer -->
