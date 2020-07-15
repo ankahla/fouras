@@ -1628,6 +1628,27 @@ ul {
   font-weight: 700;
   margin-bottom: 26px;
 }
+.footer-main-block p {
+  color: #b7b0c0;
+}
+
+.footer-widget ul li {
+  margin-bottom: 10px;
+}
+
+.footer-widget ul li a {
+  font-size: 15px;
+  line-height: 1.67;
+}
+
+.footer-main-block a {
+  color: #b7b0c0;
+}
+
+.footer-main-block a:hover {
+  color: #fff;
+}
+
 .footer-block {
   padding-bottom: 60px;
 }

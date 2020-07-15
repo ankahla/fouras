@@ -26,6 +26,7 @@
 
 {% block email_widget %}
     {% set attr = attr|merge({'class': 'form-control'}) %}
+    {% set type = type|default('email') %}
     {{ block('form_widget_simple') }}
 {% endblock %}
 

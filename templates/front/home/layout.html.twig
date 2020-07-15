@@ -24,6 +24,10 @@
 {{ render(controller('Controller\\Front\\MainmenuController::index')) }}
 {% endblock %}
 
+{% block messages %}
+    {% include 'front/messages.html.twig' %}
+{% endblock %}
+
 {% block body %}
 {{ parent() }}
 {% include 'front/home/slider.html.twig' %}

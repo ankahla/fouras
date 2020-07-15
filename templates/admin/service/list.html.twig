@@ -20,7 +20,7 @@
                 <td><span class="badge badge-info">{{ service.vendorServices|length }}</span></td>
                 <td><img src="{{ asset( map_icon_dir ~ service.mapIcon) }}" /></td>
                 <td>
-                    <a href="{{ path('admin_service_edit', {id:service.id}) }}">Editer</a>
+                    <a href="{{ path('admin_service_edit', {id:service.id}) }}" class="btn btn-info">Editer</a>
                     <a class="{{ service.vendorServices|length > 0 ? 'hidden': '' }}" href="{{ path('admin_service_delete', {id:service.id}) }}">Supprimer</a>
                 </td>
             </tr>
