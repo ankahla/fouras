@@ -76,6 +76,8 @@ class UrlsControllerTest extends WebTestCase
         return [
             'test Admin main page' => [self::USER_ADMIN, '/admin', Response::HTTP_OK],
             'test Admin translation page' => [self::USER_ADMIN, '/admin/translation', Response::HTTP_OK],
+            'test Admin services page' => [self::USER_ADMIN, '/admin/services', Response::HTTP_OK],
+            'test Admin newsletter subscribtion page' => [self::USER_ADMIN, '/admin/newsletter-subscribtion', Response::HTTP_OK],
             'testing couple page: profile page' => [self::USER_COUPLE, '/fr/profile/', Response::HTTP_OK],
             'testing couple page: preferences page' => [self::USER_COUPLE, '/fr/user/preferences', Response::HTTP_OK],
             'testing couple page: /fr/user/change-password' => [self::USER_COUPLE, '/fr/user/change-password', Response::HTTP_OK],

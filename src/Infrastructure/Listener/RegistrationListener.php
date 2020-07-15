@@ -8,6 +8,7 @@ use Services\GravatarService;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
+use Services\NewsletterManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -22,11 +23,13 @@ class RegistrationListener implements EventSubscriberInterface
     private $em;
 
     private $gravatarService;
+    private $newsletterManager;
 
-    public function __construct(EntityManagerInterface $em, GravatarService $gravatarService)
+    public function __construct(EntityManagerInterface $em, GravatarService $gravatarService, NewsletterManager $newsletterManager)
     {
         $this->gravatarService = $gravatarService;
         $this->em = $em;
+        $this->newsletterManager = $newsletterManager;
     }
 
     /**
@@ -53,6 +56,8 @@ class RegistrationListener implements EventSubscriberInterface
             $user->addRole('ROLE_COUPLE');
             $profile = new Couple();
         }
+
+        $this->newsletterManager->subscribe($user->getEmail());
 
         $profile->setUser($user);
         $this->em->persist($profile);

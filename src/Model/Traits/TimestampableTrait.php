@@ -2,21 +2,16 @@
 namespace Model\Traits;
 
 use \DateTime;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 trait TimestampableTrait
 {
     /**
      * @var DateTime $createdAt
-     *
-     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 
     /**
      * @var DateTime $updatedAt
-     *
-     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 

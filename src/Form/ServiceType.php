@@ -39,7 +39,6 @@ class ServiceType extends AbstractType
                     'required' => false
                 ]
             )
-            ->add('Enregistrer', SubmitType::class, [])
         ;
     }
     
