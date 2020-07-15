@@ -11,6 +11,8 @@
         {{ form_row(edit_form.name) }}
         {{ form_row(edit_form.image) }}
         {{ form_row(edit_form.mapIcon) }}
+        <hr>
+        <button type="submit" class="btn btn-primary">{% trans %}Enregistrer{% endtrans %}</button>
         {{ form_rest(edit_form) }}
     </div>
 {% endblock %}

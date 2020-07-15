@@ -2,6 +2,7 @@
 namespace Infrastructure\Listener;
 
 use Doctrine\Persistence\ManagerRegistry;
+use Model\NewsletterSubscription;
 use Model\Vendor;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Model\Couple;
@@ -29,10 +30,18 @@ class UserListener
         $address = '';
         $phone = '';
 
-        if (is_object($user) && $user instanceof User) {
+        if ($user instanceof User) {
             $session = $event->getRequest()->getSession();
 
             $profileName = '';
+
+            if (is_null($session->get('newsletterSubscription'))) {
+                $newsletterSubscription = $this->em
+                    ->getRepository(NewsletterSubscription::class)
+                    ->findOneBy(['email' => $user->getEmail(), 'enabled' => true]);
+
+                $session->set('newsletterSubscription', ($newsletterSubscription instanceof NewsletterSubscription));
+            }
 
             if (!$user->isVendor()) {
                 /** @var Couple $couple **/
