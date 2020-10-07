@@ -1,0 +1,13 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}Editer l'avantage abonnement{% endblock %}
+
+{% block body %}
+<div class="container">
+    {{ include('admin/subscription/feature/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('subscription_feature_index') }}">Retour à liste</a>
+
+    {{ include('admin/subscription/feature/_delete_form.html.twig') }}
+</div>
+{% endblock %}

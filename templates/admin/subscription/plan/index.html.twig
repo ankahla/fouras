@@ -1,0 +1,42 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}Liste des packs{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix par mois</th>
+                <th>Publique</th>
+                <th>En promotion</th>
+                <th>Populaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscription_plan in subscription_plans %}
+            <tr>
+                <td>{{ subscription_plan.name }}</td>
+                <td>{{ subscription_plan.description }}</td>
+                <td>{{ subscription_plan.monthlyPrice }}</td>
+                <td>{{ subscription_plan.public ? 'Oui' : 'Non' }}</td>
+                <td>{{ subscription_plan.inPromotion ? 'Oui' : 'Non' }}</td>
+                <td>{{ subscription_plan.popular ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a href="{{ path('subscription_plan_show', {'id': subscription_plan.id}) }}">Details</a>
+                    <a href="{{ path('subscription_plan_edit', {'id': subscription_plan.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">La liste est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('subscription_plan_new') }}">Créer nouveau</a>
+{% endblock %}

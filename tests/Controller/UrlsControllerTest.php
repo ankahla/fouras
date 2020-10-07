@@ -78,6 +78,10 @@ class UrlsControllerTest extends WebTestCase
             'test Admin translation page' => [self::USER_ADMIN, '/admin/translation', Response::HTTP_OK],
             'test Admin services page' => [self::USER_ADMIN, '/admin/services', Response::HTTP_OK],
             'test Admin newsletter subscribtion page' => [self::USER_ADMIN, '/admin/newsletter-subscribtion', Response::HTTP_OK],
+            'test Admin vendor subscribtion page' => [self::USER_ADMIN, '/admin/subscription/list', Response::HTTP_OK],
+            'test Admin vendor subscribtion request page' => [self::USER_ADMIN, '/admin/subscription/request/', Response::HTTP_OK],
+            'test Admin vendor subscribtion plan page' => [self::USER_ADMIN, '/admin/subscription/plan/', Response::HTTP_OK],
+            'test Admin vendor subscribtion features page' => [self::USER_ADMIN, '/admin/subscription/feature/', Response::HTTP_OK],
             'testing couple page: profile page' => [self::USER_COUPLE, '/fr/profile/', Response::HTTP_OK],
             'testing couple page: preferences page' => [self::USER_COUPLE, '/fr/user/preferences', Response::HTTP_OK],
             'testing couple page: /fr/user/change-password' => [self::USER_COUPLE, '/fr/user/change-password', Response::HTTP_OK],
@@ -91,6 +95,7 @@ class UrlsControllerTest extends WebTestCase
             'testing vendor page: /fr/vendor/dashboard' => [self::USER_VENDOR, '/fr/vendor/dashboard', Response::HTTP_OK],
             'testing vendor page: /fr/vendor/service' => [self::USER_VENDOR, '/fr/vendor/service', Response::HTTP_OK],
             'testing vendor page: /fr/vendor/service/new' => [self::USER_VENDOR, '/fr/vendor/service/new', Response::HTTP_OK],
+            'testing vendor page: /fr/vendor/pricing' => [self::USER_VENDOR, '/fr/vendor/pricing', Response::HTTP_OK],
         ];
     }
 

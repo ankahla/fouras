@@ -33,34 +33,34 @@ class Budget
         $this->id = $id;
         return $this;
     }
-    
+
     public function getCouple()
     {
         return $this->couple;
     }
-    
+
     public function setCouple($couple)
     {
         $this->couple = $couple;
         return $this;
     }
-    
+
     public function getService()
     {
         return $this->service;
     }
-    
+
     public function setService($service)
     {
         $this->service = $service;
         return $this;
     }
-    
+
     public function getItems()
     {
         return $this->items;
     }
-    
+
     public function setItems($items)
     {
         $this->items = $items;
@@ -106,5 +106,18 @@ class Budget
     public function __toString()
     {
         return $this->service->getName();
+    }
+
+    public function removeItem(BudgetItem $item): self
+    {
+        if ($this->items->contains($item)) {
+            $this->items->removeElement($item);
+            // set the owning side to null (unless already changed)
+            if ($item->getBudget() === $this) {
+                $item->setBudget(null);
+            }
+        }
+
+        return $this;
     }
 }

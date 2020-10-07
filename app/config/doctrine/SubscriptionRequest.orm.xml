@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Model\SubscriptionRequest" table="subscription_request">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <one-to-one field="user" inversed-by="subscriptionRequest" target-entity="Model\User">
+      <join-columns>
+        <join-column name="user_id" nullable="1"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="plan" target-entity="Model\SubscriptionPlan" fetch="LAZY">
+      <join-columns>
+        <join-column name="plan_id"/>
+      </join-columns>
+    </many-to-one>
+    <field name="phone" column="phone" length="255" precision="0" scale="0"/>
+    <field name="emailAddress" column="email_address" length="255" precision="0" scale="0"/>
+    <field name="createdAt" type="datetime" column="created_at" precision="0" scale="0">
+      <gedmo:timestampable on="create" />
+    </field>
+  </entity>
+</doctrine-mapping>

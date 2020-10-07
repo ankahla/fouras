@@ -3,8 +3,13 @@
 namespace Controller\Front\User;
 
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Form\SubscriptionRequestType;
 use Model\Enquiry;
 use Model\Pagination;
+use Model\Subscription;
+use Model\SubscriptionFeature;
+use Model\SubscriptionPlan;
+use Model\SubscriptionRequest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
@@ -58,6 +63,53 @@ class VendorController extends AbstractController
         $vendor = $em->getRepository(Vendor::class)->findOneByUser($user);
 
         return $this->render('front/user/vendor/services.html.twig', ['vendor' => $vendor]);
+    }
+
+    public function pricing(Request $request)
+    {
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $pricingPlans = $em->getRepository(SubscriptionPlan::class)->findAll();
+        $features = $em->getRepository(SubscriptionFeature::class)->findAll();
+
+        return $this->render('front/user/vendor/pricing.html.twig', [
+                'pricingPlans' => $pricingPlans,
+                'features' => $features,
+                'user' => $user,
+            ]
+        );
+    }
+
+    public function subscribe(Request $request, int $planId)
+    {
+        $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
+        $subscriptionPlan = $entityManager->getRepository(SubscriptionPlan::class)->find($planId);
+        $subscriptionRequest = new SubscriptionRequest();
+        $subscriptionRequest->setUser($user);
+
+        if ($subscriptionPlan instanceof SubscriptionPlan) {
+            $subscriptionRequest->setPlan($subscriptionPlan);
+        } else {
+            return $this->redirectToRoute('vendor_pricing');
+        }
+
+        $form = $this->createForm(SubscriptionRequestType::class, $subscriptionRequest);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($subscriptionRequest);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('vendor_pricing');
+        }
+
+        return $this->render('front/user/vendor/subscribe.html.twig', [
+            'subscription_request' => $subscriptionRequest,
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+
     }
 
     public function newService(Request $request)
@@ -285,7 +337,7 @@ class VendorController extends AbstractController
                 if (!$task->getId()) {
                     $task->setCreatedAt(new \DateTime);
                 }
-                
+
                 $task->setUser($user);
                 $em->persist($task);
                 $em->flush();

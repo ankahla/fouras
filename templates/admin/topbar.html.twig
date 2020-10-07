@@ -24,6 +24,15 @@
           </ul>
         </li>
         <li class="{{ current_route == 'admin_newsletter_subscribtion_list' ? 'active' : '' }}"><a href="{{ path('admin_newsletter_subscribtion_list') }}">Inscriptions newsletter</a></li>
+        <li class="dropdown">
+          <a href="{{ path('subscription_plan_index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion des abonnements <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="{{ current_route == 'subscription_index' ? 'active' : '' }}"><a href="{{ path('subscription_index') }}">Liste des abonnées</a></li>
+            <li class="{{ current_route == 'subscription_request_index' ? 'active' : '' }}"><a href="{{ path('subscription_request_index') }}">Liste des demandes</a></li>
+            <li class="{{ current_route == 'subscription_plan_index' ? 'active' : '' }}"><a href="{{ path('subscription_plan_index') }}">Liste des packs</a></li>
+            <li class="{{ current_route == 'subscription_feature_index' ? 'active' : '' }}"><a href="{{ path('subscription_feature_index') }}">Avantages abonnement</a></li>
+          </ul>
+        </li>
         <!--<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

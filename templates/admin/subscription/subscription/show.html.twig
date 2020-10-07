@@ -1,0 +1,50 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}
+  Abonnement #{{ subscription.id }}
+{% endblock %}
+
+{% block body %}
+  <table class="table">
+    <tbody>
+    <tr>
+      <th>Utilisateur</th>
+      <td>
+          <div>{{ subscription.user }}</div>
+          <div>{{ subscription.user.email }}</div>
+          <div>{{ subscription.user.phone }}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>Pack</th>
+      <td>{{ subscription.plan.name }}</td>
+    </tr>
+    <tr>
+      <th>Prix par mois</th>
+      <td>{{ subscription.plan.monthlyPrice }}</td>
+    </tr>
+    <tr>
+      <th>Avantages</th>
+      <td>
+        <ul>
+          {% for feature in subscription.plan.features %}
+            <li>{{ feature.name }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Date debut</th>
+      <td>{{ subscription.startAt ? subscription.startAt|date('Y-m-d H:i:s') : '' }}</td>
+    </tr>
+    <tr>
+      <th>Date fin</th>
+      <td>{{ subscription.endAt ? subscription.endAt|date('Y-m-d H:i:s') : '' }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-info" href="{{ path('subscription_edit', {'id': subscription.id}) }}">Editer</a>
+  <a class="btn" href="{{ path('subscription_index') }}">Retour à la liste</a>
+
+  {{ include('admin/subscription/subscription/_delete_form.html.twig') }}
+{% endblock %}

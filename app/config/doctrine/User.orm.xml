@@ -20,6 +20,9 @@
         <join-column name="user_type_id" referenced-column-name="id" nullable="1"/>
       </join-columns>
     </many-to-one>
+    <one-to-one field="subscription" target-entity="Model\Subscription" mapped-by="user"/>
+    <one-to-many field="archivedSubscriptions" target-entity="Model\SubscriptionArchived" mapped-by="user" fetch="LAZY" />
+    <one-to-one field="subscriptionRequest" target-entity="Model\SubscriptionRequest" mapped-by="user"/>
     <one-to-one field="userParams" target-entity="Model\UserParams">
       <join-columns>
         <join-column name="user_params_id" referenced-column-name="id" nullable="1"/>

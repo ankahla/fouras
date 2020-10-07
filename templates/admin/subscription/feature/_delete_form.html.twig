@@ -1,0 +1,6 @@
+<div class="clearfix">&nbsp;</div>
+<form method="post" action="{{ path('subscription_feature_delete', {'id': subscription_feature.id}) }}" onsubmit="return confirm('Êtes vous sûre de vouloir supprimer cet elément ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ subscription_feature.id) }}">
+    <button class="btn">Supprimer</button>
+</form>

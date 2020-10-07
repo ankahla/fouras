@@ -82,28 +82,44 @@ class User extends \FOS\UserBundle\Model\User
 
     private $tasks;
 
+    /**
+     * @var Subscription|null
+     */
+    private $subscription;
+
+    /**
+     * @var SubscriptionArchived[]|ArrayCollection
+     */
+    private $archivedSubscriptions;
+
+    /**
+     * @var SubscriptionRequest|null
+     */
+    private $subscriptionRequest;
+
     public function __construct()
     {
         parent::__construct();
         $this->tasks = new ArrayCollection;
+        $this->archivedSubscriptions = new ArrayCollection;
     }
 
     public function getId()
     {
         return $this->id;
     }
-    
+
     public function setId($id)
     {
         $this->id = $id;
         return $this;
     }
-    
+
     public function getFirstName()
     {
         return $this->firstName;
     }
-    
+
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
@@ -114,19 +130,19 @@ class User extends \FOS\UserBundle\Model\User
     {
         return $this->lastName;
     }
-    
+
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
         return $this;
     }
-    
-    
+
+
     public function getAddress()
     {
         return $this->address;
     }
-    
+
     public function setAddress($address)
     {
         $this->address = $address;
@@ -138,19 +154,19 @@ class User extends \FOS\UserBundle\Model\User
     {
         return $this->phone;
     }
-    
+
     public function setPhone($phone)
     {
         $this->phone = $phone;
         return $this;
     }
-    
-    
+
+
     public function getMobile()
     {
         return $this->mobile;
     }
-    
+
     public function setMobile($mobile)
     {
         $this->mobile = $mobile;
@@ -161,7 +177,7 @@ class User extends \FOS\UserBundle\Model\User
     {
         return $this->city;
     }
-    
+
     public function setCity($city)
     {
         $this->city = $city;
@@ -172,7 +188,7 @@ class User extends \FOS\UserBundle\Model\User
     {
         return $this->userType;
     }
-    
+
     public function setUserType($userType)
     {
         $this->userType = $userType;
@@ -199,12 +215,12 @@ class User extends \FOS\UserBundle\Model\User
     {
         return $this->userType->getId() == UserType::COUPLE_TYPE;
     }
-    
+
     public function getProfilePicture()
     {
         return $this->profilePicture;
     }
-    
+
     public function setProfilePicture($profilePicture)
     {
         $this->profilePicture = $profilePicture;
@@ -248,5 +264,77 @@ class User extends \FOS\UserBundle\Model\User
     public function getTasks()
     {
         return $this->tasks;
+    }
+
+    /**
+     * @return Subscription|null
+     */
+    public function getSubscription(): ?Subscription
+    {
+        return $this->subscription;
+    }
+
+    /**
+     * @param Subscription|null $subscription
+     *
+     * @return self
+     */
+    public function setSubscription(?Subscription $subscription): self
+    {
+        $this->subscription = $subscription;
+
+        return $this;
+    }
+
+    /**
+     * @return SubscriptionRequest|null
+     */
+    public function getSubscriptionRequest(): ?SubscriptionRequest
+    {
+        return $this->subscriptionRequest;
+    }
+
+    /**
+     * @param SubscriptionRequest|null $subscriptionRequest
+     *
+     * @return self
+     */
+    public function setSubscriptionRequest(?SubscriptionRequest $subscriptionRequest): self
+    {
+        $this->subscriptionRequest = $subscriptionRequest;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getArchivedSubscriptions(): ArrayCollection
+    {
+        return $this->archivedSubscriptions;
+    }
+
+    /**
+     * @param ArrayCollection $archivedSubscriptions
+     *
+     * @return self
+     */
+    public function setArchivedSubscriptions(ArrayCollection $archivedSubscriptions): self
+    {
+        $this->archivedSubscriptions = $archivedSubscriptions;
+
+        return $this;
+    }
+
+    public function hasSubscription()
+    {
+        return $this->subscription instanceof Subscription
+            && $this->subscription->isActive()
+            && !$this->subscription->isExpired();
+    }
+
+    public function __toString()
+    {
+        return $this->firstName.' '.$this->lastName;
     }
 }

@@ -1,16 +1,11 @@
 {% block form_row %}
-    {% if attr.class is defined %}
-    {% set attr = attr|merge({'class': 'form-control ' ~ attr.class}) %}
-    {% else %}
-    {% set attr = attr|merge({'class': 'form-control'}) %}
-    {% endif %}
     {% set attr = attr|merge({'placeholder': (form.vars.label ? form.vars.label : form.vars.name)|trans }) %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div>
       <div class="col-sm-8">
         {{- form_widget(form, {'attr':attr}) -}}
         <span class="help-block">{{ block('form_errors') }}</span>
-      </div> 
+      </div>
     </div>
 {% endblock %}
 
@@ -21,11 +16,11 @@
     {% set attr = attr|merge({'class': 'form-control'}) %}
     {% endif %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div>
       <div class="col-sm-8">
         {{ block('choice_widget') }}
         <span class="help-block">{{ block('form_errors') }}</span>
-      </div> 
+      </div>
     </div>
 {% endblock %}
 
@@ -36,11 +31,11 @@
     {% set attr = attr|merge({'class': 'form-control'}) %}
     {% endif %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-4"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div>
       <div class="col-sm-8">
         {{ block('textarea_widget') }}
         <span class="help-block">{{ block('form_errors') }}</span>
-      </div> 
+      </div>
     </div>
 {% endblock %}
 
@@ -51,7 +46,7 @@
     {% set attr = attr|merge({'class': 'form-control'}) %}
     {% endif %}
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-3"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div> 
+      <div class="col-sm-3"><label>{{ (form.vars.label ? form.vars.label : form.vars.name)|trans }} {% if required %}*{% endif %}</label></div>
       <div class="col-sm-9">
         {{ block('url_widget') }}
         <span class="help-block">{{ block('form_errors') }}</span>
@@ -88,40 +83,7 @@
     {% endif %}
     {% set type = 'text' %}
     {{ block('form_widget_simple') }}
-    <label><i class="fa fa-calendar" aria-hidden="true"></i></label>
   </div>
-{% endblock %}
-
-{% block _vendor_form_urls_entry_row %}
-    {% set id = form.id.vars.value %}
-    <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-3">{{ form_widget(form.url.type, {attr:{'class':'form-control'}}) }}</div> 
-      <div class="col-sm-8">
-        {{ form_widget(form.url.url) }}
-        <span class="help-block">{{ block('form_errors') }}</span>
-      </div>
-      <div class="col-sm-1">
-      {% if id %}
-      <a class="btn btn-default" href="{{ path('user_url_delete',{'id':id|number_format }) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
-      {% endif %}
-      </div> 
-    </div>
-{% endblock %}
-
-{% block _couple_form_urls_entry_row %}
-    {% set id = form.id.vars.value %}
-    <div class="form-group row {% if errors|length %}has-error{% endif %}">
-      <div class="col-sm-3">{{ form_widget(form.url.type, {attr:{'class':'form-control'}}) }}</div> 
-      <div class="col-sm-8">
-        {{ form_widget(form.url.url) }}
-        <span class="help-block">{{ block('form_errors') }}</span>
-      </div>
-      <div class="col-sm-1">
-      {% if id %}
-      <a class="btn btn-default" href="{{ path('user_url_delete',{'id':id|number_format }) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
-      {% endif %}
-      </div> 
-    </div>
 {% endblock %}
 
 

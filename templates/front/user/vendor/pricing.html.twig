@@ -1,0 +1,50 @@
+{% extends 'front/user/vendor/layout.html.twig' %}
+
+{% block bodycontent %}
+  {% if user.subscriptionRequest is not null %}
+    <div class="row">
+      <div class="section text-center"><h3 class="section-heading">{% trans %}We received your request to subscribe to the plan:{% endtrans %} <span class="bg-info">&nbsp;{{ user.subscriptionRequest.plan.name }}&nbsp;</span></h3>
+        <p class="section-sub-heading">
+          {% trans %}We will contact you as soon as possible to validate your subscription{% endtrans %}
+        </p>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if user.subscription is not null and user.subscription.active %}
+    <div class="clearfix">&nbsp;</div>
+    <br>
+    <div class="row">
+      <div class="section text-center"><h3 class="section-heading">{% trans %}Your current plan:{% endtrans %}</h3>
+        <p class="section-sub-heading">
+          {% trans %}Expiration date:{% endtrans %} {{ user.subscription.endAt|localizeddate('full', 'none', current_locale, null, 'EEEE d MMMM Y') }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      {%
+        include 'front/user/vendor/blocks/pricing.block.html.twig'
+        with {'plan':user.subscription.plan, user:user}
+      %}
+    </div>
+  {% endif %}
+
+  <div class="clearfix">&nbsp;</div>
+  <br>
+  <div class="section text-center"><h3 class="section-heading">{% trans %}Choose your plan:{% endtrans %}</h3>
+    <p class="section-sub-heading">
+      {% trans %}You can change your plan any time{% endtrans %}
+    </p>
+  </div>
+
+  <div class="row">
+    {% for plan in pricingPlans %}
+    <div class="col-md-4 col-sm-6">
+      {%
+        include 'front/user/vendor/blocks/pricing.block.html.twig'
+        with {plan:plan, features:features, user:user, displayCta:true}
+      %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endblock %}

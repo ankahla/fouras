@@ -1,0 +1,40 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}SubscriptionRequest index{% endblock %}
+
+{% block body %}
+    <h1>SubscriptionRequest index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Pack demandé</th>
+                <th>Phone</th>
+                <th>EmailAddress</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscription_request in subscription_requests %}
+            <tr>
+                <td>{{ subscription_request.user }}</td>
+                <td>{{ subscription_request.plan.name }}</td>
+                <td>{{ subscription_request.phone }}</td>
+                <td>{{ subscription_request.emailAddress }}</td>
+                <td>{{ subscription_request.createdAt ? subscription_request.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('subscription_request_show', {'id': subscription_request.id}) }}">show</a>
+                    <a class="btn btn-primary" onclick="return confirm('Vous ête sur le point de créer un nouveau abonnement et supprimer tous les anciens abonnements et demandes. Êtes vous sure de vouloir procéder ?')" href="{{ path('subscription_request_validate', {'id': subscription_request.id}) }}">Valider</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">La liste est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
