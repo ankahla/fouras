@@ -1,6 +1,6 @@
 /*
   Theme Name:  Weddlist — Wedding Vendor Directory HTML Template
-  Theme URL: 
+  Theme URL:
   Author: udayraj
   Author URI: themeforest.com/user/udayraj
   Creation Date: 20 June 2017
@@ -12,7 +12,7 @@
               [Table of Contents]
 =========================================================================
 
-01. Typography 
+01. Typography
 02. General
 03. Revolution Slider
 04. Navigation
@@ -23,10 +23,10 @@
 09. Feature Wedding
 10. Call Out
 11. Why Choose Block
-12. Testimonial Block 
+12. Testimonial Block
 13. News And Update Block
 14. Footer
-15. Plan Start Block 
+15. Plan Start Block
 16. Upcoming Wedding Block
 16. About Us Page
 17. Category Listing
@@ -69,22 +69,22 @@
 /* ================================= */
     /*===== Typography =====*/
 /* ================================= */
-body {  
+body {
   font-family: 'Lora', sans-serif;
   font-weight: 400;
   color: #333;
   font-size: 14px;
   font-weight: 400;
-  -webkit-font-smoothing: antialiased; 
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 html,
 body {
   height: 100%;
 }
-h1, h2, h3, h4, h5, h6 { 
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Lora', sans-serif;
-  -webkit-font-smoothing: antialiased; 
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 500;
   color: #333;
@@ -94,7 +94,7 @@ h1 {
   font-size: 52px;
 }
 h2 {
-  font-size: 46px; 
+  font-size: 46px;
 }
 h3 {
   font-size: 32px;
@@ -108,7 +108,7 @@ h5 {
 h6 {
   font-size: 16px;
 }
-a {  
+a {
   text-decoration: none;
   color: #FF4061;
   -webkit-transition: all 0.5s ease;
@@ -117,7 +117,7 @@ a {
   -moz-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-a:hover, 
+a:hover,
 a:focus {
   color: #333;
   text-decoration: none;
@@ -133,13 +133,13 @@ p {
   line-height: 1.6;
   margin-bottom: 20px;
 }
-blockquote {   
+blockquote {
   font-style: italic;
 }
 ul {
   list-style: none;
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 .clr-white {
   color: #FFF;
@@ -164,7 +164,7 @@ ul {
   padding: 120px 0;
 }
 .page-banner.bg-dark .overlay-bg {
-  background-color: rgba(57, 45, 72, 0.9); 
+  background-color: rgba(57, 45, 72, 0.9);
 }
 .mrgn-bottom-30 {
   margin-bottom: 30px;
@@ -196,20 +196,20 @@ ul {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);   
+  background: rgba(0,0,0,0.5);
   -webkit-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
-  transition: all 0.5s ease;      
+  transition: all 0.5s ease;
 }
 .parallax {
   width: 100%;
   background-position: 50% 0;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;   
-  position: relative;      
+  background-attachment: fixed;
+  position: relative;
 }
 .btn:focus,
 .btn-bink:focus,
@@ -317,7 +317,7 @@ ul {
 .btn-white:hover::before {
   background-color: #FFF;
   color: #FF4061;
-} 
+}
 .read-more {
   font-family: 'Lora',sans-serif;
   font-weight: 700;
@@ -329,21 +329,21 @@ ul {
   letter-spacing: 0.6px;
   border-radius: 0;
   border: none;
-  background: #FFF; 
+  background: #FFF;
   text-transform: uppercase;
 }
 .section {
   margin-bottom: 60px;
 }
-.section-heading {   
+.section-heading {
   font-weight: 700;
   line-height: 0.81;
-  color: #333; 
+  color: #333;
   font-size: 32px;
 }
 .section-sub-heading {
   font-size: 15px;
-  font-weight: 400; 
+  font-weight: 400;
   color: #8D8D8D;
   line-height: 1.73;
 }
@@ -360,7 +360,7 @@ ul {
   height: 45px;
   background: #F8F8F8;
 }
-.form-control:focus {  
+.form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-color: #FF4061;
@@ -376,7 +376,7 @@ ul {
   top: 0;
   width: 100%;
   height: 53px;
-  padding-top: 10; 
+  padding-top: 10;
   opacity: 0;
   z-index: 9999999;
   background-color: #181818;
@@ -389,7 +389,7 @@ ul {
   -moz-transition: transform 0.3s linear;
   -ms-transition: transform 0.3s linear;
   -o-transition: transform 0.3s linear;
-  transition: transform 0.3s linear;    
+  transition: transform 0.3s linear;
 }
 .search .container {
   position: relative;
@@ -407,7 +407,7 @@ ul {
   width: 95%;
   border: none;
   font-family: 'Lora', sans-serif;
-  font-size: 14px;  
+  font-size: 14px;
   color: #999;
   text-transform: uppercase;
   background: none;
@@ -427,12 +427,12 @@ ul {
   color: #999;
   background: transparent;
 }
-.search-close:hover {  
+.search-close:hover {
   color: #FF4061;
 }
 .search input:focus {
   outline: none!important;
-  border-color: none;   
+  border-color: none;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #FFF;
@@ -520,7 +520,7 @@ ul {
   position: relative;
 }
 .home-revo-slider ul li .overlay-bg {
-  background: rgba(57, 45, 72, 0.8); 
+  background: rgba(57, 45, 72, 0.8);
 }
 .home-revo-slider ul li .overlay-bg.clr-blk {
   background: rgba(0, 0, 0, 0.5);
@@ -542,7 +542,7 @@ ul {
 .slider-bottom-panel .dropdown button:focus {
   background-color: #FFF;
 }
-.slider-bottom-panel .dropdown button span.drp-name { 
+.slider-bottom-panel .dropdown button span.drp-name {
   font-size: 14px;
   color: #555;
 }
@@ -554,12 +554,12 @@ ul {
   padding: 0;
   height: 50px;
   line-height: 3.3;
-  border-radius: 0; 
+  border-radius: 0;
   font-size: 15px;
   letter-spacing: 0.6px;
 }
 @media(max-width: 992px) {
-  .rev_slider_wrapper .tparrows, 
+  .rev_slider_wrapper .tparrows,
   .rev_slider_wrapper:hover .tparrows {
     display: none !important;
   }
@@ -698,7 +698,7 @@ ul {
 .navigation #cssmenu ul ul.sub-menu li:hover a ,
 .navigation #cssmenu ul ul.sub-menu li.active a {
   color: #FFF;
-  background-color: #FF4061;  
+  background-color: #FF4061;
 }
 .navigation #cssmenu ul ul.sub-menu li:hover ul.has-sub li a,
 .navigation #cssmenu ul ul.sub-menu li.active a ul.has-sub li a,
@@ -720,7 +720,7 @@ ul {
   margin: auto;
   z-index: 1111;
 }
-.nav-bar.top-nav-collapse { 
+.nav-bar.top-nav-collapse {
   opacity: 1;
   box-shadow: 0 1px 15px rgba(0,0,0,0.2);
   z-index: 9999999;
@@ -731,41 +731,41 @@ ul {
 .navigation ul li i {
   margin-left: 3px;
 }
-@media(max-width:767px) {   
+@media(max-width:767px) {
   .logo img {
     width: 40%;
     margin: 0 auto;
     left: 0;
     right: 0;
     display: block;
-  }  
+  }
   .wedding-logo img {
     margin: 0 auto;
     left: 0;
     right: 0;
     display: block;
-  }   
+  }
 }
-@media (min-width: 767px) and (max-width: 992px) { 
+@media (min-width: 767px) and (max-width: 992px) {
   .logo img {
     display: block;
     margin: 0 auto;
-  }  
+  }
 }
-@media(max-width:785px) {  
+@media(max-width:785px) {
   .wedding-logo {
     padding: 25px 0;
   }
   .navigation {
     float: none;
-  } 
-  #cssmenu.small-screen #menu-button {  
+  }
+  #cssmenu.small-screen #menu-button {
     color: #392D48;
   }
-  #cssmenu.small-screen #menu-button:before {   
+  #cssmenu.small-screen #menu-button:before {
     background: #392D48;
   }
-  #cssmenu.small-screen #menu-button:after {   
+  #cssmenu.small-screen #menu-button:after {
     border-top: 2px solid #392D48;
     border-bottom: 2px solid #392D48;
   }
@@ -775,7 +775,7 @@ ul {
   #cssmenu.small-screen #menu-button.menu-opened:after {
     background: #392D48;
   }
-  .navigation #cssmenu ul li:hover a, 
+  .navigation #cssmenu ul li:hover a,
   .navigation #cssmenu ul li.active a {
     border-top: 0 solid #FF4061;
     padding: 16px 0;
@@ -784,7 +784,7 @@ ul {
     border-top: 0 solid #FF4061;
     top: 0;
   }
-  .navigation #cssmenu ul li a {   
+  .navigation #cssmenu ul li a {
     border-top: 0 solid #FF4061;
     padding: 15px 0;
   }
@@ -796,12 +796,12 @@ ul {
     display: none;
   }
 }
-@media(min-width: 768px) and (max-width: 992px) { 
+@media(min-width: 768px) and (max-width: 992px) {
    #cssmenu {
     margin-top: 30px;
   }
-  #cssmenu > ul > li > a {    
-    padding: 42px 8px;   
+  #cssmenu > ul > li > a {
+    padding: 42px 8px;
   }
 }
 @media (min-width: 786px) and (max-width: 1199px) {
@@ -837,7 +837,7 @@ ul {
   margin-bottom: 4px;
   text-transform: uppercase;
 }
-.breadcrumb { 
+.breadcrumb {
   padding-top: 0;
   letter-spacing: 0.5px;
   background-color: transparent;
@@ -862,7 +862,7 @@ ul {
   padding: 0 0;
   color: #ccc;
   content: "/\00a0";
-  font-weight: 700;   
+  font-weight: 700;
 }
 
 /*=====================================*/
@@ -896,7 +896,7 @@ ul {
 }
 .wedding-plan-img:hover .overlay-bg {
   opacity: 1;
-} 
+}
 .wedding-plan-img:hover img {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
@@ -924,7 +924,7 @@ ul {
   -moz-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
   -o-transform-origin: 0 0;
-  transform-origin: 0 0;  
+  transform-origin: 0 0;
   -webkit-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -951,7 +951,7 @@ ul {
   -moz-transform-origin: 100% 0;
   -ms-transform-origin: 100% 0;
   -o-transform-origin: 100% 0;
-  transform-origin: 100% 0;  
+  transform-origin: 100% 0;
   -webkit-transition: all 0.8s ease;
   -ms-transition: all 0.8s ease;
   -o-transition: all 0.8s ease;
@@ -1006,7 +1006,7 @@ ul {
 }
 .location-block {
   margin-bottom: 30px;
-} 
+}
 .location-block {
   overflow: hidden;
   position: relative;
@@ -1018,7 +1018,7 @@ ul {
   -moz-transition: all 0.8s ease;
   -ms-transition: all 0.8s ease;
   -o-transition: all 0.8s ease;
-  transition: all 0.8s ease; 
+  transition: all 0.8s ease;
 }
 .location-block:hover .city-img img {
   -webkit-transform: scale(1.1);
@@ -1064,7 +1064,7 @@ ul {
   -moz-transition: all 0.7s ease;
   -ms-transition: all 0.7s ease;
   -o-transition: all 0.7s ease;
-  transition: all 0.7s ease;  
+  transition: all 0.7s ease;
 }
 .location-block:hover .city-dtl p,
 .location-block:hover .city-dtl .btn-pink {
@@ -1117,7 +1117,7 @@ ul {
   -moz-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
   -o-transform-origin: 0 0;
-  transform-origin: 0 0;  
+  transform-origin: 0 0;
   -webkit-transition: all 0.4s ease;
   -ms-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
@@ -1144,7 +1144,7 @@ ul {
   -moz-transform-origin: 100% 0;
   -ms-transform-origin: 100% 0;
   -o-transform-origin: 100% 0;
-  transform-origin: 100% 0;  
+  transform-origin: 100% 0;
   -webkit-transition: all 0.8s ease;
   -ms-transition: all 0.8s ease;
   -o-transition: all 0.8s ease;
@@ -1189,10 +1189,10 @@ ul {
   outline: none;
 }
 .gallery-block .gallery-img a:hover {
-   background-color: rgba(57, 45, 72, 0.8); 
+   background-color: rgba(57, 45, 72, 0.8);
 }
 .gallery-block:hover a {
-  opacity: 1; 
+  opacity: 1;
 }
 .gallery-block .gallery-img img {
   width: 100%;
@@ -1213,13 +1213,13 @@ ul {
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);
-} 
+}
 .gallery-block .gallery-dtl {
   font-weight: 700;
   position: absolute;
   top: 10%;
   left: 8%;
-  opacity: 0; 
+  opacity: 0;
   color: #FFF;
   margin-right: 4px;
   -webkit-transition: all 0.7s ease;
@@ -1492,7 +1492,7 @@ ul {
   border-radius: 100%;
 }
 .testimonial-dtl {
-  padding-top: 9px;  
+  padding-top: 9px;
 }
 .testimonial-dtl .testimonial-client {
   text-transform: uppercase;
@@ -1516,10 +1516,10 @@ ul {
   margin-left: 55px;
 }
 .testimonial-main-block .owl-prev,
-.testimonial-main-block .owl-next { 
+.testimonial-main-block .owl-next {
   font-size: 18px;
   color: #FFF;
-  position: absolute;   
+  position: absolute;
   top: 100%;
   left: 45%;
   width: 43px;
@@ -1594,7 +1594,7 @@ ul {
 .news-dtl .read-more {
   text-transform: uppercase;
   font-style: normal;
-  font-size: 11px;  
+  font-size: 11px;
 }
 .news-dtl .news-heading a {
   line-height: 2.63;
@@ -1657,7 +1657,7 @@ ul {
 }
 .about-widget .about-dtl p {
   line-height: 1.73;
-  color: #FFF;  
+  color: #FFF;
   margin-bottom: 20px;
 }
 .about-widget .about-dtl .btn-white {
@@ -1670,7 +1670,7 @@ ul {
 /*===== News Widget =====*/
 .news-widget ul li {
   margin-bottom: 41px;
-} 
+}
 .news-widget .latest-news-dtl {
   padding-right: 90px;
 }
@@ -1743,7 +1743,7 @@ ul {
   background-color: #312441;
 }
 .copyright-block p {
-  color: #FFF; 
+  color: #FFF;
   font-size: 14px;
   line-height: 1.71;;
 }
@@ -1838,7 +1838,7 @@ ul {
 /* ==================================== */
 .upcoming-wedding-main-block {
   padding: 148px 0 150px;
-} 
+}
 .upcoming-wedding-dtl {
   padding: 27px 20px 27px 20px;
 }
@@ -2042,14 +2042,14 @@ ul {
   top: 50%;
   left: 50%;
   opacity: 0;
-  transform: translate(-50%,-50%);  
+  transform: translate(-50%,-50%);
   -webkit-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.vendor-profile-block:hover .overlay-bg, 
+.vendor-profile-block:hover .overlay-bg,
 .vendor-profile-block:hover .vendor-dtl {
   opacity: 1;
 }
@@ -2121,7 +2121,7 @@ ul {
   .why-block .why-icon {
     margin: 0 10px 0 0;
   }
-}   
+}
 
 /*========================================*/
       /*==== Category Listing ======*/
@@ -2170,7 +2170,7 @@ ul {
 .price-slider-amount > input {
   padding-bottom: 10px;
   border: 0 none;
-  color: #FF4061; 
+  color: #FF4061;
   font-size: 13px;
   color: #333;
   font-weight: 700;
@@ -2283,7 +2283,7 @@ ul {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 27px 31px 21px 31px;  
+  padding: 27px 31px 21px 31px;
   background: rgba(0,0,0,1);
   background: -webkit-linear-gradient(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 1));
   background: -o-linear-gradient(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 1));
@@ -2308,10 +2308,10 @@ ul {
   color: #FFF;
   text-transform: uppercase;
   margin-bottom: 2px;
-} 
-.category-info .category-dtl-heading a {  
+}
+.category-info .category-dtl-heading a {
   color: #FFF;
-} 
+}
 .category-info .category-dtl-address {
   font-size: 13px;
   line-height: 2;
@@ -2392,7 +2392,7 @@ ul {
   font-size: 14px;
   color: #949494;
   line-height: 1.86;
-  margin-bottom: 23px;  
+  margin-bottom: 23px;
 }
 .feature-block .rating span {
   background-color: #44bA2C;
@@ -2711,7 +2711,7 @@ ul {
 }
 .general-nav-tabs a .badge {
   color: #101010;
-  font-size: 14px; 
+  font-size: 14px;
 }
 .add-listing-sidebar label {
   font-size: 13px;
@@ -2721,7 +2721,7 @@ ul {
   margin-bottom: 8px;
 }
 .add-listing-block .dropdown {
-  border: 1px solid #E3E3E3;  
+  border: 1px solid #E3E3E3;
   box-shadow: none;
 }
 .add-listing-block .dropdown button {
@@ -2800,7 +2800,7 @@ ul {
   margin-bottom: 21px;
 }
 .add-listing-image {
-  position: relative;  
+  position: relative;
   margin-bottom: 30px;
 }
 .add-listing-image a {
@@ -3027,7 +3027,7 @@ ul {
   font-size: 13px;
   line-height: 2.46;
   color: #777;
-} 
+}
 .leave-reply-block #comment {
   padding: 0 23px;
   height: 170px;
@@ -3256,7 +3256,7 @@ ul {
 }
 .create-task-block input {
   height: 50px;
-  margin-bottom: 18px;  
+  margin-bottom: 18px;
 }
 .create-task-block textarea {
   height: 170px;
@@ -3389,7 +3389,7 @@ ul {
   margin-bottom: 15px;
 }
 .create-category-block .dropdown {
-   border: solid 1px #E4E4E4; 
+   border: solid 1px #E4E4E4;
 }
 .create-category-block .dropdown button {
   height: 41px;
@@ -3420,7 +3420,7 @@ ul {
   color: #777;
   padding-left: 24px;
   border: solid 1px #E4E4E4;
-} 
+}
 .create-category-block .btn-default {
   border-radius: 5px;
   background-color: #392D48;
@@ -3505,7 +3505,7 @@ ul {
   text-transform: uppercase;
 }
 .budget-category-table-block table tr.data-table-heading td {
-  font-size: 16px;  
+  font-size: 16px;
   font-weight: 700;
 }
 .budget-category-table-block table td  {
@@ -3648,7 +3648,7 @@ ul {
   bottom: 30px;
   left: 16px;
   border-top: 2px solid #FFF;
-  border-bottom: 2px solid #FFF;  
+  border-bottom: 2px solid #FFF;
   z-index: 1;
   -webkit-transform: scale(0,1);
   -moz-transform: scale(0,1);
@@ -3675,7 +3675,7 @@ ul {
   bottom: 16px;
   left: 30px;
   border-right: 2px solid #FFF;
-  border-left: 2px solid #FFF;  
+  border-left: 2px solid #FFF;
   z-index: 1;
   -webkit-transform: scale(1,0);
   -moz-transform: scale(1,0);
@@ -3730,7 +3730,7 @@ ul {
   margin-right: 6px;
 }
 .btn-plan:focus {
-  background-color: #363E41; 
+  background-color: #363E41;
   color: #FFF;
 }
 .btn-plan i {
@@ -3836,7 +3836,7 @@ ul {
   margin-bottom: 47px;
 }
 .new-listing-vendor-block .vendor-pro-section {
-  margin: 6px 0 16px; 
+  margin: 6px 0 16px;
 }
 .new-listing-vendor-block .description-heading {
   margin-bottom: 50px;
@@ -3866,19 +3866,19 @@ ul {
 .video-device:hover .overlay-bg {
   opacity: 0;
 }
-.video-item {  
+.video-item {
   text-align:center;
 }
 .video-device .bg_img {
-  background-size: cover; 
+  background-size: cover;
   width: 100%;
 }
-.video-device {   
+.video-device {
   position: relative;
 }
-.video-item .video-preview, 
+.video-item .video-preview,
 .video-item .video-preview iframe,
-.video-item .video-preview-two, 
+.video-item .video-preview-two,
 .video-item .video-preview-two iframe {
   width: 100%;
   height: 100%;
@@ -3886,14 +3886,14 @@ ul {
 .video-preview,
 .video-preview-two {
   position:absolute;
-  left: 0; 
+  left: 0;
   top: 0;
   z-index:30;
   width: 100%;
 }
 .btn-video-play,
 .btn-video-play-two {
-  position:absolute; 
+  position:absolute;
   top: 50%;
   right: 0;
   left: 0;
@@ -3925,7 +3925,7 @@ ul {
 }
 .new-listing-review .comments p {
   margin-bottom: 0;
-} 
+}
 .new-listing-review .comments .media ul li {
   padding: 30px 0 23px 30px;
   margin-bottom: 30px;
@@ -3959,7 +3959,7 @@ ul {
   padding: 11px 0;
   width: 100%;
   border-radius: 0;
-  font-weight: 700; 
+  font-weight: 700;
   font-size: 15px;
   letter-spacing: 1.5px;
 }
@@ -3992,6 +3992,7 @@ ul {
 }
 .pricing-table-img-section {
   position: relative;
+  min-height: 150px;
 }
 .pricing-table-img-section img {
   height: 200px;
@@ -4038,6 +4039,10 @@ ul {
   border-bottom: 2px dotted #C8C8C8;
   padding-bottom: 11px;
   margin-bottom: 13px;
+}
+.pricing-table-list ul li.disabled {
+  text-decoration: line-through;
+  text-decoration-color: red;
 }
 .pricing-table-list ul li:last-child {
   padding-bottom: 0;
@@ -4103,7 +4108,7 @@ ul {
   line-height: 1.73;
   color: #777;
   margin-left: 16px;
-} 
+}
 .faq-nav-list ul li.active a {
   color: #FF4061;
 }
@@ -4218,11 +4223,11 @@ ul {
   line-height: 1.41;
   color: #777;
 }
-.contact-form input, 
+.contact-form input,
 .contact-form textarea {
   background-color: #FFF;
   border: solid 1px #E4E4E4;
-  border-radius: 0; 
+  border-radius: 0;
   padding: 0 27px;
   font-size: 12px;
   line-height: 2.17;
@@ -4230,8 +4235,8 @@ ul {
   height: 42px;
   box-shadow: none;
 }
-.contact-form textarea {  
-  padding: 20px 27px; 
+.contact-form textarea {
+  padding: 20px 27px;
   height: auto;
 }
 .contact-form input {
@@ -4262,8 +4267,8 @@ ul {
 }
 @media (max-width: 767px) {
   .contact-us-block {
-    padding: 40px 40px 37px 40px; 
-  }  
+    padding: 40px 40px 37px 40px;
+  }
   .contact-two-map {
     margin-top: 30px;
   }
@@ -4321,7 +4326,7 @@ ul {
 }
 .vendor-enquery-block {
   border: 1px solid #DADADA;
-  background-color: #FFF; 
+  background-color: #FFF;
   padding: 32px 26px 22px 29px;
 }
 .vendor-enquery-heading {
@@ -4353,7 +4358,7 @@ ul {
   height: 45px;
   font-style: italic;
   font-size: 14px;
-} 
+}
 .no-of-gits-dropdown button span {
   color: #777;
 }
@@ -4361,7 +4366,7 @@ ul {
   font-style: italic;
   font-size: 14px;
   color: #777;
-} 
+}
 .vendor-enquery-block .send-me {
   margin-bottom: 10px;
   line-height: 1.6;
@@ -4420,7 +4425,7 @@ ul {
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 50px;
-} 
+}
 .vendor-profile-listing-block .feature-block {
   margin-bottom: 30px;
 }
@@ -4470,7 +4475,7 @@ ul {
 
  .upload-img-btn {
     text-align: center;
-  }  
+  }
  .couple-profile-main-page label {
     margin-bottom: 35px;
  }
@@ -4621,7 +4626,7 @@ input[type=checkbox] {
   letter-spacing: 20px;
   margin-bottom: 30px;
   font-weight: 500;
-  background-color: rgba(57, 45, 72, 0.1);  
+  background-color: rgba(57, 45, 72, 0.1);
 }
 .error-heading span {
   color: #FF4061;
@@ -4634,7 +4639,7 @@ input[type=checkbox] {
 }
 @media (max-width: 767px) {
   .error-heading {
-    font-size: 140px; 
+    font-size: 140px;
   }
 }
 
@@ -4773,12 +4778,12 @@ input[type=checkbox] {
 /* ================================= */
     /*===== Preloader =====*/
 /* ================================= */
-.preloader { 
+.preloader {
   background: #392D48;
   bottom: 0;
   top: 0;
-  left: 0; 
-  right: 0;  
+  left: 0;
+  right: 0;
   position: fixed;
   z-index: 9999999999999;
 }
@@ -4786,17 +4791,17 @@ input[type=checkbox] {
   background-image: url(../images/logo-2.png);
 }
 .status,
-.status-message {   
+.status-message {
   text-align: center;
   text-transform: uppercase;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0; 
-  right: 0;  
+  left: 0;
+  right: 0;
   background-position: center;
-  background-repeat: no-repeat;     
+  background-repeat: no-repeat;
 }
 .status-message {
   padding-top: 30%;

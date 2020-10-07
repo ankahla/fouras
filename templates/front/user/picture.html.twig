@@ -10,6 +10,7 @@
 			<div class="upload-img-btn">
 				<a href="#" class="btn btn-pink" data-toggle="modal" data-target="#upload-model">{% trans %}Upload Profile Image{% endtrans %}</a>
 				<a href="{{ path('fos_user_change_password') }}" class="btn btn-pink">{% trans %}Change password{% endtrans %}</a>
+				<a href="{{ path('user_preferences') }}" class="btn btn-pink">{% trans %}My preferences{% endtrans %}</a>
 			</div>
 		</div>
 	</div>
@@ -38,7 +39,7 @@
 						{{ form_rest(profilePictureForm) }}
 					</div>
 				</form>
-			</div>            
+			</div>
 		</div>
 	</div>
 </div>

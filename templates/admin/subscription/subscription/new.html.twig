@@ -1,0 +1,11 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}Créer un nouveau abonnement{% endblock %}
+
+{% block body %}
+<div class="container">
+    {{ include('admin/subscription/subscription/_form.html.twig') }}
+
+    <a href="{{ path('subscription_index') }}">Retour à la liste</a>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}Avantages abonnement{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscription_feature in subscription_features %}
+            <tr>
+                <td>{{ subscription_feature.name }}</td>
+                <td>
+                    <a href="{{ path('subscription_feature_show', {'id': subscription_feature.id}) }}">Détails</a>
+                    <a href="{{ path('subscription_feature_edit', {'id': subscription_feature.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">La liste est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('subscription_feature_new') }}">Créer nouveau</a>
+{% endblock %}

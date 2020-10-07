@@ -1,0 +1,16 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}{{ subscription_feature.name }}{% endblock %}
+
+{% block body %}
+    <label>Description:</label>
+    <p>
+        {{ subscription_feature.description }}
+    </p>
+
+    <a class="btn btn-default" href="{{ path('subscription_feature_index') }}">Retour à la liste</a>
+
+    <a class="btn" href="{{ path('subscription_feature_edit', {'id': subscription_feature.id}) }}">Editer</a>
+
+    {{ include('admin/subscription/feature/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'front/user/vendor/layout.html.twig' %}
+
+{% block bodycontent %}
+  <div class="row">
+    <div class="section text-center"><h3 class="section-heading">{% trans %}Selected plan:{% endtrans %}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {% include 'front/user/vendor/blocks/pricing.block.html.twig' with {'plan':subscription_request.plan} %}
+    </div>
+    <div class="col-md-6">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+
+      <div class="clearfix">&nbsp;</div>
+      <br>
+
+      <input type="submit" class="btn btn-lg btn-pink" value="{% trans %}Send request now{% endtrans %}">
+    </div>
+
+    {{ form_end(form) }}
+  </div>
+{% endblock %}

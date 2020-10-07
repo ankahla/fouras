@@ -1,0 +1,53 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}Pack {{ subscription_plan.name }}{% endblock %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <tbody>
+        <tr>
+          <th>Name</th>
+          <td>{{ subscription_plan.name }}</td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>{{ subscription_plan.description }}</td>
+        </tr>
+        <tr>
+          <th>MonthlyPrice</th>
+          <td>{{ subscription_plan.monthlyPrice }}</td>
+        </tr>
+        <tr>
+          <th>InPromotion</th>
+          <td>{{ subscription_plan.inPromotion ? 'Oui' : 'Non' }}</td>
+        </tr>
+        <tr>
+          <th>Popular</th>
+          <td>{{ subscription_plan.popular ? 'Oui' : 'Non' }}</td>
+        </tr>
+        <tr>
+          <th>Id</th>
+          <td>{{ subscription_plan.id }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h3>Avantages</h3>
+      <ul>
+        {% for feature in subscription_plan.features %}
+          <li>{{ feature.name }}</li>
+        {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+
+  <a class="btn" href="{{ path('subscription_plan_index') }}">Retour à la liste</a>
+
+  <a class="btn" href="{{ path('subscription_plan_edit', {'id': subscription_plan.id}) }}">Editer</a>
+
+  {{ include('admin/subscription/plan/_delete_form.html.twig') }}
+{% endblock %}

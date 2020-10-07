@@ -66,7 +66,7 @@ doctrine_migrations:
             execution_time_column_name: 'execution_time'
 
 fos_user:
-    from_email: 
+    from_email:
         address:        noreply@fouras.com
         sender_name:    Fouras
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'

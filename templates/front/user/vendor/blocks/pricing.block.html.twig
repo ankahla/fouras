@@ -1,0 +1,30 @@
+<div class="pricing-table-block">
+  <div class="pricing-table-img-section">
+    <div class="overlay-bg"></div>
+    <div class="pricing-table-dtl">
+      <h3 class="pricing-table-heading">{{ plan.name }}</h3>
+      <div class="pricing-table-price">{{ plan.monthlyPrice }} dt<span>/{% trans %}month{% endtrans %}</span></div>
+    </div>
+  </div>
+  <div class="pricing-table-list">
+    <ul>
+      {% if features is not defined %}
+        {% set features = plan.features %}
+      {% endif %}
+      {% for feature in features %}
+        <li class="{{ plan.features.contains(feature) ? '' : 'disabled' }}">{{ feature.name }}</li>
+      {% endfor %}
+    </ul>
+    {% if displayCta is defined and displayCta == true and user.subscriptionRequest is null %}
+      <div class="pricing-table-btn">
+        {% if user.hasSubscription and plan == user.subscription.plan %}
+          <button type="button" class="btn btn-default btn-lg"
+                  disabled="disabled">{% trans %}Select Plan Now{% endtrans %}</button>
+        {% else %}
+          <a href="{{ path('vendor_subscribe', {'planId':plan.id}) }}"
+             class="btn btn-default">{% trans %}Select Plan Now{% endtrans %}</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

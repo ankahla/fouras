@@ -223,3 +223,42 @@ INSERT INTO `budget_item` (`id`, `budget_id`, `name`, `estimated_amount`, `actue
 (7, 6, '2 semaines Hotel', 3000.000, 3000.000, 3000.000),
 (8, 7, 'Photographe professionnel', 600.000, 600.000, 600.000),
 (9, 8, 'Soulatymiya', 2000.000, 2000.000, 2000.000);
+
+--
+-- Contenu de la table `subscription_plan`
+--
+
+INSERT INTO `subscription_plan` (`id`, `name`, `description`, `monthly_price`, `in_promotion`, `popular`) VALUES
+(1, 'Gratuit', null, 0.000, 0, 0),
+(2, 'Basique', null, 400.000, 0, 1),
+(3, 'Professionnel', null, 1200.000, 1, 0);
+
+--
+-- Contenu de la table `subscription_feature`
+--
+
+INSERT INTO `subscription_feature` (`id`, `name`, `description`) VALUES
+(1, '+100 abonnés sur la page facebook', null),
+(2, 'Visibilité sur la page officielle de Fouras', null),
+(3, 'Bannière promotionnel sur le site fouras.com', null),
+(4, '+1000 abonnés sur page FB', null),
+(5, 'Charte graphique (création de logo, brochures ...)', null),
+(6, 'Insérer des produits sur la marketplace', null),
+(7, 'Montage video', null),
+(8, 'Plus d''abonnés (jusqu''à 100 000 abonnées par mois)', null);
+
+--
+-- Contenu de la table `subscription_plan_feature`
+--
+
+INSERT INTO `subscription_plan_feature` (`plan_id`, `feature_id`) VALUES
+(1, 1),(1, 2),
+(2, 1),(2, 2),(2, 3),(2, 4),(2, 5),
+(3, 1),(3, 2),(3, 3),(3, 4),(3, 5),(3, 6),(3, 7),(3, 8);
+
+--
+-- Contenu de la table `subscription`
+--
+
+INSERT INTO `subscription` (`id`, `user_id`, `plan`, `monthly_price`, `created_at`, `updated_at`, `start_at`, `end_at`) VALUES
+(1, 2, '{"plan": "Gratuit", "features": ["+100 abonnés sur page fb", "Visible sur page FB de Fouras"]}', 0.000, '2020-09-01 18:56:51', '2020-09-01 18:56:58', '2020-09-06 18:57:03', '2022-09-06 18:57:25');

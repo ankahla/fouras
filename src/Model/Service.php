@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -25,6 +27,11 @@ class Service
     protected $mapIcon;
 
     protected $vendorServices;
+
+    public function __construct()
+    {
+        $this->vendorServices = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -85,5 +92,28 @@ class Service
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function addVendorService(VendorService $vendorService): self
+    {
+        if (!$this->vendorServices->contains($vendorService)) {
+            $this->vendorServices[] = $vendorService;
+            $vendorService->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVendorService(VendorService $vendorService): self
+    {
+        if ($this->vendorServices->contains($vendorService)) {
+            $this->vendorServices->removeElement($vendorService);
+            // set the owning side to null (unless already changed)
+            if ($vendorService->getService() === $this) {
+                $vendorService->setService(null);
+            }
+        }
+
+        return $this;
     }
 }

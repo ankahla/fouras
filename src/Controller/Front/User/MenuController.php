@@ -20,7 +20,7 @@ class MenuController extends AbstractController
                 'vendor_todo' 			=> $translator->trans('To Do List'),
                 'vendor_service' 		=> $translator->trans('My Services'),
                 'vendor_enquiry' 		=> $translator->trans('Received enquiries'),
-                'user_preferences' 		=> $translator->trans('My preferences'),
+                'vendor_pricing' 		=> $translator->trans('Pricing'),
             ];
         } else {
             $menuItems = [
@@ -30,7 +30,7 @@ class MenuController extends AbstractController
                 //'couple_wishlist' 			=> $translator->trans('My Wishlist'),
                 'couple_guestlist' 			=> $translator->trans('Guest List'),
                 'fos_user_change_password' 	=> $translator->trans('Password'),
-                'user_preferences' 		=> $translator->trans('My preferences'),
+                //'user_preferences' 		=> $translator->trans('My preferences'),
             ];
         }
 

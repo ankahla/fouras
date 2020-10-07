@@ -26,6 +26,17 @@ vendor_service_delete:
     path:     /service/{id}/delete
     defaults: { _controller: Controller\Front\User\VendorController::deleteService }
 
+vendor_pricing:
+    path:     /pricing
+    defaults: { _controller: Controller\Front\User\VendorController::pricing }
+
+vendor_subscribe:
+    path:     /subscribe/{planId}
+    defaults: { _controller: Controller\Front\User\VendorController::subscribe, planId: 1 }
+    methods: [GET, POST]
+    requirements:
+        planId: \d
+
 vendor_todo:
     path:     /tasks
     defaults: { _controller: Controller\Front\User\VendorController::tasks }

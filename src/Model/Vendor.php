@@ -2,6 +2,7 @@
 namespace Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Model\Traits\PersonTrait;
 
 class Vendor
@@ -25,6 +26,7 @@ class Vendor
     {
         $this->urls = new ArrayCollection;
         $this->services = new ArrayCollection;
+        $this->enquiries = new ArrayCollection();
     }
 
 
@@ -143,5 +145,13 @@ class Vendor
     public function canDisplayPhone(): bool
     {
         return !$this->getUser()->getUserParams()->isPhoneNumberHidden();
+    }
+
+    /**
+     * @return Collection|Enquiry[]
+     */
+    public function getEnquiries(): Collection
+    {
+        return $this->enquiries;
     }
 }

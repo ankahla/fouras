@@ -1,0 +1,49 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block headerTitle %}Liste des abonnements{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Pack</th>
+                <th>Prix par mois</th>
+                <th>Activé</th>
+                <th>Expiré</th>
+                <th>Debut</th>
+                <th>Fin</th>
+                <th>Crée le</th>
+                <th>Dernière mise à jour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subscription in subscriptions %}
+            <tr>
+                <td>{{ subscription.user.firstName }}</td>
+                <td>{{ subscription.user.lastName }}</td>
+                <td>{{ subscription.plan.name }}</td>
+                <td>{{ subscription.plan.monthlyPrice }}</td>
+                <td>{{ subscription.active ? 'Oui' : 'Non' }}</td>
+                <td>{{ subscription.expired ? 'Oui' : 'Non' }}</td>
+                <td>{{ subscription.startAt ? subscription.startAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ subscription.endAt ? subscription.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ subscription.createdAt ? subscription.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ subscription.updatedAt ? subscription.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('subscription_show', {'id': subscription.id}) }}">Détails</a>
+                    <a href="{{ path('subscription_edit', {'id': subscription.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">La liste est vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('subscription_new') }}">Créer nouveau</a>
+{% endblock %}

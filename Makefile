@@ -27,6 +27,9 @@ start: ## Start the project
 stop: ## Start the project
 	@$(DOCKER_COMPOSE) stop
 
+status:
+	@$(DOCKER_COMPOSE) ps
+
 restart: ## Start the project
 	make stop
 	make start
@@ -34,7 +37,7 @@ restart: ## Start the project
 clean:
 	@$(EXEC_PHP) rm -rf var/* web/cms/tmp/* web/cms/administrator/logs/*
 	@$(EXEC_PHP) mkdir var/cache/ var/log/
-	@$(EXEC_PHP) chmod -R 777 web/uploads var web/cms/tmp web/cms/administrator/logs
+	@$(EXEC_PHP) chmod -R 777 web/uploads web/media var web/cms/tmp web/cms/administrator/logs
 
 install:
 	@$(EXEC_PHP) php composer install
