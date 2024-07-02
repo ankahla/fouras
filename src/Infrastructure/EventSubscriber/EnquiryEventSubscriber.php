@@ -14,18 +14,14 @@ class EnquiryEventSubscriber implements EventSubscriberInterface, LoggerAwareInt
 {
     use LoggerAwareTrait;
 
-    private $mailer;
-    private $twig;
-    private $translator;
+    private $mailer = null;
     private $defaultMailerSender;
 
-    public function __construct(\Swift_Mailer $mailer, Environment $twig, TranslatorInterface $translator, string $defaultMailerSender)
+    //public function __construct(\Swift_Mailer $mailer, Environment $twig, TranslatorInterface $translator, string $defaultMailerSender)
+    public function __construct(private Environment $twig, private TranslatorInterface $translator)
     {
         $this->logger = new NullLogger();
-        $this->mailer = $mailer;
-        $this->twig = $twig;
-        $this->translator = $translator;
-        $this->defaultMailerSender = $defaultMailerSender;
+        //$this->defaultMailerSender = $defaultMailerSender;
     }
 
     public static function getSubscribedEvents(): array
@@ -43,7 +39,7 @@ class EnquiryEventSubscriber implements EventSubscriberInterface, LoggerAwareInt
             $this->logger->debug('Sending enquiry email to vendor');
 
             $from = $enquiry->isEmailResponseBack() ? [$enquiry->getEmail() => (string) $enquiry->getCouple()] : $this->defaultMailerSender;
-            $vendorEmail = $enquiry->getVendorService()->getEmail() ? $enquiry->getVendorService()->getEmail() : $enquiry->getVendor()->getEmail();
+            $vendorEmail = $enquiry->getVendorService()->getEmail() ?: $enquiry->getVendor()->getEmail();
             $to = [$vendorEmail => (string) $enquiry->getVendor()];
             $locale = $userParams->getEmailLanguage();
 

@@ -25,7 +25,7 @@ class FileSystemLoader implements LoggerAwareInterface, LoaderInterface
 {
     use LoggerAwareTrait;
 
-    const MAX_SIZE = 5242880;
+    public const MAX_SIZE = 5242880;
 
     /**
      * @var LocatorInterface
@@ -50,7 +50,7 @@ class FileSystemLoader implements LoggerAwareInterface, LoaderInterface
         $file = new File($path);
         $mime = $file->getMimeType();
 
-        if (0 !== strpos($mime, 'image/')) {
+        if (!str_starts_with((string) $mime, 'image/')) {
             $this->throwException(sprintf('The mime type of image %s must be image/xxx got %s.', $path, $mime));
         }
 
@@ -65,7 +65,7 @@ class FileSystemLoader implements LoggerAwareInterface, LoaderInterface
      *
      * @param string $message
      */
-    protected function throwException(string $message)
+    protected function throwException(string $message): never
     {
         $this->logger->critical('[{subject}] {exception}', [
             'subject' => 'internal-filesystem',

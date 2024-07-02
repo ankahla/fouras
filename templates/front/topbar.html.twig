@@ -21,10 +21,10 @@
                   </ul>
                 </li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ app.user.username }}</a></li>
-                <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                <li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{ app.user.username }}</a></li>
+                <li><a href="/logout">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
                 {% else %}
-                <li><a href="{{ path('fos_user_registration_register') }}" >{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
+                <li><a href="/registration" >{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#login-model">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                 {% endif %}
 
@@ -52,7 +52,7 @@
                 <h5 class="modal-title text-center">{% trans %}Login{% endtrans %}</h5>
               </div>
               <div class="modal-body login-model-body text-center">
-                <form id="login-form" action="{{ path("fos_user_security_check") }}" method="post">
+                <form id="login-form" action="/login" method="post">
                   <div class="form-group">
                     <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" />
                     <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" />
@@ -60,7 +60,7 @@
                   <input type="submit" class="btn btn-default" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
                   <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
                 </form>
-              </div>            
+              </div>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 {% block stylesheets %}
 <!-- theme style -->
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"> <!-- bootstrap css -->
-<!-- revolution -->   
+<!-- revolution -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/settings.css') }}"> <!-- revolution setting css -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/layers.css') }}">  <!-- revolution layer css -->
 <!-- end revolution -->
@@ -21,7 +21,7 @@
 
 {% block header %}
 {% include 'front/topbar.html.twig' %}
-{{ render(controller('Controller\\Front\\MainmenuController::index')) }}
+{{ render(controller('Infrastructure\\Controller\\Front\\MainmenuController::index')) }}
 {% endblock %}
 
 {% block messages %}

@@ -7,22 +7,15 @@ namespace Model;
 class Pagination
 {
     private const DEFAULT_ITEMS_PER_PAGE = 10;
+    private readonly int $totalPages;
+    private readonly int $next;
+    private readonly int $prev;
 
-    private int $itemsPerPage;
-    private int $page;
-    private int $total;
-    private int $totalPages;
-    private int $next;
-    private int $prev;
-
-    public function __construct(int $page, int $total, int $itemsPerPage = self::DEFAULT_ITEMS_PER_PAGE)
+    public function __construct(private readonly int $page, private readonly int $total, private readonly int $itemsPerPage = self::DEFAULT_ITEMS_PER_PAGE)
     {
-        $this->itemsPerPage = $itemsPerPage;
-        $this->page = $page;
-        $this->total = $total;
-        $this->totalPages = (int)ceil($total / $itemsPerPage);
-        $this->next = $page < $this->totalPages ? $page + 1 : $this->totalPages;
-        $this->prev = $page > 1 ? $page - 1 : 1;
+        $this->totalPages = (int)ceil($this->total / $this->itemsPerPage);
+        $this->next = $this->page < $this->totalPages ? $this->page + 1 : $this->totalPages;
+        $this->prev = $this->page > 1 ? $this->page - 1 : 1;
     }
 
     /**

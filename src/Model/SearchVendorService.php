@@ -12,9 +12,9 @@ class SearchVendorService
 
     private $city;
 
-    private $costMin;
+    private $costMin = 10;
 
-    private $costMax;
+    private $costMax = 1000;
 
     protected $email;
 
@@ -26,8 +26,6 @@ class SearchVendorService
 
     public function __construct()
     {
-        $this->costMin = 10;
-        $this->costMax = 1000;
     }
 
     public function getService()

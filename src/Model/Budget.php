@@ -3,7 +3,7 @@ namespace Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class Budget
+class Budget implements \Stringable
 {
     protected $id;
 
@@ -103,8 +103,8 @@ class Budget
         return $this->totals;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->service->getName();
+        return (string) $this->service->getName();
     }
 }

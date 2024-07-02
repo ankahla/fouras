@@ -5,7 +5,7 @@ namespace Model;
 use Symfony\Component\Validator\Constraints as Assert;
 use Model\Traits\TimestampableTrait;
 
-class Task
+class Task implements \Stringable
 {
     use TimestampableTrait;
 
@@ -13,15 +13,8 @@ class Task
 
     private $user;
 
-    /**
-     * @Assert\NotBlank(message="Please enter a valid name.")
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The title is too short.",
-     *     maxMessage="The title is too long.",
-     * )
-     */
+    #[Assert\NotBlank(message: 'Please enter a valid name.')]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'The title is too short.', maxMessage: 'The title is too long.')]
     protected $title;
 
     protected $description;
@@ -95,8 +88,8 @@ class Task
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->id;
+        return (string) $this->id;
     }
 }

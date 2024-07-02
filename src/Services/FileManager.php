@@ -10,16 +10,13 @@ class FileManager implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
-    private string $targetDirectory;
-
-    public function __construct(string $projectDir)
+    public function __construct(private string $targetDirectory)
     {
-        $this->targetDirectory = $projectDir;
     }
 
     public function upload(UploadedFile $file, ?string $targetDir = null): ?string
     {
-        $targetDir = $targetDir ?? $this->targetDirectory;
+        $targetDir ??= $this->targetDirectory;
 
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);

@@ -16,18 +16,13 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class CmsService
 {
-    const ARTICLE_URI = 'articles/article';
-    const CATEGORY_URI = 'categories/categories';
+    public const ARTICLE_URI = 'articles/article';
+    public const CATEGORY_URI = 'categories/categories';
 
     /**
      * @var Client
      */
     private $client;
-
-    /**
-     * @var string
-     */
-    private $apiKey;
 
     /**
      * @var string
@@ -54,15 +49,17 @@ class CmsService
      */
     private $galleryCatId;
 
-    public function __construct(Client $client, $apiKey, RequestStack  $requestStack, $catIds)
+    /**
+     * @param string $apiKey
+     */
+    public function __construct(Client $client, private $apiKey, RequestStack  $requestStack, $catIds)
     {
         $this->client = $client;
-        $this->apiKey = $apiKey;
         $this->locale = $requestStack->getCurrentRequest()->getLocale();
-        $this->blogCatId = isset($catIds['blog'][$this->locale]) ? $catIds['blog'][$this->locale] : reset($catIds['blog']);
-        $this->newsCatId = isset($catIds['news'][$this->locale]) ? $catIds['news'][$this->locale] : reset($catIds['news']);
-        $this->faqCatId = isset($catIds['faq'][$this->locale]) ? $catIds['faq'][$this->locale] : reset($catIds['faq']);
-        $this->galleryCatId = isset($catIds['gallery'][$this->locale]) ? $catIds['gallery'][$this->locale] : reset($catIds['gallery']);
+        $this->blogCatId = $catIds['blog'][$this->locale] ?? reset($catIds['blog']);
+        $this->newsCatId = $catIds['news'][$this->locale] ?? reset($catIds['news']);
+        $this->faqCatId = $catIds['faq'][$this->locale] ?? reset($catIds['faq']);
+        $this->galleryCatId = $catIds['gallery'][$this->locale] ?? reset($catIds['gallery']);
     }
 
     /**
@@ -78,11 +75,11 @@ class CmsService
 
         try {
             $response = $this->client->get(self::ARTICLE_URI, [RequestOptions::QUERY => $qb->getQuery()]);
-            $contents = json_decode($response->getBody()->getContents());
+            $contents = json_decode((string) $response->getBody()->getContents());
             if ($contents->data->success == true) {
                 $results = $contents->data->data;
             }
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             // @todo inject logger
             //$e->getMessage()
             return [];
@@ -102,14 +99,14 @@ class CmsService
                     'lang' => $this->locale,
                 ]
             ]);
-            $contents = json_decode($response->getBody()->getContents());
+            $contents = json_decode((string) $response->getBody()->getContents());
 
             if (empty($contents->err_code)) {
                 $results = $contents->data;
             } else {
-                throw new \Exception(isset($contents->err_msg)? $contents->err_msg : 'error when getting categories');
+                throw new \Exception($contents->err_msg ?? 'error when getting categories');
             }
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             // @todo inject logger
             //$e->getMessage()
             return [];

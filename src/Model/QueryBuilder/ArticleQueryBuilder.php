@@ -17,7 +17,7 @@ class ArticleQueryBuilder
     /**
      * @var array
      */
-    private $fields;
+    private $fields = self::DEFAULT_FIELDS;
 
     /**
      * @var string
@@ -57,7 +57,7 @@ class ArticleQueryBuilder
     /**
      * @var string
      */
-    private $start;
+    private $start = '0';
 
     /**
      * @var string
@@ -89,8 +89,6 @@ class ArticleQueryBuilder
      */
     public function __construct()
     {
-        $this->fields = self::DEFAULT_FIELDS;
-        $this->start = '0';
     }
 
     /**

@@ -1,0 +1,3 @@
+Model\UserType:
+  user_type_{couple, vendor}:
+    name: '<current()>'

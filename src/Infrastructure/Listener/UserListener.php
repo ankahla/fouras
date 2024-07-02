@@ -10,12 +10,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class UserListener
 {
-    private $tokenStorage;
     private $em;
 
-    public function __construct(TokenStorageInterface $tokenStorage, ManagerRegistry $managerRegistry)
+    public function __construct(private readonly TokenStorageInterface $tokenStorage, ManagerRegistry $managerRegistry)
     {
-        $this->tokenStorage = $tokenStorage;
         $this->em = $managerRegistry->getManager();
     }
 
@@ -45,8 +43,8 @@ class UserListener
                     if ($wife->getFirstName() && $husband->getFirstName()) {
                         $profileName = $wife->getFirstName() . ' & ' .$husband->getFirstName();
                     }
-                    $address = $husband->getAddress() ? $husband->getAddress() : $wife->getAddress();
-                    $phone = $husband->getPhone() ? $husband->getPhone() : $wife->getPhone();
+                    $address = $husband->getAddress() ?: $wife->getAddress();
+                    $phone = $husband->getPhone() ?: $wife->getPhone();
                 }
             } else {
                 /** @var Vendor $vendor **/
@@ -55,7 +53,7 @@ class UserListener
                 if ($vendor instanceof Vendor) {
                     $profileName = $vendor->getFirstName().' '.$vendor->getLastName();
                     $address = $vendor->getAddress();
-                    $phone = $vendor->getPhone() ? $vendor->getPhone() : $vendor->getMobile();
+                    $phone = $vendor->getPhone() ?: $vendor->getMobile();
                 }
             }
 

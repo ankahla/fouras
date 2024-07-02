@@ -4,22 +4,15 @@ namespace Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class BudgetItem
+class BudgetItem implements \Stringable
 {
     protected $id;
 
     private $budget;
 
-    /**
-     *
-     * @Assert\NotBlank(message="Please enter a valid name.")
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
-     * )
-     */
+    
+    #[Assert\NotBlank(message: 'Please enter a valid name.')]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'The name is too short.', maxMessage: 'The name is too long.')]
     protected $name;
 
     protected $estimatedAmount = 0.0;
@@ -160,8 +153,8 @@ class BudgetItem
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->name;
+        return (string) $this->name;
     }
 }

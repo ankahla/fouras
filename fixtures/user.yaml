@@ -1,0 +1,12 @@
+Model\User:
+  user_user_1:
+    firstname: 'Anouar'
+    lastname: 'kahla'
+    email: 'kahla.anoir@gmail.com'
+    userType: '@user_type_couple'
+
+  user_user_2:
+    firstname: 'vendor first name'
+    lastname: 'vendor last name'
+    email: '<email()>'
+    userType: '@user_type_vendor'

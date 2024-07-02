@@ -44,7 +44,7 @@
 {% block body %}
 <section id="add-listing" class="add-listing-main-block">
 	<div class="container">
-		{{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+		{{ render(controller('Infrastructure\\Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
 		<h4 class="new-add-listing-heading">
 		{% if vendorService is defined %}
 		{% trans %}Edit Service{% endtrans %}</h4>
@@ -130,7 +130,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="add-listing-map">                        
+					<div class="add-listing-map">
 						<div id="location" class="map-banner"></div>
 					</div>
 				</div>
@@ -141,7 +141,7 @@
 			<div class="add-listing-gallery-block">
 				<div class="form-btn-section">
 					<!-- <a href="#" data-toogle="model" data-target="#upload-model" class="btn btn-pink">Select Media</a> -->
-					
+
 					<ul class="add-listing-note">
 						<li>{% trans %}* At least 1 image is required for a valid submission{% endtrans %}</li>
 					</ul>
@@ -180,7 +180,7 @@
 	function initialize(){
 		geocoder = new google.maps.Geocoder();
 		var mapOptions = {
-			center: defaultPosition, 
+			center: defaultPosition,
 			zoom: 10,
 			disableDefaultUI: false,
 			scrollwheel: true,
@@ -226,7 +226,7 @@
         }
 	}
 
-  
+
 	var loadFile = function(event) {
 		var reader = new FileReader();
 		reader.onload = function(){

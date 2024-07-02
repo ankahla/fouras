@@ -1,0 +1,33 @@
+Model\Service:
+  service_1:
+    name: 'Wedding Cakes'
+    image: 'cake-5f0741434e609.jpeg'
+    mapIcon: 'party.png'
+  service_2:
+    name: 'Wedding Dress'
+    image: 'dress-5f06e4f76a714.png'
+    mapIcon: 'love.png'
+  service_3:
+    name: 'Wedding Photography'
+    image: 'weddingstudioblogthepressuretoperform-5f07021302122.png'
+    mapIcon: 'media.png'
+  service_4:
+    name: 'Jewellery'
+    image: 'jewelry-5f0702245b792.png'
+    mapIcon: 'love.png'
+  service_5:
+    name: 'Ceremony'
+    image: 'cermony-5f07023201ce6.jpeg'
+    mapIcon: 'music.png'
+  service_6:
+    name: 'Clothing, Accessories & Makeup'
+    image: 'coiffure-5f07024ad0418.jpeg'
+    mapIcon: 'love.png'
+  service_7:
+    name: 'Invites & Gift'
+    image: 'gift-5f070258b90db.png'
+    mapIcon: 'party.png'
+  service_8:
+    name: 'Honeymoon'
+    image: 'honeymoon-5f07026818db2.jpeg'
+    mapIcon: 'love.png'

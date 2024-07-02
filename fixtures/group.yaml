@@ -1,0 +1,4 @@
+Model\Group:
+  group_{vendor, couple, test}:
+    name: '<current()>'
+    roles: 'a:0:{}'

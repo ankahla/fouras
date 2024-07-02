@@ -5,6 +5,7 @@ namespace Services;
 
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use Model\NewsletterSubscription;
 use Model\User;
@@ -16,15 +17,12 @@ class NewsletterManager
     private const SESSION_KEY = 'newsletterSubscription';
 
     private ObjectManager $em;
-    private SessionInterface $session;
-    private TokenStorageInterface $tokenStorage;
 
-    public function __construct(TokenStorageInterface $tokenStorage, Registry $registry, SessionInterface $session)
-    {
-        $this->em = $registry->getManager();
-        $this->session = $session;
-        $this->tokenStorage = $tokenStorage;
-        $this->initSession();
+    public function __construct(private readonly TokenStorageInterface $tokenStorage, ManagerRegistry $manager,
+    //private readonly SessionInterface $session
+    ) {
+        $this->em = $manager->getManager();
+        //$this->initSession();
     }
 
     public function subscribe(string $email, string $name = ''): NewsletterSubscription
@@ -91,7 +89,8 @@ class NewsletterManager
 
     public function getSubscriptionFromSession(): ?NewsletterSubscription
     {
-        $subscribedEmail = $this->session->get(self::SESSION_KEY);
+        //$subscribedEmail = $this->session->get(self::SESSION_KEY);
+        $subscribedEmail = null;
 
         return empty($subscribedEmail) ? null : new NewsletterSubscription($subscribedEmail);
     }

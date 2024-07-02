@@ -3,7 +3,7 @@ namespace Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class Couple
+class Couple implements \Stringable
 {
     protected $id;
 
@@ -171,7 +171,7 @@ class Couple
         $this->guests->removeElement($guest);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         if ($this->wife->getFirstName() && $this->husband->getFirstName()) {
             return sprintf(

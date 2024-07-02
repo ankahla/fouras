@@ -13,13 +13,13 @@
     {% set type = type|default('password') %}
 
     <div class="form-group row {% if errors|length %}has-error{% endif %}">
-    <div class="col-sm-4">{{ block('form_label') }}</div> 
+    <div class="col-sm-4">{{ block('form_label') }}</div>
     	<div class="col-sm-8">
     		{{ block('form_widget_simple') }}
     		<span class="help-block">{{ block('form_errors') }}</span>
-    	</div> 
+    	</div>
     </div>
-    
+
 {% endblock %}
 
 
@@ -37,7 +37,7 @@
 		</div>
 		{% endfor %}
 		{% endfor %}
-		{{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+		{{ render(controller('Infrastructure\\Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
 		{% block fos_user_content %}{% endblock fos_user_content %}
 	</div>
 </section>

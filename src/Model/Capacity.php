@@ -6,29 +6,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 
-class Capacity implements Translatable
+class Capacity implements Translatable, \Stringable
 {
     protected $id;
 
-    /**
-     * @Gedmo\Translatable
-     *
-     * @Assert\NotBlank(message="Please enter a valid name.")
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
-     * )
-     */
+    #[Assert\NotBlank(message: 'Please enter a valid name.')]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'The name is too short.', maxMessage: 'The name is too long.')]
+    #[Gedmo\Translatable]
     protected $name;
 
-    /**
-     * @Gedmo\Locale
-     * Used locale to override Translation listener`s locale
-     * this is not a mapped field of entity metadata, just a simple property
-     * and it is not necessary because globally locale can be set in listener
-     */
+    #[Gedmo\Locale] // Used locale to override Translation listener`s locale
     private $locale;
 
     public function getId()
@@ -61,8 +48,8 @@ class Capacity implements Translatable
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->name;
+        return (string) $this->name;
     }
 }

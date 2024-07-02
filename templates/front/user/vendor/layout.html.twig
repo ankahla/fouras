@@ -11,7 +11,7 @@ $(".datepicker").datepicker();
 {% block body %}
 <section id="manage-item-listing" class="manage-item-listing-main-block">
     <div class="container">
-      {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+      {{ render(controller('Infrastructure\\Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
 
 {% block bodycontent %}
 {% endblock %}
@@ -51,12 +51,12 @@ $(".datepicker").datepicker();
                     <div><i class="fa fa-phone"></i>{{ app.session.get('phone') }}</div>
                     {% endif %}
                   </div>
-                  <div class="row"><a href="{{ path('fos_user_profile_show') }}" class="btn btn-pink">Edit Profile</a></div>
+                  <div class="row"><a href="/profile" class="btn btn-pink">Edit Profile</a></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>        
+        </div>
       </div>
     </div>
   </section>

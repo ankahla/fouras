@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-class Url
+class Url implements \Stringable
 {
     public const FB_TYPE = 'facebook',
     TW_TYPE = 'twitter',
@@ -51,8 +51,8 @@ class Url
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->url;
+        return (string) $this->url;
     }
 }

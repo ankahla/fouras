@@ -25,18 +25,12 @@ class GravatarService
     /**
      * Ratings available
      */
-    private $GRAVATAR_RATING = array("G", "PG", "R", "X");
+    private $GRAVATAR_RATING = ["G", "PG", "R", "X"];
 
     /**
      * Query string. key/value
      */
-    protected $properties = array(
-        "gravatar_id" => null,
-        "default" => null,
-        "size" => 128,
-        "rating" => null,
-        "border" => null,
-    );
+    protected $properties = ["gravatar_id" => null, "default" => null, "size" => 128, "rating" => null, "border" => null];
 
     public function __construct($options = [])
     {
@@ -45,7 +39,7 @@ class GravatarService
 
     public function isValidEmail($email)
     {
-        return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email);
+        return preg_match('#^[_a-z0-9\-]+(\.[_a-z0-9\-]+)*@[a-z0-9\-]+(\.[a-z0-9\-]+)*(\.[a-z]{2,3})$#mi', (string) $email);
     }
 
     /**
@@ -55,7 +49,7 @@ class GravatarService
     {
         $properties = array_merge($this->properties, $properties);
         $properties['gravatar_id'] = urlencode(md5(strtolower($properties['gravatar_id'].'gh')));
-        $properties['default'] = urlencode($properties['default']);
+        $properties['default'] = urlencode((string) $properties['default']);
 
         return self::GRAVATAR_URL . "?" . http_build_query($properties);
     }

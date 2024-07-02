@@ -1,24 +1,27 @@
-/web/bundles/
-/web/uploads/*
-/web/media/
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
 /var/
 /vendor/
-/bin/
-/composer.phar
-/web/cms/
-!/cms/cms.zip
-!/cms/.htaccess
-!/cms/plugins
-!/cms/configuration
-!/web/uploads/profiles
-/web/uploads/profiles/*
-!/web/uploads/profiles/README.md
-!/web/uploads/profiles/vendor_service
-/web/uploads/profiles/vendor_service/*
-!/web/uploads/profiles/vendor_service/README.md
-!/web/uploads/services
-/web/uploads/services/*
-!/web/uploads/services/README.md
-!/media/README.md
-.idea/
-*.cache
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
+
+.idea

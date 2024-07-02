@@ -8,47 +8,26 @@ class VendorService
 {
     protected $id;
 
-    /**
-     * @Assert\NotBlank(message="Please enter a valid name.")
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The title is too short.",
-     *     maxMessage="The title is too long.",
-     * )
-     */
+    #[Assert\NotBlank(message: 'Please enter a valid name.')]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'The title is too short.', maxMessage: 'The title is too long.')]
     protected $title;
 
     private $service;
 
     private $vendor;
 
-    /**
-     * @Assert\NotNull(message="Please choose a city.")
-     */
+    #[Assert\NotNull(message: 'Please choose a city.')]
     private $city;
 
-    /**
-     * @Assert\Length(
-     *     min=8,
-     *     max=20,
-     *     minMessage="The phone is invalid.",
-     *     maxMessage="The phone is invalid.",
-     *     groups={"Profile"}
-     * )
-     *
-     */
+    
+    #[Assert\Length(min: 8, max: 20, minMessage: 'The phone is invalid.', maxMessage: 'The phone is invalid.', groups: ['Profile'])]
     private $phone;
 
-    private $costMin;
+    private $costMin = 10;
 
-    private $costMax;
+    private $costMax = 1000;
 
-    /**
-     * @Assert\Email(
-     *     message = "The email is not valid.",
-     * )
-     */
+    #[Assert\Email(message: 'The email is not valid.')]
     protected $email;
 
     protected $description;
@@ -70,8 +49,6 @@ class VendorService
     public function __construct()
     {
         $this->urls = new ArrayCollection;
-        $this->costMin = 10;
-        $this->costMax = 1000;
     }
 
     public function getId()

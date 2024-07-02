@@ -31,7 +31,7 @@ jQuery('.new-task').click(function(e){
 {% block body %}
 <section id="to-do-list" class="to-do-list-main-block">
     <div class="container">
-        {{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+        {{ render(controller('Infrastructure\\Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
         <div class="to-do-list-block">
             <div class="row">
                 <p class="text-center">
@@ -39,7 +39,7 @@ jQuery('.new-task').click(function(e){
                 </p>
                 {% include 'front/user/task.list.html.twig' %}
             </div>
-                
+
             <div id="task-form" class="modal fade" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

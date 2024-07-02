@@ -8,23 +8,13 @@ class NewsletterSubscription
 {
     use TimestampableTrait;
 
-    private ?int $id;
-    private ?string $name;
-    private bool $enabled;
+    private ?int $id = null;
+    private bool $enabled = true;
 
-    public function __construct(string $email = '', string $name = '')
+    public function __construct(#[Assert\Email(message: 'The email is not valid.')]
+    private string $email = '', private ?string $name = '')
     {
-        $this->email = $email;
-        $this->name = $name;
-        $this->enabled = true;
     }
-
-    /**
-     * @Assert\Email(
-     *     message = "The email is not valid.",
-     * )
-     */
-    private string $email;
 
     /**
      * @return int|null

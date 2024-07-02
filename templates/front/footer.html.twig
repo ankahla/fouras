@@ -46,7 +46,7 @@
           <div class="subscribe-widget footer-widget">
             <h4 class="footer-heading">{% trans %}Subscribe to newsletter{% endtrans %}</h4>
 
-            {{ render(controller('Controller\\Front\\NewsletterController::index')) }}
+            {{ render(controller('Infrastructure\\Controller\\Front\\NewsletterController::index')) }}
 
             <ul class="social-icons">
               <li><a href="https://www.facebook.com/" class="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -55,7 +55,7 @@
             </ul>
           </div>
         </div>
-      </div>       
+      </div>
     </div>
     <div class="copyright-block text-center">
       <p>{% trans with {'%year%':'now'|date('Y')} %}© %year% All rights reserved.{% endtrans %}</p>

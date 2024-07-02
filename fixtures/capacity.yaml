@@ -1,0 +1,13 @@
+Model\Capacity:
+  capacity_1:
+    name: 'Under 50'
+  capacity_2:
+    name: 'Between 50 and 100'
+  capacity_3:
+    name: 'Between 100 and 200'
+  capacity_4:
+    name: 'Between 200 and 500'
+  capacity_5:
+    name: 'Between 500 and 1000'
+  capacity_6:
+    name: 'Over 1000'

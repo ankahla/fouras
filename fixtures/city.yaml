@@ -1,0 +1,4 @@
+Model\City:
+  city_{Ariana, Béja, Bizerte, Gabès, Gafsa, Jendouba, Kairouan, Kasserine, Mahdia, Médenine, Monastir, Nabeul, Sfax}:
+    name: '<current()>'
+    zipCode: ''

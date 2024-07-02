@@ -2,9 +2,12 @@
 
 namespace Model;
 
-use FOS\UserBundle\Model\Group as BaseGroup;
+//use FOS\UserBundle\Model\Group as BaseGroup;
 
-class Group extends BaseGroup
+//class Group extends BaseGroup
+class Group
 {
-    protected $id;
+    public int $id;
+    public string $name;
+    public string $roles;
 }

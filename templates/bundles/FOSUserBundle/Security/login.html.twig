@@ -11,7 +11,7 @@
 					{% endif %}
 					<h4 class="register-heading text-center">{% trans %}Sign In{% endtrans %}</h4>
 					<div class="form-group">
-						<form action="{{ path("fos_user_security_check") }}" method="post">
+						<form action="/login" method="post">
 							<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 							<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" />
 
@@ -25,9 +25,9 @@
 							<input type="submit" class="btn btn-pink" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
 						</form>
 						<p class="sign-in text-center">
-							{% trans %}You d'ont have an account?{% endtrans %} <a href="{{ path('fos_user_registration_register') }}">{% trans %}Register{% endtrans %}</a>
+							{% trans %}You d'ont have an account?{% endtrans %} <a href="/registration">{% trans %}Register{% endtrans %}</a>
 							<br>
-							{% trans %}Forget password?{% endtrans %} <a href="{{ path('fos_user_resetting_request') }}">{% trans %}Reset password{% endtrans %}</a>
+							{% trans %}Forget password?{% endtrans %} <a href="/reset">{% trans %}Reset password{% endtrans %}</a>
 						</p>
 					</div>
 				</div>

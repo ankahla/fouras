@@ -7,34 +7,15 @@ class Enquiry
 {
     private $id;
 
-    /**
-     * @Assert\NotBlank(message="Please enter a valid name.")
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
-     * )
-     */
+    #[Assert\NotBlank(message: 'Please enter a valid name.')]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'The name is too short.', maxMessage: 'The name is too long.')]
     private $name;
 
-    /**
-     * @Assert\Email(
-     *     message = "The email is not valid.",
-     * )
-     */
+    #[Assert\Email(message: 'The email is not valid.')]
     private $email;
 
-    /**
-     * @Assert\Length(
-     *     min=8,
-     *     max=20,
-     *     minMessage="The phone is invalid.",
-     *     maxMessage="The phone is invalid.",
-     *     groups={"Profile"}
-     * )
-     *
-     */
+    
+    #[Assert\Length(min: 8, max: 20, minMessage: 'The phone is invalid.', maxMessage: 'The phone is invalid.', groups: ['Profile'])]
     private $phone;
 
     /**
@@ -139,7 +120,7 @@ class Enquiry
         }
 
         if (!$this->phone) {
-            $this->phone = $couple->getUser()->getPhone() ? $couple->getUser()->getPhone() : $couple->getUser()->getMobile();
+            $this->phone = $couple->getUser()->getPhone() ?: $couple->getUser()->getMobile();
         }
 
         if (!$this->weddingDate instanceof \DateTime) {

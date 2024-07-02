@@ -1,0 +1,8 @@
+Model\Task:
+  task_{1..20}:
+    user: '@user_user_*'
+    title: '<sentence()>'
+    description: '<paragraph()>'
+    date: '<dateTimeThisMonth()>'
+    createdAt: '<dateTimeBetween("-200 days", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'

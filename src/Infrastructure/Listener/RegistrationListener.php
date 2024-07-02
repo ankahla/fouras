@@ -15,21 +15,11 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * RegistrationListener
  */
-class RegistrationListener implements EventSubscriberInterface
+//class RegistrationListener implements EventSubscriberInterface
+class RegistrationListener
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    private $gravatarService;
-    private $newsletterManager;
-
-    public function __construct(EntityManagerInterface $em, GravatarService $gravatarService, NewsletterManager $newsletterManager)
+    public function __construct(private readonly EntityManagerInterface $em, private readonly GravatarService $gravatarService, private readonly NewsletterManager $newsletterManager)
     {
-        $this->gravatarService = $gravatarService;
-        $this->em = $em;
-        $this->newsletterManager = $newsletterManager;
     }
 
     /**

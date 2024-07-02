@@ -1,0 +1,32 @@
+{
+    # Debug
+    {$DEBUG}
+
+    # local_certs
+    auto_https disable_redirects
+
+    http_port  80
+    https_port  443
+}
+
+localhost, :80, :443
+
+log
+
+route {
+    root * /var/www/app/public
+
+    @notfile {
+        not file
+    }
+
+    rewrite @notfile index.php?{query}
+
+    php_fastcgi unix//var/run/php/php-fpm.sock
+    encode zstd gzip
+    file_server
+}
+
+header {
+    Content-Security-Policy "upgrade-insecure-requests"
+}

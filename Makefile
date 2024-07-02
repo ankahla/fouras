@@ -1,5 +1,5 @@
 DOCKER_COMPOSE = docker-compose --file=containers/docker-compose.yml
-EXEC_PHP       = $(DOCKER_COMPOSE) exec php7.4
+EXEC_PHP       = $(DOCKER_COMPOSE) exec php
 SYMFONY        = $(EXEC_PHP) bin/console
 ENV            = dev
 COMPOSER       = $(EXEC_PHP) composer

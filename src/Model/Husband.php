@@ -8,25 +8,11 @@ class Husband
 {
     use PersonTrait;
 
-    /**
-     *
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long."
-     * )
-     */
+    
+    #[Assert\Length(min: 3, max: 255, minMessage: 'The name is too short.', maxMessage: 'The name is too long.')]
     protected $fatherName;
 
-    /**
-     * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long."
-     * )
-     */
+    #[Assert\Length(min: 3, max: 255, minMessage: 'The name is too short.', maxMessage: 'The name is too long.')]
     protected $motherName;
 
 

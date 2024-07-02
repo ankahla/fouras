@@ -1,0 +1,4 @@
+Model\Url:
+  url_{1..20}:
+    url: '<url()>'
+    type: '<randomElement(["facebook", "instagram", "youtube", "x", "other"])>'

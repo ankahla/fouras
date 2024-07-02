@@ -11,7 +11,7 @@
 <link href="{{ asset('assets/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css">
 {% endif %}
 <!-- bootstrap css -->
-<!-- revolution -->   
+<!-- revolution -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/settings.css') }}"> <!-- revolution setting css -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/layers.css') }}">  <!-- revolution layer css -->
 <!-- end revolution -->
@@ -59,20 +59,20 @@
 
 {% block header %}
 {% include 'front/topbar.html.twig' %}
-{{ render(controller('Controller\\Front\\MainmenuController::index')) }}
+{{ render(controller('Infrastructure\\Controller\\Front\\MainmenuController::index')) }}
 {% endblock %}
 
 {% block banner %}{% endblock %}
 
 {% block preloader %}
-<!-- preloader --> 
+<!-- preloader -->
 <div class="preloader">
 	<div class="status">
 		<div class="status-message">
 		</div>
 	</div>
 </div>
-<!-- end preloader --> 
+<!-- end preloader -->
 {% endblock %}
 
 {% block messages %}

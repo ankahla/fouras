@@ -40,7 +40,7 @@
 		{% endfor %}
     {% endblock message %}
 
-		{{ render(controller('Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
+		{{ render(controller('Infrastructure\\Controller\\Front\\User\\MenuController::index', {'_route': app.request.attributes.get('_route')})) }}
 		{% block fos_user_content %}{% endblock fos_user_content %}
 	</div>
 </section>

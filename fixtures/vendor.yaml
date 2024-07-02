@@ -1,0 +1,10 @@
+Model\Vendor:
+  vendor_1:
+    user: '@user_user_2'
+    city: '@city_Monastir'
+    firstName: '<firstName()>'
+    lastName: '<lastName()>'
+    email: '<email()>'
+    phone: '<phoneNumber()>'
+    mobile: '<mobileNumber()>'
+    address: '<address()>'

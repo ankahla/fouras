@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Model\User" table="user" schema="public">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="firstName" type="string" column="first_name" length="255" precision="0" scale="0" nullable="false"/>
+    <field name="lastName" type="string" column="last_name" length="255" precision="0" scale="0" nullable="false"/>
+    <field name="email" type="string" column="email" length="100" precision="0" scale="0" nullable="false"/>
+    <field name="address" type="string" column="address" precision="0" scale="0" nullable="true"/>
+    <field name="phone" type="string" column="phone" length="20" precision="0" scale="0" nullable="true"/>
+    <field name="mobile" type="string" column="mobile" length="20" precision="0" scale="0" nullable="true"/>
+    <field name="profilePicture" type="string" column="profile_picture" length="255" precision="0" scale="0" nullable="true"/>
+    <one-to-many field="tasks" target-entity="Model\Task" mapped-by="user" fetch="LAZY">
+      <cascade>
+        <cascade-persist/>
+      </cascade>
+    </one-to-many>
+    <many-to-one field="userType" target-entity="Model\UserType" fetch="LAZY">
+      <join-columns>
+        <join-column name="user_type_id" referenced-column-name="id" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <one-to-one field="userParams" target-entity="Model\UserParams">
+      <join-columns>
+        <join-column name="user_params_id" referenced-column-name="id" nullable="1"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="city" target-entity="Model\City" fetch="LAZY">
+      <join-columns>
+        <join-column name="city_id" referenced-column-name="id" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="groups" target-entity="Model\Group" fetch="LAZY">
+      <join-table name="user_user_group">
+        <join-columns>
+          <join-column name="user_id" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="group_id" referenced-column-name="id" nullable="1"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>
